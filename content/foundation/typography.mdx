@@ -1,0 +1,67 @@
+---
+title: Typography
+description: Font scales, weights, and typographic guidelines for SolarUI.
+---
+
+# Typography
+
+SolarUI ships with a clean, legible type system based on the system font stack and Tailwind's default type scale.
+
+## Font Family
+
+By default, SolarUI uses the `font-sans` utility from Tailwind which resolves to the OS system font stack for optimal performance (no external font loading required):
+
+```css
+font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+```
+
+To use a custom font, add it in `app/layout.tsx` using `next/font`:
+
+```tsx
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+## Type Scale
+
+| Class | Size | Weight | Use Case |
+|-------|------|--------|----------|
+| `text-xs` | 12px | — | Labels, captions |
+| `text-sm` | 14px | — | Body small, helper text |
+| `text-base` | 16px | — | Default body text |
+| `text-lg` | 18px | — | Lead paragraphs |
+| `text-xl` | 20px | — | Subheadings |
+| `text-2xl` | 24px | `font-semibold` | Section headings (h3) |
+| `text-3xl` | 30px | `font-bold` | Page headings (h2) |
+| `text-4xl` | 36px | `font-extrabold` | Hero headings (h1) |
+
+## Prose
+
+For long-form content, combine Tailwind Typography plugin with our tokens:
+
+```tsx
+<article className="prose prose-slate dark:prose-invert max-w-none">
+  <h1>Article Title</h1>
+  <p>Content goes here...</p>
+</article>
+```
+
+## Font Weights
+
+| Class | Weight | Use |
+|-------|--------|-----|
+| `font-normal` | 400 | Body text |
+| `font-medium` | 500 | UI labels, buttons |
+| `font-semibold` | 600 | Subheadings |
+| `font-bold` | 700 | Headings |
+| `font-extrabold` | 800 | Display text |

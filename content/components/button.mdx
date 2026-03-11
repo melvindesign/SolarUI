@@ -1,0 +1,271 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import { Tabs } from 'nextra/components'
+import { Button } from '@/components/ui/button'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { ChevronRight, Mail, Loader2 } from 'lucide-react'
+
+# Button
+
+Displays a button or a component that looks like a button.
+
+<ComponentPreview>
+  <Button>Button</Button>
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tabs.Tab>
+
+Run the following command:
+
+```bash
+npx shadcn@latest add button
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+**1. Install the following dependencies:**
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/button.tsx
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+```
+
+**3. Update the import paths** to match your project setup.
+
+  </Tabs.Tab>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button variant="outline">Button</Button>
+```
+
+## Link
+
+You can use the `buttonVariants` helper to create a link that looks like a button.
+
+```tsx
+import { buttonVariants } from "@/components/ui/button"
+```
+
+```tsx
+<Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
+```
+
+Alternatively, you can set the `asChild` parameter and nest the link component.
+
+```tsx
+<Button asChild>
+  <Link href="/login">Login</Link>
+</Button>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview>
+  <Button>Button</Button>
+</ComponentPreview>
+
+```tsx
+<Button>Button</Button>
+```
+
+### Secondary
+
+<ComponentPreview>
+  <Button variant="secondary">Secondary</Button>
+</ComponentPreview>
+
+```tsx
+<Button variant="secondary">Secondary</Button>
+```
+
+### Destructive
+
+<ComponentPreview>
+  <Button variant="destructive">Destructive</Button>
+</ComponentPreview>
+
+```tsx
+<Button variant="destructive">Destructive</Button>
+```
+
+### Outline
+
+<ComponentPreview>
+  <Button variant="outline">Outline</Button>
+</ComponentPreview>
+
+```tsx
+<Button variant="outline">Outline</Button>
+```
+
+### Ghost
+
+<ComponentPreview>
+  <Button variant="ghost">Ghost</Button>
+</ComponentPreview>
+
+```tsx
+<Button variant="ghost">Ghost</Button>
+```
+
+### Link
+
+<ComponentPreview>
+  <Button variant="link">Link</Button>
+</ComponentPreview>
+
+```tsx
+<Button variant="link">Link</Button>
+```
+
+### Icon
+
+<ComponentPreview>
+  <Button variant="outline" size="icon">
+    <ChevronRight />
+  </Button>
+</ComponentPreview>
+
+```tsx
+import { ChevronRight } from "lucide-react"
+
+<Button variant="outline" size="icon">
+  <ChevronRight />
+</Button>
+```
+
+### With Icon
+
+<ComponentPreview>
+  <Button>
+    <Mail /> Login with Email
+  </Button>
+</ComponentPreview>
+
+```tsx
+import { Mail } from "lucide-react"
+
+<Button>
+  <Mail /> Login with Email
+</Button>
+```
+
+### Loading
+
+<ComponentPreview>
+  <Button disabled>
+    <Loader2 className="animate-spin" />
+    Please wait
+  </Button>
+</ComponentPreview>
+
+```tsx
+import { Loader2 } from "lucide-react"
+
+<Button disabled>
+  <Loader2 className="animate-spin" />
+  Please wait
+</Button>
+```
+
+### All variants
+
+<ComponentPreviewRow>
+  <Button>Default</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+</ComponentPreviewRow>
+
+## API Reference
+
+### Button
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | The visual style variant of the button. |
+| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | The size of the button. |
+| `asChild` | `boolean` | `false` | When `true`, the button will render its child as the root element using Radix UI's `Slot`. |
+| `disabled` | `boolean` | `false` | When `true`, prevents user interaction and applies reduced opacity. |
+| `className` | `string` | — | Additional CSS classes to merge. |
+
+The `Button` component also accepts all standard HTML `<button>` attributes.

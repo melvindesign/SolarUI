@@ -1,0 +1,180 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+---
+
+import { Tabs } from 'nextra/components'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { Search, Eye, EyeOff } from 'lucide-react'
+
+# Input
+
+Displays a form input field or a component that looks like an input field.
+
+<ComponentPreview>
+  <Input className="max-w-sm" placeholder="Email" type="email" />
+</ComponentPreview>
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tabs.Tab>
+
+```bash
+npx shadcn@latest add input
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+**1. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/input.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+          "placeholder:text-muted-foreground",
+          "file:border-0 file:bg-transparent file:text-sm file:font-medium",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input"
+```
+
+```tsx
+<Input placeholder="Email" type="email" />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview>
+  <Input className="max-w-sm" placeholder="Email" />
+</ComponentPreview>
+
+```tsx
+<Input placeholder="Email" />
+```
+
+### With label
+
+<ComponentPreview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="email">Email</Label>
+    <Input type="email" id="email" placeholder="name@example.com" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="name@example.com" />
+</div>
+```
+
+### With placeholder
+
+<ComponentPreview>
+  <Input className="max-w-sm" placeholder="Search..." />
+</ComponentPreview>
+
+```tsx
+<Input placeholder="Search..." />
+```
+
+### Disabled
+
+<ComponentPreview>
+  <Input className="max-w-sm" placeholder="Disabled input" disabled />
+</ComponentPreview>
+
+```tsx
+<Input placeholder="Disabled input" disabled />
+```
+
+### With button
+
+<ComponentPreview>
+  <div className="flex w-full max-w-sm gap-2">
+    <Input placeholder="Search..." />
+    <Button type="submit">Search</Button>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex w-full max-w-sm gap-2">
+  <Input placeholder="Search..." />
+  <Button type="submit">Search</Button>
+</div>
+```
+
+### File
+
+<ComponentPreview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="file">Upload file</Label>
+    <Input id="file" type="file" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="file">Upload file</Label>
+  <Input id="file" type="file" />
+</div>
+```
+
+### Password
+
+<ComponentPreview>
+  <Input className="max-w-sm" type="password" placeholder="Password" />
+</ComponentPreview>
+
+```tsx
+<Input type="password" placeholder="Password" />
+```
+
+## API Reference
+
+### Input
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `string` | `"text"` | The type of the input (e.g. `text`, `email`, `password`, `file`). |
+| `placeholder` | `string` | — | Placeholder text shown when the field is empty. |
+| `disabled` | `boolean` | `false` | When `true`, prevents user interaction and applies reduced opacity. |
+| `className` | `string` | — | Additional CSS classes to merge. |
+
+The `Input` component accepts all standard HTML `<input>` attributes.

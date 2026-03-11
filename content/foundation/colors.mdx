@@ -1,0 +1,73 @@
+---
+title: Colors
+description: The SolarUI color palette and semantic tokens.
+---
+
+import { Callout } from 'nextra/components'
+
+# Colors
+
+SolarUI uses a semantic color system based on CSS variables. Each color has a **background** token and a corresponding **foreground** token to ensure contrast.
+
+## Semantic Tokens
+
+| Token | Description |
+|-------|-------------|
+| `background` / `foreground` | Page background and default text |
+| `primary` / `primary-foreground` | Primary actions and brand color |
+| `secondary` / `secondary-foreground` | Secondary actions |
+| `muted` / `muted-foreground` | Subtle backgrounds and dimmed text |
+| `accent` / `accent-foreground` | Hover states and highlights |
+| `destructive` / `destructive-foreground` | Error and danger states |
+| `border` | Borders and dividers |
+| `input` | Input field borders |
+| `ring` | Focus ring |
+
+## Usage in Tailwind
+
+All tokens are available as Tailwind utilities:
+
+```tsx
+<div className="bg-background text-foreground">
+  <button className="bg-primary text-primary-foreground">
+    Primary Button
+  </button>
+  <button className="bg-destructive text-destructive-foreground">
+    Delete
+  </button>
+</div>
+```
+
+<Callout>
+  All color values are defined in `globals.css` as HSL CSS variables. See [Theming](/docs/overview/theming) to learn how to customize them.
+</Callout>
+
+## Palette Reference
+
+### Neutral
+
+| Class | Variable |
+|-------|----------|
+| `bg-background` | `--background` |
+| `bg-foreground` | `--foreground` |
+| `bg-muted` | `--muted` |
+| `text-muted-foreground` | `--muted-foreground` |
+| `bg-border` | `--border` |
+
+### Brand
+
+| Class | Variable |
+|-------|----------|
+| `bg-primary` | `--primary` |
+| `text-primary-foreground` | `--primary-foreground` |
+| `bg-secondary` | `--secondary` |
+| `text-secondary-foreground` | `--secondary-foreground` |
+| `bg-accent` | `--accent` |
+| `text-accent-foreground` | `--accent-foreground` |
+
+### Status
+
+| Class | Variable |
+|-------|----------|
+| `bg-destructive` | `--destructive` |
+| `text-destructive-foreground` | `--destructive-foreground` |

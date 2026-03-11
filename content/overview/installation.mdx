@@ -1,0 +1,82 @@
+---
+title: Installation
+description: How to install and set up SolarUI in your project.
+---
+
+import { Steps, Tabs } from 'nextra/components'
+
+# Installation
+
+SolarUI requires **Next.js 14+**, **Tailwind CSS v4**, and **Node.js 18+**.
+
+<Steps>
+
+### Create a new Next.js project
+
+```bash
+npx create-next-app@latest my-app --typescript --tailwind --eslint
+cd my-app
+```
+
+### Install dependencies
+
+<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <Tabs.Tab>
+  ```bash
+  npm install class-variance-authority clsx tailwind-merge lucide-react
+  npm install @radix-ui/react-slot
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```bash
+  pnpm add class-variance-authority clsx tailwind-merge lucide-react
+  pnpm add @radix-ui/react-slot
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```bash
+  yarn add class-variance-authority clsx tailwind-merge lucide-react
+  yarn add @radix-ui/react-slot
+  ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```bash
+  bun add class-variance-authority clsx tailwind-merge lucide-react
+  bun add @radix-ui/react-slot
+  ```
+  </Tabs.Tab>
+</Tabs>
+
+### Initialize shadcn/ui
+
+```bash
+npx shadcn@latest init
+```
+
+Follow the prompts to configure your project. Recommended settings:
+
+```
+✔ Which style would you like to use? › Default
+✔ Which color would you like to use as base color? › Slate
+✔ Would you like to use CSS variables for colors? › yes
+```
+
+### Add your first component
+
+```bash
+npx shadcn@latest add button
+```
+
+This will create `components/ui/button.tsx` in your project.
+
+### Import and use
+
+```tsx
+import { Button } from '@/components/ui/button'
+
+export default function Page() {
+  return <Button>Click me</Button>
+}
+```
+
+</Steps>
