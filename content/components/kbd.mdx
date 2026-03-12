@@ -1,0 +1,144 @@
+---
+title: Kbd
+description: A component for displaying keyboard keys and key combinations.
+---
+
+import { Kbd, KbdGroup } from '@/components/ui/kbd'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Kbd
+
+A component for displaying keyboard keys and key combinations in tooltips, documentation, or command palettes.
+
+<ComponentPreview>
+  <div className="flex flex-col items-center gap-4">
+    <KbdGroup>
+      <Kbd>⌘</Kbd>
+      <Kbd>K</Kbd>
+    </KbdGroup>
+    <KbdGroup>
+      <Kbd>Ctrl</Kbd>
+      <Kbd>Shift</Kbd>
+      <Kbd>P</Kbd>
+    </KbdGroup>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+No dependencies required — copy and paste the following code into your project:
+
+```tsx
+// components/ui/kbd.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
+  return (
+    <kbd
+      data-slot="kbd"
+      className={cn(
+        "bg-muted text-muted-foreground inline-flex h-5 min-w-5 items-center justify-center rounded border px-1 font-mono text-[0.7rem] font-medium",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function KbdGroup({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="kbd-group"
+      className={cn("inline-flex items-center gap-1", className)}
+      {...props}
+    />
+  )
+}
+
+export { Kbd, KbdGroup }
+```
+
+## Usage
+
+```tsx
+import { Kbd, KbdGroup } from "@/components/ui/kbd"
+```
+
+```tsx
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+```
+
+## Examples
+
+### Single key
+
+<ComponentPreview>
+  <Kbd>Esc</Kbd>
+</ComponentPreview>
+
+```tsx
+<Kbd>Esc</Kbd>
+```
+
+### Key combination
+
+<ComponentPreview>
+  <KbdGroup>
+    <Kbd>Ctrl</Kbd>
+    <Kbd>B</Kbd>
+  </KbdGroup>
+</ComponentPreview>
+
+```tsx
+<KbdGroup>
+  <Kbd>Ctrl</Kbd>
+  <Kbd>B</Kbd>
+</KbdGroup>
+```
+
+### Common shortcuts
+
+<ComponentPreview>
+  <div className="flex flex-wrap justify-center gap-4">
+    <KbdGroup><Kbd>⌘</Kbd><Kbd>C</Kbd></KbdGroup>
+    <KbdGroup><Kbd>⌘</Kbd><Kbd>V</Kbd></KbdGroup>
+    <KbdGroup><Kbd>⌘</Kbd><Kbd>Z</Kbd></KbdGroup>
+    <KbdGroup><Kbd>⌘</Kbd><Kbd>⇧</Kbd><Kbd>Z</Kbd></KbdGroup>
+  </div>
+</ComponentPreview>
+
+### In text context
+
+<ComponentPreview>
+  <p className="text-sm text-muted-foreground">
+    Press <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+  </p>
+</ComponentPreview>
+
+```tsx
+<p className="text-sm text-muted-foreground">
+  Press <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+</p>
+```
+
+## API Reference
+
+### Kbd
+
+Renders a `<kbd>` HTML element with keyboard key styling.
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional classes. |
+
+### KbdGroup
+
+Wraps multiple `Kbd` elements with consistent spacing for key combinations.
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional classes. |

@@ -32,6 +32,7 @@ export default {
   'alert-dialog': 'Alert Dialog',
   badge: 'Badge',
   'hover-card': 'Hover Card',
+  kbd: 'Kbd',
   '-- navigation': { type: 'separator', title: 'Navigation' },
   breadcrumb: 'Breadcrumb',
   'dropdown-menu': 'Dropdown Menu',
