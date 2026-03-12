@@ -7,6 +7,7 @@ export default {
   field: 'Field',
   '-- layout': { type: 'separator', title: 'Layout' },
   accordion: 'Accordion',
+  card: 'Card',
   separator: 'Separator',
   '-- text': { type: 'separator', title: 'Text' },
   label: 'Label',
