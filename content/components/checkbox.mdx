@@ -1,0 +1,181 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked, unchecked, and indeterminate states.
+---
+
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+
+# Checkbox
+
+A control that allows the user to toggle between checked, unchecked, and indeterminate states.
+
+<ComponentPreview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label htmlFor="terms">Accept terms and conditions</Label>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-checkbox
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/checkbox.tsx
+"use client"
+
+import * as React from "react"
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
+import { Check, Minus } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+function Checkbox({
+  className,
+  ...props
+}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+  return (
+    <CheckboxPrimitive.Root
+      data-slot="checkbox"
+      className={cn(
+        "peer size-4 shrink-0 rounded-sm border border-input shadow-xs",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "disabled:cursor-not-allowed disabled:opacity-50",
+        "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=checked]:border-primary",
+        "data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground data-[state=indeterminate]:border-primary",
+        className
+      )}
+      {...props}
+    >
+      <CheckboxPrimitive.Indicator className="flex items-center justify-center text-current">
+        {props.checked === "indeterminate" ? (
+          <Minus className="size-3" strokeWidth={3} />
+        ) : (
+          <Check className="size-3" strokeWidth={3} />
+        )}
+      </CheckboxPrimitive.Indicator>
+    </CheckboxPrimitive.Root>
+  )
+}
+
+export { Checkbox }
+```
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+```
+
+```tsx
+<Checkbox />
+```
+
+## Examples
+
+### With label
+
+<ComponentPreview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="demo-label" defaultChecked />
+    <Label htmlFor="demo-label">Subscribe to newsletter</Label>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex items-center gap-2">
+  <Checkbox id="newsletter" defaultChecked />
+  <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+</div>
+```
+
+### Disabled
+
+<ComponentPreviewRow>
+  <div className="flex items-center gap-2">
+    <Checkbox id="disabled-unchecked" disabled />
+    <Label htmlFor="disabled-unchecked" className="opacity-50">Unchecked</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="disabled-checked" disabled defaultChecked />
+    <Label htmlFor="disabled-checked" className="opacity-50">Checked</Label>
+  </div>
+</ComponentPreviewRow>
+
+```tsx
+<Checkbox disabled />
+<Checkbox disabled defaultChecked />
+```
+
+### Indeterminate
+
+<ComponentPreview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="indeterminate" checked="indeterminate" />
+    <Label htmlFor="indeterminate">Select all</Label>
+  </div>
+</ComponentPreview>
+
+```tsx
+<Checkbox checked="indeterminate" />
+```
+
+### Group
+
+<ComponentPreview>
+  <div className="flex flex-col gap-3">
+    <p className="text-sm font-medium">Notifications</p>
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center gap-2">
+        <Checkbox id="notif-email" defaultChecked />
+        <Label htmlFor="notif-email">Email</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="notif-push" defaultChecked />
+        <Label htmlFor="notif-push">Push</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="notif-sms" />
+        <Label htmlFor="notif-sms">SMS</Label>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex flex-col gap-2">
+  <div className="flex items-center gap-2">
+    <Checkbox id="email" defaultChecked />
+    <Label htmlFor="email">Email</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="push" defaultChecked />
+    <Label htmlFor="push">Push</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="sms" />
+    <Label htmlFor="sms">SMS</Label>
+  </div>
+</div>
+```
+
+## API Reference
+
+### Checkbox
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean \| "indeterminate"` | — | Controlled checked state. |
+| `defaultChecked` | `boolean` | `false` | Initial checked state (uncontrolled). |
+| `onCheckedChange` | `(checked: boolean \| "indeterminate") => void` | — | Callback when state changes. |
+| `disabled` | `boolean` | `false` | Prevents interaction and applies reduced opacity. |
+| `required` | `boolean` | `false` | Makes the checkbox required in a form. |
+| `name` | `string` | — | Name submitted with a form. |
+| `value` | `string` | `"on"` | Value submitted with a form. |

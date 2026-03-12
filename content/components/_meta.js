@@ -4,6 +4,7 @@ export default {
   'button-group': 'Button Group',
   '-- form': { type: 'separator', title: 'Form' },
   input: 'Input',
+  checkbox: 'Checkbox',
   field: 'Field',
   '-- layout': { type: 'separator', title: 'Layout' },
   accordion: 'Accordion',
