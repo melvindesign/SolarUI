@@ -14,6 +14,7 @@ export default {
   collapsible: 'Collapsible',
   command: 'Command',
   dialog: 'Dialog',
+  drawer: 'Drawer',
   separator: 'Separator',
   '-- text': { type: 'separator', title: 'Text' },
   label: 'Label',

@@ -1,0 +1,193 @@
+---
+title: Drawer
+description: A panel that slides up from the bottom of the screen, built on top of Vaul.
+---
+
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Drawer
+
+A panel that slides up from the bottom of the screen. Built on top of [Vaul](https://github.com/emilkowalski/vaul) by Emil Kowalski.
+
+<ComponentPreview>
+  <Drawer>
+    <DrawerTrigger asChild>
+      <Button variant="outline">Open Drawer</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Edit profile</DrawerTitle>
+        <DrawerDescription>Make changes to your profile here.</DrawerDescription>
+      </DrawerHeader>
+      <div className="grid gap-4 p-4">
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="drawer-name" className="text-right">Name</Label>
+          <Input id="drawer-name" defaultValue="Pedro Duarte" className="col-span-3" />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="drawer-username" className="text-right">Username</Label>
+          <Input id="drawer-username" defaultValue="@peduarte" className="col-span-3" />
+        </div>
+      </div>
+      <DrawerFooter>
+        <Button>Save changes</Button>
+        <DrawerClose asChild>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the dependency:**
+
+```bash
+npm install vaul
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/drawer.tsx
+"use client"
+
+import * as React from "react"
+import { Drawer as DrawerPrimitive } from "vaul"
+import { cn } from "@/lib/utils"
+
+function Drawer({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
+  return <DrawerPrimitive.Root data-slot="drawer" {...props} />
+}
+
+function DrawerTrigger({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
+  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
+}
+
+function DrawerPortal({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
+  return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />
+}
+
+function DrawerClose({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Close>) {
+  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
+}
+
+function DrawerOverlay({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Overlay>) {
+  return (
+    <DrawerPrimitive.Overlay
+      className={cn("fixed inset-0 z-50 bg-black/50", className)}
+      {...props}
+    />
+  )
+}
+
+function DrawerContent({ className, children, ...props }: React.ComponentProps<typeof DrawerPrimitive.Content>) {
+  return (
+    <DrawerPortal>
+      <DrawerOverlay />
+      <DrawerPrimitive.Content
+        className={cn(
+          "bg-background fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border",
+          className
+        )}
+        {...props}
+      >
+        <div className="bg-muted mx-auto mt-4 h-2 w-[100px] rounded-full" />
+        {children}
+      </DrawerPrimitive.Content>
+    </DrawerPortal>
+  )
+}
+
+function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)} {...props} />
+}
+
+function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("mt-auto flex flex-col gap-2 p-4", className)} {...props} />
+}
+
+function DrawerTitle({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Title>) {
+  return <DrawerPrimitive.Title className={cn("text-lg leading-none font-semibold", className)} {...props} />
+}
+
+function DrawerDescription({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Description>) {
+  return <DrawerPrimitive.Description className={cn("text-muted-foreground text-sm", className)} {...props} />
+}
+
+export {
+  Drawer, DrawerClose, DrawerContent, DrawerDescription,
+  DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger,
+}
+```
+
+## Usage
+
+```tsx
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+```
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Title</DrawerTitle>
+      <DrawerDescription>Description.</DrawerDescription>
+    </DrawerHeader>
+    <DrawerFooter>
+      <Button>Submit</Button>
+      <DrawerClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+## API Reference
+
+### Drawer
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled). |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes. |
+| `shouldScaleBackground` | `boolean` | `false` | Scale the background when the drawer opens. |
+| `dismissible` | `boolean` | `true` | Allow closing by dragging down or clicking the overlay. |
+| `snapPoints` | `(number \| string)[]` | — | Snap points as fractions (`0.5`) or pixel values (`"200px"`). |
+| `modal` | `boolean` | `true` | Render as a modal (blocks background interaction). |
+
+### DrawerContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional classes for the drawer panel. |
+| `onOpenAutoFocus` | `(e: Event) => void` | — | Override focus behavior on open. |
+| `onCloseAutoFocus` | `(e: Event) => void` | — | Override focus behavior on close. |
