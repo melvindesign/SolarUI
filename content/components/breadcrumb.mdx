@@ -1,0 +1,254 @@
+---
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+---
+
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
+} from '@/components/ui/breadcrumb'
+import { ComponentPreview } from '@/components/component-preview'
+import { Slash } from 'lucide-react'
+
+# Breadcrumb
+
+Displays the path to the current resource using a hierarchy of links.
+
+<ComponentPreview>
+  <Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Components</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/breadcrumb.tsx
+import { Slot } from "radix-ui"
+import * as React from "react"
+import { ChevronRight, MoreHorizontal } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
+  return <nav data-slot="breadcrumb" aria-label="breadcrumb" {...props} />
+}
+
+function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
+  return (
+    <ol
+      data-slot="breadcrumb-list"
+      className={cn("flex flex-wrap items-center gap-1.5 text-sm text-(--color-muted-foreground) sm:gap-2", className)}
+      {...props}
+    />
+  )
+}
+
+function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
+  return (
+    <li
+      data-slot="breadcrumb-item"
+      className={cn("inline-flex items-center gap-1.5", className)}
+      {...props}
+    />
+  )
+}
+
+function BreadcrumbLink({
+  asChild = false,
+  className,
+  ...props
+}: React.ComponentProps<"a"> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot.Root : "a"
+  return (
+    <Comp
+      data-slot="breadcrumb-link"
+      className={cn("hover:text-(--color-foreground) transition-colors", className)}
+      {...props}
+    />
+  )
+}
+
+function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="breadcrumb-page"
+      role="link"
+      aria-current="page"
+      aria-disabled="true"
+      className={cn("font-medium text-(--color-foreground)", className)}
+      {...props}
+    />
+  )
+}
+
+function BreadcrumbSeparator({ children, className, ...props }: React.ComponentProps<"li">) {
+  return (
+    <li
+      data-slot="breadcrumb-separator"
+      role="presentation"
+      aria-hidden="true"
+      className={cn("[&>svg]:size-3.5", className)}
+      {...props}
+    >
+      {children ?? <ChevronRight />}
+    </li>
+  )
+}
+
+function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="breadcrumb-ellipsis"
+      role="presentation"
+      aria-hidden="true"
+      className={cn("flex size-9 items-center justify-center", className)}
+      {...props}
+    >
+      <MoreHorizontal className="size-4" />
+      <span className="sr-only">More</span>
+    </span>
+  )
+}
+
+export {
+  Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem,
+  BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
+}
+```
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+```
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Current page</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+## Examples
+
+### Custom separator
+
+<ComponentPreview>
+  <Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator>
+        <Slash />
+      </BreadcrumbSeparator>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Components</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator>
+        <Slash />
+      </BreadcrumbSeparator>
+      <BreadcrumbItem>
+        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+</ComponentPreview>
+
+```tsx
+import { Slash } from "lucide-react"
+
+<BreadcrumbSeparator>
+  <Slash />
+</BreadcrumbSeparator>
+```
+
+### With ellipsis
+
+<ComponentPreview>
+  <Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbEllipsis />
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Components</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>
+</ComponentPreview>
+
+```tsx
+<BreadcrumbItem>
+  <BreadcrumbEllipsis />
+</BreadcrumbItem>
+```
+
+### With link component (asChild)
+
+```tsx
+import Link from "next/link"
+
+<BreadcrumbLink asChild>
+  <Link href="/">Home</Link>
+</BreadcrumbLink>
+```
+
+## API Reference
+
+### BreadcrumbLink
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | When `true`, renders its child as the root element (useful with Next.js `Link`). |
+| `href` | `string` | — | The URL the link points to. |
+
+### BreadcrumbSeparator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | `<ChevronRight />` | Custom separator icon. |
+
+All other sub-components accept a `className` prop and standard HTML attributes for their underlying element.

@@ -17,4 +17,6 @@ export default {
   alert: 'Alert',
   'alert-dialog': 'Alert Dialog',
   badge: 'Badge',
+  '-- navigation': { type: 'separator', title: 'Navigation' },
+  breadcrumb: 'Breadcrumb',
 }
