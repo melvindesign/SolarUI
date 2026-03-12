@@ -1,0 +1,133 @@
+---
+title: Hover Card
+description: A floating card that appears when hovering over a trigger element, used to preview content without navigating away.
+---
+
+import { CalendarIcon } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Hover Card
+
+A floating card that appears when hovering over a trigger element. Ideal for previewing a user profile, link preview, or additional context without navigating away.
+
+<ComponentPreview>
+  <HoverCard>
+    <HoverCardTrigger asChild>
+      <Button variant="link">@nextjs</Button>
+    </HoverCardTrigger>
+    <HoverCardContent>
+      <div className="flex gap-4">
+        <Avatar>
+          <AvatarImage src="https://github.com/vercel.png" />
+          <AvatarFallback>VC</AvatarFallback>
+        </Avatar>
+        <div className="space-y-1">
+          <h4 className="text-sm font-semibold">@nextjs</h4>
+          <p className="text-muted-foreground text-sm">
+            The React Framework — created and maintained by @vercel.
+          </p>
+          <div className="flex items-center gap-2 pt-2">
+            <CalendarIcon className="text-muted-foreground size-4" />
+            <span className="text-muted-foreground text-xs">Joined December 2021</span>
+          </div>
+        </div>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the dependency:**
+
+```bash
+npm install @radix-ui/react-hover-card
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/hover-card.tsx
+"use client"
+
+import * as React from "react"
+import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
+import { cn } from "@/lib/utils"
+
+function HoverCard({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
+  return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />
+}
+
+function HoverCardTrigger({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Trigger>) {
+  return <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
+}
+
+function HoverCardContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}: React.ComponentProps<typeof HoverCardPrimitive.Content>) {
+  return (
+    <HoverCardPrimitive.Portal>
+      <HoverCardPrimitive.Content
+        align={align}
+        sideOffset={sideOffset}
+        className={cn(
+          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-64 rounded-md border p-4 shadow-md outline-hidden",
+          className
+        )}
+        {...props}
+      />
+    </HoverCardPrimitive.Portal>
+  )
+}
+
+export { HoverCard, HoverCardTrigger, HoverCardContent }
+```
+
+## Usage
+
+```tsx
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
+```
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <Button variant="link">@nextjs</Button>
+  </HoverCardTrigger>
+  <HoverCardContent>
+    <p>The React Framework — created and maintained by @vercel.</p>
+  </HoverCardContent>
+</HoverCard>
+```
+
+## API Reference
+
+### HoverCard
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled). |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes. |
+| `openDelay` | `number` | `700` | Delay in ms before the card opens. |
+| `closeDelay` | `number` | `300` | Delay in ms before the card closes. |
+
+### HoverCardContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | Preferred side to open. |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment relative to the trigger. |
+| `sideOffset` | `number` | `4` | Gap between trigger and card. |
+
+### HoverCardTrigger
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `asChild` | `boolean` | Merge props onto child element instead of rendering a `<a>`. |

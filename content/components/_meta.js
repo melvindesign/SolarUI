@@ -29,6 +29,7 @@ export default {
   alert: 'Alert',
   'alert-dialog': 'Alert Dialog',
   badge: 'Badge',
+  'hover-card': 'Hover Card',
   '-- navigation': { type: 'separator', title: 'Navigation' },
   breadcrumb: 'Breadcrumb',
   'dropdown-menu': 'Dropdown Menu',
