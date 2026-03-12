@@ -5,5 +5,6 @@ export default {
   },
   overview: 'Overview',
   foundation: 'Foundation',
+  core: 'Core',
   components: 'Components'
 }
