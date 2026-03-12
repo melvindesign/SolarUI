@@ -1,0 +1,153 @@
+---
+title: Badge
+description: Displays a badge or a component that looks like a badge.
+---
+
+import { Badge } from '@/components/ui/badge'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { Bell, Flame } from 'lucide-react'
+
+# Badge
+
+Displays a badge or a component that looks like a badge.
+
+<ComponentPreview>
+  <Badge>Badge</Badge>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/badge.tsx
+import { Slot } from "radix-ui"
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const badgeVariants = cva(
+  "inline-flex shrink-0 items-center justify-center gap-1 rounded-md border border-transparent px-2 py-0.5 text-xs font-medium transition-colors select-none [&_svg:not([class*='size-'])]:size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 has-data-[icon=inline-start]:pl-1.5 has-data-[icon=inline-end]:pr-1.5",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground",
+        secondary: "bg-secondary text-secondary-foreground",
+        destructive: "bg-destructive/10 text-destructive dark:bg-destructive/20",
+        outline: "border-border bg-background text-foreground",
+        ghost: "bg-muted text-muted-foreground",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+function Badge({
+  className,
+  variant,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & {
+    asChild?: boolean
+  }) {
+  const Comp = asChild ? Slot.Root : "span"
+  return (
+    <Comp
+      data-slot="badge"
+      data-variant={variant}
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
+}
+
+export { Badge, badgeVariants }
+```
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+```
+
+```tsx
+<Badge>Badge</Badge>
+```
+
+## Examples
+
+### Variants
+
+<ComponentPreviewRow>
+  <Badge>Default</Badge>
+  <Badge variant="secondary">Secondary</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+  <Badge variant="outline">Outline</Badge>
+  <Badge variant="ghost">Ghost</Badge>
+</ComponentPreviewRow>
+
+```tsx
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="ghost">Ghost</Badge>
+```
+
+### With icon
+
+<ComponentPreviewRow>
+  <Badge>
+    <Flame data-icon="inline-start" />
+    Hot
+  </Badge>
+  <Badge variant="secondary">
+    <Bell data-icon="inline-start" />
+    12 notifications
+  </Badge>
+  <Badge variant="outline">
+    New
+    <Flame data-icon="inline-end" />
+  </Badge>
+</ComponentPreviewRow>
+
+```tsx
+import { Flame, Bell } from "lucide-react"
+
+<Badge>
+  <Flame data-icon="inline-start" />
+  Hot
+</Badge>
+
+<Badge variant="secondary">
+  <Bell data-icon="inline-start" />
+  12 notifications
+</Badge>
+```
+
+### As link
+
+<ComponentPreview>
+  <Badge asChild variant="outline">
+    <a href="#">View changelog</a>
+  </Badge>
+</ComponentPreview>
+
+```tsx
+<Badge asChild variant="outline">
+  <a href="#">View changelog</a>
+</Badge>
+```
+
+## API Reference
+
+### Badge
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost"` | `"default"` | The visual style of the badge. |
+| `asChild` | `boolean` | `false` | When `true`, renders its child as the root element using Radix UI's `Slot`. |
+| `className` | `string` | — | Additional CSS classes to merge. |

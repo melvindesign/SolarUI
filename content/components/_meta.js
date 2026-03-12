@@ -16,4 +16,5 @@ export default {
   '-- feedback': { type: 'separator', title: 'Feedback' },
   alert: 'Alert',
   'alert-dialog': 'Alert Dialog',
+  badge: 'Badge',
 }
