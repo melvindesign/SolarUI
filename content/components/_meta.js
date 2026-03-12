@@ -30,6 +30,7 @@ export default {
   badge: 'Badge',
   '-- navigation': { type: 'separator', title: 'Navigation' },
   breadcrumb: 'Breadcrumb',
+  'dropdown-menu': 'Dropdown Menu',
   '-- data': { type: 'separator', title: 'Data' },
   'data-table': 'Data Table',
   '-- chart': { type: 'separator', title: 'Chart' },
