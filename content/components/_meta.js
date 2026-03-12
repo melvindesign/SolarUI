@@ -22,4 +22,11 @@ export default {
   badge: 'Badge',
   '-- navigation': { type: 'separator', title: 'Navigation' },
   breadcrumb: 'Breadcrumb',
+  '-- chart': { type: 'separator', title: 'Chart' },
+  'chart-bar': 'Bar',
+  'chart-line': 'Line',
+  'chart-area': 'Area',
+  'chart-pie': 'Pie',
+  'chart-radar': 'Radar',
+  'chart-radial': 'Radial',
 }
