@@ -1,7 +1,7 @@
 "use client"
 
+import { Slider as SliderPrimitive } from "radix-ui"
 import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
 
 import { cn } from "@/lib/utils"
 
@@ -14,8 +14,13 @@ function Slider({
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root>) {
   const _values = React.useMemo(
-    () => (value ?? defaultValue ?? [min]),
-    [value, defaultValue, min]
+    () =>
+      Array.isArray(value)
+        ? value
+        : Array.isArray(defaultValue)
+          ? defaultValue
+          : [min, max],
+    [value, defaultValue, min, max]
   )
 
   return (
@@ -25,23 +30,26 @@ function Slider({
       value={value}
       min={min}
       max={max}
-      className={cn("relative flex w-full touch-none items-center select-none", className)}
+      className={cn(
+        "data-vertical:min-h-40 relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:w-auto data-vertical:flex-col",
+        className
+      )}
       {...props}
     >
       <SliderPrimitive.Track
         data-slot="slider-track"
-        className="bg-secondary relative h-1.5 w-full grow overflow-hidden rounded-full"
+        className="bg-muted rounded-full data-horizontal:h-1 data-vertical:w-1 relative grow overflow-hidden data-horizontal:w-full data-vertical:h-full"
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
-          className="bg-primary absolute h-full"
+          className="bg-primary absolute select-none data-horizontal:h-full data-vertical:w-full"
         />
       </SliderPrimitive.Track>
-      {Array.from({ length: _values.length }).map((_, i) => (
+      {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb
-          key={i}
           data-slot="slider-thumb"
-          className="border-primary/50 bg-background focus-visible:ring-ring block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+          key={index}
+          className="border-ring ring-ring/50 relative size-3 rounded-full border bg-white transition-[color,box-shadow] after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3 block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50"
         />
       ))}
     </SliderPrimitive.Root>
