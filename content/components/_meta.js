@@ -15,6 +15,7 @@ export default {
   command: 'Command',
   dialog: 'Dialog',
   drawer: 'Drawer',
+  empty: 'Empty',
   separator: 'Separator',
   '-- text': { type: 'separator', title: 'Text' },
   label: 'Label',
