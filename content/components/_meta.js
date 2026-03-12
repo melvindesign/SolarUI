@@ -8,6 +8,7 @@ export default {
   combobox: 'Combobox',
   'date-picker': 'Date Picker',
   field: 'Field',
+  'input-group': 'Input Group',
   '-- layout': { type: 'separator', title: 'Layout' },
   accordion: 'Accordion',
   card: 'Card',
