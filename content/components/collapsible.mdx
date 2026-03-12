@@ -1,0 +1,133 @@
+---
+title: Collapsible
+description: An interactive component that expands and collapses a section of content.
+---
+
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
+import { Button } from '@/components/ui/button'
+import { ChevronsUpDown } from 'lucide-react'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Collapsible
+
+An interactive component that expands and collapses a section of content.
+
+<ComponentPreview>
+  <Collapsible className="w-full max-w-sm">
+    <div className="flex items-center justify-between gap-4">
+      <h4 className="text-sm font-medium">Starred repositories</h4>
+      <CollapsibleTrigger asChild>
+        <Button variant="ghost" size="icon-sm">
+          <ChevronsUpDown className="size-4" />
+          <span className="sr-only">Toggle</span>
+        </Button>
+      </CollapsibleTrigger>
+    </div>
+    <div className="mt-2 rounded-md border px-4 py-2 text-sm">
+      @radix-ui/primitives
+    </div>
+    <CollapsibleContent className="space-y-2 mt-2">
+      <div className="rounded-md border px-4 py-2 text-sm">@radix-ui/colors</div>
+      <div className="rounded-md border px-4 py-2 text-sm">@stitches/react</div>
+    </CollapsibleContent>
+  </Collapsible>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-collapsible
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/collapsible.tsx
+"use client"
+
+import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
+
+const Collapsible = CollapsiblePrimitive.Root
+const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
+const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
+
+export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+```
+
+## Usage
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "@/components/ui/collapsible"
+```
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+  <CollapsibleContent>Content</CollapsibleContent>
+</Collapsible>
+```
+
+## Examples
+
+### Default open
+
+<ComponentPreview>
+  <Collapsible defaultOpen className="w-full max-w-sm">
+    <div className="flex items-center justify-between gap-4">
+      <h4 className="text-sm font-medium">Open by default</h4>
+      <CollapsibleTrigger asChild>
+        <Button variant="ghost" size="icon-sm">
+          <ChevronsUpDown className="size-4" />
+        </Button>
+      </CollapsibleTrigger>
+    </div>
+    <CollapsibleContent className="mt-2">
+      <div className="rounded-md border px-4 py-2 text-sm">
+        This content is visible by default and can be collapsed.
+      </div>
+    </CollapsibleContent>
+  </Collapsible>
+</ComponentPreview>
+
+```tsx
+<Collapsible defaultOpen>
+  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+  <CollapsibleContent>Content visible by default.</CollapsibleContent>
+</Collapsible>
+```
+
+### Controlled
+
+```tsx
+const [open, setOpen] = React.useState(false)
+
+<Collapsible open={open} onOpenChange={setOpen}>
+  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+  <CollapsibleContent>Controlled content.</CollapsibleContent>
+</Collapsible>
+```
+
+## API Reference
+
+### Collapsible
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled). |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes. |
+| `disabled` | `boolean` | `false` | Prevents the collapsible from being toggled. |
+
+### CollapsibleTrigger
+
+Accepts all standard button attributes. Use `asChild` to render a custom element as the trigger.
+
+### CollapsibleContent
+
+Accepts all standard `div` attributes. The content is mounted/unmounted based on open state.

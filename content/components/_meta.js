@@ -9,6 +9,7 @@ export default {
   '-- layout': { type: 'separator', title: 'Layout' },
   accordion: 'Accordion',
   card: 'Card',
+  collapsible: 'Collapsible',
   separator: 'Separator',
   '-- text': { type: 'separator', title: 'Text' },
   label: 'Label',
