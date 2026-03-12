@@ -13,6 +13,7 @@ export default {
   '-- content': { type: 'separator', title: 'Content' },
   'aspect-ratio': 'Aspect Ratio',
   avatar: 'Avatar',
+  calendar: 'Calendar',
   '-- feedback': { type: 'separator', title: 'Feedback' },
   alert: 'Alert',
   'alert-dialog': 'Alert Dialog',
