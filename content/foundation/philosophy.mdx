@@ -9,11 +9,21 @@ import { DoAndDont, Do, Dont } from '@/components/do-and-dont'
 
 # Philosophy
 
-SolarUI is built on a set of intentional design rules. These rules aren't conventions for their own sake — each one solves a real visual or interaction problem. This page documents them so the system stays coherent as it grows.
+SolarUI est construit sur quelques principes intentionnels. Pas des conventions arbitraires — chacun répond à un vrai problème visuel ou d'interaction. Cette page les documente pour que le système reste cohérent au fil du temps.
 
 ---
 
-## Rule #1 — Controls share a single height
+## Built on shadcn/ui — open code, no lock-in
+
+SolarUI repose sur shadcn/ui, et ce choix est philosophique autant que technique. shadcn/ui n'est pas une librairie de composants au sens classique du terme : c'est une façon de construire ta propre librairie. Plutôt que d'installer un package opaque et de te battre contre ses API, tu reçois le code source directement dans ton projet. Tu le possèdes. Tu peux le lire, le modifier, l'adapter — sans workarounds, sans wrapper, sans lock-in.
+
+> "This is not a component library. It is how you build your component library."
+
+C'est exactement ce que SolarUI fait : il s'appuie sur cette fondation ouverte pour construire un système de design cohérent, que tu contrôles entièrement.
+
+---
+
+## Controls share a single height
 
 Buttons and inputs must always have the same height. When a button sits next to an input, they form a single visual unit. If their heights differ, that unit breaks — the eye reads two separate elements instead of one composed control.
 
