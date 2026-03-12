@@ -11,6 +11,7 @@ export default {
   accordion: 'Accordion',
   card: 'Card',
   collapsible: 'Collapsible',
+  command: 'Command',
   separator: 'Separator',
   '-- text': { type: 'separator', title: 'Text' },
   label: 'Label',
