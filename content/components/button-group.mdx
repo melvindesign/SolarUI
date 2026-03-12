@@ -1,0 +1,156 @@
+---
+title: Button Group
+description: A container that visually joins a set of buttons into a single control.
+---
+
+import { Button } from '@/components/ui/button'
+import { ButtonGroup } from '@/components/ui/button-group'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline } from 'lucide-react'
+
+# Button Group
+
+A container that visually joins a set of buttons into a single control.
+
+<ComponentPreview>
+  <ButtonGroup>
+    <Button variant="outline">Previous</Button>
+    <Button variant="outline">Today</Button>
+    <Button variant="outline">Next</Button>
+  </ButtonGroup>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/button-group.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function ButtonGroup({
+  className,
+  orientation = "horizontal",
+  ...props
+}: React.ComponentProps<"div"> & {
+  orientation?: "horizontal" | "vertical"
+}) {
+  return (
+    <div
+      data-slot="button-group"
+      data-orientation={orientation}
+      className={cn(
+        "inline-flex items-center rounded-lg",
+        orientation === "horizontal" && [
+          "[&>*:not(:first-child)]:-ml-px",
+          "[&>*:not(:last-child)]:rounded-r-none",
+          "[&>*:not(:first-child)]:rounded-l-none",
+        ],
+        orientation === "vertical" && [
+          "flex-col",
+          "[&>*:not(:first-child)]:-mt-px",
+          "[&>*:not(:last-child)]:rounded-b-none",
+          "[&>*:not(:first-child)]:rounded-t-none",
+        ],
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { ButtonGroup }
+```
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
+```
+
+```tsx
+<ButtonGroup>
+  <Button variant="outline">Previous</Button>
+  <Button variant="outline">Today</Button>
+  <Button variant="outline">Next</Button>
+</ButtonGroup>
+```
+
+## Examples
+
+### With icons
+
+<ComponentPreview>
+  <ButtonGroup>
+    <Button variant="outline" size="icon">
+      <Bold />
+    </Button>
+    <Button variant="outline" size="icon">
+      <Italic />
+    </Button>
+    <Button variant="outline" size="icon">
+      <Underline />
+    </Button>
+  </ButtonGroup>
+</ComponentPreview>
+
+```tsx
+<ButtonGroup>
+  <Button variant="outline" size="icon"><Bold /></Button>
+  <Button variant="outline" size="icon"><Italic /></Button>
+  <Button variant="outline" size="icon"><Underline /></Button>
+</ButtonGroup>
+```
+
+### Ghost
+
+<ComponentPreview>
+  <ButtonGroup>
+    <Button variant="ghost">
+      <AlignLeft /> Left
+    </Button>
+    <Button variant="ghost">
+      <AlignCenter /> Center
+    </Button>
+    <Button variant="ghost">
+      <AlignRight /> Right
+    </Button>
+  </ButtonGroup>
+</ComponentPreview>
+
+```tsx
+<ButtonGroup>
+  <Button variant="ghost"><AlignLeft /> Left</Button>
+  <Button variant="ghost"><AlignCenter /> Center</Button>
+  <Button variant="ghost"><AlignRight /> Right</Button>
+</ButtonGroup>
+```
+
+### Vertical
+
+<ComponentPreview>
+  <ButtonGroup orientation="vertical">
+    <Button variant="outline">Top</Button>
+    <Button variant="outline">Middle</Button>
+    <Button variant="outline">Bottom</Button>
+  </ButtonGroup>
+</ComponentPreview>
+
+```tsx
+<ButtonGroup orientation="vertical">
+  <Button variant="outline">Top</Button>
+  <Button variant="outline">Middle</Button>
+  <Button variant="outline">Bottom</Button>
+</ButtonGroup>
+```
+
+## API Reference
+
+### ButtonGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direction in which buttons are joined. |
+| `className` | `string` | — | Additional CSS classes to merge. |
