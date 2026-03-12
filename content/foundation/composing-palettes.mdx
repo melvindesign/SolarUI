@@ -1,0 +1,175 @@
+---
+title: Composing Palettes
+description: How to assemble a cohesive color palette using Radix UI Colors — choosing gray variants, pairing accents, and assigning semantic roles.
+---
+
+import { Callout } from 'nextra/components'
+import { ColorScale } from '@/components/color-scale'
+
+# Composing Palettes
+
+A SolarUI palette is built from six roles:
+
+| Role | Token group | Default color |
+|------|------------|---------------|
+| Neutral surfaces, borders, text | `default` | gray |
+| Primary actions | `brand` | blue |
+| Destructive / invalid | `error` | red |
+| Confirmation | `success` | green |
+| Warning | `warning` | amber |
+| Informational | `info` | sky |
+
+The most impactful choice is the **gray family** — it sets the visual temperature of the
+entire interface. The second most impactful is the **brand color** — it defines the accent
+that drives attention.
+
+---
+
+## Choosing the right gray
+
+Radix provides six gray families, each with a subtle hue cast designed to complement
+specific brand colors:
+
+| Gray | Hue cast | Best paired with |
+|------|----------|-----------------|
+| **Gray** | Neutral | Any brand color |
+| **Mauve** | Purple/pink | Tomato, Red, Ruby, Crimson, Pink, Plum, Purple, Violet |
+| **Slate** | Blue | Indigo, Blue, Sky, Cyan |
+| **Sage** | Green/teal | Mint, Teal |
+| **Olive** | Yellow/green | Grass, Green |
+| **Sand** | Yellow/warm | Yellow, Amber, Orange |
+
+<ColorScale name="gray" />
+<ColorScale name="mauve" />
+<ColorScale name="slate" />
+<ColorScale name="sage" />
+<ColorScale name="olive" />
+<ColorScale name="sand" />
+
+<Callout>
+  When in doubt, **Gray** works universally. Use a tinted gray only when you want the
+  neutral surfaces to feel warm or cool to match the brand color's temperature.
+</Callout>
+
+---
+
+## Functional assignment of the 12 steps
+
+Once you have chosen your gray and brand, apply the steps consistently:
+
+### `default` (gray) — neutral role
+
+| Steps | Purpose |
+|-------|---------|
+| 1 | Page / app background |
+| 2 | Subtle surface (card, panel, sidebar) |
+| 3–5 | Interactive component backgrounds (default / hover / active) |
+| 6–8 | Borders (subtle / component / strong) |
+| 9 | _(rarely used for solid fills on neutral)_ |
+| 11 | Secondary / muted text |
+| 12 | Primary text, headings |
+
+### `brand` (blue) — accent role
+
+| Steps | Purpose |
+|-------|---------|
+| 3 | Tinted background (field with brand checkbox, checked pill) |
+| 6 | Tinted border (has-checked border) |
+| 9 | Solid button / badge fill |
+| 10 | Hover on solid button |
+| 11 | Brand-colored text (links, active nav items) |
+| 1 | Text on solid brand background |
+
+### `error` / `success` / `warning` / `info` — semantic roles
+
+| Steps | Purpose |
+|-------|---------|
+| 3 | Tinted alert / toast background |
+| 7–8 | Border around invalid field, focus ring |
+| 9 | Solid badge / tag fill |
+| 11 | Inline error / success text |
+| 1 | Text on solid semantic badge |
+
+---
+
+## SolarUI default palette
+
+The palette shipped with SolarUI:
+
+<ColorScale name="gray" />
+<ColorScale name="blue" />
+<ColorScale name="red" />
+<ColorScale name="green" />
+<ColorScale name="amber" />
+<ColorScale name="sky" />
+
+```css
+/* globals.css */
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/red-dark.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/amber-dark.css";
+@import "@radix-ui/colors/sky.css";
+@import "@radix-ui/colors/sky-dark.css";
+```
+
+---
+
+## Swapping to a different brand
+
+To change the brand to violet and the gray to mauve:
+
+```css
+/* globals.css */
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/mauve-dark.css";
+@import "@radix-ui/colors/violet.css";
+@import "@radix-ui/colors/violet-dark.css";
+/* keep red, green, amber, sky for error/success/warning/info */
+
+@theme {
+  /* change default → mauve, brand → violet */
+  --color-default-1:  var(--mauve-1);
+  --color-default-2:  var(--mauve-2);
+  --color-default-3:  var(--mauve-3);
+  --color-default-4:  var(--mauve-4);
+  --color-default-5:  var(--mauve-5);
+  --color-default-6:  var(--mauve-6);
+  --color-default-7:  var(--mauve-7);
+  --color-default-8:  var(--mauve-8);
+  --color-default-9:  var(--mauve-9);
+  --color-default-10: var(--mauve-10);
+  --color-default-11: var(--mauve-11);
+  --color-default-12: var(--mauve-12);
+
+  --color-brand-1:    var(--violet-1);
+  /* … through --color-brand-12: var(--violet-12) */
+}
+```
+
+No component classes need to change — the tokens do the translation.
+
+---
+
+## Overlays and alpha colors
+
+Every Radix color family also ships an **alpha variant** (`gray-alpha.css`) where each step
+is a transparent version of the color. These are useful for overlays, glass effects, and
+layering UI elements without hard-coded opacity values:
+
+```css
+@import "@radix-ui/colors/gray-alpha.css";
+/* exposes --gray-a1 … --gray-a12 */
+```
+
+<Callout type="info">
+  Alpha colors are not part of the SolarUI token system by default, but you can reference
+  them directly as `var(--gray-a6)` in arbitrary Tailwind values or component styles when
+  you need transparent surfaces.
+</Callout>

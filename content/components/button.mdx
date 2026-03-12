@@ -3,7 +3,6 @@ title: Button
 description: Displays a button or a component that looks like a button.
 ---
 
-import { Tabs } from 'nextra/components'
 import { Button } from '@/components/ui/button'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
 import { ChevronRight, Mail, Loader2 } from 'lucide-react'
@@ -18,54 +17,32 @@ Displays a button or a component that looks like a button.
 
 ## Installation
 
-<Tabs items={['CLI', 'Manual']}>
-  <Tabs.Tab>
-
-Run the following command:
-
-```bash
-npx shadcn@latest add button
-```
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-**1. Install the following dependencies:**
-
-```bash
-npm install @radix-ui/react-slot
-```
-
-**2. Copy and paste the following code into your project:**
+Copy and paste the following code into your project:
 
 ```tsx
 // components/ui/button.tsx
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "focus-visible:border-default-8 focus-visible:ring-default-7 aria-invalid:ring-error-7 aria-invalid:border-error-8 rounded-lg border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 active:translate-y-px [&_svg:not([class*='size-'])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-default-12 text-default-1 hover:bg-default-11",
+        primary: "bg-brand-9 text-brand-1 hover:bg-brand-10",
+        outline: "border-default-6 bg-default-1 hover:bg-default-3 hover:text-default-12 aria-expanded:bg-default-3 aria-expanded:text-default-12",
+        secondary: "bg-default-3 text-default-12 hover:bg-default-4 aria-expanded:bg-default-3 aria-expanded:text-default-12",
+        ghost: "hover:bg-default-3 hover:text-default-12 aria-expanded:bg-default-3 aria-expanded:text-default-12",
+        destructive: "bg-error-3 hover:bg-error-4 focus-visible:ring-error-7 text-error-11 focus-visible:border-error-7",
+        link: "text-brand-11 underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        compact: "h-6 gap-1 px-2 text-xs has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
       },
     },
     defaultVariants: {
@@ -75,33 +52,31 @@ const buttonVariants = cva(
   }
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-}
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }) {
+  const Comp = asChild ? Slot.Root : "button"
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
+  return (
+    <Comp
+      data-slot="button"
+      data-variant={variant}
+      data-size={size}
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
+}
 
 export { Button, buttonVariants }
 ```
-
-**3. Update the import paths** to match your project setup.
-
-  </Tabs.Tab>
-</Tabs>
 
 ## Usage
 
@@ -110,112 +85,51 @@ import { Button } from "@/components/ui/button"
 ```
 
 ```tsx
-<Button variant="outline">Button</Button>
-```
-
-## Link
-
-You can use the `buttonVariants` helper to create a link that looks like a button.
-
-```tsx
-import { buttonVariants } from "@/components/ui/button"
-```
-
-```tsx
-<Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
-```
-
-Alternatively, you can set the `asChild` parameter and nest the link component.
-
-```tsx
-<Button asChild>
-  <Link href="/login">Login</Link>
-</Button>
+<Button>Button</Button>
+<Button variant="primary">Primary</Button>
 ```
 
 ## Examples
 
-### Default
+### Variants
 
-<ComponentPreview>
-  <Button>Button</Button>
-</ComponentPreview>
-
-```tsx
-<Button>Button</Button>
-```
-
-### Secondary
-
-<ComponentPreview>
-  <Button variant="secondary">Secondary</Button>
-</ComponentPreview>
-
-```tsx
-<Button variant="secondary">Secondary</Button>
-```
-
-### Destructive
-
-<ComponentPreview>
-  <Button variant="destructive">Destructive</Button>
-</ComponentPreview>
-
-```tsx
-<Button variant="destructive">Destructive</Button>
-```
-
-### Outline
-
-<ComponentPreview>
+<ComponentPreviewRow>
+  <Button>Default</Button>
+  <Button variant="primary">Primary</Button>
   <Button variant="outline">Outline</Button>
-</ComponentPreview>
-
-```tsx
-<Button variant="outline">Outline</Button>
-```
-
-### Ghost
-
-<ComponentPreview>
+  <Button variant="secondary">Secondary</Button>
   <Button variant="ghost">Ghost</Button>
-</ComponentPreview>
-
-```tsx
-<Button variant="ghost">Ghost</Button>
-```
-
-### Link
-
-<ComponentPreview>
+  <Button variant="destructive">Destructive</Button>
   <Button variant="link">Link</Button>
-</ComponentPreview>
+</ComponentPreviewRow>
 
 ```tsx
+<Button>Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="destructive">Destructive</Button>
 <Button variant="link">Link</Button>
 ```
 
-### Icon
+### Sizes
 
-<ComponentPreview>
-  <Button variant="outline" size="icon">
-    <ChevronRight />
-  </Button>
-</ComponentPreview>
+<ComponentPreviewRow>
+  <Button>Default</Button>
+  <Button size="compact">Compact</Button>
+</ComponentPreviewRow>
 
 ```tsx
-import { ChevronRight } from "lucide-react"
-
-<Button variant="outline" size="icon">
-  <ChevronRight />
-</Button>
+<Button>Default</Button>
+<Button size="compact">Compact</Button>
 ```
 
-### With Icon
+### With icon
 
 <ComponentPreview>
   <Button>
-    <Mail /> Login with Email
+    <Mail data-icon="inline-start" /> Login with Email
   </Button>
 </ComponentPreview>
 
@@ -223,7 +137,7 @@ import { ChevronRight } from "lucide-react"
 import { Mail } from "lucide-react"
 
 <Button>
-  <Mail /> Login with Email
+  <Mail data-icon="inline-start" /> Login with Email
 </Button>
 ```
 
@@ -245,16 +159,21 @@ import { Loader2 } from "lucide-react"
 </Button>
 ```
 
-### All variants
+### As link
 
-<ComponentPreviewRow>
-  <Button>Default</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="destructive">Destructive</Button>
-  <Button variant="outline">Outline</Button>
-  <Button variant="ghost">Ghost</Button>
-  <Button variant="link">Link</Button>
-</ComponentPreviewRow>
+```tsx
+import { buttonVariants } from "@/components/ui/button"
+
+<Link className={buttonVariants({ variant: "primary" })}>Click here</Link>
+```
+
+Or with `asChild`:
+
+```tsx
+<Button asChild variant="primary">
+  <Link href="/login">Login</Link>
+</Button>
+```
 
 ## API Reference
 
@@ -262,10 +181,10 @@ import { Loader2 } from "lucide-react"
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | The visual style variant of the button. |
-| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | The size of the button. |
-| `asChild` | `boolean` | `false` | When `true`, the button will render its child as the root element using Radix UI's `Slot`. |
-| `disabled` | `boolean` | `false` | When `true`, prevents user interaction and applies reduced opacity. |
+| `variant` | `"default" \| "primary" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "link"` | `"default"` | The visual style of the button. |
+| `size` | `"default" \| "compact"` | `"default"` | The size of the button. |
+| `asChild` | `boolean` | `false` | When `true`, renders its child as the root element using Radix UI's `Slot`. |
+| `disabled` | `boolean` | `false` | Prevents interaction and applies reduced opacity. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 
 The `Button` component also accepts all standard HTML `<button>` attributes.

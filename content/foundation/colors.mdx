@@ -1,73 +1,80 @@
 ---
 title: Colors
-description: The SolarUI color palette and semantic tokens.
+description: SolarUI color system based on Radix UI Colors — 6 semantic groups, 12-step scales, automatic dark mode.
 ---
 
 import { Callout } from 'nextra/components'
+import { RadixPalette, SolarTokens } from '@/components/color-scale'
 
 # Colors
 
-SolarUI uses a semantic color system based on CSS variables. Each color has a **background** token and a corresponding **foreground** token to ensure contrast.
+SolarUI uses **Radix UI Colors** as its color foundation. Every color is a 12-step scale
+carefully designed for accessible contrast, predictable usage, and automatic dark mode — no
+`dark:` overrides needed in your components.
 
-## Semantic Tokens
+## The 12-step scale
 
-| Token | Description |
-|-------|-------------|
-| `background` / `foreground` | Page background and default text |
-| `primary` / `primary-foreground` | Primary actions and brand color |
-| `secondary` / `secondary-foreground` | Secondary actions |
-| `muted` / `muted-foreground` | Subtle backgrounds and dimmed text |
-| `accent` / `accent-foreground` | Hover states and highlights |
-| `destructive` / `destructive-foreground` | Error and danger states |
-| `border` | Borders and dividers |
-| `input` | Input field borders |
-| `ring` | Focus ring |
+Each color family has 12 steps with precise semantic roles:
 
-## Usage in Tailwind
+| Step | Role | Typical use |
+|------|------|-------------|
+| 1 | App background | `body`, page root |
+| 2 | Subtle background | Cards, panels, sidebars |
+| 3 | UI component background | Default state of inputs, popovers |
+| 4 | Hovered component background | Hover on interactive items |
+| 5 | Active / selected background | Selected list item, pressed state |
+| 6 | Subtle border | Separators, card borders |
+| 7 | Component border | Form inputs, default focus ring |
+| 8 | Hovered border | Strong border, hover on border |
+| 9 | Solid background | Solid buttons, badges |
+| 10 | Hovered solid background | Hover on solid buttons |
+| 11 | Low-contrast text | Secondary labels (accessible on light background) |
+| 12 | High-contrast text | Body text, headings |
 
-All tokens are available as Tailwind utilities:
+## SolarUI tokens
+
+SolarUI maps **6 semantic groups** to Radix color families. These generate 72 Tailwind
+utilities (`bg-default-1` … `text-info-12`):
+
+<SolarTokens />
 
 ```tsx
-<div className="bg-background text-foreground">
-  <button className="bg-primary text-primary-foreground">
-    Primary Button
-  </button>
-  <button className="bg-destructive text-destructive-foreground">
-    Delete
-  </button>
+// Surfaces and text
+<p className="text-default-12">Main text</p>
+<p className="text-default-11">Secondary / muted text</p>
+<div className="bg-default-2 border border-default-6">Card</div>
+
+// Brand — primary actions
+<button className="bg-brand-9 text-brand-1 hover:bg-brand-10">Save</button>
+
+// Error state
+<div className="bg-error-3 text-error-11 border border-error-7">
+  Invalid field
 </div>
+
+// Success, warning, info follow the same pattern
+<Badge className="bg-success-9 text-success-1">Active</Badge>
+<Badge className="bg-warning-9 text-warning-1">Pending</Badge>
+<Badge className="bg-info-9 text-info-1">Beta</Badge>
 ```
 
 <Callout>
-  All color values are defined in `globals.css` as HSL CSS variables. See [Theming](/docs/overview/theming) to learn how to customize them.
+  Dark mode is handled automatically by Radix UI Colors. Importing `*-dark.css` files
+  sets the same CSS variables under `.dark`, so all `bg-default-*`, `text-brand-*` etc.
+  classes switch seamlessly — no `dark:` prefix required in your components.
 </Callout>
 
-## Palette Reference
+---
 
-### Neutral
+## Full Radix UI palette
 
-| Class | Variable |
-|-------|----------|
-| `bg-background` | `--background` |
-| `bg-foreground` | `--foreground` |
-| `bg-muted` | `--muted` |
-| `text-muted-foreground` | `--muted-foreground` |
-| `bg-border` | `--border` |
+All 33 Radix color families, grouped by hue. Hover any swatch to see its step number and
+hex value.
 
-### Brand
+<RadixPalette />
 
-| Class | Variable |
-|-------|----------|
-| `bg-primary` | `--primary` |
-| `text-primary-foreground` | `--primary-foreground` |
-| `bg-secondary` | `--secondary` |
-| `text-secondary-foreground` | `--secondary-foreground` |
-| `bg-accent` | `--accent` |
-| `text-accent-foreground` | `--accent-foreground` |
-
-### Status
-
-| Class | Variable |
-|-------|----------|
-| `bg-destructive` | `--destructive` |
-| `text-destructive-foreground` | `--destructive-foreground` |
+<Callout type="info">
+  The palette above shows light-mode values. Radix provides a matched dark scale for every
+  color. See [Composing Palettes](/docs/foundation/composing-palettes) to learn how to
+  choose colors that harmonize across light and dark.
+</Callout>

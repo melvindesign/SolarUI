@@ -19,7 +19,7 @@ export function DatePickerDemo() {
         <Button
           variant="outline"
           data-empty={!date}
-          className="w-64 justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
+          className="w-64 justify-start text-left font-normal data-[empty=true]:text-default-11"
         >
           <CalendarIcon className="mr-2 size-4" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -42,7 +42,7 @@ export function DateRangePickerDemo({ className }: { className?: string }) {
           <Button
             variant="outline"
             data-empty={!range?.from}
-            className="w-72 justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
+            className="w-72 justify-start text-left font-normal data-[empty=true]:text-default-11"
           >
             <CalendarIcon className="mr-2 size-4" />
             {range?.from ? (
@@ -87,7 +87,7 @@ export function DatePickerWithPresets() {
         <Button
           variant="outline"
           data-empty={!date}
-          className="w-64 justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
+          className="w-64 justify-start text-left font-normal data-[empty=true]:text-default-11"
         >
           <CalendarIcon className="mr-2 size-4" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}

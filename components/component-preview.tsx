@@ -12,7 +12,7 @@ export function ComponentPreview({
     <div
       className={cn(
         'not-prose flex min-h-[140px] w-full items-center justify-center rounded-lg border p-8 my-6',
-        'border-(--color-border) bg-(--color-background)',
+        'border-default-6 bg-default-1',
         className
       )}
     >
@@ -32,7 +32,7 @@ export function ComponentPreviewRow({
     <div
       className={cn(
         'not-prose flex min-h-[140px] w-full flex-wrap items-center justify-center gap-4 rounded-lg border p-8 my-6',
-        'border-(--color-border) bg-(--color-background)',
+        'border-default-6 bg-default-1',
         className
       )}
     >
