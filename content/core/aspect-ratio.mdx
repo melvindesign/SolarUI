@@ -1,31 +1,38 @@
 ---
 title: Aspect Ratio
-description: Displays content within a desired ratio — prevents layout shift when loading images or videos.
+description: Displays content within a desired ratio.
 ---
+
+import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { ComponentPreview } from '@/components/component-preview'
 
 # Aspect Ratio
 
-Displays content within a desired ratio — prevents layout shift when loading images or videos.
+Displays content within a desired ratio.
 
-> **Note:** This component was previously listed under Content and has been moved to Core.
+<ComponentPreview>
+  <div className="w-full max-w-sm">
+    <AspectRatio ratio={16 / 9}>
+      <div className="flex h-full w-full items-center justify-center rounded-lg bg-(--color-muted) text-sm text-(--color-muted-foreground)">
+        16 / 9
+      </div>
+    </AspectRatio>
+  </div>
+</ComponentPreview>
 
 ## Installation
 
-**1. Install the dependency:**
-
-```bash
-npm install @radix-ui/react-aspect-ratio
-```
-
-**2. Copy and paste the following code into your project:**
+Copy and paste the following code into your project:
 
 ```tsx
 // components/ui/aspect-ratio.tsx
 "use client"
 
-import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+import { AspectRatio as AspectRatioPrimitive } from "radix-ui"
 
-function AspectRatio({ ...props }: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {
+function AspectRatio({
+  ...props
+}: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {
   return <AspectRatioPrimitive.Root data-slot="aspect-ratio" {...props} />
 }
 
@@ -35,64 +42,71 @@ export { AspectRatio }
 ## Usage
 
 ```tsx
-import { AspectRatio } from '@/components/ui/aspect-ratio'
-import { ComponentPreview } from '@/components/component-preview'
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 ```
 
 ```tsx
-<div className="w-64">
-  <AspectRatio ratio={16 / 9} className="bg-muted rounded-md overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-      alt="Photo by Drew Beamer"
-      className="h-full w-full object-cover"
-    />
-  </AspectRatio>
-</div>
+<AspectRatio ratio={16 / 9}>
+  <img src="..." alt="..." className="h-full w-full object-cover rounded-lg" />
+</AspectRatio>
 ```
 
 ## Examples
 
-### 4/3 Ratio
+### Image
+
+<ComponentPreview>
+  <div className="w-full max-w-sm">
+    <AspectRatio ratio={16 / 9}>
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop"
+        alt="Mountain landscape"
+        className="h-full w-full rounded-lg object-cover"
+      />
+    </AspectRatio>
+  </div>
+</ComponentPreview>
 
 ```tsx
-<div className="w-64">
-  <AspectRatio ratio={4 / 3} className="bg-muted rounded-md overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-      alt="Photo by Drew Beamer"
-      className="h-full w-full object-cover"
-    />
-  </AspectRatio>
-</div>
+<AspectRatio ratio={16 / 9}>
+  <img src="..." alt="..." className="h-full w-full rounded-lg object-cover" />
+</AspectRatio>
 ```
 
-### 1/1 (Square) Ratio
+### Square
+
+<ComponentPreview>
+  <div className="w-40">
+    <AspectRatio ratio={1}>
+      <div className="flex h-full w-full items-center justify-center rounded-lg bg-(--color-muted) text-sm text-(--color-muted-foreground)">
+        1 / 1
+      </div>
+    </AspectRatio>
+  </div>
+</ComponentPreview>
 
 ```tsx
-<div className="w-64">
-  <AspectRatio ratio={1} className="bg-muted rounded-md overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-      alt="Photo by Drew Beamer"
-      className="h-full w-full object-cover"
-    />
-  </AspectRatio>
-</div>
+<AspectRatio ratio={1}>
+  <img src="..." alt="..." className="h-full w-full rounded-lg object-cover" />
+</AspectRatio>
 ```
 
-### 21/9 (Ultrawide) Ratio
+### Portrait
+
+<ComponentPreview>
+  <div className="w-40">
+    <AspectRatio ratio={3 / 4}>
+      <div className="flex h-full w-full items-center justify-center rounded-lg bg-(--color-muted) text-sm text-(--color-muted-foreground)">
+        3 / 4
+      </div>
+    </AspectRatio>
+  </div>
+</ComponentPreview>
 
 ```tsx
-<div className="w-96">
-  <AspectRatio ratio={21 / 9} className="bg-muted rounded-md overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-      alt="Photo by Drew Beamer"
-      className="h-full w-full object-cover"
-    />
-  </AspectRatio>
-</div>
+<AspectRatio ratio={3 / 4}>
+  <img src="..." alt="..." className="h-full w-full rounded-lg object-cover" />
+</AspectRatio>
 ```
 
 ## API Reference
@@ -101,4 +115,4 @@ import { ComponentPreview } from '@/components/component-preview'
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `ratio` | `number` | `1` | The desired aspect ratio, e.g. `16/9`, `4/3`, `1`. |
+| `ratio` | `number` | `1` | The desired ratio (e.g. `16/9`, `4/3`, `1`). |
