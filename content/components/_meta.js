@@ -36,6 +36,7 @@ export default {
   '-- navigation': { type: 'separator', title: 'Navigation' },
   breadcrumb: 'Breadcrumb',
   'dropdown-menu': 'Dropdown Menu',
+  menubar: 'Menubar',
   '-- data': { type: 'separator', title: 'Data' },
   'data-table': 'Data Table',
   item: 'Item',
