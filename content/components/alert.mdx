@@ -1,0 +1,169 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+---
+
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { Info, TriangleAlert } from 'lucide-react'
+
+# Alert
+
+Displays a callout for user attention.
+
+<ComponentPreview>
+  <Alert className="max-w-sm">
+    <Info className="h-4 w-4" />
+    <AlertTitle>Heads up</AlertTitle>
+    <AlertDescription>
+      You can add components to your app using the CLI.
+    </AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/alert.tsx
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const alertVariants = cva(
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  {
+    variants: {
+      variant: {
+        default: "bg-background text-foreground",
+        destructive:
+          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
+>(({ className, variant, ...props }, ref) => (
+  <div ref={ref} role="alert" className={cn(alertVariants({ variant }), className)} {...props} />
+))
+Alert.displayName = "Alert"
+
+const AlertTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h5 ref={ref} className={cn("mb-1 font-medium leading-none tracking-tight", className)} {...props} />
+))
+AlertTitle.displayName = "AlertTitle"
+
+const AlertDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("text-sm [&_p]:leading-relaxed", className)} {...props} />
+))
+AlertDescription.displayName = "AlertDescription"
+
+export { Alert, AlertTitle, AlertDescription }
+```
+
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+```
+
+```tsx
+<Alert>
+  <AlertTitle>Heads up</AlertTitle>
+  <AlertDescription>You can add components using the CLI.</AlertDescription>
+</Alert>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview>
+  <Alert className="max-w-sm">
+    <Info className="h-4 w-4" />
+    <AlertTitle>Information</AlertTitle>
+    <AlertDescription>
+      Your session will expire in 30 minutes.
+    </AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+```tsx
+import { Info } from "lucide-react"
+
+<Alert>
+  <Info className="h-4 w-4" />
+  <AlertTitle>Information</AlertTitle>
+  <AlertDescription>Your session will expire in 30 minutes.</AlertDescription>
+</Alert>
+```
+
+### Destructive
+
+<ComponentPreview>
+  <Alert variant="destructive" className="max-w-sm">
+    <TriangleAlert className="h-4 w-4" />
+    <AlertTitle>Error</AlertTitle>
+    <AlertDescription>
+      Your session has expired. Please log in again.
+    </AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+```tsx
+import { TriangleAlert } from "lucide-react"
+
+<Alert variant="destructive">
+  <TriangleAlert className="h-4 w-4" />
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
+</Alert>
+```
+
+### Without icon
+
+<ComponentPreview>
+  <Alert className="max-w-sm">
+    <AlertTitle>Note</AlertTitle>
+    <AlertDescription>
+      This action cannot be undone once confirmed.
+    </AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+```tsx
+<Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>This action cannot be undone once confirmed.</AlertDescription>
+</Alert>
+```
+
+## API Reference
+
+### Alert
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive"` | `"default"` | The visual style of the alert. |
+| `className` | `string` | — | Additional CSS classes to merge. |
+
+### AlertTitle
+
+Renders as an `<h5>`. Accepts all standard HTML heading attributes and `className`.
+
+### AlertDescription
+
+Renders as a `<div>`. Accepts all standard HTML div attributes and `className`.

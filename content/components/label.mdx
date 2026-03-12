@@ -1,0 +1,116 @@
+---
+title: Label
+description: Renders an accessible label associated with a form control.
+---
+
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+
+# Label
+
+Renders an accessible label associated with a form control.
+
+<ComponentPreview>
+  <div className="flex flex-col gap-1.5">
+    <Label htmlFor="email">Email address</Label>
+    <Input id="email" type="email" placeholder="you@example.com" className="w-64" />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/label.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+const Label = React.forwardRef<
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement> & { required?: boolean }
+>(({ className, required, children, ...props }, ref) => (
+  <label
+    ref={ref}
+    className={cn(
+      "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    {required && <span className="text-(--color-destructive) ml-1">*</span>}
+  </label>
+))
+Label.displayName = "Label"
+
+export { Label }
+```
+
+## Usage
+
+```tsx
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<Label htmlFor="email">Email address</Label>
+```
+
+## Examples
+
+### With input
+
+<ComponentPreview>
+  <div className="flex flex-col gap-1.5">
+    <Label htmlFor="name">Full name</Label>
+    <Input id="name" placeholder="John Doe" className="w-64" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex flex-col gap-1.5">
+  <Label htmlFor="name">Full name</Label>
+  <Input id="name" placeholder="John Doe" />
+</div>
+```
+
+### Required
+
+<ComponentPreview>
+  <div className="flex flex-col gap-1.5">
+    <Label htmlFor="required-email" required>Email address</Label>
+    <Input id="required-email" type="email" placeholder="you@example.com" className="w-64" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<Label htmlFor="email" required>Email address</Label>
+```
+
+### Disabled
+
+<ComponentPreview>
+  <div className="flex flex-col gap-1.5">
+    <Label htmlFor="disabled-input" className="opacity-50 cursor-not-allowed">Username</Label>
+    <Input id="disabled-input" disabled placeholder="john_doe" className="w-64" />
+  </div>
+</ComponentPreview>
+
+```tsx
+<Label htmlFor="input" className="opacity-50 cursor-not-allowed">Username</Label>
+<Input id="input" disabled />
+```
+
+## API Reference
+
+### Label
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `required` | `boolean` | `false` | When `true`, renders a red asterisk after the label text. |
+| `htmlFor` | `string` | — | Associates the label with a form control by its `id`. |
+| `className` | `string` | — | Additional CSS classes to merge. |
+
+The `Label` component also accepts all standard HTML `<label>` attributes.

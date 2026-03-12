@@ -1,0 +1,179 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+---
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Accordion
+
+A vertically stacked set of interactive headings that each reveal a section of content.
+
+<ComponentPreview>
+  <Accordion type="single" collapsible className="w-full max-w-sm">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>What is SolarUI?</AccordionTrigger>
+      <AccordionContent>
+        SolarUI is a component library built with Tailwind CSS and Radix UI primitives, designed around a set of intentional design rules.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>
+        Yes. The Accordion is built on top of Radix UI, which provides full keyboard navigation and ARIA attributes out of the box.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Can I customize it?</AccordionTrigger>
+      <AccordionContent>
+        Yes. Each part of the component accepts a `className` prop, so you can override any style using Tailwind utility classes.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-accordion
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/accordion.tsx
+"use client"
+
+import * as React from "react"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { ChevronDown } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const Accordion = AccordionPrimitive.Root
+
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item ref={ref} className={cn("border-b", className)} {...props} />
+))
+AccordionItem.displayName = "AccordionItem"
+
+const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+
+const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    {...props}
+  >
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+))
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+```
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion"
+```
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>Yes. Built on Radix UI.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+
+### Multiple open
+
+<ComponentPreview>
+  <Accordion type="multiple" className="w-full max-w-sm">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>First section</AccordionTrigger>
+      <AccordionContent>Content for the first section.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Second section</AccordionTrigger>
+      <AccordionContent>Content for the second section.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Third section</AccordionTrigger>
+      <AccordionContent>Content for the third section.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</ComponentPreview>
+
+```tsx
+<Accordion type="multiple">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>First section</AccordionTrigger>
+    <AccordionContent>Content for the first section.</AccordionContent>
+  </AccordionItem>
+  ...
+</Accordion>
+```
+
+## API Reference
+
+### Accordion
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `"single" \| "multiple"` | — | Whether one or multiple items can be open at the same time. |
+| `collapsible` | `boolean` | `false` | When `type="single"`, allows the open item to be closed by clicking its trigger again. |
+| `defaultValue` | `string \| string[]` | — | The value of the item(s) open by default (uncontrolled). |
+| `value` | `string \| string[]` | — | The controlled open value. |
+| `onValueChange` | `(value) => void` | — | Callback when the open state changes. |
+
+### AccordionItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | A unique identifier for the item. |
+| `disabled` | `boolean` | `false` | When `true`, prevents interaction with the item. |
+
+### AccordionTrigger / AccordionContent
+
+Both accept all standard HTML attributes and a `className` prop for style overrides.

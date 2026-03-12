@@ -5,4 +5,12 @@ export default {
   '-- form': { type: 'separator', title: 'Form' },
   input: 'Input',
   field: 'Field',
+  '-- layout': { type: 'separator', title: 'Layout' },
+  accordion: 'Accordion',
+  separator: 'Separator',
+  '-- text': { type: 'separator', title: 'Text' },
+  label: 'Label',
+  '-- feedback': { type: 'separator', title: 'Feedback' },
+  alert: 'Alert',
+  'alert-dialog': 'Alert Dialog',
 }

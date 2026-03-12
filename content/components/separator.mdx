@@ -1,0 +1,130 @@
+---
+title: Separator
+description: Visually or semantically separates content.
+---
+
+import { Separator } from '@/components/ui/separator'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Separator
+
+Visually or semantically separates content.
+
+<ComponentPreview>
+  <div className="flex flex-col gap-4 w-full max-w-sm">
+    <p className="text-sm">Above</p>
+    <Separator />
+    <p className="text-sm">Below</p>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-separator
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/separator.tsx
+"use client"
+
+import * as React from "react"
+import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import { cn } from "@/lib/utils"
+
+const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+>(
+  ({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
+    <SeparatorPrimitive.Root
+      ref={ref}
+      decorative={decorative}
+      orientation={orientation}
+      className={cn(
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        className
+      )}
+      {...props}
+    />
+  )
+)
+Separator.displayName = SeparatorPrimitive.Root.displayName
+
+export { Separator }
+```
+
+## Usage
+
+```tsx
+import { Separator } from "@/components/ui/separator"
+```
+
+```tsx
+<Separator />
+```
+
+## Examples
+
+### Horizontal
+
+<ComponentPreview>
+  <div className="flex flex-col gap-3 w-full max-w-sm">
+    <div className="text-sm font-medium">SolarUI</div>
+    <Separator />
+    <div className="flex gap-4 text-sm text-(--color-muted-foreground)">
+      <span>Docs</span>
+      <span>Components</span>
+      <span>Foundation</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex flex-col gap-3">
+  <div>SolarUI</div>
+  <Separator />
+  <div className="flex gap-4 text-muted-foreground">
+    <span>Docs</span>
+    <span>Components</span>
+    <span>Foundation</span>
+  </div>
+</div>
+```
+
+### Vertical
+
+<ComponentPreview>
+  <div className="flex items-center gap-4 text-sm">
+    <span>Docs</span>
+    <Separator orientation="vertical" className="h-4" />
+    <span>Components</span>
+    <Separator orientation="vertical" className="h-4" />
+    <span>Foundation</span>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex items-center gap-4 text-sm">
+  <span>Docs</span>
+  <Separator orientation="vertical" className="h-4" />
+  <span>Components</span>
+  <Separator orientation="vertical" className="h-4" />
+  <span>Foundation</span>
+</div>
+```
+
+## API Reference
+
+### Separator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The axis along which the separator is drawn. |
+| `decorative` | `boolean` | `true` | When `true`, the separator is purely visual and hidden from assistive technologies. |
+| `className` | `string` | — | Additional CSS classes to merge. |
