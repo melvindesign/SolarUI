@@ -1,0 +1,137 @@
+---
+title: Sonner
+description: An opinionated toast notification component built on top of Sonner.
+section: Feedback
+---
+
+import { Toaster } from '@/components/ui/sonner'
+import { ComponentPreview } from '@/components/component-preview'
+import { toast } from 'sonner'
+
+<ComponentPreview>
+  <button
+    className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent"
+    onClick={() => toast("Event has been created.")}
+  >
+    Show Toast
+  </button>
+  <Toaster />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npm install sonner
+```
+
+Copy and paste the following code into your project:
+
+```tsx
+"use client"
+import { Toaster as Sonner, type ToasterProps } from "sonner"
+
+function Toaster({ ...props }: ToasterProps) {
+  return (
+    <Sonner
+      theme="system"
+      className="toaster group"
+      style={
+        {
+          "--normal-bg": "var(--popover)",
+          "--normal-border": "var(--border)",
+          "--normal-text": "var(--popover-foreground)",
+        } as React.CSSProperties
+      }
+      {...props}
+    />
+  )
+}
+export { Toaster }
+```
+
+## Usage
+
+Add `<Toaster />` to your root layout so toasts are available throughout your application:
+
+```tsx
+// app/layout.tsx
+import { Toaster } from '@/components/ui/sonner'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+Then call `toast()` from anywhere in your app:
+
+```tsx
+import { toast } from 'sonner'
+```
+
+### Default toast
+
+```tsx
+toast("Event has been created.")
+```
+
+### Success toast
+
+```tsx
+toast.success("Changes saved successfully.")
+```
+
+### Error toast
+
+```tsx
+toast.error("Something went wrong.")
+```
+
+### Promise toast
+
+```tsx
+toast.promise(saveSettings(), {
+  loading: "Saving...",
+  success: "Settings saved.",
+  error: "Failed to save settings.",
+})
+```
+
+### With description
+
+```tsx
+toast("Event has been created.", {
+  description: "Monday, January 3rd at 6:00pm",
+})
+```
+
+### With action
+
+```tsx
+toast("Event has been created.", {
+  action: {
+    label: "Undo",
+    onClick: () => console.log("Undo"),
+  },
+})
+```
+
+## API Reference
+
+### Toaster
+
+The `Toaster` component accepts all props from [Sonner's `Toaster`](https://sonner.emilkowal.ski/getting-started).
+
+| Prop       | Type                                       | Default    | Description                          |
+| ---------- | ------------------------------------------ | ---------- | ------------------------------------ |
+| `theme`    | `"light" \| "dark" \| "system"`            | `"system"` | The color theme of the toaster.      |
+| `position` | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right" \| "top-center" \| "bottom-center"` | `"bottom-right"` | Position of the toast viewport. |
+| `richColors` | `boolean`                                | `false`    | Enable richer colors for variants.   |
+| `expand`   | `boolean`                                  | `false`    | Expand all toasts by default.        |
+| `duration` | `number`                                   | `4000`     | Default duration in milliseconds.    |

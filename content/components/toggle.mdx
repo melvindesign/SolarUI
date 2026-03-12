@@ -1,0 +1,176 @@
+---
+title: Toggle
+description: A two-state button that can be either on or off.
+---
+
+import { Bold, Italic, Underline } from 'lucide-react'
+import { Toggle } from '@/components/ui/toggle'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Toggle
+
+A two-state button that can be either on or off.
+
+<ComponentPreview>
+  <Toggle aria-label="Toggle bold">
+    <Bold className="size-4" />
+  </Toggle>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-toggle
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/toggle.tsx
+"use client"
+
+import * as React from "react"
+import * as TogglePrimitive from "@radix-ui/react-toggle"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const toggleVariants = cva(
+  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default: "bg-transparent",
+        outline: "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
+      },
+      size: {
+        default: "h-control px-3",
+        sm: "h-8 px-2",
+        lg: "h-11 px-5",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+function Toggle({
+  className,
+  variant,
+  size,
+  ...props
+}: React.ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>) {
+  return (
+    <TogglePrimitive.Root
+      data-slot="toggle"
+      className={cn(toggleVariants({ variant, size }), className)}
+      {...props}
+    />
+  )
+}
+
+export { Toggle, toggleVariants }
+```
+
+## Usage
+
+```tsx
+import { Toggle } from "@/components/ui/toggle"
+```
+
+```tsx
+<Toggle aria-label="Toggle bold">
+  <Bold className="size-4" />
+</Toggle>
+```
+
+## Examples
+
+### With text
+
+<ComponentPreview>
+  <Toggle aria-label="Toggle bold">
+    <Bold className="size-4" />
+    Bold
+  </Toggle>
+</ComponentPreview>
+
+```tsx
+<Toggle aria-label="Toggle bold">
+  <Bold className="size-4" />
+  Bold
+</Toggle>
+```
+
+### Outline variant
+
+<ComponentPreview>
+  <Toggle variant="outline" aria-label="Toggle italic">
+    <Italic className="size-4" />
+  </Toggle>
+</ComponentPreview>
+
+```tsx
+<Toggle variant="outline" aria-label="Toggle italic">
+  <Italic className="size-4" />
+</Toggle>
+```
+
+### Disabled
+
+<ComponentPreview>
+  <Toggle disabled aria-label="Toggle underline">
+    <Underline className="size-4" />
+  </Toggle>
+</ComponentPreview>
+
+```tsx
+<Toggle disabled aria-label="Toggle underline">
+  <Underline className="size-4" />
+</Toggle>
+```
+
+### Sizes
+
+<ComponentPreview>
+  <div className="flex items-center gap-2">
+    <Toggle size="sm" aria-label="Toggle bold small">
+      <Bold className="size-4" />
+    </Toggle>
+    <Toggle size="default" aria-label="Toggle bold default">
+      <Bold className="size-4" />
+    </Toggle>
+    <Toggle size="lg" aria-label="Toggle bold large">
+      <Bold className="size-4" />
+    </Toggle>
+  </div>
+</ComponentPreview>
+
+```tsx
+<Toggle size="sm" aria-label="Toggle bold">
+  <Bold className="size-4" />
+</Toggle>
+<Toggle size="default" aria-label="Toggle bold">
+  <Bold className="size-4" />
+</Toggle>
+<Toggle size="lg" aria-label="Toggle bold">
+  <Bold className="size-4" />
+</Toggle>
+```
+
+## API Reference
+
+### Toggle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pressed` | `boolean` | — | Controlled pressed state. |
+| `defaultPressed` | `boolean` | `false` | Initial pressed state (uncontrolled). |
+| `onPressedChange` | `(pressed: boolean) => void` | — | Callback when pressed state changes. |
+| `disabled` | `boolean` | `false` | Prevents the toggle from being interacted with. |
+| `variant` | `"default" \| "outline"` | `"default"` | The visual style of the toggle. |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | The size of the toggle. |
+| `aria-label` | `string` | — | Accessible label, required when the toggle contains only an icon. |

@@ -1,0 +1,94 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+---
+
+import { Slider } from '@/components/ui/slider'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Slider
+
+An input where the user selects a value from within a given range.
+
+<ComponentPreview>
+  <Slider defaultValue={[50]} max={100} step={1} className="w-64" />
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-slider
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/slider.tsx
+"use client"
+
+import * as React from "react"
+import * as SliderPrimitive from "@radix-ui/react-slider"
+import { cn } from "@/lib/utils"
+
+// Track with Range, one or more Thumb elements
+```
+
+## Usage
+
+```tsx
+import { Slider } from "@/components/ui/slider"
+```
+
+```tsx
+<Slider defaultValue={[50]} max={100} step={1} className="w-64" />
+```
+
+## Examples
+
+### Range slider
+
+<ComponentPreview>
+  <Slider defaultValue={[25, 75]} max={100} step={1} className="w-64" />
+</ComponentPreview>
+
+```tsx
+<Slider defaultValue={[25, 75]} max={100} step={1} className="w-64" />
+```
+
+### Stepped
+
+<ComponentPreview>
+  <Slider defaultValue={[40]} max={100} step={10} className="w-64" />
+</ComponentPreview>
+
+```tsx
+<Slider defaultValue={[40]} max={100} step={10} className="w-64" />
+```
+
+### Disabled
+
+<ComponentPreview>
+  <Slider defaultValue={[50]} max={100} step={1} className="w-64" disabled />
+</ComponentPreview>
+
+```tsx
+<Slider defaultValue={[50]} max={100} step={1} className="w-64" disabled />
+```
+
+## API Reference
+
+### Slider
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number[]` | — | Controlled value of the slider thumb(s). |
+| `defaultValue` | `number[]` | — | Initial value of the slider thumb(s) (uncontrolled). |
+| `min` | `number` | `0` | The minimum value of the range. |
+| `max` | `number` | `100` | The maximum value of the range. |
+| `step` | `number` | `1` | The stepping interval between values. |
+| `disabled` | `boolean` | `false` | When `true`, prevents interaction and applies reduced opacity. |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the slider. |
+| `onValueChange` | `(value: number[]) => void` | — | Callback fired continuously as the thumb is dragged. |
+| `onValueCommit` | `(value: number[]) => void` | — | Callback fired when the thumb is released. |

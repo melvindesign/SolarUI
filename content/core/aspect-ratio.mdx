@@ -1,0 +1,104 @@
+---
+title: Aspect Ratio
+description: Displays content within a desired ratio — prevents layout shift when loading images or videos.
+---
+
+# Aspect Ratio
+
+Displays content within a desired ratio — prevents layout shift when loading images or videos.
+
+> **Note:** This component was previously listed under Content and has been moved to Core.
+
+## Installation
+
+**1. Install the dependency:**
+
+```bash
+npm install @radix-ui/react-aspect-ratio
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/aspect-ratio.tsx
+"use client"
+
+import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+
+function AspectRatio({ ...props }: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {
+  return <AspectRatioPrimitive.Root data-slot="aspect-ratio" {...props} />
+}
+
+export { AspectRatio }
+```
+
+## Usage
+
+```tsx
+import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { ComponentPreview } from '@/components/component-preview'
+```
+
+```tsx
+<div className="w-64">
+  <AspectRatio ratio={16 / 9} className="bg-muted rounded-md overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+      alt="Photo by Drew Beamer"
+      className="h-full w-full object-cover"
+    />
+  </AspectRatio>
+</div>
+```
+
+## Examples
+
+### 4/3 Ratio
+
+```tsx
+<div className="w-64">
+  <AspectRatio ratio={4 / 3} className="bg-muted rounded-md overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+      alt="Photo by Drew Beamer"
+      className="h-full w-full object-cover"
+    />
+  </AspectRatio>
+</div>
+```
+
+### 1/1 (Square) Ratio
+
+```tsx
+<div className="w-64">
+  <AspectRatio ratio={1} className="bg-muted rounded-md overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+      alt="Photo by Drew Beamer"
+      className="h-full w-full object-cover"
+    />
+  </AspectRatio>
+</div>
+```
+
+### 21/9 (Ultrawide) Ratio
+
+```tsx
+<div className="w-96">
+  <AspectRatio ratio={21 / 9} className="bg-muted rounded-md overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+      alt="Photo by Drew Beamer"
+      className="h-full w-full object-cover"
+    />
+  </AspectRatio>
+</div>
+```
+
+## API Reference
+
+### AspectRatio
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `ratio` | `number` | `1` | The desired aspect ratio, e.g. `16/9`, `4/3`, `1`. |

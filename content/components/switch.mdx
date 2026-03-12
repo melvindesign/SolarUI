@@ -1,0 +1,105 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+---
+
+import { Label } from '@/components/ui/label'
+import { Switch } from '@/components/ui/switch'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Switch
+
+A control that allows the user to toggle between checked and not checked.
+
+<ComponentPreview>
+  <div className="flex items-center gap-2">
+    <Switch id="airplane-mode" />
+    <Label htmlFor="airplane-mode">Airplane Mode</Label>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-switch
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/switch.tsx
+"use client"
+
+import * as React from "react"
+import * as SwitchPrimitive from "@radix-ui/react-switch"
+import { cn } from "@/lib/utils"
+
+// Root: h-5 w-9 rounded-full, checked=bg-primary, unchecked=bg-input
+// Thumb: size-4 bg-background, translate-x-0 -> translate-x-4
+```
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<div className="flex items-center gap-2">
+  <Switch id="my-switch" />
+  <Label htmlFor="my-switch">Enable feature</Label>
+</div>
+```
+
+## Examples
+
+### Checked by default
+
+<ComponentPreview>
+  <div className="flex items-center gap-2">
+    <Switch id="notifications" defaultChecked />
+    <Label htmlFor="notifications">Notifications</Label>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex items-center gap-2">
+  <Switch id="notifications" defaultChecked />
+  <Label htmlFor="notifications">Notifications</Label>
+</div>
+```
+
+### Disabled
+
+<ComponentPreview>
+  <div className="flex flex-col gap-3">
+    <div className="flex items-center gap-2">
+      <Switch id="disabled-off" disabled />
+      <Label htmlFor="disabled-off" className="opacity-50">Off (disabled)</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Switch id="disabled-on" disabled defaultChecked />
+      <Label htmlFor="disabled-on" className="opacity-50">On (disabled)</Label>
+    </div>
+  </div>
+</ComponentPreview>
+
+```tsx
+<Switch disabled />
+<Switch disabled defaultChecked />
+```
+
+## API Reference
+
+### Switch
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled checked state of the switch. |
+| `defaultChecked` | `boolean` | `false` | Initial checked state (uncontrolled). |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Callback when the checked state changes. |
+| `disabled` | `boolean` | `false` | When `true`, prevents interaction and applies reduced opacity. |
+| `required` | `boolean` | `false` | Makes the switch required in a form context. |

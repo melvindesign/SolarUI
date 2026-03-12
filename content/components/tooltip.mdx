@@ -1,0 +1,174 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+section: Feedback
+---
+
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip'
+import { ComponentPreview } from '@/components/component-preview'
+
+<ComponentPreview>
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <button className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent">
+        Hover me
+      </button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Add to library</p>
+    </TooltipContent>
+  </Tooltip>
+</ComponentPreview>
+
+## Installation
+
+```bash
+npm install @radix-ui/react-tooltip
+```
+
+Copy and paste the following code into your project:
+
+```tsx
+"use client"
+import * as React from "react"
+import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import { cn } from "@/lib/utils"
+
+function TooltipProvider({
+  delayDuration = 0,
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
+  return <TooltipPrimitive.Provider delayDuration={delayDuration} {...props} />
+}
+
+function Tooltip({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Root>) {
+  return (
+    <TooltipProvider>
+      <TooltipPrimitive.Root {...props} />
+    </TooltipProvider>
+  )
+}
+
+function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
+  return <TooltipPrimitive.Trigger {...props} />
+}
+
+function TooltipContent({
+  className,
+  sideOffset = 4,
+  children,
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  return (
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        sideOffset={sideOffset}
+        className={cn(
+          "bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 z-50 w-auto rounded-md px-3 py-1.5 text-xs",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <TooltipPrimitive.Arrow className="fill-primary size-2.5" />
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Portal>
+  )
+}
+
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }
+```
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Button variant="outline">Hover me</Button>
+  </TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+### Positioning
+
+Control the side and alignment of the tooltip:
+
+```tsx
+<Tooltip>
+  <TooltipTrigger asChild>
+    <Button variant="outline">Right tooltip</Button>
+  </TooltipTrigger>
+  <TooltipContent side="right">
+    <p>Opens on the right</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+### Global provider
+
+To share a single `TooltipProvider` across your app, wrap your layout instead of relying on the one built into `Tooltip`:
+
+```tsx
+// app/layout.tsx
+import { TooltipProvider } from '@/components/ui/tooltip'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+## API Reference
+
+### TooltipProvider
+
+| Prop            | Type     | Default | Description                                                  |
+| --------------- | -------- | ------- | ------------------------------------------------------------ |
+| `delayDuration` | `number` | `0`     | Delay in milliseconds before the tooltip opens on hover.     |
+| `skipDelayDuration` | `number` | `300` | How long a user can move between triggers without incurring a delay. |
+
+### Tooltip
+
+Accepts all props from [Radix UI Tooltip.Root](https://www.radix-ui.com/primitives/docs/components/tooltip#root).
+
+| Prop           | Type      | Default | Description                                     |
+| -------------- | --------- | ------- | ----------------------------------------------- |
+| `open`         | `boolean` | —       | Controlled open state.                          |
+| `defaultOpen`  | `boolean` | `false` | Initial open state when uncontrolled.           |
+| `onOpenChange` | `function`| —       | Callback fired when the open state changes.     |
+
+### TooltipTrigger
+
+Accepts all props from [Radix UI Tooltip.Trigger](https://www.radix-ui.com/primitives/docs/components/tooltip#trigger). Use `asChild` to render as a custom element.
+
+| Prop      | Type      | Default | Description                                         |
+| --------- | --------- | ------- | --------------------------------------------------- |
+| `asChild` | `boolean` | `false` | Merges props onto the immediate child element.      |
+
+### TooltipContent
+
+| Prop          | Type                                       | Default  | Description                                        |
+| ------------- | ------------------------------------------ | -------- | -------------------------------------------------- |
+| `side`        | `"top" \| "right" \| "bottom" \| "left"`  | `"top"`  | The preferred side to render the tooltip.          |
+| `align`       | `"start" \| "center" \| "end"`            | `"center"` | Alignment relative to the trigger.              |
+| `sideOffset`  | `number`                                   | `4`      | Pixel distance from the trigger.                  |
+| `className`   | `string`                                   | —        | Additional CSS classes to apply.                  |

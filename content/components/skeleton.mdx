@@ -1,0 +1,76 @@
+---
+title: Skeleton
+description: A placeholder to show while content is loading.
+section: Feedback
+---
+
+import { Skeleton } from '@/components/ui/skeleton'
+import { ComponentPreview } from '@/components/component-preview'
+
+<ComponentPreview>
+  <div className="flex items-center gap-4">
+    <Skeleton className="size-12 rounded-full" />
+    <div className="flex flex-col gap-2">
+      <Skeleton className="h-4 w-40" />
+      <Skeleton className="h-4 w-28" />
+    </div>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+No additional dependencies are required. Copy and paste the following code into your project:
+
+```tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="skeleton"
+      className={cn("bg-accent animate-pulse rounded-md", className)}
+      {...props}
+    />
+  )
+}
+export { Skeleton }
+```
+
+## Usage
+
+```tsx
+import { Skeleton } from '@/components/ui/skeleton'
+```
+
+```tsx
+<div className="flex items-center gap-4">
+  <Skeleton className="size-12 rounded-full" />
+  <div className="flex flex-col gap-2">
+    <Skeleton className="h-4 w-40" />
+    <Skeleton className="h-4 w-28" />
+  </div>
+</div>
+```
+
+### Card skeleton
+
+Compose `Skeleton` components to match the shape of the content that will load:
+
+```tsx
+<div className="flex flex-col gap-3 w-64 p-4 border rounded-lg">
+  <Skeleton className="h-40 w-full rounded-md" />
+  <Skeleton className="h-4 w-3/4" />
+  <Skeleton className="h-4 w-1/2" />
+</div>
+```
+
+## API Reference
+
+### Skeleton
+
+`Skeleton` accepts all props of a standard `<div>` element. Use `className` to control the size and shape of the placeholder.
+
+| Prop        | Type     | Default | Description                      |
+| ----------- | -------- | ------- | -------------------------------- |
+| `className` | `string` | —       | Additional CSS classes to apply. |

@@ -1,0 +1,224 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+---
+
+import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Toggle Group
+
+A set of two-state buttons that can be toggled on or off.
+
+<ComponentPreview>
+  <ToggleGroup type="single">
+    <ToggleGroupItem value="left" aria-label="Align left">
+      <AlignLeft className="size-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="center" aria-label="Align center">
+      <AlignCenter className="size-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="right" aria-label="Align right">
+      <AlignRight className="size-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-toggle-group
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/toggle-group.tsx
+"use client"
+
+import * as React from "react"
+import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
+import { type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+import { toggleVariants } from "@/components/ui/toggle"
+
+type ToggleGroupContextValue = VariantProps<typeof toggleVariants>
+
+const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({
+  size: "default",
+  variant: "default",
+})
+
+function ToggleGroup({
+  className,
+  variant,
+  size,
+  children,
+  ...props
+}: React.ComponentProps<typeof ToggleGroupPrimitive.Root> & VariantProps<typeof toggleVariants>) {
+  return (
+    <ToggleGroupPrimitive.Root
+      data-slot="toggle-group"
+      className={cn("flex items-center justify-center gap-1", className)}
+      {...props}
+    >
+      <ToggleGroupContext.Provider value={{ variant, size }}>
+        {children}
+      </ToggleGroupContext.Provider>
+    </ToggleGroupPrimitive.Root>
+  )
+}
+
+function ToggleGroupItem({
+  className,
+  variant,
+  size,
+  ...props
+}: React.ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>) {
+  const context = React.useContext(ToggleGroupContext)
+  return (
+    <ToggleGroupPrimitive.Item
+      data-slot="toggle-group-item"
+      className={cn(
+        toggleVariants({
+          variant: variant ?? context.variant,
+          size: size ?? context.size,
+        }),
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { ToggleGroup, ToggleGroupItem }
+```
+
+## Usage
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+```
+
+```tsx
+<ToggleGroup type="single">
+  <ToggleGroupItem value="left" aria-label="Align left">
+    <AlignLeft className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Align center">
+    <AlignCenter className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Align right">
+    <AlignRight className="size-4" />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Examples
+
+### Multiple selection
+
+<ComponentPreview>
+  <ToggleGroup type="multiple">
+    <ToggleGroupItem value="left" aria-label="Align left">
+      <AlignLeft className="size-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="center" aria-label="Align center">
+      <AlignCenter className="size-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="right" aria-label="Align right">
+      <AlignRight className="size-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</ComponentPreview>
+
+```tsx
+<ToggleGroup type="multiple">
+  <ToggleGroupItem value="left" aria-label="Align left">
+    <AlignLeft className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Align center">
+    <AlignCenter className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Align right">
+    <AlignRight className="size-4" />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+### Outline variant
+
+<ComponentPreview>
+  <ToggleGroup type="single" variant="outline">
+    <ToggleGroupItem value="left" aria-label="Align left">
+      <AlignLeft className="size-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="center" aria-label="Align center">
+      <AlignCenter className="size-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="right" aria-label="Align right">
+      <AlignRight className="size-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</ComponentPreview>
+
+```tsx
+<ToggleGroup type="single" variant="outline">
+  ...
+</ToggleGroup>
+```
+
+### Sizes
+
+<ComponentPreview>
+  <div className="flex flex-col items-center gap-4">
+    <ToggleGroup type="single" size="sm">
+      <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft className="size-4" /></ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter className="size-4" /></ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="Align right"><AlignRight className="size-4" /></ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="single" size="default">
+      <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft className="size-4" /></ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter className="size-4" /></ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="Align right"><AlignRight className="size-4" /></ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="single" size="lg">
+      <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft className="size-4" /></ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter className="size-4" /></ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="Align right"><AlignRight className="size-4" /></ToggleGroupItem>
+    </ToggleGroup>
+  </div>
+</ComponentPreview>
+
+```tsx
+<ToggleGroup type="single" size="sm">...</ToggleGroup>
+<ToggleGroup type="single" size="default">...</ToggleGroup>
+<ToggleGroup type="single" size="lg">...</ToggleGroup>
+```
+
+## API Reference
+
+### ToggleGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `"single" \| "multiple"` | — | Whether one or multiple items can be active at a time. **Required.** |
+| `value` | `string \| string[]` | — | Controlled active value(s). |
+| `defaultValue` | `string \| string[]` | — | Initial active value(s) (uncontrolled). |
+| `onValueChange` | `(value: string \| string[]) => void` | — | Callback when the selection changes. |
+| `variant` | `"default" \| "outline"` | `"default"` | Visual style propagated to all items via context. |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Size propagated to all items via context. |
+| `disabled` | `boolean` | `false` | Disables all items in the group. |
+
+### ToggleGroupItem
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `value` | `string` | The value that identifies this item. **Required.** |
+| `disabled` | `boolean` | Disables this individual item. |
+| `variant` | `"default" \| "outline"` | Override the group-level variant for this item. |
+| `size` | `"sm" \| "default" \| "lg"` | Override the group-level size for this item. |
+| `aria-label` | `string` | Accessible label, required when the item contains only an icon. |

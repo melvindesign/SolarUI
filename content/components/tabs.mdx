@@ -1,0 +1,168 @@
+---
+title: Tabs
+description: A set of layered sections of content — known as tab panels — that are displayed one at a time.
+---
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Tabs
+
+A set of layered sections of content — known as tab panels — that are displayed one at a time.
+
+<ComponentPreview>
+  <Tabs defaultValue="account" className="w-96">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground p-4">Make changes to your account here.</p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-muted-foreground p-4">Change your password here.</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-tabs
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/tabs.tsx
+"use client"
+
+import * as React from "react"
+import * as TabsPrimitive from "@radix-ui/react-tabs"
+import { cn } from "@/lib/utils"
+
+function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) {
+  return <TabsPrimitive.Root data-slot="tabs" className={cn("flex flex-col gap-2", className)} {...props} />
+}
+
+function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.List>) {
+  return (
+    <TabsPrimitive.List
+      data-slot="tabs-list"
+      className={cn(
+        "bg-muted text-muted-foreground inline-flex h-9 items-center justify-center rounded-lg p-1",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+  return (
+    <TabsPrimitive.Trigger
+      data-slot="tabs-trigger"
+      className={cn(
+        "ring-offset-background focus-visible:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-xs inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Content>) {
+  return (
+    <TabsPrimitive.Content
+      data-slot="tabs-content"
+      className={cn("flex-1 outline-none", className)}
+      {...props}
+    />
+  )
+}
+
+export { Tabs, TabsList, TabsTrigger, TabsContent }
+```
+
+## Usage
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+```
+
+```tsx
+<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Account settings.</TabsContent>
+  <TabsContent value="password">Change your password.</TabsContent>
+</Tabs>
+```
+
+## Examples
+
+### Controlled
+
+```tsx
+const [tab, setTab] = React.useState("account")
+
+<Tabs value={tab} onValueChange={setTab}>
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Account settings.</TabsContent>
+  <TabsContent value="password">Change your password.</TabsContent>
+</Tabs>
+```
+
+### With disabled tab
+
+<ComponentPreview>
+  <Tabs defaultValue="active" className="w-96">
+    <TabsList>
+      <TabsTrigger value="active">Active</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+    </TabsList>
+    <TabsContent value="active">
+      <p className="text-sm text-muted-foreground p-4">Active tab content.</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+```tsx
+<TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+```
+
+## API Reference
+
+### Tabs
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled active tab value. |
+| `defaultValue` | `string` | — | Initial active tab (uncontrolled). |
+| `onValueChange` | `(value: string) => void` | — | Callback when the active tab changes. |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the tab list. |
+
+### TabsList
+
+Accepts all standard `div` attributes. Acts as the container for tab triggers.
+
+### TabsTrigger
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `value` | `string` | The value that identifies this tab. |
+| `disabled` | `boolean` | Prevents the tab from being selected. |
+
+### TabsContent
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `value` | `string` | The tab value this panel corresponds to. |
+| `forceMount` | `boolean` | Keep the panel mounted in the DOM even when inactive. |

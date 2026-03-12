@@ -1,0 +1,283 @@
+---
+title: Sheet
+description: A panel that slides in from any edge of the screen — a side-panel variant of the Dialog.
+---
+
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Sheet
+
+A panel that slides in from any edge of the screen — a side-panel variant of the Dialog.
+
+<ComponentPreview>
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Open Sheet</Button>
+    </SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Edit profile</SheetTitle>
+        <SheetDescription>Make changes to your profile here. Click save when you're done.</SheetDescription>
+      </SheetHeader>
+      <div className="grid gap-4 py-4 px-6">
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="sheet-name" className="text-right">Name</Label>
+          <Input id="sheet-name" defaultValue="Pedro Duarte" className="col-span-3" />
+        </div>
+      </div>
+      <SheetFooter>
+        <SheetClose asChild>
+          <Button type="submit">Save changes</Button>
+        </SheetClose>
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/sheet.tsx
+"use client"
+
+import * as React from "react"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import { XIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const Sheet = DialogPrimitive.Root
+const SheetTrigger = DialogPrimitive.Trigger
+const SheetClose = DialogPrimitive.Close
+const SheetPortal = DialogPrimitive.Portal
+
+function SheetOverlay({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
+  return (
+    <DialogPrimitive.Overlay
+      className={cn(
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+const sheetSideVariants = {
+  top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+  bottom: "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+  left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+  right: "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+}
+
+interface SheetContentProps extends React.ComponentProps<typeof DialogPrimitive.Content> {
+  side?: "top" | "right" | "bottom" | "left"
+}
+
+function SheetContent({ side = "right", className, children, ...props }: SheetContentProps) {
+  return (
+    <SheetPortal>
+      <SheetOverlay />
+      <DialogPrimitive.Content
+        className={cn(
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg duration-300",
+          sheetSideVariants[side],
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <DialogPrimitive.Close className="absolute top-4 right-4 rounded-xs opacity-70 hover:opacity-100">
+          <XIcon className="size-4" />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close>
+      </DialogPrimitive.Content>
+    </SheetPortal>
+  )
+}
+
+function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("flex flex-col gap-1.5 p-6", className)} {...props} />
+}
+
+function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("mt-auto flex flex-col gap-2 p-6", className)} {...props} />
+}
+
+function SheetTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
+  return <DialogPrimitive.Title className={cn("text-lg leading-none font-semibold", className)} {...props} />
+}
+
+function SheetDescription({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Description>) {
+  return <DialogPrimitive.Description className={cn("text-muted-foreground text-sm", className)} {...props} />
+}
+
+export {
+  Sheet, SheetClose, SheetContent, SheetDescription,
+  SheetFooter, SheetHeader, SheetTitle, SheetTrigger,
+}
+```
+
+## Usage
+
+```tsx
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+```
+
+```tsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Title</SheetTitle>
+      <SheetDescription>Description</SheetDescription>
+    </SheetHeader>
+    <SheetFooter>
+      <SheetClose asChild>
+        <Button>Save</Button>
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+## Examples
+
+### Side: right (default)
+
+<ComponentPreview>
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Open right</Button>
+    </SheetTrigger>
+    <SheetContent side="right">
+      <SheetHeader>
+        <SheetTitle>Right panel</SheetTitle>
+        <SheetDescription>Slides in from the right edge.</SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</ComponentPreview>
+
+```tsx
+<SheetContent side="right">...</SheetContent>
+```
+
+### Side: left
+
+<ComponentPreview>
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Open left</Button>
+    </SheetTrigger>
+    <SheetContent side="left">
+      <SheetHeader>
+        <SheetTitle>Left panel</SheetTitle>
+        <SheetDescription>Slides in from the left edge.</SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</ComponentPreview>
+
+```tsx
+<SheetContent side="left">...</SheetContent>
+```
+
+### Side: top
+
+<ComponentPreview>
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Open top</Button>
+    </SheetTrigger>
+    <SheetContent side="top">
+      <SheetHeader>
+        <SheetTitle>Top panel</SheetTitle>
+        <SheetDescription>Slides in from the top edge.</SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</ComponentPreview>
+
+```tsx
+<SheetContent side="top">...</SheetContent>
+```
+
+### Side: bottom
+
+<ComponentPreview>
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button variant="outline">Open bottom</Button>
+    </SheetTrigger>
+    <SheetContent side="bottom">
+      <SheetHeader>
+        <SheetTitle>Bottom panel</SheetTitle>
+        <SheetDescription>Slides in from the bottom edge.</SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+</ComponentPreview>
+
+```tsx
+<SheetContent side="bottom">...</SheetContent>
+```
+
+## API Reference
+
+### Sheet
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state. |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled). |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes. |
+| `modal` | `boolean` | `true` | Whether to render as a modal (blocks background interaction). |
+
+### SheetContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | The edge from which the sheet slides in. |
+| `className` | `string` | — | Additional classes for the content panel. |
+| `onOpenAutoFocus` | `(e: Event) => void` | — | Override focus behavior on open. |
+| `onCloseAutoFocus` | `(e: Event) => void` | — | Override focus behavior on close. |
+| `onEscapeKeyDown` | `(e: KeyboardEvent) => void` | — | Handle Escape key. |
+| `onPointerDownOutside` | `(e: PointerEvent) => void` | — | Handle click outside. |
+
+### SheetTrigger
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `asChild` | `boolean` | Merge props onto child element instead of rendering a `<button>`. |
+
+### SheetClose
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `asChild` | `boolean` | Merge props onto child element instead of rendering a `<button>`. |

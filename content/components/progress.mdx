@@ -1,0 +1,84 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task.
+section: Feedback
+---
+
+import { Progress } from '@/components/ui/progress'
+import { ComponentPreview } from '@/components/component-preview'
+
+<ComponentPreview>
+  <Progress value={60} className="w-64" />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npm install @radix-ui/react-progress
+```
+
+Copy and paste the following code into your project:
+
+```tsx
+"use client"
+import * as React from "react"
+import * as ProgressPrimitive from "@radix-ui/react-progress"
+import { cn } from "@/lib/utils"
+
+function Progress({ className, value, ...props }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+  return (
+    <ProgressPrimitive.Root
+      data-slot="progress"
+      className={cn("bg-secondary relative h-2 w-full overflow-hidden rounded-full", className)}
+      {...props}
+    >
+      <ProgressPrimitive.Indicator
+        className="bg-primary h-full w-full flex-1 transition-all"
+        style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}
+      />
+    </ProgressPrimitive.Root>
+  )
+}
+export { Progress }
+```
+
+## Usage
+
+```tsx
+import { Progress } from '@/components/ui/progress'
+```
+
+```tsx
+<Progress value={60} className="w-64" />
+```
+
+### Values
+
+Display progress at different completion stages:
+
+```tsx
+<div className="flex flex-col gap-4 w-64">
+  <Progress value={0} />
+  <Progress value={33} />
+  <Progress value={66} />
+  <Progress value={100} />
+</div>
+```
+
+### Indeterminate
+
+Omit the `value` prop to show an indeterminate state:
+
+```tsx
+<Progress className="w-64" />
+```
+
+## API Reference
+
+### Progress
+
+| Prop        | Type     | Default | Description                          |
+| ----------- | -------- | ------- | ------------------------------------ |
+| `value`     | `number` | —       | The current progress value (0–100).  |
+| `max`       | `number` | `100`   | The maximum progress value.          |
+| `className` | `string` | —       | Additional CSS classes to apply.     |

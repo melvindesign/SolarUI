@@ -1,0 +1,258 @@
+---
+title: Table
+description: A responsive table component for displaying structured data.
+---
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Table
+
+A responsive table component for displaying structured data.
+
+<ComponentPreview>
+  <Table>
+    <TableCaption>A list of recent invoices.</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Invoice</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead>Method</TableHead>
+        <TableHead className="text-right">Amount</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell className="font-medium">INV001</TableCell>
+        <TableCell>Paid</TableCell>
+        <TableCell>Credit Card</TableCell>
+        <TableCell className="text-right">$250.00</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">INV002</TableCell>
+        <TableCell>Pending</TableCell>
+        <TableCell>PayPal</TableCell>
+        <TableCell className="text-right">$150.00</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">INV003</TableCell>
+        <TableCell>Unpaid</TableCell>
+        <TableCell>Bank Transfer</TableCell>
+        <TableCell className="text-right">$350.00</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ComponentPreview>
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```tsx
+// components/ui/table.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Table({ className, ...props }: React.ComponentProps<"table">) {
+  return (
+    <div data-slot="table-container" className="relative w-full overflow-x-auto">
+      <table
+        data-slot="table"
+        className={cn("w-full caption-bottom text-sm", className)}
+        {...props}
+      />
+    </div>
+  )
+}
+
+function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+  return (
+    <thead
+      data-slot="table-header"
+      className={cn("[&_tr]:border-b", className)}
+      {...props}
+    />
+  )
+}
+
+function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+  return (
+    <tbody
+      data-slot="table-body"
+      className={cn("[&_tr:last-child]:border-0", className)}
+      {...props}
+    />
+  )
+}
+
+function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
+  return (
+    <tfoot
+      data-slot="table-footer"
+      className={cn("bg-muted/50 border-t font-medium [&>tr]:last:border-b-0", className)}
+      {...props}
+    />
+  )
+}
+
+function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+  return (
+    <tr
+      data-slot="table-row"
+      className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors", className)}
+      {...props}
+    />
+  )
+}
+
+function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+  return (
+    <th
+      data-slot="table-head"
+      className={cn(
+        "text-muted-foreground h-10 px-4 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+  return (
+    <td
+      data-slot="table-cell"
+      className={cn(
+        "p-4 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+  return (
+    <caption
+      data-slot="table-caption"
+      className={cn("text-muted-foreground mt-4 text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Table, TableHeader, TableBody, TableFooter,
+  TableHead, TableRow, TableCell, TableCaption,
+}
+```
+
+## Usage
+
+```tsx
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+```
+
+```tsx
+<Table>
+  <TableCaption>A list of recent invoices.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Invoice</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">INV001</TableCell>
+      <TableCell>Paid</TableCell>
+      <TableCell className="text-right">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Examples
+
+### With footer
+
+<ComponentPreview>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Method</TableHead>
+        <TableHead className="text-right">Amount</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Credit Card</TableCell>
+        <TableCell className="text-right">$250.00</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>PayPal</TableCell>
+        <TableCell className="text-right">$150.00</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ComponentPreview>
+
+```tsx
+import {
+  Table, TableBody, TableCell, TableFooter,
+  TableHead, TableHeader, TableRow,
+} from "@/components/ui/table"
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Method</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Credit Card</TableCell>
+      <TableCell className="text-right">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell>Total</TableCell>
+      <TableCell className="text-right">$400.00</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>
+```
+
+## API Reference
+
+All table components extend their native HTML element props and accept a `className` for additional styling. There are no Radix UI dependencies.
+
+| Component | Element | Description |
+|-----------|---------|-------------|
+| `Table` | `<table>` | Root container, wrapped in a scrollable `<div>`. |
+| `TableHeader` | `<thead>` | Header section; adds a bottom border to its rows. |
+| `TableBody` | `<tbody>` | Body section; removes the bottom border from the last row. |
+| `TableFooter` | `<tfoot>` | Footer section with a muted background. |
+| `TableRow` | `<tr>` | A table row with a hover state and bottom border. |
+| `TableHead` | `<th>` | A header cell; muted text, `h-10`, `px-4`, medium weight. |
+| `TableCell` | `<td>` | A data cell; `p-4`, vertically centered. |
+| `TableCaption` | `<caption>` | A caption rendered below the table in muted text. |

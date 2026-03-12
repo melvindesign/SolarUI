@@ -1,0 +1,111 @@
+---
+title: Radio Group
+description: A set of checkable buttons where only one can be checked at a time.
+---
+
+import { Label } from '@/components/ui/label'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Radio Group
+
+A set of checkable buttons where only one can be checked at a time.
+
+<ComponentPreview>
+  <RadioGroup defaultValue="comfortable">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="default" id="r1" />
+      <Label htmlFor="r1">Default</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="comfortable" id="r2" />
+      <Label htmlFor="r2">Comfortable</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="compact" id="r3" />
+      <Label htmlFor="r3">Compact</Label>
+    </div>
+  </RadioGroup>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-radio-group
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/radio-group.tsx
+"use client"
+
+import * as React from "react"
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import { CircleIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+function RadioGroup({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
+  return <RadioGroupPrimitive.Root className={cn("grid gap-3", className)} {...props} />
+}
+
+function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
+  return (
+    <RadioGroupPrimitive.Item
+      className={cn(
+        "border-input text-primary focus-visible:ring-ring aspect-square size-4 rounded-full border shadow-xs outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )}
+      {...props}
+    >
+      <RadioGroupPrimitive.Indicator className="relative flex items-center justify-center">
+        <CircleIcon className="fill-primary size-2.5" />
+      </RadioGroupPrimitive.Indicator>
+    </RadioGroupPrimitive.Item>
+  )
+}
+
+export { RadioGroup, RadioGroupItem }
+```
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-one" id="option-one" />
+    <Label htmlFor="option-one">Option One</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-two" id="option-two" />
+    <Label htmlFor="option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```
+
+## API Reference
+
+### RadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled value of the selected item. |
+| `defaultValue` | `string` | — | Initial value of the selected item (uncontrolled). |
+| `onValueChange` | `(value: string) => void` | — | Callback when the selected value changes. |
+| `disabled` | `boolean` | `false` | When `true`, prevents interaction with all items in the group. |
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` | The orientation of the group, affects keyboard navigation. |
+
+### RadioGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | The value this item represents in the group. |
+| `disabled` | `boolean` | `false` | When `true`, prevents interaction with this specific item. |
+| `className` | `string` | — | Additional CSS classes to merge. |

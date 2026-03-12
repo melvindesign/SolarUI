@@ -1,0 +1,182 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from — triggered by a button.
+---
+
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Select
+
+Displays a list of options for the user to pick from — triggered by a button.
+
+<ComponentPreview>
+  <Select>
+    <SelectTrigger className="w-48">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</ComponentPreview>
+
+## Installation
+
+**1. Install the following dependency:**
+
+```bash
+npm install @radix-ui/react-select
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/select.tsx
+"use client"
+
+import * as React from "react"
+import * as SelectPrimitive from "@radix-ui/react-select"
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+// SelectTrigger shows value + chevron icon
+// SelectContent wraps viewport with scroll up/down buttons
+// SelectItem shows checkmark on selected
+```
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx
+<Select>
+  <SelectTrigger className="w-48">
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Options</SelectLabel>
+      <SelectItem value="option-1">Option 1</SelectItem>
+      <SelectItem value="option-2">Option 2</SelectItem>
+      <SelectItem value="option-3">Option 3</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+## Examples
+
+### With separator
+
+<ComponentPreview>
+  <Select>
+    <SelectTrigger className="w-48">
+      <SelectValue placeholder="Select a timezone" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>North America</SelectLabel>
+        <SelectItem value="est">Eastern Time (ET)</SelectItem>
+        <SelectItem value="cst">Central Time (CT)</SelectItem>
+        <SelectItem value="mst">Mountain Time (MT)</SelectItem>
+        <SelectItem value="pst">Pacific Time (PT)</SelectItem>
+      </SelectGroup>
+      <SelectSeparator />
+      <SelectGroup>
+        <SelectLabel>Europe</SelectLabel>
+        <SelectItem value="gmt">Greenwich Mean Time (GMT)</SelectItem>
+        <SelectItem value="cet">Central European Time (CET)</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</ComponentPreview>
+
+```tsx
+<Select>
+  <SelectTrigger className="w-48">
+    <SelectValue placeholder="Select a timezone" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>North America</SelectLabel>
+      <SelectItem value="est">Eastern Time (ET)</SelectItem>
+      <SelectItem value="cst">Central Time (CT)</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Europe</SelectLabel>
+      <SelectItem value="gmt">Greenwich Mean Time (GMT)</SelectItem>
+      <SelectItem value="cet">Central European Time (CET)</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+### Disabled
+
+<ComponentPreview>
+  <Select disabled>
+    <SelectTrigger className="w-48">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+    </SelectContent>
+  </Select>
+</ComponentPreview>
+
+```tsx
+<Select disabled>
+  <SelectTrigger className="w-48">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## API Reference
+
+### Select
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled value of the selected item. |
+| `defaultValue` | `string` | — | Initial value of the selected item (uncontrolled). |
+| `onValueChange` | `(value: string) => void` | — | Callback when the selected value changes. |
+| `disabled` | `boolean` | `false` | When `true`, prevents interaction with the select. |
+| `open` | `boolean` | — | Controlled open state of the dropdown. |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when the open state changes. |
+
+### SelectTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `disabled` | `boolean` | `false` | When `true`, prevents the trigger from opening the dropdown. |
+| `className` | `string` | — | Additional CSS classes to merge. |
+
+### SelectContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `position` | `"popper" \| "item-aligned"` | `"popper"` | How the content is positioned relative to the trigger. |
+| `className` | `string` | — | Additional CSS classes to merge. |

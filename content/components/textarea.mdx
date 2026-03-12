@@ -1,0 +1,108 @@
+---
+title: Textarea
+description: A multi-line text input control.
+---
+
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Textarea
+
+A multi-line text input control.
+
+<ComponentPreview>
+  <Textarea placeholder="Type your message here." className="w-64" />
+</ComponentPreview>
+
+## Installation
+
+**Copy and paste the following code into your project:**
+
+```tsx
+// components/ui/textarea.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+  return (
+    <textarea
+      className={cn(
+        "border-input placeholder:text-muted-foreground focus-visible:ring-ring/50 flex min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Textarea }
+```
+
+## Usage
+
+```tsx
+import { Textarea } from "@/components/ui/textarea"
+```
+
+```tsx
+<Textarea placeholder="Type your message here." />
+```
+
+## Examples
+
+### Disabled
+
+<ComponentPreview>
+  <Textarea placeholder="Disabled textarea" className="w-64" disabled />
+</ComponentPreview>
+
+```tsx
+<Textarea placeholder="Disabled textarea" disabled />
+```
+
+### With label
+
+<ComponentPreview>
+  <div className="grid w-64 gap-1.5">
+    <Label htmlFor="message">Your message</Label>
+    <Textarea id="message" placeholder="Type your message here." />
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="grid w-64 gap-1.5">
+  <Label htmlFor="message">Your message</Label>
+  <Textarea id="message" placeholder="Type your message here." />
+</div>
+```
+
+### With button
+
+<ComponentPreview>
+  <div className="flex w-64 flex-col gap-2">
+    <Textarea placeholder="Type your message here." />
+    <Button>Send message</Button>
+  </div>
+</ComponentPreview>
+
+```tsx
+<div className="flex w-64 flex-col gap-2">
+  <Textarea placeholder="Type your message here." />
+  <Button>Send message</Button>
+</div>
+```
+
+## API Reference
+
+### Textarea
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | `string` | — | Placeholder text shown when the field is empty. |
+| `disabled` | `boolean` | `false` | When `true`, prevents user interaction and applies reduced opacity. |
+| `rows` | `number` | — | Number of visible text rows. |
+| `className` | `string` | — | Additional CSS classes to merge. |
+
+The `Textarea` component accepts all standard HTML `<textarea>` attributes.
