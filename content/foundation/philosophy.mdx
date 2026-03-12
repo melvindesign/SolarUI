@@ -1,0 +1,55 @@
+---
+title: Philosophy
+description: The design principles and rules behind SolarUI.
+---
+
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { DoAndDont, Do, Dont } from '@/components/do-and-dont'
+
+# Philosophy
+
+SolarUI is built on a set of intentional design rules. These rules aren't conventions for their own sake — each one solves a real visual or interaction problem. This page documents them so the system stays coherent as it grows.
+
+---
+
+## Rule #1 — Controls share a single height
+
+Buttons and inputs must always have the same height. When a button sits next to an input, they form a single visual unit. If their heights differ, that unit breaks — the eye reads two separate elements instead of one composed control.
+
+<DoAndDont>
+  <Do label="Do — same height">
+    <div className="flex w-full max-w-xs gap-2">
+      <Input placeholder="Email address" />
+      <Button>Subscribe</Button>
+    </div>
+  </Do>
+  <Dont label="Don't — mismatched heights">
+    <div className="flex w-full max-w-xs items-center gap-2">
+      <input
+        placeholder="Email address"
+        className="flex h-10 w-full rounded-md border border-(--color-input) bg-(--color-background) px-3 text-sm"
+      />
+      <button className="inline-flex h-6 shrink-0 items-center rounded-lg bg-(--color-primary) px-2.5 text-xs font-medium text-(--color-primary-foreground)">
+        Subscribe
+      </button>
+    </div>
+  </Dont>
+</DoAndDont>
+
+This is enforced at the token level. Both `Button` (default size) and `Input` use the same `h-control` class, which maps to the `--height-control` CSS variable. Changing one automatically changes both.
+
+```css
+/* globals.css */
+--height-control: 2.25rem; /* 36px */
+```
+
+```tsx
+// button.tsx  →  size default
+"h-control gap-1.5 px-2.5 ..."
+
+// input.tsx
+"flex h-control w-full ..."
+```
+
+This also applies across sizes: a small button (`size="sm"`) paired with a small input should share the same height token for that size tier.

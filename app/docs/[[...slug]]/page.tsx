@@ -1,5 +1,5 @@
-import { generateStaticParamsFor, importPage } from 'nextra/pages'
 import { useMDXComponents } from 'nextra-theme-docs'
+import { generateStaticParamsFor, importPage } from 'nextra/pages'
 
 export const generateStaticParams = generateStaticParamsFor('slug')
 

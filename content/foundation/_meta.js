@@ -1,4 +1,5 @@
 export default {
   colors: 'Colors',
-  typography: 'Typography'
+  typography: 'Typography',
+  philosophy: 'Philosophy'
 }
