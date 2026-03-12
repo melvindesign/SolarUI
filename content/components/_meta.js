@@ -15,6 +15,7 @@ export default {
   'aspect-ratio': 'Aspect Ratio',
   avatar: 'Avatar',
   calendar: 'Calendar',
+  carousel: 'Carousel',
   '-- feedback': { type: 'separator', title: 'Feedback' },
   alert: 'Alert',
   'alert-dialog': 'Alert Dialog',
