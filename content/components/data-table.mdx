@@ -1,0 +1,328 @@
+---
+title: Data Table
+description: A powerful table with sorting, filtering, and pagination built on TanStack Table.
+---
+
+import { DataTableDemo } from '@/components/data/data-table-demo'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Data Table
+
+A powerful table with sorting, filtering, and pagination built on [TanStack Table](https://tanstack.com/table).
+
+<ComponentPreview>
+  <DataTableDemo />
+</ComponentPreview>
+
+## Installation
+
+**1. Install the dependency:**
+
+```bash
+npm install @tanstack/react-table
+```
+
+**2. Copy `components/ui/table.tsx` into your project:**
+
+```tsx
+// components/ui/table.tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Table({ className, ...props }: React.ComponentProps<"table">) {
+  return (
+    <div className="relative w-full overflow-auto">
+      <table className={cn("w-full caption-bottom text-sm", className)} {...props} />
+    </div>
+  )
+}
+
+function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+  return <thead className={cn("[&_tr]:border-b", className)} {...props} />
+}
+
+function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+  return <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
+}
+
+function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+  return (
+    <tr
+      className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors", className)}
+      {...props}
+    />
+  )
+}
+
+function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+  return (
+    <th
+      className={cn("text-muted-foreground h-10 px-4 text-left align-middle font-medium whitespace-nowrap", className)}
+      {...props}
+    />
+  )
+}
+
+function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+  return <td className={cn("px-4 py-2 align-middle", className)} {...props} />
+}
+
+function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
+  return <tfoot className={cn("bg-muted/50 border-t font-medium", className)} {...props} />
+}
+
+function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+  return <caption className={cn("text-muted-foreground mt-4 text-sm", className)} {...props} />
+}
+
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption }
+```
+
+## Usage
+
+The Data Table is a composition pattern. Create your column definitions, then pass `data` and `columns` to `useReactTable`.
+
+**1. Define your columns:**
+
+```tsx
+// columns.tsx
+"use client"
+
+import { type ColumnDef } from "@tanstack/react-table"
+import { Button } from "@/components/ui/button"
+import { ArrowUpDown } from "lucide-react"
+
+export type Payment = {
+  id: string
+  amount: number
+  status: "pending" | "processing" | "success" | "failed"
+  email: string
+}
+
+export const columns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "email",
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Email
+        <ArrowUpDown className="ml-2 size-4" />
+      </Button>
+    ),
+  },
+  {
+    accessorKey: "amount",
+    header: () => <div className="text-right">Amount</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("amount"))
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount)
+      return <div className="text-right font-medium">{formatted}</div>
+    },
+  },
+]
+```
+
+**2. Build the table component:**
+
+```tsx
+// data-table.tsx
+"use client"
+
+import * as React from "react"
+import {
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
+}
+
+export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+
+  const table = useReactTable({
+    data,
+    columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state: { sorting, columnFilters },
+  })
+
+  return (
+    <div>
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter emails…"
+          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          onChange={(e) => table.getColumn("email")?.setFilterValue(e.target.value)}
+          className="max-w-sm"
+        />
+      </div>
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((hg) => (
+              <TableRow key={hg.id}>
+                {hg.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="h-24 text-center">
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="flex items-center justify-end gap-2 py-4">
+        <Button variant="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+          Previous
+        </Button>
+        <Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+          Next
+        </Button>
+      </div>
+    </div>
+  )
+}
+```
+
+**3. Render it:**
+
+```tsx
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
+
+export default function Page() {
+  const data = await fetchPayments() // your data source
+  return <DataTable columns={columns} data={data} />
+}
+```
+
+## Features
+
+### Sorting
+
+Add `getSortedRowModel` and `onSortingChange` to `useReactTable`, then use `column.toggleSorting()` in the header:
+
+```tsx
+header: ({ column }) => (
+  <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+    Email <ArrowUpDown className="ml-2 size-4" />
+  </Button>
+),
+```
+
+### Filtering
+
+Add `getFilteredRowModel` and `onColumnFiltersChange`, then bind an input to `column.setFilterValue`:
+
+```tsx
+<Input
+  placeholder="Filter emails…"
+  value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+  onChange={(e) => table.getColumn("email")?.setFilterValue(e.target.value)}
+/>
+```
+
+### Pagination
+
+Add `getPaginationRowModel` and wire Previous / Next buttons:
+
+```tsx
+<Button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>Previous</Button>
+<Button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>Next</Button>
+```
+
+Default page size is `10`. Override with `initialState: { pagination: { pageSize: 20 } }`.
+
+### Row selection
+
+Add a checkbox column and `onRowSelectionChange` state:
+
+```tsx
+{
+  id: "select",
+  header: ({ table }) => (
+    <Checkbox
+      checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
+      onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+    />
+  ),
+  cell: ({ row }) => (
+    <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} />
+  ),
+}
+```
+
+## API Reference
+
+### `useReactTable` options
+
+| Option | Description |
+|--------|-------------|
+| `getCoreRowModel` | Required. Core row model. |
+| `getPaginationRowModel` | Enables pagination. |
+| `getSortedRowModel` | Enables column sorting. |
+| `getFilteredRowModel` | Enables column/global filtering. |
+| `onSortingChange` | State setter for sorting. |
+| `onColumnFiltersChange` | State setter for column filters. |
+| `onRowSelectionChange` | State setter for row selection. |
+| `onColumnVisibilityChange` | State setter for column visibility. |
+
+### `ColumnDef` helpers
+
+| Property | Description |
+|----------|-------------|
+| `accessorKey` | Key on the data object. |
+| `header` | String or render function. Receives `column` in context. |
+| `cell` | Render function. Receives `row` and `getValue` in context. |
+| `enableSorting` | Set to `false` to disable sorting on a column. |
+| `enableHiding` | Set to `false` to prevent column from being hidden. |
