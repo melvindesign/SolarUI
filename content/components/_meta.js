@@ -5,6 +5,7 @@ export default {
   '-- form': { type: 'separator', title: 'Form' },
   input: 'Input',
   checkbox: 'Checkbox',
+  combobox: 'Combobox',
   field: 'Field',
   '-- layout': { type: 'separator', title: 'Layout' },
   accordion: 'Accordion',
