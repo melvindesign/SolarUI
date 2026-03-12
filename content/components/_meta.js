@@ -6,6 +6,7 @@ export default {
   input: 'Input',
   checkbox: 'Checkbox',
   combobox: 'Combobox',
+  'date-picker': 'Date Picker',
   field: 'Field',
   '-- layout': { type: 'separator', title: 'Layout' },
   accordion: 'Accordion',
