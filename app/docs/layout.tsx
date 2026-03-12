@@ -1,7 +1,7 @@
-import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+import { Layout, Navbar } from 'nextra-theme-docs'
+import 'nextra-theme-docs/style.css'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
-import 'nextra-theme-docs/style.css'
 import '../globals.css'
 import '../sidebar.css'
 
@@ -9,12 +9,6 @@ const navbar = (
   <Navbar
     logo={<span style={{ fontWeight: 700, fontSize: '1.1rem' }}>☀️ SolarUI</span>}
   />
-)
-
-const footer = (
-  <Footer>
-    MIT {new Date().getFullYear()} © SolarUI.
-  </Footer>
 )
 
 export default async function DocsLayout({
@@ -30,7 +24,7 @@ export default async function DocsLayout({
           navbar={navbar}
           pageMap={await getPageMap('/docs')}
           docsRepositoryBase="https://github.com/your-org/solar-ui"
-          footer={footer}
+          footer={<></>}
         >
           {children}
         </Layout>

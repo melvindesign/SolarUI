@@ -133,4 +133,9 @@
     background-color: var(--color-default-1);
     color: var(--color-default-12);
   }
+
+    button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
