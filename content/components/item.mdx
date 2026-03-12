@@ -1,0 +1,254 @@
+---
+title: Item
+description: A flexible composable component for displaying structured content — lists, cards, or media-rich rows.
+---
+
+import { HomeIcon, BellIcon, SettingsIcon, UserIcon, FileIcon } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from '@/components/ui/item'
+import { ComponentPreview } from '@/components/component-preview'
+
+# Item
+
+A flexible composable component for displaying structured content such as list rows, settings entries, or media-rich cards.
+
+<ComponentPreview>
+  <ItemGroup className="w-full max-w-sm divide-y">
+    <Item>
+      <ItemMedia variant="icon"><HomeIcon /></ItemMedia>
+      <ItemContent>
+        <ItemTitle>Dashboard</ItemTitle>
+        <ItemDescription>Overview of your account and activity.</ItemDescription>
+      </ItemContent>
+    </Item>
+    <Item>
+      <ItemMedia variant="icon"><BellIcon /></ItemMedia>
+      <ItemContent>
+        <ItemTitle>Notifications</ItemTitle>
+        <ItemDescription>Manage your notification preferences.</ItemDescription>
+      </ItemContent>
+      <ItemActions>
+        <Badge>3</Badge>
+      </ItemActions>
+    </Item>
+    <Item>
+      <ItemMedia variant="icon"><SettingsIcon /></ItemMedia>
+      <ItemContent>
+        <ItemTitle>Settings</ItemTitle>
+        <ItemDescription>Configure your workspace settings.</ItemDescription>
+      </ItemContent>
+    </Item>
+  </ItemGroup>
+</ComponentPreview>
+
+## Installation
+
+No dependencies required — copy and paste the following code into your project:
+
+```tsx
+// components/ui/item.tsx
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cn } from "@/lib/utils"
+
+function Item({
+  className,
+  asChild,
+  ...props
+}: React.ComponentProps<"div"> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot : "div"
+  return (
+    <Comp
+      data-slot="item"
+      className={cn("flex items-center gap-3 py-2", className)}
+      {...props}
+    />
+  )
+}
+
+function ItemMedia({
+  className,
+  variant = "icon",
+  ...props
+}: React.ComponentProps<"div"> & { variant?: "icon" | "image" | "avatar" }) {
+  return (
+    <div
+      data-slot="item-media"
+      data-variant={variant}
+      className={cn(
+        "flex shrink-0 items-center justify-center",
+        variant === "icon" &&
+          "bg-muted text-muted-foreground size-9 rounded-md [&_svg]:size-4 [&_svg]:shrink-0",
+        variant === "avatar" && "size-9 overflow-hidden rounded-full",
+        variant === "image" && "size-12 overflow-hidden rounded-md",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-content"
+      className={cn("flex min-w-0 flex-1 flex-col gap-0.5", className)}
+      {...props}
+    />
+  )
+}
+
+function ItemTitle({ className, ...props }: React.ComponentProps<"p">) {
+  return (
+    <p
+      data-slot="item-title"
+      className={cn("truncate text-sm font-medium leading-none", className)}
+      {...props}
+    />
+  )
+}
+
+function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
+  return (
+    <p
+      data-slot="item-description"
+      className={cn("text-muted-foreground truncate text-xs", className)}
+      {...props}
+    />
+  )
+}
+
+function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-actions"
+      className={cn("ml-auto flex shrink-0 items-center gap-2", className)}
+      {...props}
+    />
+  )
+}
+
+function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-group"
+      className={cn("flex flex-col", className)}
+      {...props}
+    />
+  )
+}
+
+export { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle }
+```
+
+## Usage
+
+```tsx
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item"
+```
+
+```tsx
+<Item>
+  <ItemMedia variant="icon">
+    <HomeIcon />
+  </ItemMedia>
+  <ItemContent>
+    <ItemTitle>Dashboard</ItemTitle>
+    <ItemDescription>Overview of your account and activity.</ItemDescription>
+  </ItemContent>
+</Item>
+```
+
+## Examples
+
+### With avatar
+
+<ComponentPreview>
+  <ItemGroup className="w-full max-w-sm divide-y">
+    <Item>
+      <ItemMedia variant="avatar">
+        <Avatar className="size-9">
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>SC</AvatarFallback>
+        </Avatar>
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>shadcn</ItemTitle>
+        <ItemDescription>shadcn@example.com</ItemDescription>
+      </ItemContent>
+      <ItemActions>
+        <Button size="sm" variant="outline">Follow</Button>
+      </ItemActions>
+    </Item>
+    <Item>
+      <ItemMedia variant="avatar">
+        <Avatar className="size-9">
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Jane Doe</ItemTitle>
+        <ItemDescription>jane@example.com</ItemDescription>
+      </ItemContent>
+      <ItemActions>
+        <Button size="sm" variant="outline">Follow</Button>
+      </ItemActions>
+    </Item>
+  </ItemGroup>
+</ComponentPreview>
+
+### As a link
+
+```tsx
+<Item asChild>
+  <a href="/dashboard">
+    <ItemMedia variant="icon">
+      <HomeIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Dashboard</ItemTitle>
+      <ItemDescription>Overview of your account.</ItemDescription>
+    </ItemContent>
+  </a>
+</Item>
+```
+
+## API Reference
+
+### Item
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Merge props onto child element (e.g. `<a>`) instead of rendering a `<div>`. |
+| `className` | `string` | — | Additional classes. |
+
+### ItemMedia
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"icon" \| "image" \| "avatar"` | `"icon"` | `"icon"` — muted rounded square; `"avatar"` — circle; `"image"` — larger rounded rectangle. |
+
+### ItemActions
+
+Wraps actions (buttons, badges, etc.) and aligns them to the right with `ml-auto`.
+
+### ItemGroup
+
+Wraps multiple `Item` components in a `flex-col` container. Add `divide-y` for visual separation.
