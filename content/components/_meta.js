@@ -13,6 +13,7 @@ export default {
   card: 'Card',
   collapsible: 'Collapsible',
   command: 'Command',
+  dialog: 'Dialog',
   separator: 'Separator',
   '-- text': { type: 'separator', title: 'Text' },
   label: 'Label',
