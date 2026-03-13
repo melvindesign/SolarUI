@@ -6,44 +6,16 @@ section: Feedback
 
 import { ComponentPreview } from '@/components/component-preview'
 import { SonnerDemo } from '@/components/demos/sonner-demo'
+import { Tabs } from 'nextra/components'
+
 
 <ComponentPreview>
   <SonnerDemo />
 </ComponentPreview>
 
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-## Installation
-
-```bash
-npm install sonner
-```
-
-Copy and paste the following code into your project:
-
-```tsx
-"use client"
-import { Toaster as Sonner, type ToasterProps } from "sonner"
-
-function Toaster({ ...props }: ToasterProps) {
-  return (
-    <Sonner
-      theme="system"
-      className="toaster group"
-      style={
-        {
-          "--normal-bg": "var(--popover)",
-          "--normal-border": "var(--border)",
-          "--normal-text": "var(--popover-foreground)",
-        } as React.CSSProperties
-      }
-      {...props}
-    />
-  )
-}
-export { Toaster }
-```
-
-## Usage
+<Tabs.Tab>
 
 Add `<Toaster />` to your root layout so toasts are available throughout your application:
 
@@ -116,7 +88,52 @@ toast("Event has been created.", {
 })
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/sonner.json
+```
+
+---
+
+### Manual
+
+```bash filename="terminal" copy
+npm install sonner
+```
+
+Copy and paste the following code into your project:
+
+```tsx filename="components/ui/sonner.tsx" copy
+"use client"
+import { Toaster as Sonner, type ToasterProps } from "sonner"
+
+function Toaster({ ...props }: ToasterProps) {
+  return (
+    <Sonner
+      theme="system"
+      className="toaster group"
+      style={
+        {
+          "--normal-bg": "var(--popover)",
+          "--normal-border": "var(--border)",
+          "--normal-text": "var(--popover-foreground)",
+        } as React.CSSProperties
+      }
+      {...props}
+    />
+  )
+}
+export { Toaster }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Toaster
 
@@ -129,3 +146,7 @@ The `Toaster` component accepts all props from [Sonner's `Toaster`](https://sonn
 | `richColors` | `boolean`                                | `false`    | Enable richer colors for variants.   |
 | `expand`   | `boolean`                                  | `false`    | Expand all toasts by default.        |
 | `duration` | `number`                                   | `4000`     | Default duration in milliseconds.    |
+
+</Tabs.Tab>
+
+</Tabs>

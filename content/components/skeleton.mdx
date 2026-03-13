@@ -6,6 +6,8 @@ section: Feedback
 
 import { Skeleton } from '@/components/ui/skeleton'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
+
 
 <ComponentPreview>
   <div className="flex items-center gap-4">
@@ -17,27 +19,9 @@ import { ComponentPreview } from '@/components/component-preview'
   </div>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-No additional dependencies are required. Copy and paste the following code into your project:
-
-```tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
-function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="skeleton"
-      className={cn("bg-accent animate-pulse rounded-md", className)}
-      {...props}
-    />
-  )
-}
-export { Skeleton }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Skeleton } from '@/components/ui/skeleton'
@@ -65,7 +49,41 @@ Compose `Skeleton` components to match the shape of the content that will load:
 </div>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/skeleton.json
+```
+
+---
+
+### Manual
+
+No additional dependencies are required. Copy and paste the following code into your project:
+
+```tsx filename="components/ui/skeleton.tsx" copy
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="skeleton"
+      className={cn("bg-accent animate-pulse rounded-md", className)}
+      {...props}
+    />
+  )
+}
+export { Skeleton }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Skeleton
 
@@ -74,3 +92,7 @@ Compose `Skeleton` components to match the shape of the content that will load:
 | Prop        | Type     | Default | Description                      |
 | ----------- | -------- | ------- | -------------------------------- |
 | `className` | `string` | —       | Additional CSS classes to apply. |
+
+</Tabs.Tab>
+
+</Tabs>

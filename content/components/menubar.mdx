@@ -20,6 +20,7 @@ import {
   MenubarTrigger,
 } from '@/components/ui/menubar'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Menubar
 
@@ -74,18 +75,59 @@ A horizontal menu bar with dropdown menus. Common in desktop-style application l
   </Menubar>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar"
+```
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>New Tab <MenubarShortcut>⌘T</MenubarShortcut></MenubarItem>
+      <MenubarItem>New Window <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem>Print… <MenubarShortcut>⌘P</MenubarShortcut></MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/menubar.json
+```
+
+---
+
+### Manual
 
 **1. Install the dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-menubar
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/menubar.tsx
+```tsx filename="components/ui/menubar.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -218,35 +260,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
-```
-
-```tsx
-<Menubar>
-  <MenubarMenu>
-    <MenubarTrigger>File</MenubarTrigger>
-    <MenubarContent>
-      <MenubarItem>New Tab <MenubarShortcut>⌘T</MenubarShortcut></MenubarItem>
-      <MenubarItem>New Window <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
-      <MenubarSeparator />
-      <MenubarItem>Print… <MenubarShortcut>⌘P</MenubarShortcut></MenubarItem>
-    </MenubarContent>
-  </MenubarMenu>
-</Menubar>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Menubar
 
@@ -287,3 +303,7 @@ The button that opens the dropdown.
 ### MenubarShortcut
 
 A `<span>` that renders keyboard shortcut hints right-aligned inside a menu item.
+
+</Tabs.Tab>
+
+</Tabs>

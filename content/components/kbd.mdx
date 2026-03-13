@@ -5,6 +5,7 @@ description: A component for displaying keyboard keys and key combinations.
 
 import { Kbd, KbdGroup } from '@/components/ui/kbd'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Kbd
 
@@ -24,42 +25,9 @@ A component for displaying keyboard keys and key combinations in tooltips, docum
   </div>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-No dependencies required — copy and paste the following code into your project:
-
-```tsx
-// components/ui/kbd.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
-function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
-  return (
-    <kbd
-      data-slot="kbd"
-      className={cn(
-        "bg-default-3 text-default-11 inline-flex h-5 min-w-5 items-center justify-center rounded border px-1 font-mono text-[0.7rem] font-medium",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function KbdGroup({ className, ...props }: React.ComponentProps<"span">) {
-  return (
-    <span
-      data-slot="kbd-group"
-      className={cn("inline-flex items-center gap-1", className)}
-      {...props}
-    />
-  )
-}
-
-export { Kbd, KbdGroup }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
@@ -121,7 +89,55 @@ import { Kbd, KbdGroup } from "@/components/ui/kbd"
 <p className="text-sm text-default-11">Press <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.</p>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/kbd.json
+```
+
+---
+
+### Manual
+
+No dependencies required — copy and paste the following code into your project:
+
+```tsx filename="components/ui/kbd.tsx" copy
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
+  return (
+    <kbd
+      data-slot="kbd"
+      className={cn(
+        "bg-default-3 text-default-11 inline-flex h-5 min-w-5 items-center justify-center rounded border px-1 font-mono text-[0.7rem] font-medium",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function KbdGroup({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="kbd-group"
+      className={cn("inline-flex items-center gap-1", className)}
+      {...props}
+    />
+  )
+}
+
+export { Kbd, KbdGroup }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Kbd
 
@@ -138,3 +154,7 @@ Wraps multiple `Kbd` elements with consistent spacing for key combinations.
 | Prop | Type | Description |
 |------|------|-------------|
 | `className` | `string` | Additional classes. |
+
+</Tabs.Tab>
+
+</Tabs>

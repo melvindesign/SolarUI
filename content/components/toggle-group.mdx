@@ -6,6 +6,7 @@ description: A set of two-state buttons that can be toggled on or off.
 import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Toggle Group
 
@@ -25,79 +26,9 @@ A set of two-state buttons that can be toggled on or off.
   </ToggleGroup>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the following dependency:**
-
-```bash
-npm install @radix-ui/react-toggle-group
-```
-
-**2. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/toggle-group.tsx
-"use client"
-
-import * as React from "react"
-import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
-import { type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-import { toggleVariants } from "@/components/ui/toggle"
-
-type ToggleGroupContextValue = VariantProps<typeof toggleVariants>
-
-const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({
-  size: "default",
-  variant: "default",
-})
-
-function ToggleGroup({
-  className,
-  variant,
-  size,
-  children,
-  ...props
-}: React.ComponentProps<typeof ToggleGroupPrimitive.Root> & VariantProps<typeof toggleVariants>) {
-  return (
-    <ToggleGroupPrimitive.Root
-      data-slot="toggle-group"
-      className={cn("flex items-center justify-center gap-1", className)}
-      {...props}
-    >
-      <ToggleGroupContext.Provider value={{ variant, size }}>
-        {children}
-      </ToggleGroupContext.Provider>
-    </ToggleGroupPrimitive.Root>
-  )
-}
-
-function ToggleGroupItem({
-  className,
-  variant,
-  size,
-  ...props
-}: React.ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>) {
-  const context = React.useContext(ToggleGroupContext)
-  return (
-    <ToggleGroupPrimitive.Item
-      data-slot="toggle-group-item"
-      className={cn(
-        toggleVariants({
-          variant: variant ?? context.variant,
-          size: size ?? context.size,
-        }),
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-export { ToggleGroup, ToggleGroupItem }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
@@ -199,7 +130,92 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 <ToggleGroup type="single" size="lg">...</ToggleGroup>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/toggle-group.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependency:**
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-toggle-group
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/toggle-group.tsx" copy
+"use client"
+
+import * as React from "react"
+import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
+import { type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+import { toggleVariants } from "@/components/ui/toggle"
+
+type ToggleGroupContextValue = VariantProps<typeof toggleVariants>
+
+const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({
+  size: "default",
+  variant: "default",
+})
+
+function ToggleGroup({
+  className,
+  variant,
+  size,
+  children,
+  ...props
+}: React.ComponentProps<typeof ToggleGroupPrimitive.Root> & VariantProps<typeof toggleVariants>) {
+  return (
+    <ToggleGroupPrimitive.Root
+      data-slot="toggle-group"
+      className={cn("flex items-center justify-center gap-1", className)}
+      {...props}
+    >
+      <ToggleGroupContext.Provider value={{ variant, size }}>
+        {children}
+      </ToggleGroupContext.Provider>
+    </ToggleGroupPrimitive.Root>
+  )
+}
+
+function ToggleGroupItem({
+  className,
+  variant,
+  size,
+  ...props
+}: React.ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>) {
+  const context = React.useContext(ToggleGroupContext)
+  return (
+    <ToggleGroupPrimitive.Item
+      data-slot="toggle-group-item"
+      className={cn(
+        toggleVariants({
+          variant: variant ?? context.variant,
+          size: size ?? context.size,
+        }),
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { ToggleGroup, ToggleGroupItem }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### ToggleGroup
 
@@ -222,3 +238,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 | `variant` | `"default" \| "outline"` | Override the group-level variant for this item. |
 | `size` | `"sm" \| "default" \| "lg"` | Override the group-level size for this item. |
 | `aria-label` | `string` | Accessible label, required when the item contains only an icon. |
+
+</Tabs.Tab>
+
+</Tabs>

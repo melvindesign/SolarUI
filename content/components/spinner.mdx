@@ -6,6 +6,8 @@ section: Feedback
 
 import { Spinner } from '@/components/ui/spinner'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
+
 
 <ComponentPreview>
   <div className="flex items-center gap-6">
@@ -16,11 +18,55 @@ import { ComponentPreview } from '@/components/component-preview'
   </div>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import { Spinner } from '@/components/ui/spinner'
+```
+
+```tsx
+<Spinner />
+```
+
+### Sizes
+
+```tsx
+<div className="flex items-center gap-6">
+  <Spinner size="sm" />
+  <Spinner size="default" />
+  <Spinner size="lg" />
+  <Spinner size="xl" />
+</div>
+```
+
+### Inside a button
+
+```tsx
+<button disabled className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground">
+  <Spinner size="sm" />
+  Loading...
+</button>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/spinner.json
+```
+
+---
+
+### Manual
 
 No additional dependencies are required. Copy and paste the following code into your project:
 
-```tsx
+```tsx filename="components/ui/spinner.tsx" copy
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
@@ -60,37 +106,9 @@ function Spinner({
 export { Spinner, spinnerVariants }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import { Spinner } from '@/components/ui/spinner'
-```
-
-```tsx
-<Spinner />
-```
-
-### Sizes
-
-```tsx
-<div className="flex items-center gap-6">
-  <Spinner size="sm" />
-  <Spinner size="default" />
-  <Spinner size="lg" />
-  <Spinner size="xl" />
-</div>
-```
-
-### Inside a button
-
-```tsx
-<button disabled className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground">
-  <Spinner size="sm" />
-  Loading...
-</button>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Spinner
 
@@ -100,3 +118,7 @@ import { Spinner } from '@/components/ui/spinner'
 | `className` | `string`                                     | —           | Additional CSS classes to apply.            |
 
 All other props are forwarded to the underlying `<span>` element. The component includes a visually hidden `Loading…` label for screen readers via `aria-label` and an `sr-only` span.
+
+</Tabs.Tab>
+
+</Tabs>

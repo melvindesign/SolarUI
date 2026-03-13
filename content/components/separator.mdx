@@ -5,6 +5,7 @@ description: Visually or semantically separates content.
 
 import { Separator } from '@/components/ui/separator'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Separator
 
@@ -18,48 +19,9 @@ Visually or semantically separates content.
   </div>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the following dependency:**
-
-```bash
-npm install @radix-ui/react-separator
-```
-
-**2. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/separator.tsx
-"use client"
-
-import * as React from "react"
-import * as SeparatorPrimitive from "@radix-ui/react-separator"
-import { cn } from "@/lib/utils"
-
-const Separator = React.forwardRef<
-  React.ElementRef<typeof SeparatorPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
->(
-  ({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
-    <SeparatorPrimitive.Root
-      ref={ref}
-      decorative={decorative}
-      orientation={orientation}
-      className={cn(
-        "shrink-0 bg-border",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
-        className
-      )}
-      {...props}
-    />
-  )
-)
-Separator.displayName = SeparatorPrimitive.Root.displayName
-
-export { Separator }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Separator } from "@/components/ui/separator"
@@ -119,7 +81,61 @@ import { Separator } from "@/components/ui/separator"
 </div>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/separator.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependency:**
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-separator
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/separator.tsx" copy
+"use client"
+
+import * as React from "react"
+import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import { cn } from "@/lib/utils"
+
+const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+>(
+  ({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
+    <SeparatorPrimitive.Root
+      ref={ref}
+      decorative={decorative}
+      orientation={orientation}
+      className={cn(
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        className
+      )}
+      {...props}
+    />
+  )
+)
+Separator.displayName = SeparatorPrimitive.Root.displayName
+
+export { Separator }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Separator
 
@@ -128,3 +144,7 @@ import { Separator } from "@/components/ui/separator"
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The axis along which the separator is drawn. |
 | `decorative` | `boolean` | `true` | When `true`, the separator is purely visual and hidden from assistive technologies. |
 | `className` | `string` | — | Additional CSS classes to merge. |
+
+</Tabs.Tab>
+
+</Tabs>

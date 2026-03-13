@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Textarea
 
@@ -16,31 +17,9 @@ A multi-line text input control.
   <Textarea placeholder="Type your message here." className="w-64" />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/textarea.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
-function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
-  return (
-    <textarea
-      className={cn(
-        "border-input placeholder:text-muted-foreground focus-visible:ring-ring/50 flex min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-export { Textarea }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Textarea } from "@/components/ui/textarea"
@@ -94,7 +73,44 @@ import { Textarea } from "@/components/ui/textarea"
 </div>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/textarea.json
+```
+
+---
+
+### Manual
+
+**Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/textarea.tsx" copy
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+  return (
+    <textarea
+      className={cn(
+        "border-input placeholder:text-muted-foreground focus-visible:ring-ring/50 flex min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Textarea }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Textarea
 
@@ -106,3 +122,7 @@ import { Textarea } from "@/components/ui/textarea"
 | `className` | `string` | — | Additional CSS classes to merge. |
 
 The `Textarea` component accepts all standard HTML `<textarea>` attributes.
+
+</Tabs.Tab>
+
+</Tabs>

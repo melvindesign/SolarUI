@@ -5,6 +5,7 @@ description: An autocomplete input combined with a dropdown list, built with Com
 
 import { ComboboxDemo, ComboboxStatusDemo } from '@/components/ui/combobox'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Combobox
 
@@ -14,121 +15,9 @@ An autocomplete input combined with a dropdown list, built with `Command` and `P
   <ComboboxDemo />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the following dependencies:**
-
-```bash
-npm install cmdk @radix-ui/react-popover
-```
-
-**2. Copy `components/ui/command.tsx` and `components/ui/popover.tsx` into your project.**
-
-**`components/ui/popover.tsx`**
-
-```tsx
-"use client"
-
-import * as React from "react"
-import * as PopoverPrimitive from "@radix-ui/react-popover"
-import { cn } from "@/lib/utils"
-
-const Popover = PopoverPrimitive.Root
-const PopoverTrigger = PopoverPrimitive.Trigger
-const PopoverAnchor = PopoverPrimitive.Anchor
-
-function PopoverContent({
-  className,
-  align = "center",
-  sideOffset = 4,
-  ...props
-}: React.ComponentProps<typeof PopoverPrimitive.Content>) {
-  return (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content
-        data-slot="popover-content"
-        align={align}
-        sideOffset={sideOffset}
-        className={cn(
-          "bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-none",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out",
-          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
-          "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-          className
-        )}
-        {...props}
-      />
-    </PopoverPrimitive.Portal>
-  )
-}
-
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
-```
-
-**`components/ui/command.tsx`**
-
-```tsx
-"use client"
-
-import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
-import { Search } from "lucide-react"
-import { cn } from "@/lib/utils"
-
-function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
-  return (
-    <CommandPrimitive
-      data-slot="command"
-      className={cn("bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md", className)}
-      {...props}
-    />
-  )
-}
-
-function CommandInput({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Input>) {
-  return (
-    <div className="flex items-center border-b px-3">
-      <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-      <CommandPrimitive.Input
-        className={cn("placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50", className)}
-        {...props}
-      />
-    </div>
-  )
-}
-
-function CommandList({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.List>) {
-  return <CommandPrimitive.List className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)} {...props} />
-}
-
-function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
-  return <CommandPrimitive.Empty className="py-6 text-center text-sm" {...props} />
-}
-
-function CommandGroup({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Group>) {
-  return (
-    <CommandPrimitive.Group
-      className={cn("text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium", className)}
-      {...props}
-    />
-  )
-}
-
-function CommandItem({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Item>) {
-  return (
-    <CommandPrimitive.Item
-      className={cn("data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:size-4", className)}
-      {...props}
-    />
-  )
-}
-
-export { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -213,7 +102,135 @@ When the list is short enough that filtering isn't needed, omit `CommandInput`.
 </PopoverContent>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/combobox.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependencies:**
+
+```bash filename="terminal" copy
+npm install cmdk @radix-ui/react-popover
+```
+
+**2. Copy `components/ui/command.tsx` and `components/ui/popover.tsx` into your project.**
+
+**`components/ui/popover.tsx`**
+
+```tsx filename="components/ui/combobox.tsx" copy
+"use client"
+
+import * as React from "react"
+import * as PopoverPrimitive from "@radix-ui/react-popover"
+import { cn } from "@/lib/utils"
+
+const Popover = PopoverPrimitive.Root
+const PopoverTrigger = PopoverPrimitive.Trigger
+const PopoverAnchor = PopoverPrimitive.Anchor
+
+function PopoverContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}: React.ComponentProps<typeof PopoverPrimitive.Content>) {
+  return (
+    <PopoverPrimitive.Portal>
+      <PopoverPrimitive.Content
+        data-slot="popover-content"
+        align={align}
+        sideOffset={sideOffset}
+        className={cn(
+          "bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-none",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out",
+          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
+          "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className
+        )}
+        {...props}
+      />
+    </PopoverPrimitive.Portal>
+  )
+}
+
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
+```
+
+**`components/ui/command.tsx`**
+
+```tsx filename="components/ui/combobox.tsx" copy
+"use client"
+
+import * as React from "react"
+import { Command as CommandPrimitive } from "cmdk"
+import { Search } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
+  return (
+    <CommandPrimitive
+      data-slot="command"
+      className={cn("bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md", className)}
+      {...props}
+    />
+  )
+}
+
+function CommandInput({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Input>) {
+  return (
+    <div className="flex items-center border-b px-3">
+      <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+      <CommandPrimitive.Input
+        className={cn("placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50", className)}
+        {...props}
+      />
+    </div>
+  )
+}
+
+function CommandList({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.List>) {
+  return <CommandPrimitive.List className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)} {...props} />
+}
+
+function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+  return <CommandPrimitive.Empty className="py-6 text-center text-sm" {...props} />
+}
+
+function CommandGroup({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Group>) {
+  return (
+    <CommandPrimitive.Group
+      className={cn("text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium", className)}
+      {...props}
+    />
+  )
+}
+
+function CommandItem({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Item>) {
+  return (
+    <CommandPrimitive.Item
+      className={cn("data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:size-4", className)}
+      {...props}
+    />
+  )
+}
+
+export { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 The Combobox is a composition pattern — there is no single `Combobox` component. It is assembled from:
 
@@ -226,3 +243,7 @@ The Combobox is a composition pattern — there is no single `Combobox` componen
 | `CommandEmpty` | Shown when no items match the search query. |
 | `CommandGroup` | Optional group with a heading. |
 | `CommandItem` | Individual selectable option. Use `onSelect` to handle selection. |
+
+</Tabs.Tab>
+
+</Tabs>

@@ -5,6 +5,7 @@ description: A powerful table with sorting, filtering, and pagination built on T
 
 import { DataTableDemo } from '@/components/data/data-table-demo'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Data Table
 
@@ -14,71 +15,9 @@ A powerful table with sorting, filtering, and pagination built on [TanStack Tabl
   <DataTableDemo />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install @tanstack/react-table
-```
-
-**2. Copy `components/ui/table.tsx` into your project:**
-
-```tsx
-// components/ui/table.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
-function Table({ className, ...props }: React.ComponentProps<"table">) {
-  return (
-    <div className="relative w-full overflow-auto">
-      <table className={cn("w-full caption-bottom text-sm", className)} {...props} />
-    </div>
-  )
-}
-
-function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
-  return <thead className={cn("[&_tr]:border-b", className)} {...props} />
-}
-
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
-  return <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
-}
-
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
-  return (
-    <tr
-      className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors", className)}
-      {...props}
-    />
-  )
-}
-
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
-  return (
-    <th
-      className={cn("text-muted-foreground h-10 px-4 text-left align-middle font-medium whitespace-nowrap", className)}
-      {...props}
-    />
-  )
-}
-
-function TableCell({ className, ...props }: React.ComponentProps<"td">) {
-  return <td className={cn("px-4 py-2 align-middle", className)} {...props} />
-}
-
-function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
-  return <tfoot className={cn("bg-muted/50 border-t font-medium", className)} {...props} />
-}
-
-function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
-  return <caption className={cn("text-muted-foreground mt-4 text-sm", className)} {...props} />
-}
-
-export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption }
-```
-
-## Usage
+<Tabs.Tab>
 
 The Data Table is a composition pattern. Create your column definitions, then pass `data` and `columns` to `useReactTable`.
 
@@ -246,63 +185,84 @@ export default function Page() {
 }
 ```
 
-## Features
+</Tabs.Tab>
 
-### Sorting
+<Tabs.Tab>
 
-Add `getSortedRowModel` and `onSortingChange` to `useReactTable`, then use `column.toggleSorting()` in the header:
+### Via CLI
 
-```tsx
-header: ({ column }) => (
-  <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-    Email <ArrowUpDown className="ml-2 size-4" />
-  </Button>
-),
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/data-table.json
 ```
 
-### Filtering
+---
 
-Add `getFilteredRowModel` and `onColumnFiltersChange`, then bind an input to `column.setFilterValue`:
+### Manual
 
-```tsx
-<Input
-  placeholder="Filter emails…"
-  value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-  onChange={(e) => table.getColumn("email")?.setFilterValue(e.target.value)}
-/>
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install @tanstack/react-table
 ```
 
-### Pagination
+**2. Copy `components/ui/table.tsx` into your project:**
 
-Add `getPaginationRowModel` and wire Previous / Next buttons:
+```tsx filename="components/ui/table.tsx" copy
+import * as React from "react"
+import { cn } from "@/lib/utils"
 
-```tsx
-<Button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>Previous</Button>
-<Button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>Next</Button>
-```
-
-Default page size is `10`. Override with `initialState: { pagination: { pageSize: 20 } }`.
-
-### Row selection
-
-Add a checkbox column and `onRowSelectionChange` state:
-
-```tsx
-{
-  id: "select",
-  header: ({ table }) => (
-    <Checkbox
-      checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
-      onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-    />
-  ),
-  cell: ({ row }) => (
-    <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} />
-  ),
+function Table({ className, ...props }: React.ComponentProps<"table">) {
+  return (
+    <div className="relative w-full overflow-auto">
+      <table className={cn("w-full caption-bottom text-sm", className)} {...props} />
+    </div>
+  )
 }
+
+function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
+  return <thead className={cn("[&_tr]:border-b", className)} {...props} />
+}
+
+function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+  return <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
+}
+
+function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+  return (
+    <tr
+      className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors", className)}
+      {...props}
+    />
+  )
+}
+
+function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+  return (
+    <th
+      className={cn("text-muted-foreground h-10 px-4 text-left align-middle font-medium whitespace-nowrap", className)}
+      {...props}
+    />
+  )
+}
+
+function TableCell({ className, ...props }: React.ComponentProps<"td">) {
+  return <td className={cn("px-4 py-2 align-middle", className)} {...props} />
+}
+
+function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
+  return <tfoot className={cn("bg-muted/50 border-t font-medium", className)} {...props} />
+}
+
+function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+  return <caption className={cn("text-muted-foreground mt-4 text-sm", className)} {...props} />
+}
+
+export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption }
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### `useReactTable` options
 
@@ -326,3 +286,7 @@ Add a checkbox column and `onRowSelectionChange` state:
 | `cell` | Render function. Receives `row` and `getValue` in context. |
 | `enableSorting` | Set to `false` to disable sorting on a column. |
 | `enableHiding` | Set to `false` to prevent column from being hidden. |
+
+</Tabs.Tab>
+
+</Tabs>

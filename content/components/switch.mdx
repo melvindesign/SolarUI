@@ -6,6 +6,7 @@ description: A control that allows the user to toggle between checked and not ch
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Switch
 
@@ -18,29 +19,9 @@ A control that allows the user to toggle between checked and not checked.
   </div>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the following dependency:**
-
-```bash
-npm install @radix-ui/react-switch
-```
-
-**2. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/switch.tsx
-"use client"
-
-import * as React from "react"
-import * as SwitchPrimitive from "@radix-ui/react-switch"
-import { cn } from "@/lib/utils"
-
-// Root: h-5 w-9 rounded-full, checked=bg-primary, unchecked=bg-input
-// Thumb: size-4 bg-background, translate-x-0 -> translate-x-4
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Switch } from "@/components/ui/switch"
@@ -92,7 +73,42 @@ import { Label } from "@/components/ui/label"
 <Switch disabled defaultChecked />
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/switch.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependency:**
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-switch
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/switch.tsx" copy
+"use client"
+
+import * as React from "react"
+import * as SwitchPrimitive from "@radix-ui/react-switch"
+import { cn } from "@/lib/utils"
+
+// Root: h-5 w-9 rounded-full, checked=bg-primary, unchecked=bg-input
+// Thumb: size-4 bg-background, translate-x-0 -> translate-x-4
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Switch
 
@@ -103,3 +119,7 @@ import { Label } from "@/components/ui/label"
 | `onCheckedChange` | `(checked: boolean) => void` | — | Callback when the checked state changes. |
 | `disabled` | `boolean` | `false` | When `true`, prevents interaction and applies reduced opacity. |
 | `required` | `boolean` | `false` | Makes the switch required in a form context. |
+
+</Tabs.Tab>
+
+</Tabs>

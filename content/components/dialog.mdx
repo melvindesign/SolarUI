@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Dialog
 
@@ -50,18 +51,62 @@ A window overlaid on either the primary window or another dialog window, renderi
   </Dialog>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+```
+
+```tsx
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you sure?</DialogTitle>
+      <DialogDescription>This action cannot be undone.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <Button type="submit">Confirm</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/dialog.json
+```
+
+---
+
+### Manual
 
 **1. Install the dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-dialog
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/dialog.tsx
+```tsx filename="components/ui/dialog.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -140,38 +185,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-```
-
-```tsx
-<Dialog>
-  <DialogTrigger asChild>
-    <Button variant="outline">Open</Button>
-  </DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Are you sure?</DialogTitle>
-      <DialogDescription>This action cannot be undone.</DialogDescription>
-    </DialogHeader>
-    <DialogFooter>
-      <Button type="submit">Confirm</Button>
-    </DialogFooter>
-  </DialogContent>
-</Dialog>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Dialog
 
@@ -197,3 +213,7 @@ import {
 | Prop | Type | Description |
 |------|------|-------------|
 | `asChild` | `boolean` | Merge props onto child element instead of rendering a `<button>`. |
+
+</Tabs.Tab>
+
+</Tabs>

@@ -5,6 +5,7 @@ description: A date input built by composing Calendar and Popover.
 
 import { DatePickerDemo, DateRangePickerDemo, DatePickerWithPresets } from '@/components/ui/date-picker'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Date Picker
 
@@ -14,17 +15,9 @@ A date input built by composing `Calendar` and `Popover`.
   <DatePickerDemo />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependencies:**
-
-```bash
-npm install react-day-picker date-fns @radix-ui/react-popover
-```
-
-**2. Make sure `components/ui/calendar.tsx` and `components/ui/popover.tsx` are in your project.**
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -114,7 +107,31 @@ const [range, setRange] = React.useState<DateRange | undefined>()
 </PopoverContent>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/date-picker.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependencies:**
+
+```bash filename="terminal" copy
+npm install react-day-picker date-fns @radix-ui/react-popover
+```
+
+**2. Make sure `components/ui/calendar.tsx` and `components/ui/popover.tsx` are in your project.**
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 The Date Picker is a composition — no dedicated component. It uses:
 
@@ -131,3 +148,7 @@ The Date Picker is a composition — no dedicated component. It uses:
 | `"single"` | `Date \| undefined` | Selects a single date. |
 | `"range"` | `DateRange \| undefined` | Selects a start and end date. |
 | `"multiple"` | `Date[]` | Selects multiple individual dates. |
+
+</Tabs.Tab>
+
+</Tabs>

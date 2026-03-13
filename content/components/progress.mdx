@@ -6,43 +6,16 @@ section: Feedback
 
 import { Progress } from '@/components/ui/progress'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
+
 
 <ComponentPreview>
   <Progress value={60} className="w-64" />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-```bash
-npm install @radix-ui/react-progress
-```
-
-Copy and paste the following code into your project:
-
-```tsx
-"use client"
-import * as React from "react"
-import * as ProgressPrimitive from "@radix-ui/react-progress"
-import { cn } from "@/lib/utils"
-
-function Progress({ className, value, ...props }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
-  return (
-    <ProgressPrimitive.Root
-      data-slot="progress"
-      className={cn("bg-secondary relative h-2 w-full overflow-hidden rounded-full", className)}
-      {...props}
-    >
-      <ProgressPrimitive.Indicator
-        className="bg-primary h-full w-full flex-1 transition-all"
-        style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}
-      />
-    </ProgressPrimitive.Root>
-  )
-}
-export { Progress }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Progress } from '@/components/ui/progress'
@@ -73,7 +46,52 @@ Omit the `value` prop to show an indeterminate state:
 <Progress className="w-64" />
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/progress.json
+```
+
+---
+
+### Manual
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-progress
+```
+
+Copy and paste the following code into your project:
+
+```tsx filename="components/ui/progress.tsx" copy
+"use client"
+import * as React from "react"
+import * as ProgressPrimitive from "@radix-ui/react-progress"
+import { cn } from "@/lib/utils"
+
+function Progress({ className, value, ...props }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+  return (
+    <ProgressPrimitive.Root
+      data-slot="progress"
+      className={cn("bg-secondary relative h-2 w-full overflow-hidden rounded-full", className)}
+      {...props}
+    >
+      <ProgressPrimitive.Indicator
+        className="bg-primary h-full w-full flex-1 transition-all"
+        style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}
+      />
+    </ProgressPrimitive.Root>
+  )
+}
+export { Progress }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Progress
 
@@ -82,3 +100,7 @@ Omit the `value` prop to show an indeterminate state:
 | `value`     | `number` | —       | The current progress value (0–100).  |
 | `max`       | `number` | `100`   | The maximum progress value.          |
 | `className` | `string` | —       | Additional CSS classes to apply.     |
+
+</Tabs.Tab>
+
+</Tabs>

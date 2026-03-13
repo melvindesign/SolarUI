@@ -5,6 +5,7 @@ description: A calendar component that allows users to select a date or a range 
 
 import { Calendar } from '@/components/ui/calendar'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Calendar
 
@@ -14,18 +15,86 @@ A calendar component that allows users to select a date or a range of dates.
   <Calendar mode="single" className="rounded-lg border" />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import { Calendar } from "@/components/ui/calendar"
+```
+
+```tsx
+const [date, setDate] = React.useState<Date | undefined>()
+
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border"
+/>
+```
+
+## Examples
+
+### Single selection
+
+<ComponentPreview>
+  <Calendar mode="single" className="rounded-lg border" />
+</ComponentPreview>
+
+```tsx
+const [date, setDate] = React.useState<Date | undefined>()
+
+<Calendar mode="single" selected={date} onSelect={setDate} className="rounded-lg border" />
+```
+
+### Range selection
+
+<ComponentPreview>
+  <Calendar mode="range" className="rounded-lg border" />
+</ComponentPreview>
+
+```tsx
+import { DateRange } from "react-day-picker"
+
+const [range, setRange] = React.useState<DateRange | undefined>()
+
+<Calendar mode="range" selected={range} onSelect={setRange} className="rounded-lg border" />
+```
+
+### With month/year dropdowns
+
+<ComponentPreview>
+  <Calendar mode="single" captionLayout="dropdown" className="rounded-lg border" />
+</ComponentPreview>
+
+```tsx
+<Calendar mode="single" captionLayout="dropdown" className="rounded-lg border" />
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/calendar.json
+```
+
+---
+
+### Manual
 
 **1. Install the following dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install react-day-picker
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/calendar.tsx
+```tsx filename="components/ui/calendar.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -147,62 +216,9 @@ function CalendarDayButton({
 export { Calendar, CalendarDayButton }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import { Calendar } from "@/components/ui/calendar"
-```
-
-```tsx
-const [date, setDate] = React.useState<Date | undefined>()
-
-<Calendar
-  mode="single"
-  selected={date}
-  onSelect={setDate}
-  className="rounded-lg border"
-/>
-```
-
-## Examples
-
-### Single selection
-
-<ComponentPreview>
-  <Calendar mode="single" className="rounded-lg border" />
-</ComponentPreview>
-
-```tsx
-const [date, setDate] = React.useState<Date | undefined>()
-
-<Calendar mode="single" selected={date} onSelect={setDate} className="rounded-lg border" />
-```
-
-### Range selection
-
-<ComponentPreview>
-  <Calendar mode="range" className="rounded-lg border" />
-</ComponentPreview>
-
-```tsx
-import { DateRange } from "react-day-picker"
-
-const [range, setRange] = React.useState<DateRange | undefined>()
-
-<Calendar mode="range" selected={range} onSelect={setRange} className="rounded-lg border" />
-```
-
-### With month/year dropdowns
-
-<ComponentPreview>
-  <Calendar mode="single" captionLayout="dropdown" className="rounded-lg border" />
-</ComponentPreview>
-
-```tsx
-<Calendar mode="single" captionLayout="dropdown" className="rounded-lg border" />
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Calendar
 
@@ -216,3 +232,7 @@ Extends all `react-day-picker` props, plus:
 | `captionLayout` | `"label" \| "dropdown"` | `"label"` | Display style for the month/year caption. |
 | `showOutsideDays` | `boolean` | `true` | Show days from adjacent months. |
 | `buttonVariant` | `ButtonVariant` | `"ghost"` | Variant for the previous/next navigation buttons. |
+
+</Tabs.Tab>
+
+</Tabs>

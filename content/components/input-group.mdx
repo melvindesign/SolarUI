@@ -13,6 +13,7 @@ import {
   InputGroupTextarea,
 } from '@/components/ui/input-group'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Input Group
 
@@ -38,12 +39,120 @@ A composable component for combining inputs with icons, buttons, and text addons
   </div>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group"
+```
+
+## Examples
+
+### Icon prefix
+
+<ComponentPreview>
+  <InputGroup className="max-w-sm">
+    <InputGroupAddon align="inline-start">
+      <SearchIcon />
+    </InputGroupAddon>
+    <InputGroupInput placeholder="Search..." />
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+<InputGroup>
+  <InputGroupAddon align="inline-start">
+    <SearchIcon />
+  </InputGroupAddon>
+  <InputGroupInput placeholder="Search..." />
+</InputGroup>
+```
+
+### Icon suffix
+
+<ComponentPreview>
+  <InputGroup className="max-w-sm">
+    <InputGroupInput placeholder="Enter email..." />
+    <InputGroupAddon align="inline-end">
+      <AtSignIcon />
+    </InputGroupAddon>
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+<InputGroup>
+  <InputGroupInput placeholder="Enter email..." />
+  <InputGroupAddon align="inline-end">
+    <AtSignIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+### Button suffix
+
+<ComponentPreview>
+  <InputGroup className="max-w-sm">
+    <InputGroupInput placeholder="Enter email..." />
+    <InputGroupAddon align="inline-end">
+      <InputGroupButton><EyeIcon /></InputGroupButton>
+    </InputGroupAddon>
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+<InputGroup>
+  <InputGroupInput placeholder="Enter email..." />
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton><EyeIcon /></InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
+```
+
+### Textarea with send button
+
+<ComponentPreview>
+  <InputGroup className="max-w-sm">
+    <InputGroupTextarea placeholder="Write a message..." rows={3} />
+    <InputGroupAddon align="block-end">
+      <InputGroupButton><SendIcon /></InputGroupButton>
+    </InputGroupAddon>
+  </InputGroup>
+</ComponentPreview>
+
+```tsx
+<InputGroup>
+  <InputGroupTextarea placeholder="Write a message..." rows={3} />
+  <InputGroupAddon align="block-end">
+    <InputGroupButton><SendIcon /></InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/input-group.json
+```
+
+---
+
+### Manual
 
 No dependencies required — copy and paste the following code into your project:
 
-```tsx
-// components/ui/input-group.tsx
+```tsx filename="components/ui/input-group.tsx" copy
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -148,102 +257,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/components/ui/input-group"
-```
-
-## Examples
-
-### Icon prefix
-
-<ComponentPreview>
-  <InputGroup className="max-w-sm">
-    <InputGroupAddon align="inline-start">
-      <SearchIcon />
-    </InputGroupAddon>
-    <InputGroupInput placeholder="Search..." />
-  </InputGroup>
-</ComponentPreview>
-
-```tsx
-<InputGroup>
-  <InputGroupAddon align="inline-start">
-    <SearchIcon />
-  </InputGroupAddon>
-  <InputGroupInput placeholder="Search..." />
-</InputGroup>
-```
-
-### Icon suffix
-
-<ComponentPreview>
-  <InputGroup className="max-w-sm">
-    <InputGroupInput placeholder="Enter email..." />
-    <InputGroupAddon align="inline-end">
-      <AtSignIcon />
-    </InputGroupAddon>
-  </InputGroup>
-</ComponentPreview>
-
-```tsx
-<InputGroup>
-  <InputGroupInput placeholder="Enter email..." />
-  <InputGroupAddon align="inline-end">
-    <AtSignIcon />
-  </InputGroupAddon>
-</InputGroup>
-```
-
-### Button suffix
-
-<ComponentPreview>
-  <InputGroup className="max-w-sm">
-    <InputGroupInput placeholder="Enter email..." />
-    <InputGroupAddon align="inline-end">
-      <InputGroupButton><EyeIcon /></InputGroupButton>
-    </InputGroupAddon>
-  </InputGroup>
-</ComponentPreview>
-
-```tsx
-<InputGroup>
-  <InputGroupInput placeholder="Enter email..." />
-  <InputGroupAddon align="inline-end">
-    <InputGroupButton><EyeIcon /></InputGroupButton>
-  </InputGroupAddon>
-</InputGroup>
-```
-
-### Textarea with send button
-
-<ComponentPreview>
-  <InputGroup className="max-w-sm">
-    <InputGroupTextarea placeholder="Write a message..." rows={3} />
-    <InputGroupAddon align="block-end">
-      <InputGroupButton><SendIcon /></InputGroupButton>
-    </InputGroupAddon>
-  </InputGroup>
-</ComponentPreview>
-
-```tsx
-<InputGroup>
-  <InputGroupTextarea placeholder="Write a message..." rows={3} />
-  <InputGroupAddon align="block-end">
-    <InputGroupButton><SendIcon /></InputGroupButton>
-  </InputGroupAddon>
-</InputGroup>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### InputGroupAddon
 
@@ -266,3 +282,7 @@ Extends all native `<button>` props. `type` defaults to `"button"` to prevent ac
 ### InputGroupText
 
 A `<span>` for static text labels inside an addon (e.g. currency symbols, URL prefixes).
+
+</Tabs.Tab>
+
+</Tabs>

@@ -19,6 +19,7 @@ import {
   ContextMenuSubContent,
 } from '@/components/ui/context-menu'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Context Menu
 
@@ -65,18 +66,91 @@ Displays a menu of actions triggered by a right-click (or long press on touch).
   </ContextMenu>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
+```
+
+```tsx
+<ContextMenu>
+  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Profile</ContextMenuItem>
+    <ContextMenuItem>Settings</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+## Examples
+
+### With submenu
+
+```tsx
+<ContextMenuSub>
+  <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+  <ContextMenuSubContent>
+    <ContextMenuItem>Save Page As…</ContextMenuItem>
+    <ContextMenuItem>Developer Tools</ContextMenuItem>
+  </ContextMenuSubContent>
+</ContextMenuSub>
+```
+
+### With checkboxes
+
+```tsx
+<ContextMenuCheckboxItem checked>Show Bookmarks</ContextMenuCheckboxItem>
+<ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+```
+
+### With radio group
+
+```tsx
+<ContextMenuRadioGroup value="pedro">
+  <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
+  <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
+</ContextMenuRadioGroup>
+```
+
+### With shortcuts
+
+```tsx
+<ContextMenuItem>
+  Reload
+  <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+</ContextMenuItem>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/context-menu.json
+```
+
+---
+
+### Manual
 
 **1. Install the following dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-context-menu
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/context-menu.tsx
+```tsx filename="components/ui/context-menu.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -159,67 +233,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu"
-```
-
-```tsx
-<ContextMenu>
-  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
-  <ContextMenuContent>
-    <ContextMenuItem>Profile</ContextMenuItem>
-    <ContextMenuItem>Settings</ContextMenuItem>
-  </ContextMenuContent>
-</ContextMenu>
-```
-
-## Examples
-
-### With submenu
-
-```tsx
-<ContextMenuSub>
-  <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
-  <ContextMenuSubContent>
-    <ContextMenuItem>Save Page As…</ContextMenuItem>
-    <ContextMenuItem>Developer Tools</ContextMenuItem>
-  </ContextMenuSubContent>
-</ContextMenuSub>
-```
-
-### With checkboxes
-
-```tsx
-<ContextMenuCheckboxItem checked>Show Bookmarks</ContextMenuCheckboxItem>
-<ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-```
-
-### With radio group
-
-```tsx
-<ContextMenuRadioGroup value="pedro">
-  <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
-  <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-</ContextMenuRadioGroup>
-```
-
-### With shortcuts
-
-```tsx
-<ContextMenuItem>
-  Reload
-  <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-</ContextMenuItem>
-```
-
-## API Reference
+<Tabs.Tab>
 
 | Component | Description |
 |-----------|-------------|
@@ -240,3 +256,7 @@ import {
 ### `inset` prop
 
 `ContextMenuItem`, `ContextMenuSubTrigger`, and `ContextMenuLabel` accept an `inset` boolean that adds `pl-8` — useful to align items with checked/radio items.
+
+</Tabs.Tab>
+
+</Tabs>

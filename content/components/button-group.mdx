@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { ButtonGroup } from '@/components/ui/button-group'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
 import { AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline } from 'lucide-react'
+import { Tabs } from 'nextra/components'
 
 # Button Group
 
@@ -20,50 +21,9 @@ A container that visually joins a set of buttons into a single control.
   </ButtonGroup>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-Copy and paste the following code into your project:
-
-```tsx
-// components/ui/button-group.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
-function ButtonGroup({
-  className,
-  orientation = "horizontal",
-  ...props
-}: React.ComponentProps<"div"> & {
-  orientation?: "horizontal" | "vertical"
-}) {
-  return (
-    <div
-      data-slot="button-group"
-      data-orientation={orientation}
-      className={cn(
-        "inline-flex items-center rounded-lg",
-        orientation === "horizontal" && [
-          "[&>*:not(:first-child)]:-ml-px",
-          "[&>*:not(:last-child)]:rounded-r-none",
-          "[&>*:not(:first-child)]:rounded-l-none",
-        ],
-        orientation === "vertical" && [
-          "flex-col",
-          "[&>*:not(:first-child)]:-mt-px",
-          "[&>*:not(:last-child)]:rounded-b-none",
-          "[&>*:not(:first-child)]:rounded-t-none",
-        ],
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-export { ButtonGroup }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Button } from "@/components/ui/button"
@@ -146,7 +106,63 @@ import { ButtonGroup } from "@/components/ui/button-group"
 </ButtonGroup>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/button-group.json
+```
+
+---
+
+### Manual
+
+Copy and paste the following code into your project:
+
+```tsx filename="components/ui/button-group.tsx" copy
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function ButtonGroup({
+  className,
+  orientation = "horizontal",
+  ...props
+}: React.ComponentProps<"div"> & {
+  orientation?: "horizontal" | "vertical"
+}) {
+  return (
+    <div
+      data-slot="button-group"
+      data-orientation={orientation}
+      className={cn(
+        "inline-flex items-center rounded-lg",
+        orientation === "horizontal" && [
+          "[&>*:not(:first-child)]:-ml-px",
+          "[&>*:not(:last-child)]:rounded-r-none",
+          "[&>*:not(:first-child)]:rounded-l-none",
+        ],
+        orientation === "vertical" && [
+          "flex-col",
+          "[&>*:not(:first-child)]:-mt-px",
+          "[&>*:not(:last-child)]:rounded-b-none",
+          "[&>*:not(:first-child)]:rounded-t-none",
+        ],
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { ButtonGroup }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### ButtonGroup
 
@@ -154,3 +170,7 @@ import { ButtonGroup } from "@/components/ui/button-group"
 |------|------|---------|-------------|
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direction in which buttons are joined. |
 | `className` | `string` | — | Additional CSS classes to merge. |
+
+</Tabs.Tab>
+
+</Tabs>

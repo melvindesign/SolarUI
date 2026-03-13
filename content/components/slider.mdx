@@ -5,6 +5,7 @@ description: An input where the user selects a value from within a given range.
 
 import { Slider } from '@/components/ui/slider'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Slider
 
@@ -14,28 +15,9 @@ An input where the user selects a value from within a given range.
   <Slider defaultValue={[50]} max={100} step={1} className="w-64" />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the following dependency:**
-
-```bash
-npm install @radix-ui/react-slider
-```
-
-**2. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/slider.tsx
-"use client"
-
-import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
-import { cn } from "@/lib/utils"
-
-// Track with Range, one or more Thumb elements
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Slider } from "@/components/ui/slider"
@@ -77,7 +59,41 @@ import { Slider } from "@/components/ui/slider"
 <Slider defaultValue={[50]} max={100} step={1} className="w-64" disabled />
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/slider.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependency:**
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-slider
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/slider.tsx" copy
+"use client"
+
+import * as React from "react"
+import * as SliderPrimitive from "@radix-ui/react-slider"
+import { cn } from "@/lib/utils"
+
+// Track with Range, one or more Thumb elements
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Slider
 
@@ -92,3 +108,7 @@ import { Slider } from "@/components/ui/slider"
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the slider. |
 | `onValueChange` | `(value: number[]) => void` | — | Callback fired continuously as the thumb is dragged. |
 | `onValueCommit` | `(value: number[]) => void` | — | Callback fired when the thumb is released. |
+
+</Tabs.Tab>
+
+</Tabs>

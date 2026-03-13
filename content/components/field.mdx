@@ -21,84 +21,9 @@ A composable form field that combines a label, control, description, and error m
   </Field>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-<Tabs items={['CLI', 'Manual']}>
-  <Tabs.Tab>
-
-```bash
-npx shadcn@latest add label
-```
-
-Then create `components/ui/field.tsx` manually (see Manual tab).
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-**1. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/field.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
-const Field = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("space-y-2", className)} {...props} />
-))
-Field.displayName = "Field"
-
-const FieldLabel = React.forwardRef<
-  HTMLLabelElement,
-  React.LabelHTMLAttributes<HTMLLabelElement> & { required?: boolean }
->(({ className, required, children, ...props }, ref) => (
-  <label
-    ref={ref}
-    className={cn(
-      "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    {required && <span className="text-destructive ml-1">*</span>}
-  </label>
-))
-FieldLabel.displayName = "FieldLabel"
-
-const FieldDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-FieldDescription.displayName = "FieldDescription"
-
-const FieldError = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm font-medium text-destructive", className)}
-    {...props}
-  />
-))
-FieldError.displayName = "FieldError"
-
-export { Field, FieldLabel, FieldDescription, FieldError }
-```
-
-  </Tabs.Tab>
-</Tabs>
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import { Field, FieldLabel, FieldDescription, FieldError } from "@/components/ui/field"
@@ -229,7 +154,97 @@ import { Input } from "@/components/ui/input"
 </form>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/field.json
+```
+
+---
+
+### Manual
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tabs.Tab>
+
+```bash filename="terminal" copy
+npx shadcn@latest add label
+```
+
+Then create `components/ui/field.tsx` manually (see Manual tab).
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+**1. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/field.tsx" copy
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+const Field = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("space-y-2", className)} {...props} />
+))
+Field.displayName = "Field"
+
+const FieldLabel = React.forwardRef<
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement> & { required?: boolean }
+>(({ className, required, children, ...props }, ref) => (
+  <label
+    ref={ref}
+    className={cn(
+      "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    {required && <span className="text-destructive ml-1">*</span>}
+  </label>
+))
+FieldLabel.displayName = "FieldLabel"
+
+const FieldDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+FieldDescription.displayName = "FieldDescription"
+
+const FieldError = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("text-sm font-medium text-destructive", className)}
+    {...props}
+  />
+))
+FieldError.displayName = "FieldError"
+
+export { Field, FieldLabel, FieldDescription, FieldError }
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Field
 
@@ -256,3 +271,7 @@ A subtle helper text rendered below the form control.
 ### FieldError
 
 An error message rendered in red below the form control.
+
+</Tabs.Tab>
+
+</Tabs>

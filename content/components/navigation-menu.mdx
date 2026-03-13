@@ -12,6 +12,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Navigation Menu
 
@@ -88,18 +89,69 @@ A collection of links for navigating websites, with support for dropdown panels 
   </NavigationMenu>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
+```
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid gap-3 p-4 w-[400px]">
+          <li>
+            <NavigationMenuLink href="/products/analytics">
+              <div className="text-sm font-medium">Analytics</div>
+              <p className="text-muted-foreground text-xs mt-1">Track your metrics in real time.</p>
+            </NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/pricing" className="px-4 py-2 text-sm font-medium">
+        Pricing
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/navigation-menu.json
+```
+
+---
+
+### Manual
 
 **1. Install the dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-navigation-menu
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/navigation-menu.tsx
+```tsx filename="components/ui/navigation-menu.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -175,45 +227,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-```
-
-```tsx
-<NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <ul className="grid gap-3 p-4 w-[400px]">
-          <li>
-            <NavigationMenuLink href="/products/analytics">
-              <div className="text-sm font-medium">Analytics</div>
-              <p className="text-muted-foreground text-xs mt-1">Track your metrics in real time.</p>
-            </NavigationMenuLink>
-          </li>
-        </ul>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuItem>
-      <NavigationMenuLink href="/pricing" className="px-4 py-2 text-sm font-medium">
-        Pricing
-      </NavigationMenuLink>
-    </NavigationMenuItem>
-  </NavigationMenuList>
-</NavigationMenu>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### NavigationMenu
 
@@ -237,3 +253,7 @@ A styled anchor link. Use `href` for navigation or wrap with Next.js `<Link>` us
 |------|------|-------------|
 | `asChild` | `boolean` | Merge props onto child element (e.g. Next.js `<Link>`). |
 | `active` | `boolean` | Marks the link as currently active. |
+
+</Tabs.Tab>
+
+</Tabs>

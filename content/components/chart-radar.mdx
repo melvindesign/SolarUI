@@ -5,6 +5,7 @@ description: A spider/web chart that displays multivariate data as a polygon on 
 
 import { RadarChartDefault, RadarChartSingle } from '@/components/charts/radar-chart'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Radar Chart
 
@@ -14,17 +15,9 @@ A spider/web chart that displays multivariate data as a polygon on a radial grid
   <RadarChartDefault />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install recharts
-```
-
-**2. Copy `components/ui/chart.tsx` into your project.**
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -70,7 +63,31 @@ import {
 />
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/chart-radar.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install recharts
+```
+
+**2. Copy `components/ui/chart.tsx` into your project.**
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -79,3 +96,7 @@ import {
 | `fillOpacity` | `number` | `0.6` | Transparency of the fill. |
 | `stroke` | `string` | — | Color of the polygon outline. |
 | `dot` | `boolean \| object` | `false` | Show dot markers at each vertex. |
+
+</Tabs.Tab>
+
+</Tabs>

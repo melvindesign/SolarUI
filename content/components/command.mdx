@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/command'
 import { ComponentPreview } from '@/components/component-preview'
 import { Calendar, Settings, Smile, Calculator, User, CreditCard } from 'lucide-react'
+import { Tabs } from 'nextra/components'
 
 # Command
 
@@ -61,18 +62,101 @@ A fast, composable command palette for search, navigation and quick actions. Bui
   </Command>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command"
+```
+
+```tsx
+<Command>
+  <CommandInput placeholder="Search…" />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>
+        Profile
+        <CommandShortcut>⌘P</CommandShortcut>
+      </CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+## Examples
+
+### Inline (no border)
+
+<ComponentPreview>
+  <Command className="w-full max-w-sm">
+    <CommandInput placeholder="Search…" />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup heading="Recent">
+        <CommandItem>
+          <User className="mr-2 size-4" />
+          <span>Profile</span>
+        </CommandItem>
+        <CommandItem>
+          <Settings className="mr-2 size-4" />
+          <span>Settings</span>
+        </CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</ComponentPreview>
+
+```tsx
+<Command>
+  <CommandInput placeholder="Search…" />
+  <CommandList>
+    <CommandGroup heading="Recent">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/command.json
+```
+
+---
+
+### Manual
 
 **1. Install the following dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install cmdk
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/command.tsx
+```tsx filename="components/ui/command.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -172,77 +256,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command"
-```
-
-```tsx
-<Command>
-  <CommandInput placeholder="Search…" />
-  <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading="Suggestions">
-      <CommandItem>Calendar</CommandItem>
-      <CommandItem>Search Emoji</CommandItem>
-    </CommandGroup>
-    <CommandSeparator />
-    <CommandGroup heading="Settings">
-      <CommandItem>
-        Profile
-        <CommandShortcut>⌘P</CommandShortcut>
-      </CommandItem>
-    </CommandGroup>
-  </CommandList>
-</Command>
-```
-
-## Examples
-
-### Inline (no border)
-
-<ComponentPreview>
-  <Command className="w-full max-w-sm">
-    <CommandInput placeholder="Search…" />
-    <CommandList>
-      <CommandEmpty>No results found.</CommandEmpty>
-      <CommandGroup heading="Recent">
-        <CommandItem>
-          <User className="mr-2 size-4" />
-          <span>Profile</span>
-        </CommandItem>
-        <CommandItem>
-          <Settings className="mr-2 size-4" />
-          <span>Settings</span>
-        </CommandItem>
-      </CommandGroup>
-    </CommandList>
-  </Command>
-</ComponentPreview>
-
-```tsx
-<Command>
-  <CommandInput placeholder="Search…" />
-  <CommandList>
-    <CommandGroup heading="Recent">
-      <CommandItem>Profile</CommandItem>
-      <CommandItem>Settings</CommandItem>
-    </CommandGroup>
-  </CommandList>
-</Command>
-```
-
-## API Reference
+<Tabs.Tab>
 
 | Component | Description |
 |-----------|-------------|
@@ -254,3 +270,7 @@ import {
 | `CommandSeparator` | A horizontal rule between groups. |
 | `CommandItem` | A selectable item. Use `onSelect` callback and `value` prop for logic. |
 | `CommandShortcut` | Right-aligned keyboard shortcut label inside a `CommandItem`. |
+
+</Tabs.Tab>
+
+</Tabs>

@@ -6,6 +6,7 @@ description: A set of checkable buttons where only one can be checked at a time.
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Radio Group
 
@@ -28,18 +29,51 @@ A set of checkable buttons where only one can be checked at a time.
   </RadioGroup>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-one" id="option-one" />
+    <Label htmlFor="option-one">Option One</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-two" id="option-two" />
+    <Label htmlFor="option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/radio-group.json
+```
+
+---
+
+### Manual
 
 **1. Install the following dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-radio-group
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/radio-group.tsx
+```tsx filename="components/ui/radio-group.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -70,27 +104,9 @@ function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof Rad
 export { RadioGroup, RadioGroupItem }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-```
-
-```tsx
-<RadioGroup defaultValue="option-one">
-  <div className="flex items-center gap-2">
-    <RadioGroupItem value="option-one" id="option-one" />
-    <Label htmlFor="option-one">Option One</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <RadioGroupItem value="option-two" id="option-two" />
-    <Label htmlFor="option-two">Option Two</Label>
-  </div>
-</RadioGroup>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### RadioGroup
 
@@ -109,3 +125,7 @@ import { Label } from "@/components/ui/label"
 | `value` | `string` | — | The value this item represents in the group. |
 | `disabled` | `boolean` | `false` | When `true`, prevents interaction with this specific item. |
 | `className` | `string` | — | Additional CSS classes to merge. |
+
+</Tabs.Tab>
+
+</Tabs>

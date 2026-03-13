@@ -6,6 +6,8 @@ section: Feedback
 
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
+
 
 <ComponentPreview>
   <Tooltip>
@@ -20,68 +22,9 @@ import { ComponentPreview } from '@/components/component-preview'
   </Tooltip>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-```bash
-npm install @radix-ui/react-tooltip
-```
-
-Copy and paste the following code into your project:
-
-```tsx
-"use client"
-import * as React from "react"
-import * as TooltipPrimitive from "@radix-ui/react-tooltip"
-import { cn } from "@/lib/utils"
-
-function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return <TooltipPrimitive.Provider delayDuration={delayDuration} {...props} />
-}
-
-function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>
-  )
-}
-
-function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger {...props} />
-}
-
-function TooltipContent({
-  className,
-  sideOffset = 4,
-  children,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
-  return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        sideOffset={sideOffset}
-        className={cn(
-          "bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 z-50 w-auto rounded-md px-3 py-1.5 text-xs",
-          className
-        )}
-        {...props}
-      >
-        {children}
-        <TooltipPrimitive.Arrow className="fill-primary size-2.5" />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
-  )
-}
-
-export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import {
@@ -139,7 +82,82 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/tooltip.json
+```
+
+---
+
+### Manual
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-tooltip
+```
+
+Copy and paste the following code into your project:
+
+```tsx filename="components/ui/tooltip.tsx" copy
+"use client"
+import * as React from "react"
+import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import { cn } from "@/lib/utils"
+
+function TooltipProvider({
+  delayDuration = 0,
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
+  return <TooltipPrimitive.Provider delayDuration={delayDuration} {...props} />
+}
+
+function Tooltip({
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
+  return (
+    <TooltipProvider>
+      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+    </TooltipProvider>
+  )
+}
+
+function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
+  return <TooltipPrimitive.Trigger {...props} />
+}
+
+function TooltipContent({
+  className,
+  sideOffset = 4,
+  children,
+  ...props
+}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  return (
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        sideOffset={sideOffset}
+        className={cn(
+          "bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 z-50 w-auto rounded-md px-3 py-1.5 text-xs",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <TooltipPrimitive.Arrow className="fill-primary size-2.5" />
+      </TooltipPrimitive.Content>
+    </TooltipPrimitive.Portal>
+  )
+}
+
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### TooltipProvider
 
@@ -174,3 +192,7 @@ Accepts all props from [Radix UI Tooltip.Trigger](https://www.radix-ui.com/primi
 | `align`       | `"start" \| "center" \| "end"`            | `"center"` | Alignment relative to the trigger.              |
 | `sideOffset`  | `number`                                   | `4`      | Pixel distance from the trigger.                  |
 | `className`   | `string`                                   | —        | Additional CSS classes to apply.                  |
+
+</Tabs.Tab>
+
+</Tabs>

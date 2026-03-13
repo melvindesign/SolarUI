@@ -13,6 +13,7 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Pagination
 
@@ -46,12 +47,91 @@ Navigation between pages of content with previous, next, and numbered page links
   </Pagination>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+```
+
+```tsx
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="/page/1" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/1">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="/page/2" isActive>2</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="/page/3" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
+```
+
+## Examples
+
+### With Next.js Link
+
+Use `asChild` on `PaginationLink` isn't needed — simply replace the `<a>` with a Next.js `<Link>` by wrapping:
+
+```tsx
+import Link from "next/link"
+
+<PaginationLink asChild isActive>
+  <Link href="/page/2">2</Link>
+</PaginationLink>
+```
+
+Or render `PaginationPrevious` / `PaginationNext` directly with the correct `href` and let Next.js handle routing via its `<a>` override at the layout level.
+
+### Simple (no ellipsis)
+
+<ComponentPreview>
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
+      <PaginationItem><PaginationLink href="#">1</PaginationLink></PaginationItem>
+      <PaginationItem><PaginationLink href="#" isActive>2</PaginationLink></PaginationItem>
+      <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
+      <PaginationItem><PaginationNext href="#" /></PaginationItem>
+    </PaginationContent>
+  </Pagination>
+</ComponentPreview>
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/pagination.json
+```
+
+---
+
+### Manual
 
 No dependencies required — copy and paste the following code into your project:
 
-```tsx
-// components/ui/pagination.tsx
+```tsx filename="components/ui/pagination.tsx" copy
 import * as React from "react"
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -123,73 +203,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
-```
-
-```tsx
-<Pagination>
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious href="/page/1" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="/page/1">1</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="/page/2" isActive>2</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationEllipsis />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext href="/page/3" />
-    </PaginationItem>
-  </PaginationContent>
-</Pagination>
-```
-
-## Examples
-
-### With Next.js Link
-
-Use `asChild` on `PaginationLink` isn't needed — simply replace the `<a>` with a Next.js `<Link>` by wrapping:
-
-```tsx
-import Link from "next/link"
-
-<PaginationLink asChild isActive>
-  <Link href="/page/2">2</Link>
-</PaginationLink>
-```
-
-Or render `PaginationPrevious` / `PaginationNext` directly with the correct `href` and let Next.js handle routing via its `<a>` override at the layout level.
-
-### Simple (no ellipsis)
-
-<ComponentPreview>
-  <Pagination>
-    <PaginationContent>
-      <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
-      <PaginationItem><PaginationLink href="#">1</PaginationLink></PaginationItem>
-      <PaginationItem><PaginationLink href="#" isActive>2</PaginationLink></PaginationItem>
-      <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-      <PaginationItem><PaginationNext href="#" /></PaginationItem>
-    </PaginationContent>
-  </Pagination>
-</ComponentPreview>
-
-## API Reference
+<Tabs.Tab>
 
 ### PaginationLink
 
@@ -202,3 +218,7 @@ Or render `PaginationPrevious` / `PaginationNext` directly with the correct `hre
 ### PaginationPrevious / PaginationNext
 
 Extend `PaginationLink` with a chevron icon and a responsive label ("Previous" / "Next" hidden on mobile).
+
+</Tabs.Tab>
+
+</Tabs>

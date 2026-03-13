@@ -5,6 +5,7 @@ description: A circular bar chart that radiates from a center point, ideal for s
 
 import { RadialChartDefault, RadialChartWithLabel } from '@/components/charts/radial-chart'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Radial Chart
 
@@ -14,17 +15,9 @@ A circular bar chart that radiates from a center point, ideal for showing progre
   <RadialChartDefault />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install recharts
-```
-
-**2. Copy `components/ui/chart.tsx` into your project.**
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -63,7 +56,31 @@ import {
 </RadialBarChart>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/chart-radial.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install recharts
+```
+
+**2. Copy `components/ui/chart.tsx` into your project.**
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -73,3 +90,7 @@ import {
 | `endAngle` | `number` | `-270` | End angle. Full circle when difference is 360. |
 | `background` | `boolean` | `false` | Show a background track behind each bar. |
 | `cornerRadius` | `number` | `0` | Rounded bar corners. |
+
+</Tabs.Tab>
+
+</Tabs>

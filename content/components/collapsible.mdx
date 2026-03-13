@@ -7,6 +7,7 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/component
 import { Button } from '@/components/ui/button'
 import { ChevronsUpDown } from 'lucide-react'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Collapsible
 
@@ -33,30 +34,9 @@ An interactive component that expands and collapses a section of content.
   </Collapsible>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the following dependency:**
-
-```bash
-npm install @radix-ui/react-collapsible
-```
-
-**2. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/collapsible.tsx
-"use client"
-
-import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
-
-const Collapsible = CollapsiblePrimitive.Root
-const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
-const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
-
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import {
@@ -113,7 +93,43 @@ const [open, setOpen] = React.useState(false)
 </Collapsible>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/collapsible.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependency:**
+
+```bash filename="terminal" copy
+npm install @radix-ui/react-collapsible
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/collapsible.tsx" copy
+"use client"
+
+import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
+
+const Collapsible = CollapsiblePrimitive.Root
+const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
+const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
+
+export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### Collapsible
 
@@ -131,3 +147,7 @@ Accepts all standard button attributes. Use `asChild` to render a custom element
 ### CollapsibleContent
 
 Accepts all standard `div` attributes. The content is mounted/unmounted based on open state.
+
+</Tabs.Tab>
+
+</Tabs>

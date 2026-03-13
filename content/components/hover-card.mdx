@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Hover Card
 
@@ -39,18 +40,48 @@ A floating card that appears when hovering over a trigger element. Ideal for pre
   </HoverCard>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
+```
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild>
+    <Button variant="link">@nextjs</Button>
+  </HoverCardTrigger>
+  <HoverCardContent>
+    <p>The React Framework — created and maintained by @vercel.</p>
+  </HoverCardContent>
+</HoverCard>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/hover-card.json
+```
+
+---
+
+### Manual
 
 **1. Install the dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-hover-card
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/hover-card.tsx
+```tsx filename="components/ui/hover-card.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -89,24 +120,9 @@ function HoverCardContent({
 export { HoverCard, HoverCardTrigger, HoverCardContent }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-```
-
-```tsx
-<HoverCard>
-  <HoverCardTrigger asChild>
-    <Button variant="link">@nextjs</Button>
-  </HoverCardTrigger>
-  <HoverCardContent>
-    <p>The React Framework — created and maintained by @vercel.</p>
-  </HoverCardContent>
-</HoverCard>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### HoverCard
 
@@ -131,3 +147,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 | Prop | Type | Description |
 |------|------|-------------|
 | `asChild` | `boolean` | Merge props onto child element instead of rendering a `<a>`. |
+
+</Tabs.Tab>
+
+</Tabs>

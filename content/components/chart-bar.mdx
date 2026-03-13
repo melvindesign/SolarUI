@@ -5,6 +5,7 @@ description: A chart that displays data as vertical or horizontal bars, ideal fo
 
 import { BarChartDefault, BarChartHorizontal, BarChartStacked } from '@/components/charts/bar-chart'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Bar Chart
 
@@ -14,17 +15,9 @@ A chart that displays data as vertical or horizontal bars, ideal for comparing v
   <BarChartDefault />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install recharts
-```
-
-**2. Copy `components/ui/chart.tsx` into your project** (shared `ChartContainer`, `ChartTooltip`, `ChartLegend` primitives).
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -87,7 +80,31 @@ const chartConfig = {
 <Bar dataKey="mobile" stackId="a" radius={[4, 4, 0, 0]} />
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/chart-bar.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install recharts
+```
+
+**2. Copy `components/ui/chart.tsx` into your project** (shared `ChartContainer`, `ChartTooltip`, `ChartLegend` primitives).
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### ChartContainer
 
@@ -109,3 +126,7 @@ type ChartConfig = {
 ```
 
 Colors are injected as `--color-{key}` CSS variables and should be used as `fill="var(--color-desktop)"`.
+
+</Tabs.Tab>
+
+</Tabs>

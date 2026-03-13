@@ -10,6 +10,7 @@ import {
   AccordionContent,
 } from '@/components/ui/accordion'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Accordion
 
@@ -38,18 +39,82 @@ A vertically stacked set of interactive headings that each reveal a section of c
   </Accordion>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion"
+```
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>Yes. Built on Radix UI.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+
+### Multiple open
+
+<ComponentPreview>
+  <Accordion type="multiple" className="w-full max-w-sm">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>First section</AccordionTrigger>
+      <AccordionContent>Content for the first section.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Second section</AccordionTrigger>
+      <AccordionContent>Content for the second section.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Third section</AccordionTrigger>
+      <AccordionContent>Content for the third section.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</ComponentPreview>
+
+```tsx
+<Accordion type="multiple">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>First section</AccordionTrigger>
+    <AccordionContent>Content for the first section.</AccordionContent>
+  </AccordionItem>
+  ...
+</Accordion>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/accordion.json
+```
+
+---
+
+### Manual
 
 **1. Install the following dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-accordion
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/accordion.tsx
+```tsx filename="components/ui/accordion.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -104,58 +169,9 @@ AccordionContent.displayName = AccordionPrimitive.Content.displayName
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion"
-```
-
-```tsx
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>Yes. Built on Radix UI.</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
-
-## Examples
-
-### Multiple open
-
-<ComponentPreview>
-  <Accordion type="multiple" className="w-full max-w-sm">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>First section</AccordionTrigger>
-      <AccordionContent>Content for the first section.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Second section</AccordionTrigger>
-      <AccordionContent>Content for the second section.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>Third section</AccordionTrigger>
-      <AccordionContent>Content for the third section.</AccordionContent>
-    </AccordionItem>
-  </Accordion>
-</ComponentPreview>
-
-```tsx
-<Accordion type="multiple">
-  <AccordionItem value="item-1">
-    <AccordionTrigger>First section</AccordionTrigger>
-    <AccordionContent>Content for the first section.</AccordionContent>
-  </AccordionItem>
-  ...
-</Accordion>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Accordion
 
@@ -177,3 +193,7 @@ import {
 ### AccordionTrigger / AccordionContent
 
 Both accept all standard HTML attributes and a `className` prop for style overrides.
+
+</Tabs.Tab>
+
+</Tabs>

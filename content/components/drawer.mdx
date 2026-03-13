@@ -17,6 +17,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Drawer
 
@@ -52,18 +53,66 @@ A panel that slides up from the bottom of the screen. Built on top of [Vaul](htt
   </Drawer>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+```
+
+```tsx
+<Drawer>
+  <DrawerTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Title</DrawerTitle>
+      <DrawerDescription>Description.</DrawerDescription>
+    </DrawerHeader>
+    <DrawerFooter>
+      <Button>Submit</Button>
+      <DrawerClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </DrawerClose>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/drawer.json
+```
+
+---
+
+### Manual
 
 **1. Install the dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install vaul
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/drawer.tsx
+```tsx filename="components/ui/drawer.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -135,42 +184,9 @@ export {
 }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-```
-
-```tsx
-<Drawer>
-  <DrawerTrigger asChild>
-    <Button variant="outline">Open</Button>
-  </DrawerTrigger>
-  <DrawerContent>
-    <DrawerHeader>
-      <DrawerTitle>Title</DrawerTitle>
-      <DrawerDescription>Description.</DrawerDescription>
-    </DrawerHeader>
-    <DrawerFooter>
-      <Button>Submit</Button>
-      <DrawerClose asChild>
-        <Button variant="outline">Cancel</Button>
-      </DrawerClose>
-    </DrawerFooter>
-  </DrawerContent>
-</Drawer>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Drawer
 
@@ -191,3 +207,7 @@ import {
 | `className` | `string` | — | Additional classes for the drawer panel. |
 | `onOpenAutoFocus` | `(e: Event) => void` | — | Override focus behavior on open. |
 | `onCloseAutoFocus` | `(e: Event) => void` | — | Override focus behavior on close. |
+
+</Tabs.Tab>
+
+</Tabs>

@@ -14,6 +14,7 @@ import {
   EmptyTitle,
 } from '@/components/ui/empty'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Empty
 
@@ -34,12 +35,87 @@ A composable empty state component for displaying placeholder content when there
   </Empty>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+```
+
+```tsx
+<Empty>
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <InboxIcon />
+    </EmptyMedia>
+    <EmptyTitle>No messages</EmptyTitle>
+    <EmptyDescription>You don't have any messages yet.</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>Send a message</Button>
+  </EmptyContent>
+</Empty>
+```
+
+## Examples
+
+### Search with no results
+
+<ComponentPreview>
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia variant="icon">
+        <SearchIcon />
+      </EmptyMedia>
+      <EmptyTitle>No results found</EmptyTitle>
+      <EmptyDescription>Try adjusting your search or filters to find what you're looking for.</EmptyDescription>
+    </EmptyHeader>
+  </Empty>
+</ComponentPreview>
+
+### No projects
+
+<ComponentPreview>
+  <Empty>
+    <EmptyHeader>
+      <EmptyMedia variant="icon">
+        <FolderIcon />
+      </EmptyMedia>
+      <EmptyTitle>No projects yet</EmptyTitle>
+      <EmptyDescription>Get started by creating your first project.</EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent>
+      <Button>Create project</Button>
+      <Button variant="ghost">Import existing</Button>
+    </EmptyContent>
+  </Empty>
+</ComponentPreview>
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/empty.json
+```
+
+---
+
+### Manual
 
 No dependencies required — copy and paste the following code into your project:
 
-```tsx
-// components/ui/empty.tsx
+```tsx filename="components/ui/empty.tsx" copy
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -117,69 +193,9 @@ function EmptyContent({ className, ...props }: React.ComponentProps<"div">) {
 export { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty"
-```
-
-```tsx
-<Empty>
-  <EmptyHeader>
-    <EmptyMedia variant="icon">
-      <InboxIcon />
-    </EmptyMedia>
-    <EmptyTitle>No messages</EmptyTitle>
-    <EmptyDescription>You don't have any messages yet.</EmptyDescription>
-  </EmptyHeader>
-  <EmptyContent>
-    <Button>Send a message</Button>
-  </EmptyContent>
-</Empty>
-```
-
-## Examples
-
-### Search with no results
-
-<ComponentPreview>
-  <Empty>
-    <EmptyHeader>
-      <EmptyMedia variant="icon">
-        <SearchIcon />
-      </EmptyMedia>
-      <EmptyTitle>No results found</EmptyTitle>
-      <EmptyDescription>Try adjusting your search or filters to find what you're looking for.</EmptyDescription>
-    </EmptyHeader>
-  </Empty>
-</ComponentPreview>
-
-### No projects
-
-<ComponentPreview>
-  <Empty>
-    <EmptyHeader>
-      <EmptyMedia variant="icon">
-        <FolderIcon />
-      </EmptyMedia>
-      <EmptyTitle>No projects yet</EmptyTitle>
-      <EmptyDescription>Get started by creating your first project.</EmptyDescription>
-    </EmptyHeader>
-    <EmptyContent>
-      <Button>Create project</Button>
-      <Button variant="ghost">Import existing</Button>
-    </EmptyContent>
-  </Empty>
-</ComponentPreview>
-
-## API Reference
+<Tabs.Tab>
 
 ### Empty
 
@@ -211,3 +227,7 @@ Renders a `<p>` with `text-muted-foreground` and a max width constraint.
 ### EmptyContent
 
 Wraps action elements (buttons, inputs, etc.) in a centered column.
+
+</Tabs.Tab>
+
+</Tabs>

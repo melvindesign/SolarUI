@@ -5,6 +5,7 @@ description: A chart that connects data points with a line, useful for visualizi
 
 import { LineChartDefault, LineChartWithDots } from '@/components/charts/line-chart'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Line Chart
 
@@ -14,17 +15,9 @@ A chart that connects data points with a line, useful for visualizing trends ove
   <LineChartDefault />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install recharts
-```
-
-**2. Copy `components/ui/chart.tsx` into your project.**
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -74,7 +67,31 @@ import {
 
 Available `type` values: `"basis"`, `"bumpX"`, `"bumpY"`, `"bump"`, `"linear"`, `"monotone"`, `"natural"`, `"step"`, `"stepAfter"`, `"stepBefore"`.
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/chart-line.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install recharts
+```
+
+**2. Copy `components/ui/chart.tsx` into your project.**
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -82,3 +99,7 @@ Available `type` values: `"basis"`, `"bumpX"`, `"bumpY"`, `"bump"`, `"linear"`, 
 | `strokeWidth` | `number` | `1` | Line thickness. |
 | `dot` | `boolean \| object` | `true` | Show/style dot markers. |
 | `activeDot` | `boolean \| object` | `true` | Dot style on hover. |
+
+</Tabs.Tab>
+
+</Tabs>

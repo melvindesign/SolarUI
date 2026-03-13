@@ -5,6 +5,7 @@ description: A line chart with a filled area beneath, useful for showing cumulat
 
 import { AreaChartDefault, AreaChartStacked } from '@/components/charts/area-chart'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Area Chart
 
@@ -14,17 +15,9 @@ A line chart with a filled area beneath, useful for showing cumulative totals or
   <AreaChartDefault />
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install recharts
-```
-
-**2. Copy `components/ui/chart.tsx` into your project.**
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 "use client"
@@ -78,7 +71,31 @@ import {
 />
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/chart-area.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install recharts
+```
+
+**2. Copy `components/ui/chart.tsx` into your project.**
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -86,3 +103,7 @@ import {
 | `fillOpacity` | `number` | `0.6` | Transparency of the filled area. |
 | `stackId` | `string` | — | Share the same id across areas to stack them. |
 | `strokeWidth` | `number` | `1` | Stroke thickness. |
+
+</Tabs.Tab>
+
+</Tabs>

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Popover
 
@@ -43,18 +44,48 @@ A floating panel anchored to a trigger element, for displaying rich content on d
   </Popover>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+```
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <p>Popover content here.</p>
+  </PopoverContent>
+</Popover>
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/popover.json
+```
+
+---
+
+### Manual
 
 **1. Install the dependency:**
 
-```bash
+```bash filename="terminal" copy
 npm install @radix-ui/react-popover
 ```
 
 **2. Copy and paste the following code into your project:**
 
-```tsx
-// components/ui/popover.tsx
+```tsx filename="components/ui/popover.tsx" copy
 "use client"
 
 import * as React from "react"
@@ -94,24 +125,9 @@ function PopoverContent({
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
 ```
 
-## Usage
+</Tabs.Tab>
 
-```tsx
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-```
-
-```tsx
-<Popover>
-  <PopoverTrigger asChild>
-    <Button variant="outline">Open</Button>
-  </PopoverTrigger>
-  <PopoverContent>
-    <p>Popover content here.</p>
-  </PopoverContent>
-</Popover>
-```
-
-## API Reference
+<Tabs.Tab>
 
 ### Popover
 
@@ -143,3 +159,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 ### PopoverAnchor
 
 An optional anchor element to position the popover against, independent of the trigger.
+
+</Tabs.Tab>
+
+</Tabs>

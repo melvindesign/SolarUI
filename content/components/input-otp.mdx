@@ -10,6 +10,7 @@ import {
   InputOTPSlot,
 } from '@/components/ui/input-otp'
 import { ComponentPreview } from '@/components/component-preview'
+import { Tabs } from 'nextra/components'
 
 # Input OTP
 
@@ -31,80 +32,9 @@ An accessible one-time password input component built on top of [input-otp](http
   </InputOTP>
 </ComponentPreview>
 
-## Installation
+<Tabs items={['Usage', 'Installation', 'API']}>
 
-**1. Install the dependency:**
-
-```bash
-npm install input-otp
-```
-
-**2. Copy and paste the following code into your project:**
-
-```tsx
-// components/ui/input-otp.tsx
-"use client"
-
-import * as React from "react"
-import { OTPInput, OTPInputContext } from "input-otp"
-import { MinusIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
-
-function InputOTP({
-  className,
-  containerClassName,
-  ...props
-}: React.ComponentProps<typeof OTPInput> & { containerClassName?: string }) {
-  return (
-    <OTPInput
-      containerClassName={cn("flex items-center gap-2 has-disabled:opacity-50", containerClassName)}
-      className={cn("disabled:cursor-not-allowed", className)}
-      {...props}
-    />
-  )
-}
-
-function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("flex items-center", className)} {...props} />
-}
-
-function InputOTPSlot({ index, className, ...props }: React.ComponentProps<"div"> & { index: number }) {
-  const inputOTPContext = React.useContext(OTPInputContext)
-  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {}
-
-  return (
-    <div
-      data-active={isActive}
-      className={cn(
-        "border-input relative flex h-10 w-10 items-center justify-center border-y border-r text-sm transition-all",
-        "first:rounded-l-md first:border-l last:rounded-r-md",
-        "data-[active=true]:ring-ring data-[active=true]:border-ring data-[active=true]:z-10 data-[active=true]:ring-1",
-        className
-      )}
-      {...props}
-    >
-      {char}
-      {hasFakeCaret && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
-        </div>
-      )}
-    </div>
-  )
-}
-
-function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
-  return (
-    <div role="separator" {...props}>
-      <MinusIcon className="size-4" />
-    </div>
-  )
-}
-
-export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot }
-```
-
-## Usage
+<Tabs.Tab>
 
 ```tsx
 import {
@@ -195,7 +125,93 @@ const [value, setValue] = React.useState("")
 </p>
 ```
 
-## API Reference
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/input-otp.json
+```
+
+---
+
+### Manual
+
+**1. Install the dependency:**
+
+```bash filename="terminal" copy
+npm install input-otp
+```
+
+**2. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/input-otp.tsx" copy
+"use client"
+
+import * as React from "react"
+import { OTPInput, OTPInputContext } from "input-otp"
+import { MinusIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+function InputOTP({
+  className,
+  containerClassName,
+  ...props
+}: React.ComponentProps<typeof OTPInput> & { containerClassName?: string }) {
+  return (
+    <OTPInput
+      containerClassName={cn("flex items-center gap-2 has-disabled:opacity-50", containerClassName)}
+      className={cn("disabled:cursor-not-allowed", className)}
+      {...props}
+    />
+  )
+}
+
+function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("flex items-center", className)} {...props} />
+}
+
+function InputOTPSlot({ index, className, ...props }: React.ComponentProps<"div"> & { index: number }) {
+  const inputOTPContext = React.useContext(OTPInputContext)
+  const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {}
+
+  return (
+    <div
+      data-active={isActive}
+      className={cn(
+        "border-input relative flex h-10 w-10 items-center justify-center border-y border-r text-sm transition-all",
+        "first:rounded-l-md first:border-l last:rounded-r-md",
+        "data-[active=true]:ring-ring data-[active=true]:border-ring data-[active=true]:z-10 data-[active=true]:ring-1",
+        className
+      )}
+      {...props}
+    >
+      {char}
+      {hasFakeCaret && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
+  return (
+    <div role="separator" {...props}>
+      <MinusIcon className="size-4" />
+    </div>
+  )
+}
+
+export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
 
 ### InputOTP
 
@@ -214,3 +230,7 @@ Extends all `OTPInput` props from `input-otp`.
 | Prop | Type | Description |
 |------|------|-------------|
 | `index` | `number` | Position of this slot in the OTP input (0-based). |
+
+</Tabs.Tab>
+
+</Tabs>
