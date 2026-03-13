@@ -3,20 +3,15 @@ title: Introduction
 description: A modern, accessible, and customizable UI component library.
 ---
 
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { DoAndDont, Do, Dont } from '@/components/do-and-dont'
+
 # Introduction
 
 **SolarUI** is an open-source UI component library designed to help you build beautiful, accessible, and consistent interfaces faster.
 
 Built on top of [shadcn/ui](https://ui.shadcn.com/), [Tailwind CSS](https://tailwindcss.com/), and [Radix UI](https://www.radix-ui.com/), SolarUI provides a set of copy-paste-ready components that you own and can customize to fit your design system.
-
-## Philosophy
-
-SolarUI follows the philosophy of **ownership over dependency**. Instead of shipping a black-box component package, SolarUI gives you the source code directly in your project — you own it, you style it, you adapt it.
-
-- **Accessible** — Components are built on Radix UI primitives, ensuring ARIA compliance out of the box.
-- **Composable** — A small set of primitive components you can mix and match.
-- **Themeable** — Full support for light/dark mode using CSS variables.
-- **TypeScript-first** — Every component is typed.
 
 ## Tech Stack
 
@@ -27,3 +22,45 @@ SolarUI follows the philosophy of **ownership over dependency**. Instead of ship
 | [shadcn/ui](https://ui.shadcn.com/) | Component primitives |
 | [Radix UI](https://www.radix-ui.com/) | Accessibility primitives |
 | [TypeScript](https://www.typescriptlang.org/) | Type safety |
+
+## Philosophy
+
+SolarUI est construit sur quelques principes intentionnels. Pas des conventions arbitraires — chacun répond à un vrai problème visuel ou d'interaction.
+
+### Open code, no lock-in
+
+SolarUI repose sur shadcn/ui, et ce choix est philosophique autant que technique. shadcn/ui n'est pas une librairie de composants au sens classique : tu reçois le code source directement dans ton projet. Tu le possèdes, tu peux le lire, le modifier, l'adapter — sans workarounds, sans wrapper, sans lock-in.
+
+> "This is not a component library. It is how you build your component library."
+
+### Controls share a single height
+
+Buttons and inputs must always have the same height. When a button sits next to an input, they form a single visual unit — if their heights differ, that unit breaks.
+
+<DoAndDont>
+  <Do label="Do — same height">
+    <div className="flex w-full max-w-xs gap-2">
+      <Input placeholder="Email address" />
+      <Button>Subscribe</Button>
+    </div>
+  </Do>
+  <Dont label="Don't — mismatched heights">
+    <div className="flex w-full max-w-xs items-center gap-2">
+      <input
+        placeholder="Email address"
+        className="flex h-10 w-full rounded-md border border-(--color-input) bg-(--color-background) px-3 text-sm"
+      />
+      <button className="inline-flex h-6 shrink-0 items-center rounded-lg bg-default-12 px-2.5 text-xs font-medium text-brand-1">
+        Subscribe
+      </button>
+    </div>
+  </Dont>
+</DoAndDont>
+
+This is enforced at the token level via `h-control`, which maps to `--height-control`. Changing one automatically changes both.
+
+### Regrouper, catégoriser, ordonner
+
+Chez Solar, on accorde une attention particulière à la façon dont les composants et les icônes sont triés et regroupés. Ce n'est pas une question d'esthétique — c'est une décision structurelle.
+
+Les éléments proches sont perçus comme liés : regrouper des composants qui partagent un rôle crée une grammaire visuelle implicite. Une catégorie bien définie dit non seulement *ce qu'elle contient*, mais aussi *ce qu'elle n'accepte pas* — ce qui évite le glissement et rend le système gouvernable à mesure qu'il grandit. Enfin, quand les composants sont bien rangés, les trous se voient : une catégorie peu peuplée signale immédiatement ce qui manque.
