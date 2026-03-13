@@ -1,77 +1,81 @@
 ---
 title: Installation
-description: How to install and set up SolarUI in your project.
+description: How to install and set up Solar UI in your project.
 ---
 
-import { Steps, Tabs } from 'nextra/components'
+import { Callout, Steps } from 'nextra/components'
 
 # Installation
 
-SolarUI requires **Next.js 14+**, **Tailwind CSS v4**, and **Node.js 18+**.
+Solar UI s'appuie sur **shadcn/ui**, **Tailwind CSS v4** et **Next.js 14+**. Les composants sont distribués via un registre shadcn hébergé localement.
 
 <Steps>
 
-### Create a new Next.js project
+### Créer un projet Next.js
 
-```bash
-npx create-next-app@latest my-app --typescript --tailwind --eslint
-cd my-app
+```bash filename="terminal" copy
+npx create-next-app@latest mon-projet --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes
+cd mon-projet
 ```
 
-### Install dependencies
+<Callout type="info">
+  npm interdit les majuscules dans les noms de packages. Utilise des minuscules (ex : `mon-projet`, pas `MonProjet`).
+</Callout>
 
-<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-  <Tabs.Tab>
-  ```bash
-  npm install class-variance-authority clsx tailwind-merge lucide-react
-  npm install @radix-ui/react-slot
-  ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-  ```bash
-  pnpm add class-variance-authority clsx tailwind-merge lucide-react
-  pnpm add @radix-ui/react-slot
-  ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-  ```bash
-  yarn add class-variance-authority clsx tailwind-merge lucide-react
-  yarn add @radix-ui/react-slot
-  ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-  ```bash
-  bun add class-variance-authority clsx tailwind-merge lucide-react
-  bun add @radix-ui/react-slot
-  ```
-  </Tabs.Tab>
-</Tabs>
+### Initialiser shadcn
 
-### Initialize shadcn/ui
-
-```bash
-npx shadcn@latest init
+```bash filename="terminal" copy
+npx shadcn@latest init --defaults
 ```
 
-Follow the prompts to configure your project. Recommended settings:
+Cette commande génère `components.json` et installe les fichiers de base (`button.tsx`, `utils.ts`, etc.).
 
-```
-✔ Which style would you like to use? › Default
-✔ Which color would you like to use as base color? › Slate
-✔ Would you like to use CSS variables for colors? › yes
-```
+### Ajouter le thème Solar UI
 
-### Add your first component
-
-```bash
-npx shadcn@latest add button
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/solar-theme.json
 ```
 
-This will create `components/ui/button.tsx` in your project.
+Cela crée `src/app/solar-theme.css` et configure le style `base-nova` dans `components.json`.
 
-### Import and use
+### Importer le thème dans globals.css
 
-```tsx
+Ouvre `src/app/globals.css` et ajoute ces deux lignes **tout en haut**, avant `@import "tailwindcss"` :
+
+```css filename="src/app/globals.css" copy
+@import "./solar-theme.css";
+@import "tailwindcss";
+```
+
+### Configurer le registre Solar UI
+
+Pour que shadcn sache où résoudre les composants Solar UI, ajoute cette entrée dans `components.json` :
+
+```json filename="components.json" copy
+{
+  "registries": {
+    "solar": {
+      "url": "http://localhost:3000/r"
+    }
+  }
+}
+```
+
+<Callout type="info">
+  Sans cette configuration, shadcn cherche les dépendances Solar UI sur le registre officiel et retourne une erreur `solar-theme.json was not found`.
+</Callout>
+
+### Ajouter des composants
+
+```bash filename="terminal" copy
+npx shadcn@latest add http://localhost:3000/r/button.json
+```
+
+Remplace `button.json` par le composant de ton choix. Les composants sont installés dans `src/components/ui/`.
+
+### Utiliser un composant
+
+```tsx filename="src/app/page.tsx" copy
 import { Button } from '@/components/ui/button'
 
 export default function Page() {
