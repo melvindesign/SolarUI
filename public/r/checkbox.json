@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "dependencies": [
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "utils",
+    "solar-theme"
+  ],
+  "files": [
+    {
+      "path": "components/ui/checkbox.tsx",
+      "content": "\"use client\"\n\nimport { Checkbox as CheckboxPrimitive } from \"radix-ui\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { CheckIcon } from \"lucide-react\"\n\nfunction Checkbox({\n  className,\n  ...props\n}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"border-default-7 data-checked:bg-brand-9 data-checked:text-brand-1 data-checked:border-brand-9 aria-invalid:aria-checked:border-brand-9 aria-invalid:border-error-8 focus-visible:border-default-8 focus-visible:ring-default-7 aria-invalid:ring-error-7 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator\n        data-slot=\"checkbox-indicator\"\n        className=\"[&>svg]:size-3.5 grid place-content-center text-current transition-none\"\n      >\n        <CheckIcon\n        />\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  )\n}\n\nexport { Checkbox }\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:ui"
+}
