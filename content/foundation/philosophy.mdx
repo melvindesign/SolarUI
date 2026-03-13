@@ -63,3 +63,33 @@ This is enforced at the token level. Both `Button` (default size) and `Input` us
 ```
 
 This also applies across sizes: a small button (`size="sm"`) paired with a small input should share the same height token for that size tier.
+
+---
+
+## Regrouper, catégoriser, ordonner
+
+Chez Solar, on accorde une attention particulière à la façon dont les composants et les icônes sont triés et regroupés. Ce n'est pas une question d'esthétique — c'est une décision structurelle qui a des effets concrets sur la qualité du système.
+
+### Loi de proximité
+
+Les éléments proches sont perçus comme liés. En regroupant des composants qui partagent un rôle, un contexte ou un comportement, on crée une grammaire visuelle implicite : l'utilisateur comprend les relations entre les pièces sans qu'on ait besoin de les lui expliquer.
+
+Un bouton `ghost` isolé dit peu de chose. Placé dans une catégorie "Actions secondaires" aux côtés de `link` et `subtle`, il prend un sens immédiat. La proximité porte la signification.
+
+### Gouvernance et périmètre
+
+Regrouper, c'est aussi délimiter. Une catégorie bien définie dit non seulement *ce qu'elle contient*, mais aussi *ce qu'elle n'accepte pas*. Cela évite le glissement : un composant mal classé finit par être mal utilisé, dupliqué, ou oublié.
+
+Les catégories sont des contrats implicites. Elles rendent le système gouvernable à mesure qu'il grandit.
+
+### Scalabilité cognitive
+
+Un système de design grossit vite. Sans structure, la charge mentale explose : retrouver un composant, savoir où en ajouter un nouveau, comprendre ce qui existe déjà — tout devient coûteux. Des catégories claires réduisent ce coût. Elles permettent à quelqu'un qui découvre le système de se repérer en quelques secondes, sans avoir tout en tête.
+
+### Auditabilité
+
+Quand les composants sont bien rangés, les trous se voient. Une catégorie "Feedback" qui ne contient qu'un `Toast` signale immédiatement qu'il manque peut-être une `Alert`, un `Banner`, un état `Empty`. La structure révèle les lacunes — là où un inventaire plat les dissimule.
+
+### Cohérence sémantique
+
+Un bon regroupement force une question utile : *ces éléments partagent-ils vraiment quelque chose ?* Si la réponse est non, c'est souvent le signe que le composant lui-même est mal conçu, ou qu'il remplit plusieurs rôles qu'il faudrait séparer. Catégoriser oblige à clarifier l'intention.
