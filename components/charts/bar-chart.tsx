@@ -31,7 +31,7 @@ export function BarChartDefault() {
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
+        <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
       </BarChart>
@@ -61,7 +61,7 @@ export function BarChartStacked() {
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
+        <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[0, 0, 4, 4]} stackId="a" />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={[4, 4, 0, 0]} stackId="a" />
       </BarChart>
