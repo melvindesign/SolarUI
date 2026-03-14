@@ -3,9 +3,11 @@ title: Checkbox
 description: A control that allows the user to toggle between checked, unchecked, and indeterminate states.
 ---
 
-import { Checkbox } from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Field, FieldContent, FieldDescription, FieldError, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field'
+import { Label } from '@/components/ui/label'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Tabs } from 'nextra/components'
 
 # Checkbox
@@ -67,24 +69,11 @@ import { Checkbox } from "@/components/ui/checkbox"
 <Checkbox disabled defaultChecked />
 ```
 
-### Indeterminate
-
-<ComponentPreview>
-  <div className="flex items-center gap-2">
-    <Checkbox id="indeterminate" checked="indeterminate" />
-    <Label htmlFor="indeterminate">Select all</Label>
-  </div>
-</ComponentPreview>
-
-```tsx
-<Checkbox checked="indeterminate" />
-```
-
 ### Group
 
 <ComponentPreview>
-  <div className="flex flex-col gap-3">
-    <p className="text-sm font-medium">Notifications</p>
+  <FieldSet>
+    <FieldLegend>Notifications</FieldLegend>
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
         <Checkbox id="notif-email" defaultChecked />
@@ -99,23 +88,186 @@ import { Checkbox } from "@/components/ui/checkbox"
         <Label htmlFor="notif-sms">SMS</Label>
       </div>
     </div>
+  </FieldSet>
+</ComponentPreview>
+
+```tsx
+<FieldSet>
+  <FieldLegend>Notifications</FieldLegend>
+  <div className="flex flex-col gap-2">
+    <div className="flex items-center gap-2">
+      <Checkbox id="email" defaultChecked />
+      <Label htmlFor="email">Email</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="push" defaultChecked />
+      <Label htmlFor="push">Push</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="sms" />
+      <Label htmlFor="sms">SMS</Label>
+    </div>
+  </div>
+</FieldSet>
+```
+
+### With description
+
+<ComponentPreview>
+  <Field orientation="horizontal">
+    <Checkbox id="desc-marketing" />
+    <FieldContent>
+      <FieldLabel htmlFor="desc-marketing">Marketing emails</FieldLabel>
+      <FieldDescription>Receive emails about new products, features, and more.</FieldDescription>
+    </FieldContent>
+  </Field>
+</ComponentPreview>
+
+```tsx
+<Field orientation="horizontal">
+  <Checkbox id="marketing" />
+  <FieldContent>
+    <FieldLabel htmlFor="marketing">Marketing emails</FieldLabel>
+    <FieldDescription>Receive emails about new products, features, and more.</FieldDescription>
+  </FieldContent>
+</Field>
+```
+
+### Invalid
+
+<ComponentPreview>
+  <Field orientation="horizontal" data-invalid>
+    <Checkbox id="invalid-terms" aria-invalid />
+    <FieldContent>
+      <FieldLabel htmlFor="invalid-terms">Accept terms and conditions</FieldLabel>
+      <FieldError>You must accept the terms to continue.</FieldError>
+    </FieldContent>
+  </Field>
+</ComponentPreview>
+
+```tsx
+<Field orientation="horizontal" data-invalid>
+  <Checkbox id="terms" aria-invalid />
+  <FieldContent>
+    <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
+    <FieldError>You must accept the terms to continue.</FieldError>
+  </FieldContent>
+</Field>
+```
+
+### Table
+
+<ComponentPreview>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead className="w-10"><Checkbox /></TableHead>
+        <TableHead>Name</TableHead>
+        <TableHead>Email</TableHead>
+        <TableHead>Role</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell><Checkbox /></TableCell>
+        <TableCell>Alice Martin</TableCell>
+        <TableCell>alice@example.com</TableCell>
+        <TableCell>Admin</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><Checkbox defaultChecked /></TableCell>
+        <TableCell>Bob Johnson</TableCell>
+        <TableCell>bob@example.com</TableCell>
+        <TableCell>Member</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell><Checkbox /></TableCell>
+        <TableCell>Carol White</TableCell>
+        <TableCell>carol@example.com</TableCell>
+        <TableCell>Viewer</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ComponentPreview>
+
+```tsx
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead className="w-10"><Checkbox /></TableHead>
+      <TableHead>Name</TableHead>
+      <TableHead>Email</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell><Checkbox /></TableCell>
+      <TableCell>Alice Martin</TableCell>
+      <TableCell>alice@example.com</TableCell>
+      <TableCell>Admin</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell><Checkbox defaultChecked /></TableCell>
+      <TableCell>Bob Johnson</TableCell>
+      <TableCell>bob@example.com</TableCell>
+      <TableCell>Member</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell><Checkbox /></TableCell>
+      <TableCell>Carol White</TableCell>
+      <TableCell>carol@example.com</TableCell>
+      <TableCell>Viewer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+### Card
+
+<ComponentPreview>
+  <div className="grid w-full max-w-sm gap-3">
+    <FieldLabel>
+      <Field orientation="horizontal">
+        <Checkbox id="card-email" defaultChecked />
+        <FieldContent>
+          <FieldLabel htmlFor="card-email">Email notifications</FieldLabel>
+          <FieldDescription>Get notified when someone mentions you.</FieldDescription>
+        </FieldContent>
+      </Field>
+    </FieldLabel>
+    <FieldLabel>
+      <Field orientation="horizontal">
+        <Checkbox id="card-push" />
+        <FieldContent>
+          <FieldLabel htmlFor="card-push">Push notifications</FieldLabel>
+          <FieldDescription>Receive push alerts on your devices.</FieldDescription>
+        </FieldContent>
+      </Field>
+    </FieldLabel>
   </div>
 </ComponentPreview>
 
 ```tsx
-<div className="flex flex-col gap-2">
-  <div className="flex items-center gap-2">
-    <Checkbox id="email" defaultChecked />
-    <Label htmlFor="email">Email</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <Checkbox id="push" defaultChecked />
-    <Label htmlFor="push">Push</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <Checkbox id="sms" />
-    <Label htmlFor="sms">SMS</Label>
-  </div>
+<div className="grid gap-3">
+  <FieldLabel>
+    <Field orientation="horizontal">
+      <Checkbox id="email" defaultChecked />
+      <FieldContent>
+        <FieldLabel htmlFor="email">Email notifications</FieldLabel>
+        <FieldDescription>Get notified when someone mentions you.</FieldDescription>
+      </FieldContent>
+    </Field>
+  </FieldLabel>
+  <FieldLabel>
+    <Field orientation="horizontal">
+      <Checkbox id="push" />
+      <FieldContent>
+        <FieldLabel htmlFor="push">Push notifications</FieldLabel>
+        <FieldDescription>Receive push alerts on your devices.</FieldDescription>
+      </FieldContent>
+    </Field>
+  </FieldLabel>
 </div>
 ```
 
