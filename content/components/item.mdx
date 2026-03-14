@@ -3,7 +3,7 @@ title: Item
 description: A flexible composable component for displaying structured content — lists, cards, or media-rich rows.
 ---
 
-import { HomeIcon, BellIcon, SettingsIcon, UserIcon, FileIcon } from 'lucide-react'
+import { ComponentPreview } from '@/components/component-preview'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -16,7 +16,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from '@/components/ui/item'
-import { ComponentPreview } from '@/components/component-preview'
+import { BellIcon, FileIcon, HomeIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import { Tabs } from 'nextra/components'
 
 # Item
@@ -25,7 +25,7 @@ A flexible composable component for displaying structured content such as list r
 
 <ComponentPreview>
   <ItemGroup className="w-full max-w-sm divide-y">
-    <Item>
+    <Item variant="outline">
       <ItemMedia variant="icon"><HomeIcon /></ItemMedia>
       <ItemContent>
         <ItemTitle>Dashboard</ItemTitle>
@@ -42,12 +42,14 @@ A flexible composable component for displaying structured content such as list r
         <Badge>3</Badge>
       </ItemActions>
     </Item>
-    <Item>
-      <ItemMedia variant="icon"><SettingsIcon /></ItemMedia>
+    <Item variant="muted" size="compact">
       <ItemContent>
         <ItemTitle>Settings</ItemTitle>
         <ItemDescription>Configure your workspace settings.</ItemDescription>
       </ItemContent>
+      <ItemActions>
+        <Button variant="outline">Configure</Button>
+      </ItemActions>
     </Item>
   </ItemGroup>
 </ComponentPreview>
@@ -97,7 +99,7 @@ import {
         <ItemDescription>shadcn@example.com</ItemDescription>
       </ItemContent>
       <ItemActions>
-        <Button size="sm" variant="outline">Follow</Button>
+        <Button size="compact" variant="outline">Follow</Button>
       </ItemActions>
     </Item>
     <Item>
@@ -111,7 +113,7 @@ import {
         <ItemDescription>jane@example.com</ItemDescription>
       </ItemContent>
       <ItemActions>
-        <Button size="sm" variant="outline">Follow</Button>
+        <Button size="compact" variant="outline">Follow</Button>
       </ItemActions>
     </Item>
   </ItemGroup>
