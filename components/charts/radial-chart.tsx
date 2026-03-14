@@ -25,7 +25,7 @@ export function RadialChartDefault() {
   return (
     <ChartContainer config={chartConfig} className="h-72 w-full">
       <RadialBarChart data={chartData} cx="50%" cy="50%" innerRadius={30} outerRadius={110}>
-        <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} nameKey="name" />} />
         <RadialBar dataKey="desktop" fill="var(--color-desktop)" background stackId="a" cornerRadius={4} />
         <RadialBar dataKey="mobile" fill="var(--color-mobile)" stackId="a" cornerRadius={4} />
       </RadialBarChart>
@@ -39,7 +39,7 @@ export function RadialChartWithLabel() {
   return (
     <ChartContainer config={chartConfig} className="h-72 w-full">
       <RadialBarChart data={chartData} cx="50%" cy="50%" innerRadius={60} outerRadius={110} startAngle={90} endAngle={-270}>
-        <ChartTooltip content={<ChartTooltipContent nameKey="name" />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} nameKey="name" />} />
         <PolarRadiusAxis tick={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {

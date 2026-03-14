@@ -30,7 +30,7 @@ export function BarChartDefault() {
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
@@ -46,7 +46,7 @@ export function BarChartHorizontal() {
         <CartesianGrid horizontal={false} />
         <YAxis dataKey="month" type="category" tickLine={false} axisLine={false} tickMargin={10} />
         <XAxis type="number" hide />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
       </BarChart>
@@ -60,7 +60,7 @@ export function BarChartStacked() {
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={[0, 0, 4, 4]} stackId="a" />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={[4, 4, 0, 0]} stackId="a" />

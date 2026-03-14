@@ -28,7 +28,7 @@ export function RadarChartDefault() {
       <RadarChart data={chartData} cx="50%" cy="50%" outerRadius="80%">
         <PolarGrid />
         <PolarAngleAxis dataKey="month" />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.3} stroke="var(--color-desktop)" strokeWidth={2} />
         <Radar dataKey="mobile" fill="var(--color-mobile)" fillOpacity={0.3} stroke="var(--color-mobile)" strokeWidth={2} />
       </RadarChart>
@@ -42,7 +42,7 @@ export function RadarChartSingle() {
       <RadarChart data={chartData} cx="50%" cy="50%" outerRadius="80%">
         <PolarGrid />
         <PolarAngleAxis dataKey="month" />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <Radar
           dataKey="desktop"
           fill="var(--color-desktop)"

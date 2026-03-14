@@ -29,7 +29,7 @@ export function PieChartDefault() {
   return (
     <ChartContainer config={chartConfig} className="h-64 w-full">
       <PieChart>
-        <ChartTooltip content={<ChartTooltipContent nameKey="browser" hideLabel />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} nameKey="browser" hideLabel />} />
         <Pie data={chartData} dataKey="visitors" nameKey="browser" cx="50%" cy="50%" outerRadius={90}>
           {chartData.map((entry) => (
             <Cell key={entry.browser} fill={`var(--color-${entry.browser})`} />
@@ -44,7 +44,7 @@ export function PieChartDonut() {
   return (
     <ChartContainer config={chartConfig} className="h-64 w-full">
       <PieChart>
-        <ChartTooltip content={<ChartTooltipContent nameKey="browser" hideLabel />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} nameKey="browser" hideLabel />} />
         <Pie data={chartData} dataKey="visitors" nameKey="browser" cx="50%" cy="50%" innerRadius={50} outerRadius={90}>
           {chartData.map((entry) => (
             <Cell key={entry.browser} fill={`var(--color-${entry.browser})`} />

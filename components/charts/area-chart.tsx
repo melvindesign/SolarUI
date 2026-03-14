@@ -30,7 +30,7 @@ export function AreaChartDefault() {
       <AreaChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Area type="monotone" dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.2} stroke="var(--color-desktop)" strokeWidth={2} />
         <Area type="monotone" dataKey="mobile" fill="var(--color-mobile)" fillOpacity={0.2} stroke="var(--color-mobile)" strokeWidth={2} />
@@ -45,7 +45,7 @@ export function AreaChartStacked() {
       <AreaChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <Area type="monotone" dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.4} stroke="var(--color-desktop)" strokeWidth={2} stackId="1" />
         <Area type="monotone" dataKey="mobile" fill="var(--color-mobile)" fillOpacity={0.4} stroke="var(--color-mobile)" strokeWidth={2} stackId="1" />
       </AreaChart>

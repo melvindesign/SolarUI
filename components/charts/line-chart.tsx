@@ -30,7 +30,7 @@ export function LineChartDefault() {
       <LineChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Line type="monotone" dataKey="desktop" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
         <Line type="monotone" dataKey="mobile" stroke="var(--color-mobile)" strokeWidth={2} dot={false} />
@@ -45,7 +45,7 @@ export function LineChartWithDots() {
       <LineChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
-        <ChartTooltip content={<ChartTooltipContent />} />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...(props as any)} />} />
         <Line
           type="monotone"
           dataKey="desktop"
