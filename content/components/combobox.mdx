@@ -1,18 +1,28 @@
 ---
 title: Combobox
-description: An autocomplete input combined with a dropdown list, built with Command and Popover.
+description: An autocomplete input with a filterable dropdown list, built on Base UI's Combobox primitive.
 ---
 
-import { ComboboxDemo, ComboboxStatusDemo } from '@/components/ui/combobox'
+import {
+  ComboboxBasicDemo,
+  ComboboxMultipleDemo,
+  ComboboxClearDemo,
+  ComboboxGroupsDemo,
+  ComboboxCustomItemsDemo,
+  ComboboxInvalidDisabledDemo,
+  ComboboxAutoHighlightDemo,
+  ComboboxPopupDemo,
+  ComboboxInputGroupDemo,
+} from '@/components/demos/combobox-demos'
 import { ComponentPreview } from '@/components/component-preview'
 import { Tabs } from 'nextra/components'
 
 # Combobox
 
-An autocomplete input combined with a dropdown list, built with `Command` and `Popover`.
+An autocomplete input with a filterable dropdown list, built on Base UI's Combobox primitive.
 
 <ComponentPreview>
-  <ComboboxDemo />
+  <ComboboxBasicDemo />
 </ComponentPreview>
 
 <Tabs items={['Usage', 'Installation', 'API']}>
@@ -20,86 +30,277 @@ An autocomplete input combined with a dropdown list, built with `Command` and `P
 <Tabs.Tab>
 
 ```tsx
-"use client"
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
+```
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+Pass your items array to the `items` prop on `Combobox` and use a render function as the child of `ComboboxList` to render each item. This enables built-in filtering and the empty state.
 
-const items = [
-  { value: "next.js", label: "Next.js" },
-  { value: "sveltekit", label: "SvelteKit" },
-  { value: "nuxt.js", label: "Nuxt.js" },
+```tsx
+const options = [
+  { value: "option-1", label: "Option 1" },
+  { value: "option-2", label: "Option 2" },
+  { value: "option-3", label: "Option 3" },
 ]
 
-export function MyCombobox() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
-
-  return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button variant="outline" role="combobox" aria-expanded={open} className="w-56 justify-between">
-          {value ? items.find((item) => item.value === value)?.label : "Select…"}
-          <ChevronsUpDown className="opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-56 p-0">
-        <Command>
-          <CommandInput placeholder="Search…" />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup>
-              {items.map((item) => (
-                <CommandItem
-                  key={item.value}
-                  value={item.value}
-                  onSelect={(current) => {
-                    setValue(current === value ? "" : current)
-                    setOpen(false)
-                  }}
-                >
-                  {item.label}
-                  <Check className={cn("ml-auto", value === item.value ? "opacity-100" : "opacity-0")} />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
-  )
-}
+<Combobox items={options}>
+  <ComboboxInput placeholder="Select an option..." className="w-56" />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
 ```
 
 ## Examples
 
-### Without search
+### Multiple
 
-When the list is short enough that filtering isn't needed, omit `CommandInput`.
+Enable multiple selection with chips using the `multiple` prop. Control the selection with `value` and `onValueChange`, then render chips from your state array. Use `useComboboxAnchor` so the popup aligns to the chips container.
 
 <ComponentPreview>
-  <ComboboxStatusDemo />
+  <ComboboxMultipleDemo />
 </ComponentPreview>
 
 ```tsx
-<PopoverContent className="w-48 p-0">
-  <Command>
-    <CommandList>
-      <CommandGroup>
-        {statuses.map((status) => (
-          <CommandItem key={status.value} value={status.value} onSelect={...}>
-            {status.label}
-            <Check className={cn("ml-auto", value === status.value ? "opacity-100" : "opacity-0")} />
-          </CommandItem>
-        ))}
-      </CommandGroup>
-    </CommandList>
-  </Command>
-</PopoverContent>
+import {
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxItem,
+  ComboboxList,
+  useComboboxAnchor,
+} from "@/components/ui/combobox"
+
+const frameworks = [
+  { value: "next.js", label: "Next.js" },
+  { value: "remix", label: "Remix" },
+]
+
+export function MyCombobox() {
+  const anchor = useComboboxAnchor()
+  const [selected, setSelected] = React.useState<string[]>([])
+
+  return (
+    <Combobox multiple items={frameworks} value={selected} onValueChange={setSelected}>
+      <ComboboxChips ref={anchor} className="w-72">
+        {selected.map((v) => {
+          const item = frameworks.find((f) => f.value === v)
+          return <ComboboxChip key={v}>{item?.label ?? v}</ComboboxChip>
+        })}
+        <ComboboxChipsInput placeholder={selected.length === 0 ? "Select frameworks..." : ""} />
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>No results found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
+
+### Clear button
+
+Add `showClear` to `ComboboxInput` to display a clear button when a value is selected. The chevron is automatically hidden when the clear button is visible.
+
+<ComponentPreview>
+  <ComboboxClearDemo />
+</ComponentPreview>
+
+```tsx
+<Combobox items={frameworks}>
+  <ComboboxInput placeholder="Select a framework..." className="w-56" showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+### Groups
+
+Use `ComboboxGroup` with `ComboboxLabel` to organize items into labelled sections. Pass an array of `{ label, items }` objects to the `items` prop and use a render function that returns a `ComboboxGroup` per group.
+
+<ComponentPreview>
+  <ComboboxGroupsDemo />
+</ComponentPreview>
+
+```tsx
+const groupedFrameworks = [
+  { label: "React", items: [{ value: "next.js", label: "Next.js" }, { value: "remix", label: "Remix" }] },
+  { label: "Vue", items: [{ value: "nuxt.js", label: "Nuxt.js" }] },
+  { label: "Other", items: [{ value: "sveltekit", label: "SvelteKit" }, { value: "astro", label: "Astro" }] },
+]
+
+<Combobox items={groupedFrameworks}>
+  <ComboboxInput placeholder="Select a framework..." className="w-56" />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(group) => (
+        <ComboboxGroup key={group.label}>
+          <ComboboxLabel>{group.label}</ComboboxLabel>
+          {group.items.map((item) => (
+            <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+          ))}
+        </ComboboxGroup>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+### Custom items
+
+Compose `ComboboxItem` with icons, badges, or multi-line content to build richer option lists.
+
+<ComponentPreview>
+  <ComboboxCustomItemsDemo />
+</ComponentPreview>
+
+```tsx
+<ComboboxItem value="next.js" className="pr-8">
+  <GitBranchIcon />
+  <div className="flex flex-col">
+    <span className="font-medium">Next.js</span>
+    <span className="text-default-11 text-xs">React framework</span>
+  </div>
+</ComboboxItem>
+```
+
+### Invalid and Disabled
+
+<ComponentPreview>
+  <ComboboxInvalidDisabledDemo />
+</ComponentPreview>
+
+```tsx
+{/* Invalid */}
+<Field data-invalid="true">
+  <FieldLabel>Framework</FieldLabel>
+  <Combobox items={frameworks}>
+    <ComboboxInput placeholder="Select a framework..." aria-invalid="true" />
+    <ComboboxContent>
+      <ComboboxEmpty>No results found.</ComboboxEmpty>
+      <ComboboxList>
+        {(item) => (
+          <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+        )}
+      </ComboboxList>
+    </ComboboxContent>
+  </Combobox>
+  <FieldError>Please select a framework.</FieldError>
+</Field>
+
+{/* Disabled */}
+<Combobox disabled items={frameworks}>
+  <ComboboxInput placeholder="Select a framework..." disabled />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+### Auto-highlight
+
+With `autoHighlight`, the first matching item is highlighted automatically as you type, so pressing Enter selects it immediately.
+
+<ComponentPreview>
+  <ComboboxAutoHighlightDemo />
+</ComponentPreview>
+
+```tsx
+<Combobox autoHighlight items={frameworks}>
+  <ComboboxInput placeholder="Type to search..." className="w-56" />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+### Pop-up
+
+In the pop-up pattern, a styled trigger button shows the selected value and clicking it opens a popup that contains both the search input and the list. Useful when you want a select-like appearance with search capability.
+
+<ComponentPreview>
+  <ComboboxPopupDemo />
+</ComponentPreview>
+
+```tsx
+<Combobox items={frameworks}>
+  <ComboboxTrigger className="flex h-8 w-56 items-center justify-between gap-2 rounded-lg border bg-default-1 px-2.5 text-sm font-normal">
+    <ComboboxValue placeholder="Select a framework..." />
+  </ComboboxTrigger>
+  <ComboboxContent>
+    <ComboboxInput showTrigger={false} placeholder="Search..." autoFocus />
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
+```
+
+### Input group
+
+Pass an `InputGroupAddon` as a child of `ComboboxInput` to add a leading icon or prefix element.
+
+<ComponentPreview>
+  <ComboboxInputGroupDemo />
+</ComponentPreview>
+
+```tsx
+import { InputGroupAddon } from "@/components/ui/input-group"
+import { SearchIcon } from "lucide-react"
+
+<Combobox items={frameworks}>
+  <ComboboxInput placeholder="Search frameworks..." className="w-64">
+    <InputGroupAddon align="inline-start">
+      <SearchIcon />
+    </InputGroupAddon>
+  </ComboboxInput>
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item.value} value={item.value}>{item.label}</ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>
 ```
 
 </Tabs.Tab>
@@ -116,133 +317,104 @@ npx shadcn@latest add http://localhost:3000/r/combobox.json
 
 ### Manual
 
-**1. Install the following dependencies:**
+**1. Install the following dependency:**
 
 ```bash filename="terminal" copy
-npm install cmdk @radix-ui/react-popover
+npm install @base-ui/react
 ```
 
-**2. Copy `components/ui/command.tsx` and `components/ui/popover.tsx` into your project.**
-
-**`components/ui/popover.tsx`**
+**2. Copy and paste the following code into your project:**
 
 ```tsx filename="components/ui/combobox.tsx" copy
 "use client"
 
+import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 import * as React from "react"
-import * as PopoverPrimitive from "@radix-ui/react-popover"
+
+import { Button } from "@/components/ui/button"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group"
 import { cn } from "@/lib/utils"
+import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
 
-const Popover = PopoverPrimitive.Root
-const PopoverTrigger = PopoverPrimitive.Trigger
-const PopoverAnchor = PopoverPrimitive.Anchor
-
-function PopoverContent({
-  className,
-  align = "center",
-  sideOffset = 4,
-  ...props
-}: React.ComponentProps<typeof PopoverPrimitive.Content>) {
-  return (
-    <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content
-        data-slot="popover-content"
-        align={align}
-        sideOffset={sideOffset}
-        className={cn(
-          "bg-popover text-popover-foreground z-50 w-72 rounded-md border p-4 shadow-md outline-none",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out",
-          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
-          "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-          className
-        )}
-        {...props}
-      />
-    </PopoverPrimitive.Portal>
-  )
-}
-
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
-```
-
-**`components/ui/command.tsx`**
-
-```tsx filename="components/ui/combobox.tsx" copy
-"use client"
-
-import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
-import { Search } from "lucide-react"
-import { cn } from "@/lib/utils"
-
-function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
-  return (
-    <CommandPrimitive
-      data-slot="command"
-      className={cn("bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md", className)}
-      {...props}
-    />
-  )
-}
-
-function CommandInput({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Input>) {
-  return (
-    <div className="flex items-center border-b px-3">
-      <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-      <CommandPrimitive.Input
-        className={cn("placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50", className)}
-        {...props}
-      />
-    </div>
-  )
-}
-
-function CommandList({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.List>) {
-  return <CommandPrimitive.List className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)} {...props} />
-}
-
-function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
-  return <CommandPrimitive.Empty className="py-6 text-center text-sm" {...props} />
-}
-
-function CommandGroup({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Group>) {
-  return (
-    <CommandPrimitive.Group
-      className={cn("text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium", className)}
-      {...props}
-    />
-  )
-}
-
-function CommandItem({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Item>) {
-  return (
-    <CommandPrimitive.Item
-      className={cn("data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:size-4", className)}
-      {...props}
-    />
-  )
-}
-
-export { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem }
+// ... see full source at components/ui/combobox.tsx
 ```
 
 </Tabs.Tab>
 
 <Tabs.Tab>
 
-The Combobox is a composition pattern — there is no single `Combobox` component. It is assembled from:
+### Combobox
 
-| Component | Role |
-|-----------|------|
-| `Popover` / `PopoverTrigger` / `PopoverContent` | Controls open/close and positioning of the dropdown. |
-| `Command` | Root container that manages filtering and keyboard navigation. |
-| `CommandInput` | Search field that filters `CommandItem`s. |
-| `CommandList` | Scrollable list container. |
-| `CommandEmpty` | Shown when no items match the search query. |
-| `CommandGroup` | Optional group with a heading. |
-| `CommandItem` | Individual selectable option. Use `onSelect` to handle selection. |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `object[]` | — | Array of items (or grouped items) used for filtering and the empty state. Each item must have a `value` field. For groups, use `{ label, items }[]`. |
+| `value` | `string \| string[]` | — | Controlled selected value. Use `string[]` with `multiple`. |
+| `defaultValue` | `string \| string[]` | — | Initial selected value (uncontrolled). |
+| `onValueChange` | `(value: string \| string[]) => void` | — | Callback when the selection changes. |
+| `multiple` | `boolean` | `false` | Allows selecting multiple items. |
+| `disabled` | `boolean` | `false` | Disables the entire combobox. |
+| `autoHighlight` | `boolean` | `false` | Automatically highlights the first matching item while typing. |
+| `modal` | `boolean` | `false` | When `true`, interaction outside the popup is blocked. |
+
+### ComboboxInput
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | `string` | — | Placeholder text shown when no value is entered. |
+| `showTrigger` | `boolean` | `true` | Shows the chevron trigger button inside the input. |
+| `showClear` | `boolean` | `false` | Shows a clear button when a value is selected. The trigger is hidden automatically while the clear button is visible. |
+| `disabled` | `boolean` | `false` | Disables the input and its buttons. |
+| `className` | `string` | — | Additional CSS classes applied to the wrapping `InputGroup`. |
+
+### ComboboxContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Which side of the anchor the popup appears on. |
+| `align` | `"start" \| "center" \| "end"` | `"start"` | Alignment of the popup relative to the anchor. |
+| `sideOffset` | `number` | `6` | Distance in pixels between the popup and the anchor. |
+| `anchor` | `React.RefObject` | — | Custom anchor element ref. Use with `useComboboxAnchor()` for the chips pattern. |
+
+### ComboboxList
+
+`ComboboxList` accepts either static `ReactNode` children or a render function `(item, index) => ReactNode`. Use the render function when you pass `items` to `Combobox` — this enables filtering and the empty state.
+
+### ComboboxItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | The value submitted on selection. Also used for filtering. |
+| `disabled` | `boolean` | `false` | Prevents the item from being selected. |
+| `className` | `string` | — | Additional CSS classes. |
+
+### ComboboxChip
+
+Chips are positional — each `ComboboxChip` rendered corresponds to the selected value at the same index. Render them dynamically from your controlled state array.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `showRemove` | `boolean` | `true` | Shows the remove button inside the chip. |
+
+### ComboboxTrigger
+
+A standalone trigger button that opens the popup. Use it with `ComboboxValue` to build a select-like appearance with search inside the popup.
+
+### useComboboxAnchor
+
+```tsx
+const anchor = useComboboxAnchor()
+// attach to the chips container
+<ComboboxChips ref={anchor}>...</ComboboxChips>
+// pass to the popup
+<ComboboxContent anchor={anchor}>...</ComboboxContent>
+```
+
+Returns a `ref` that can be attached to any element to use it as the popup anchor instead of the default trigger.
 
 </Tabs.Tab>
 
