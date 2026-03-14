@@ -55,7 +55,7 @@ const columns: ColumnDef<Payment>[] = [
     header: ({ column }) => (
       <Button
         variant="ghost"
-        size="sm"
+        size="compact"
         className="-ml-3"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
@@ -143,7 +143,7 @@ export function DataTableDemo() {
       <div className="flex items-center justify-end gap-2 py-4">
         <Button
           variant="outline"
-          size="sm"
+          size="compact"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
@@ -151,7 +151,7 @@ export function DataTableDemo() {
         </Button>
         <Button
           variant="outline"
-          size="sm"
+          size="compact"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >

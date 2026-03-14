@@ -99,7 +99,7 @@ export function DatePickerWithPresets() {
             <Button
               key={preset.label}
               variant="ghost"
-              size="sm"
+              size="compact"
               className="justify-start"
               onClick={() => setDate(preset.value)}
             >
