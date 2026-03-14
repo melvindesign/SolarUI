@@ -3,9 +3,9 @@ title: Toggle
 description: A two-state button that can be either on or off.
 ---
 
-import { Bold, Italic, Underline } from 'lucide-react'
-import { Toggle } from '@/components/ui/toggle'
 import { ComponentPreview } from '@/components/component-preview'
+import { Toggle } from '@/components/ui/toggle'
+import { Bold, Italic, Underline } from 'lucide-react'
 import { Tabs } from 'nextra/components'
 
 # Toggle
@@ -13,7 +13,7 @@ import { Tabs } from 'nextra/components'
 A two-state button that can be either on or off.
 
 <ComponentPreview>
-  <Toggle aria-label="Toggle bold">
+  <Toggle variant="outline" aria-label="Toggle bold">
     <Bold className="size-4" />
   </Toggle>
 </ComponentPreview>
@@ -75,31 +75,25 @@ import { Toggle } from "@/components/ui/toggle"
 </Toggle>
 ```
 
-### Sizes
+### Compact
 
 <ComponentPreview>
   <div className="flex items-center gap-2">
-    <Toggle size="sm" aria-label="Toggle bold small">
-      <Bold className="size-4" />
+    <Toggle size="compact" variant="outline" aria-label="Toggle bold compact">
+      <Bold />
     </Toggle>
-    <Toggle size="default" aria-label="Toggle bold default">
-      <Bold className="size-4" />
-    </Toggle>
-    <Toggle size="lg" aria-label="Toggle bold large">
-      <Bold className="size-4" />
+    <Toggle size="default" variant="outline" aria-label="Toggle bold default">
+      <Bold />
     </Toggle>
   </div>
 </ComponentPreview>
 
 ```tsx
-<Toggle size="sm" aria-label="Toggle bold">
-  <Bold className="size-4" />
+<Toggle size="compact" variant="outline" aria-label="Toggle bold">
+  <Bold />
 </Toggle>
-<Toggle size="default" aria-label="Toggle bold">
-  <Bold className="size-4" />
-</Toggle>
-<Toggle size="lg" aria-label="Toggle bold">
-  <Bold className="size-4" />
+<Toggle size="default" variant="outline" aria-label="Toggle bold">
+  <Bold />
 </Toggle>
 ```
 
@@ -142,9 +136,8 @@ const toggleVariants = cva(
         outline: "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
       },
       size: {
-        default: "h-control px-3",
-        sm: "h-8 px-2",
-        lg: "h-11 px-5",
+        default: "h-8 min-w-8 px-2",
+        compact: "h-7 min-w-7 px-1.5 text-xs",
       },
     },
     defaultVariants: {
@@ -185,7 +178,7 @@ export { Toggle, toggleVariants }
 | `onPressedChange` | `(pressed: boolean) => void` | — | Callback when pressed state changes. |
 | `disabled` | `boolean` | `false` | Prevents the toggle from being interacted with. |
 | `variant` | `"default" \| "outline"` | `"default"` | The visual style of the toggle. |
-| `size` | `"sm" \| "default" \| "lg"` | `"default"` | The size of the toggle. |
+| `size` | `"default" \| "compact"` | `"default"` | The size of the toggle. |
 | `aria-label` | `string` | — | Accessible label, required when the toggle contains only an icon. |
 
 </Tabs.Tab>
