@@ -34,17 +34,17 @@ function ItemSeparator({
 }
 
 const itemVariants = cva(
-  "[a]:hover:bg-default-3 rounded-lg border text-sm group/item flex w-full flex-wrap items-center transition-colors duration-100 outline-none focus-visible:border-default-8 focus-visible:ring-[3px] focus-visible:ring-default-7 [a]:transition-colors",
+  "group/item flex flex-wrap items-center rounded-lg border border-transparent text-sm transition-colors duration-100 outline-none focus-visible:border-default-8 focus-visible:ring-[3px] focus-visible:ring-default-7 [a]:transition-colors [a]:hover:bg-default-3",
   {
     variants: {
       variant: {
-        default: "border-transparent",
+        default: "bg-transparent",
         outline: "border-default-6",
-        muted: "bg-default-2 border-transparent",
+        muted: "bg-default-2",
       },
       size: {
-        default: "gap-2.5 px-3 py-2.5",
-        sm: "gap-2.5 px-3 py-2.5",
+        default: "gap-4 p-4",
+        sm: "gap-2.5 px-4 py-3",
         xs: "gap-2 px-2.5 py-2 in-data-[slot=dropdown-menu-content]:p-0",
       },
     },
@@ -76,12 +76,12 @@ function Item({
 }
 
 const itemMediaVariants = cva(
-  "gap-2 group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start flex shrink-0 items-center justify-center [&_svg]:pointer-events-none",
+  "flex shrink-0 items-center justify-center gap-2 group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none",
   {
     variants: {
       variant: {
         default: "bg-transparent",
-        icon: "[&_svg:not([class*='size-'])]:size-4",
+        icon: "size-9 rounded-md border border-default-6 bg-default-2 [&_svg:not([class*='size-'])]:size-4",
         image: "size-10 overflow-hidden rounded-sm group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 [&_img]:size-full [&_img]:object-cover",
       },
     },
