@@ -3,8 +3,9 @@ title: Select
 description: Displays a list of options for the user to pick from — triggered by a button.
 ---
 
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { ComponentPreview } from '@/components/component-preview'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Field, FieldLabel, FieldError } from '@/components/ui/field'
 import { Tabs } from 'nextra/components'
 
 # Select
@@ -16,7 +17,7 @@ Displays a list of options for the user to pick from — triggered by a button.
     <SelectTrigger className="w-48">
       <SelectValue placeholder="Select a fruit" />
     </SelectTrigger>
-    <SelectContent>
+    <SelectContent Position="popper">
       <SelectGroup>
         <SelectLabel>Fruits</SelectLabel>
         <SelectItem value="apple">Apple</SelectItem>
@@ -107,6 +108,42 @@ import {
     </SelectGroup>
   </SelectContent>
 </Select>
+```
+
+### Invalid
+
+<ComponentPreview>
+  <Field data-invalid>
+    <FieldLabel htmlFor="invalid-select">Country</FieldLabel>
+    <Select>
+      <SelectTrigger id="invalid-select" className="w-48" aria-invalid>
+        <SelectValue placeholder="Select a country" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="fr">France</SelectItem>
+        <SelectItem value="de">Germany</SelectItem>
+        <SelectItem value="es">Spain</SelectItem>
+      </SelectContent>
+    </Select>
+    <FieldError>Please select a country.</FieldError>
+  </Field>
+</ComponentPreview>
+
+```tsx
+<Field data-invalid>
+  <FieldLabel htmlFor="country">Country</FieldLabel>
+  <Select>
+    <SelectTrigger id="country" className="w-48" aria-invalid>
+      <SelectValue placeholder="Select a country" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="fr">France</SelectItem>
+      <SelectItem value="de">Germany</SelectItem>
+      <SelectItem value="es">Spain</SelectItem>
+    </SelectContent>
+  </Select>
+  <FieldError>Please select a country.</FieldError>
+</Field>
 ```
 
 ### Disabled
