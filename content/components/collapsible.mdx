@@ -3,10 +3,10 @@ title: Collapsible
 description: An interactive component that expands and collapses a section of content.
 ---
 
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
-import { Button } from '@/components/ui/button'
-import { ChevronsUpDown } from 'lucide-react'
 import { ComponentPreview } from '@/components/component-preview'
+import { Button } from '@/components/ui/button'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { ChevronsUpDown } from 'lucide-react'
 import { Tabs } from 'nextra/components'
 
 # Collapsible
@@ -18,7 +18,7 @@ An interactive component that expands and collapses a section of content.
     <div className="flex items-center justify-between gap-4">
       <h4 className="text-sm font-medium">Starred repositories</h4>
       <CollapsibleTrigger asChild>
-        <Button variant="ghost" size="icon-sm">
+        <Button variant="ghost" size="compact">
           <ChevronsUpDown className="size-4" />
           <span className="sr-only">Toggle</span>
         </Button>
@@ -62,7 +62,7 @@ import {
     <div className="flex items-center justify-between gap-4">
       <h4 className="text-sm font-medium">Open by default</h4>
       <CollapsibleTrigger asChild>
-        <Button variant="ghost" size="icon-sm">
+        <Button variant="ghost" size="compact">
           <ChevronsUpDown className="size-4" />
         </Button>
       </CollapsibleTrigger>

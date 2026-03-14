@@ -31,7 +31,7 @@ export function AreaChartDefault() {
         <CartesianGrid vertical={false} />
         <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
+        <ChartLegend content={(props) => <ChartLegendContent {...(props as any)} />} />
         <Area type="monotone" dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.2} stroke="var(--color-desktop)" strokeWidth={2} />
         <Area type="monotone" dataKey="mobile" fill="var(--color-mobile)" fillOpacity={0.2} stroke="var(--color-mobile)" strokeWidth={2} />
       </AreaChart>
