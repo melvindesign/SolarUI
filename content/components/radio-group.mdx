@@ -5,7 +5,6 @@ description: A set of checkable buttons where only one can be checked at a time.
 
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
 import { Field, FieldContent, FieldDescription, FieldError, FieldLabel, FieldLegend, FieldSet } from '@/components/ui/field'
-import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Tabs } from 'nextra/components'
 
@@ -15,18 +14,18 @@ A set of checkable buttons where only one can be checked at a time.
 
 <ComponentPreview>
   <RadioGroup defaultValue="comfortable">
-    <div className="flex items-center gap-2">
+    <Field orientation="horizontal">
       <RadioGroupItem value="default" id="r1" />
-      <Label htmlFor="r1">Default</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="r1">Default</FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
       <RadioGroupItem value="comfortable" id="r2" />
-      <Label htmlFor="r2">Comfortable</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="r2">Comfortable</FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
       <RadioGroupItem value="compact" id="r3" />
-      <Label htmlFor="r3">Compact</Label>
-    </div>
+      <FieldLabel htmlFor="r3">Compact</FieldLabel>
+    </Field>
   </RadioGroup>
 </ComponentPreview>
 
@@ -36,19 +35,19 @@ A set of checkable buttons where only one can be checked at a time.
 
 ```tsx
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+import { Field, FieldLabel } from "@/components/ui/field"
 ```
 
 ```tsx
 <RadioGroup defaultValue="option-one">
-  <div className="flex items-center gap-2">
+  <Field orientation="horizontal">
     <RadioGroupItem value="option-one" id="option-one" />
-    <Label htmlFor="option-one">Option One</Label>
-  </div>
-  <div className="flex items-center gap-2">
+    <FieldLabel htmlFor="option-one">Option One</FieldLabel>
+  </Field>
+  <Field orientation="horizontal">
     <RadioGroupItem value="option-two" id="option-two" />
-    <Label htmlFor="option-two">Option Two</Label>
-  </div>
+    <FieldLabel htmlFor="option-two">Option Two</FieldLabel>
+  </Field>
 </RadioGroup>
 ```
 
@@ -58,58 +57,44 @@ import { Label } from "@/components/ui/label"
 
 <ComponentPreviewRow>
   <RadioGroup defaultValue="default" disabled>
-    <div className="flex items-center gap-2">
+    <Field orientation="horizontal" data-disabled="true">
       <RadioGroupItem value="default" id="dis-default" />
-      <Label htmlFor="dis-default" className="opacity-50">Default</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="dis-default">Default</FieldLabel>
+    </Field>
+    <Field orientation="horizontal" data-disabled="true">
       <RadioGroupItem value="comfortable" id="dis-comfortable" />
-      <Label htmlFor="dis-comfortable" className="opacity-50">Comfortable</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="dis-comfortable">Comfortable</FieldLabel>
+    </Field>
+    <Field orientation="horizontal" data-disabled="true">
       <RadioGroupItem value="compact" id="dis-compact" />
-      <Label htmlFor="dis-compact" className="opacity-50">Compact</Label>
-    </div>
-  </RadioGroup>
-  <RadioGroup defaultValue="comfortable">
-    <div className="flex items-center gap-2">
-      <RadioGroupItem value="default" id="dis2-default" disabled />
-      <Label htmlFor="dis2-default" className="opacity-50">Default</Label>
-    </div>
-    <div className="flex items-center gap-2">
-      <RadioGroupItem value="comfortable" id="dis2-comfortable" />
-      <Label htmlFor="dis2-comfortable">Comfortable</Label>
-    </div>
-    <div className="flex items-center gap-2">
-      <RadioGroupItem value="compact" id="dis2-compact" disabled />
-      <Label htmlFor="dis2-compact" className="opacity-50">Compact</Label>
-    </div>
+      <FieldLabel htmlFor="dis-compact">Compact</FieldLabel>
+    </Field>
   </RadioGroup>
 </ComponentPreviewRow>
 
 ```tsx
 {/* Whole group disabled */}
 <RadioGroup defaultValue="default" disabled>
-  <div className="flex items-center gap-2">
+  <Field orientation="horizontal" data-disabled="true">
     <RadioGroupItem value="default" id="default" />
-    <Label htmlFor="default">Default</Label>
-  </div>
-  <div className="flex items-center gap-2">
+    <FieldLabel htmlFor="default">Default</FieldLabel>
+  </Field>
+  <Field orientation="horizontal" data-disabled="true">
     <RadioGroupItem value="comfortable" id="comfortable" />
-    <Label htmlFor="comfortable">Comfortable</Label>
-  </div>
+    <FieldLabel htmlFor="comfortable">Comfortable</FieldLabel>
+  </Field>
 </RadioGroup>
 
 {/* Individual item disabled */}
 <RadioGroup defaultValue="comfortable">
-  <div className="flex items-center gap-2">
+  <Field orientation="horizontal" data-disabled="true">
     <RadioGroupItem value="default" id="default" disabled />
-    <Label htmlFor="default">Default</Label>
-  </div>
-  <div className="flex items-center gap-2">
+    <FieldLabel htmlFor="default">Default</FieldLabel>
+  </Field>
+  <Field orientation="horizontal">
     <RadioGroupItem value="comfortable" id="comfortable" />
-    <Label htmlFor="comfortable">Comfortable</Label>
-  </div>
+    <FieldLabel htmlFor="comfortable">Comfortable</FieldLabel>
+  </Field>
 </RadioGroup>
 ```
 
@@ -166,18 +151,18 @@ import { Label } from "@/components/ui/label"
   <FieldSet>
     <FieldLegend>Density</FieldLegend>
     <RadioGroup defaultValue="comfortable">
-      <div className="flex items-center gap-2">
+      <Field orientation="horizontal">
         <RadioGroupItem value="default" id="fs-default" />
-        <Label htmlFor="fs-default">Default</Label>
-      </div>
-      <div className="flex items-center gap-2">
+        <FieldLabel htmlFor="fs-default">Default</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
         <RadioGroupItem value="comfortable" id="fs-comfortable" />
-        <Label htmlFor="fs-comfortable">Comfortable</Label>
-      </div>
-      <div className="flex items-center gap-2">
+        <FieldLabel htmlFor="fs-comfortable">Comfortable</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
         <RadioGroupItem value="compact" id="fs-compact" />
-        <Label htmlFor="fs-compact">Compact</Label>
-      </div>
+        <FieldLabel htmlFor="fs-compact">Compact</FieldLabel>
+      </Field>
     </RadioGroup>
   </FieldSet>
 </ComponentPreview>
@@ -186,18 +171,18 @@ import { Label } from "@/components/ui/label"
 <FieldSet>
   <FieldLegend>Density</FieldLegend>
   <RadioGroup defaultValue="comfortable">
-    <div className="flex items-center gap-2">
+    <Field orientation="horizontal">
       <RadioGroupItem value="default" id="default" />
-      <Label htmlFor="default">Default</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="default">Default</FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
       <RadioGroupItem value="comfortable" id="comfortable" />
-      <Label htmlFor="comfortable">Comfortable</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="comfortable">Comfortable</FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
       <RadioGroupItem value="compact" id="compact" />
-      <Label htmlFor="compact">Compact</Label>
-    </div>
+      <FieldLabel htmlFor="compact">Compact</FieldLabel>
+    </Field>
   </RadioGroup>
 </FieldSet>
 ```
@@ -208,18 +193,18 @@ import { Label } from "@/components/ui/label"
   <FieldSet>
     <FieldLegend>Payment method</FieldLegend>
     <RadioGroup aria-invalid>
-      <div className="flex items-center gap-2">
+      <Field orientation="horizontal">
         <RadioGroupItem value="card" id="inv-card" />
-        <Label htmlFor="inv-card">Credit card</Label>
-      </div>
-      <div className="flex items-center gap-2">
+        <FieldLabel htmlFor="inv-card">Credit card</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
         <RadioGroupItem value="paypal" id="inv-paypal" />
-        <Label htmlFor="inv-paypal">PayPal</Label>
-      </div>
-      <div className="flex items-center gap-2">
+        <FieldLabel htmlFor="inv-paypal">PayPal</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
         <RadioGroupItem value="bank" id="inv-bank" />
-        <Label htmlFor="inv-bank">Bank transfer</Label>
-      </div>
+        <FieldLabel htmlFor="inv-bank">Bank transfer</FieldLabel>
+      </Field>
     </RadioGroup>
     <FieldError>Please select a payment method.</FieldError>
   </FieldSet>
@@ -229,14 +214,14 @@ import { Label } from "@/components/ui/label"
 <FieldSet>
   <FieldLegend>Payment method</FieldLegend>
   <RadioGroup aria-invalid>
-    <div className="flex items-center gap-2">
+    <Field orientation="horizontal">
       <RadioGroupItem value="card" id="card" />
-      <Label htmlFor="card">Credit card</Label>
-    </div>
-    <div className="flex items-center gap-2">
+      <FieldLabel htmlFor="card">Credit card</FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
       <RadioGroupItem value="paypal" id="paypal" />
-      <Label htmlFor="paypal">PayPal</Label>
-    </div>
+      <FieldLabel htmlFor="paypal">PayPal</FieldLabel>
+    </Field>
   </RadioGroup>
   <FieldError>Please select a payment method.</FieldError>
 </FieldSet>
