@@ -1,0 +1,185 @@
+---
+title: MCP
+description: Guider les assistants IA avec le design system Solar UI via le Model Context Protocol.
+---
+
+import { Callout, Steps, Tabs } from 'nextra/components'
+
+# MCP
+
+Solar UI embarque un serveur [Model Context Protocol](https://modelcontextprotocol.io) (MCP) directement dans l'application Next.js. Il expose les composants, les tokens de couleur et les règles du design system aux assistants IA — afin qu'ils génèrent du code correct dès le premier essai.
+
+<Callout type="warning">
+  Le serveur MCP est servi par l'application Solar UI elle-même. Elle doit être **en cours d'exécution** pour que l'assistant IA puisse y accéder.
+</Callout>
+
+## Pourquoi c'est utile
+
+Sans ce serveur, un agent IA qui génère du code avec Solar UI risque de :
+
+- Utiliser des variantes inexistantes — `variant="danger"` au lieu de `"destructive"`
+- Utiliser les tokens shadcn par défaut — `text-muted-foreground`, `bg-background` — qui n'existent pas dans Solar UI
+- Ajouter des classes `dark:` alors que le dark mode est automatique
+- Choisir le mauvais composant pour un besoin donné
+
+Avec le MCP, l'IA interroge directement la documentation pour connaître les variantes exactes, les bons tokens et les règles à respecter.
+
+## Installation
+
+<Steps>
+
+### Démarrer Solar UI
+
+Le serveur MCP est disponible dès que l'application tourne.
+
+```bash filename="terminal" copy
+npm run dev
+```
+
+Le serveur MCP est accessible à `http://localhost:3000/api/mcp`.
+
+### Configurer l'assistant IA
+
+Crée un fichier de configuration à la racine du **projet dans lequel tu travailles** (pas dans Solar UI) :
+
+<Tabs items={['Claude Code', 'Cursor', 'VS Code']}>
+
+<Tabs.Tab>
+
+```json filename=".mcp.json" copy
+{
+  "mcpServers": {
+    "solar-ui": {
+      "type": "http",
+      "url": "http://localhost:3000/api/mcp"
+    }
+  }
+}
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+```json filename=".cursor/mcp.json" copy
+{
+  "mcpServers": {
+    "solar-ui": {
+      "type": "http",
+      "url": "http://localhost:3000/api/mcp"
+    }
+  }
+}
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+```json filename=".vscode/mcp.json" copy
+{
+  "servers": {
+    "solar-ui": {
+      "type": "http",
+      "url": "http://localhost:3000/api/mcp"
+    }
+  }
+}
+```
+
+</Tabs.Tab>
+
+</Tabs>
+
+### Vérifier la connexion
+
+Ouvre une nouvelle session dans ton assistant IA et envoie ce message :
+
+```
+Liste les composants Solar UI disponibles
+```
+
+L'IA doit répondre avec la liste complète groupée par catégorie : Action, Form, Feedback, Layout, etc.
+
+Si ce n'est pas le cas, vérifie que Solar UI tourne bien et que l'URL dans la config correspond au bon port.
+
+</Steps>
+
+## En production
+
+Déploie Solar UI sur ton hébergeur habituel (Vercel, etc.) et remplace l'URL dans ta configuration par le domaine de production :
+
+```json copy
+{
+  "mcpServers": {
+    "solar-ui": {
+      "type": "http",
+      "url": "https://votre-domaine.com/api/mcp"
+    }
+  }
+}
+```
+
+Plus besoin de lancer Solar UI en local — l'assistant IA interroge directement le serveur déployé.
+
+## Utilisation
+
+Une fois configuré, tu peux guider l'IA avec des instructions en langage naturel. Le serveur répond aux questions sur les composants, les couleurs et les règles du design system.
+
+### Exemples de prompts
+
+**Trouver le bon composant :**
+```
+Quel composant Solar UI utiliser pour demander une confirmation avant de supprimer un élément ?
+```
+→ L'IA interroge `find_component` et recommande `alert-dialog`.
+
+**Connaître les variantes exactes :**
+```
+Quelles sont les variantes disponibles pour le composant Button ?
+```
+→ L'IA interroge `get_component` et liste : `default`, `primary`, `outline`, `secondary`, `ghost`, `destructive`, `link`.
+
+**Générer un composant correctement :**
+```
+Crée un formulaire de connexion avec Solar UI. Utilise les bons tokens de couleur et les bonnes variantes.
+```
+→ L'IA consulte `get_guidelines` et `get_component` pour générer du code conforme au design system.
+
+**Comprendre le système de couleurs :**
+```
+Quel token utiliser pour le texte secondaire dans Solar UI ?
+```
+→ L'IA interroge `get_color_token` et répond `text-default-11`.
+
+### Recommandations
+
+Pour obtenir les meilleurs résultats, indique explicitement à l'IA qu'elle doit utiliser Solar UI :
+
+```
+Je travaille avec Solar UI. Consulte le MCP avant de générer du code pour t'assurer
+d'utiliser les bons composants et les bons tokens.
+```
+
+## Référence
+
+### Outils
+
+| Outil | Paramètres | Description |
+|---|---|---|
+| `list_components` | — | Liste tous les composants groupés par catégorie |
+| `get_component` | `name` | Documentation complète : variantes, props, exemples JSX, commande d'installation |
+| `find_component` | `query` | Trouve le bon composant à partir d'une description en langage naturel |
+| `get_color_token` | `group?`, `step?` | Sémantique des 72 tokens de couleur (6 groupes × 12 steps) |
+| `get_guidelines` | `topic?` | Règles de design, anti-patterns et bonnes pratiques |
+
+### Ressources
+
+Les ressources sont des données statiques que l'IA peut lire directement pour charger du contexte en début de session.
+
+| URI | Format | Contenu |
+|---|---|---|
+| `solar://components` | JSON | Registre complet de tous les composants |
+| `solar://colors` | JSON | Système de tokens de couleur complet |
+| `solar://guidelines` | Markdown | Règles de design et anti-patterns |
+| `solar://components/{name}` | Markdown | Documentation d'un composant spécifique |
