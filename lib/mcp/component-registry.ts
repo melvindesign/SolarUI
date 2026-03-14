@@ -1,6 +1,8 @@
 import { readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import { PATHS } from './paths'
+import componentsMeta from '@/content/components/_meta'
+import coreMeta from '@/content/core/_meta'
 
 export interface ComponentInfo {
   name: string
@@ -69,15 +71,10 @@ export async function buildRegistry(): Promise<ComponentRegistry> {
   const categories: { name: string; components: string[] }[] = []
   const components: Record<string, ComponentInfo> = {}
 
-  const metaUrl = new URL(`file://${PATHS.componentsMeta}`)
-  const meta = (await import(metaUrl.href)) as {
-    default: Record<string, string | { type: string; title: string }>
-  }
-
   let currentCategory = 'Other'
   let currentComponents: string[] = []
 
-  for (const [key, value] of Object.entries(meta.default)) {
+  for (const [key, value] of Object.entries(componentsMeta)) {
     if (typeof value === 'object' && value.type === 'separator') {
       if (currentComponents.length > 0) categories.push({ name: currentCategory, components: currentComponents })
       currentCategory = value.title
@@ -101,13 +98,10 @@ export async function buildRegistry(): Promise<ComponentRegistry> {
 
   if (currentComponents.length > 0) categories.push({ name: currentCategory, components: currentComponents })
 
-  const coreMetaUrl = new URL(`file://${PATHS.coreMeta}`)
-  const coreMeta = (await import(coreMetaUrl.href)) as { default: Record<string, string> }
-
-  const coreComponents = Object.keys(coreMeta.default)
+  const coreComponents = Object.keys(coreMeta)
   if (coreComponents.length > 0) {
     categories.unshift({ name: 'Core', components: coreComponents })
-    for (const [key, label] of Object.entries(coreMeta.default)) {
+    for (const [key, label] of Object.entries(coreMeta)) {
       components[key] = {
         name: key, label, category: 'Core',
         description: extractFrontmatterDescription(join(PATHS.contentCore, `${key}.mdx`)),
