@@ -243,7 +243,7 @@ const illustrations: Record<string, React.ReactElement> = {
     <svg {...s}>
       <rect x="8" y="16" width="64" height="16" rx="4" />
       <line x1="14" y1="24" x2="48" y2="24" />
-      <polyline points="58,21 63,24 58,27" transform="rotate(90,61,24)" />
+      <polyline points="58,22 61,26 64,22" />
     </svg>
   ),
   combobox: (
@@ -252,7 +252,7 @@ const illustrations: Record<string, React.ReactElement> = {
       <circle cx="19" cy="24" r="4" />
       <line x1="22" y1="27" x2="25" y2="30" />
       <line x1="32" y1="24" x2="50" y2="24" />
-      <polyline points="58,21 63,24 58,27" transform="rotate(90,61,24)" />
+      <polyline points="58,22 61,26 64,22" />
     </svg>
   ),
   'date-picker': (
@@ -349,8 +349,8 @@ const illustrations: Record<string, React.ReactElement> = {
       <rect x="12" y="8" width="56" height="36" rx="5" />
       <line x1="20" y1="18" x2="60" y2="18" />
       <line x1="20" y1="24" x2="58" y2="24" />
-      <rect x="21" y="33" width="16" height="8" rx="3" />
-      <rect x="43" y="33" width="16" height="8" rx="3" />
+      <rect x="21" y="31" width="16" height="8" rx="3" />
+      <rect x="43" y="31" width="16" height="8" rx="3" />
     </svg>
   ),
 
