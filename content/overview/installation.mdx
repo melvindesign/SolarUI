@@ -33,7 +33,7 @@ This generates `components.json` and installs the base files (`button.tsx`, `uti
 ### Add the Solar UI theme
 
 ```bash filename="terminal" copy
-npx shadcn@latest add http://localhost:3000/r/solar-theme.json
+npx shadcn@latest add https://solar-ui.com/r/solar-theme.json
 ```
 
 This creates `src/app/solar-theme.css` and sets the `base-nova` style in `components.json`.
@@ -55,7 +55,7 @@ So that shadcn knows where to resolve Solar UI components, add this entry to `co
 {
   "registries": {
     "solar": {
-      "url": "http://localhost:3000/r"
+      "url": "https://solar-ui.com/r"
     }
   }
 }
@@ -68,7 +68,7 @@ So that shadcn knows where to resolve Solar UI components, add this entry to `co
 ### Add components
 
 ```bash filename="terminal" copy
-npx shadcn@latest add http://localhost:3000/r/button.json
+npx shadcn@latest add https://solar-ui.com/r/button.json
 ```
 
 Replace `button.json` with the component of your choice. Components are installed in `src/components/ui/`.

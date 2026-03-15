@@ -33,7 +33,7 @@ npm run dev
 
 Or use the deployed instance — no local server needed:
 ```
-https://solar-ui.dev/api/mcp
+https://solar-ui.com/api/mcp
 ```
 
 ### 2. Configure your AI assistant
@@ -46,7 +46,7 @@ Create a config file in the root of **your project** (not in the Solar UI repo).
   "mcpServers": {
     "solar-ui": {
       "type": "http",
-      "url": "https://solar-ui.dev/api/mcp"
+      "url": "https://solar-ui.com/api/mcp"
     }
   }
 }
@@ -58,7 +58,7 @@ Create a config file in the root of **your project** (not in the Solar UI repo).
   "mcpServers": {
     "solar-ui": {
       "type": "http",
-      "url": "https://solar-ui.dev/api/mcp"
+      "url": "https://solar-ui.com/api/mcp"
     }
   }
 }
@@ -70,7 +70,7 @@ Create a config file in the root of **your project** (not in the Solar UI repo).
   "servers": {
     "solar-ui": {
       "type": "http",
-      "url": "https://solar-ui.dev/api/mcp"
+      "url": "https://solar-ui.com/api/mcp"
     }
   }
 }

@@ -7,7 +7,7 @@
 
 **Solar UI** is an open-source React component library built on top of [shadcn/ui](https://ui.shadcn.com). It ships 68 components designed to look great together — coherent visual system, Radix UI color scale, zero lock-in.
 
-→ **[Documentation](https://solar-ui.dev/docs)** · [GitHub](https://github.com/melvindesign/SolarUI)
+→ **[Documentation](https://solar-ui.com/docs)** · [GitHub](https://github.com/melvindesign/SolarUI)
 
 ---
 
@@ -20,11 +20,11 @@
 
 ## Installing Solar UI in your project
 
-Components are distributed via a shadcn-compatible registry. Full setup instructions are in the **[documentation](https://solar-ui.dev/docs/overview/installation)**.
+Components are distributed via a shadcn-compatible registry. Full setup instructions are in the **[documentation](https://solar-ui.com/docs/overview/installation)**.
 
 ```bash
 # Add a component to your project
-npx shadcn@latest add https://solar-ui.dev/r/button.json
+npx shadcn@latest add https://solar-ui.com/r/button.json
 ```
 
 ## AI assistant integration (MCP)
