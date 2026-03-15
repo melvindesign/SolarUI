@@ -47,10 +47,12 @@ const illustrations: Record<string, React.ReactElement> = {
   installation: (
     <svg {...s}>
       <rect x="8" y="8" width="64" height="36" rx="4" />
-      <line x1="16" y1="18" x2="44" y2="18" />
-      <line x1="16" y1="26" x2="56" y2="26" />
-      <line x1="16" y1="34" x2="36" y2="34" />
-      <polyline points="12,14 8,18 12,22" />
+      <polyline points="13,15 17,18 13,21" />
+      <line x1="20" y1="18" x2="48" y2="18" />
+      <polyline points="13,23 17,26 13,29" />
+      <line x1="20" y1="26" x2="58" y2="26" />
+      <polyline points="13,31 17,34 13,37" />
+      <line x1="20" y1="34" x2="40" y2="34" />
     </svg>
   ),
   mcp: (
@@ -78,9 +80,9 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
   colors: (
     <svg {...s}>
-      <circle cx="28" cy="24" r="12" />
-      <circle cx="52" cy="24" r="12" />
-      <circle cx="40" cy="18" r="12" />
+      <circle cx="27" cy="28" r="11" />
+      <circle cx="53" cy="28" r="11" />
+      <circle cx="40" cy="16" r="11" />
     </svg>
   ),
   typography: (
@@ -151,8 +153,13 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
   toggle: (
     <svg {...s}>
-      <rect x="22" y="16" width="36" height="16" rx="8" />
-      <circle cx="46" cy="24" r="5" />
+      {/* Inactive state */}
+      <rect x="6" y="17" width="28" height="14" rx="3" />
+      <line x1="12" y1="24" x2="28" y2="24" />
+      {/* Active state — inner rect indicates pressed */}
+      <rect x="46" y="17" width="28" height="14" rx="3" />
+      <rect x="49" y="20" width="22" height="8" rx="2" />
+      <line x1="52" y1="24" x2="68" y2="24" />
     </svg>
   ),
   'toggle-group': (
@@ -340,8 +347,8 @@ const illustrations: Record<string, React.ReactElement> = {
       <rect x="12" y="8" width="56" height="36" rx="5" />
       <line x1="20" y1="18" x2="60" y2="18" />
       <line x1="20" y1="24" x2="58" y2="24" />
-      <rect x="14" y="32" width="18" height="9" rx="3" />
-      <rect x="48" y="32" width="18" height="9" rx="3" />
+      <rect x="21" y="33" width="16" height="8" rx="3" />
+      <rect x="43" y="33" width="16" height="8" rx="3" />
     </svg>
   ),
 
@@ -349,11 +356,11 @@ const illustrations: Record<string, React.ReactElement> = {
   accordion: (
     <svg {...s}>
       <rect x="8" y="6" width="64" height="10" rx="3" />
-      <polyline points="62,9 65,11 68,9" />
+      <polyline points="62,10 65,12 68,10" />
       <rect x="8" y="20" width="64" height="10" rx="3" />
-      <polyline points="62,23 65,25 68,23" />
+      <polyline points="62,24 65,26 68,24" />
       <rect x="8" y="34" width="64" height="10" rx="3" />
-      <polyline points="62,37 65,39 68,37" />
+      <polyline points="62,38 65,40 68,38" />
     </svg>
   ),
   card: (
@@ -367,7 +374,7 @@ const illustrations: Record<string, React.ReactElement> = {
   collapsible: (
     <svg {...s}>
       <rect x="8" y="8" width="64" height="12" rx="3" />
-      <polyline points="62,12 65,14 68,12" />
+      <polyline points="62,13 65,15 68,13" />
       <line x1="16" y1="28" x2="60" y2="28" />
       <line x1="16" y1="36" x2="50" y2="36" />
     </svg>
@@ -481,21 +488,21 @@ const illustrations: Record<string, React.ReactElement> = {
   // ── Navigation ───────────────────────────────────────────────
   breadcrumb: (
     <svg {...s}>
-      <line x1="8" y1="24" x2="22" y2="24" />
-      <polyline points="24,20 28,24 24,28" />
-      <line x1="30" y1="24" x2="44" y2="24" />
-      <polyline points="46,20 50,24 46,28" />
-      <line x1="52" y1="24" x2="72" y2="24" />
+      <line x1="8" y1="24" x2="20" y2="24" />
+      <polyline points="23,20 27,24 23,28" />
+      <line x1="31" y1="24" x2="43" y2="24" />
+      <polyline points="47,20 51,24 47,28" />
+      <line x1="55" y1="24" x2="72" y2="24" />
     </svg>
   ),
   'dropdown-menu': (
     <svg {...s}>
       <rect x="16" y="6" width="48" height="12" rx="4" />
-      <polyline points="55,10 59,12 55,14" transform="rotate(90,58,12)" />
+      <polyline points="55,10 58,13 61,10" />
       <rect x="16" y="22" width="48" height="24" rx="4" />
-      <line x1="22" y1="30" x2="58" y2="30" />
-      <line x1="22" y1="37" x2="58" y2="37" />
-      <line x1="22" y1="44" x2="46" y2="44" />
+      <line x1="22" y1="29" x2="58" y2="29" />
+      <line x1="22" y1="35" x2="58" y2="35" />
+      <line x1="22" y1="41" x2="46" y2="41" />
     </svg>
   ),
   menubar: (
@@ -503,9 +510,9 @@ const illustrations: Record<string, React.ReactElement> = {
       <rect x="4" y="8" width="72" height="14" rx="3" />
       <line x1="26" y1="8" x2="26" y2="22" />
       <line x1="50" y1="8" x2="50" y2="22" />
-      <line x1="10" y1="15" x2="24" y2="15" />
-      <line x1="30" y1="15" x2="48" y2="15" />
-      <line x1="54" y1="15" x2="68" y2="15" />
+      <line x1="10" y1="15" x2="22" y2="15" />
+      <line x1="30" y1="15" x2="46" y2="15" />
+      <line x1="54" y1="15" x2="70" y2="15" />
     </svg>
   ),
   'navigation-menu': (
@@ -540,12 +547,16 @@ const illustrations: Record<string, React.ReactElement> = {
   // ── Data ─────────────────────────────────────────────────────
   'data-table': (
     <svg {...s}>
-      <rect x="8" y="6" width="64" height="40" rx="4" />
-      <line x1="8" y1="18" x2="72" y2="18" />
-      <line x1="30" y1="6" x2="30" y2="46" />
-      <line x1="54" y1="6" x2="54" y2="46" />
-      <line x1="8" y1="28" x2="72" y2="28" />
-      <line x1="8" y1="38" x2="72" y2="38" />
+      {/* Toolbar: search bar + button */}
+      <rect x="8" y="2" width="34" height="8" rx="3" />
+      <rect x="54" y="2" width="18" height="8" rx="3" />
+      {/* Table with uniform rows (10px each) */}
+      <rect x="8" y="13" width="64" height="33" rx="4" />
+      <line x1="8" y1="23" x2="72" y2="23" />
+      <line x1="30" y1="13" x2="30" y2="46" />
+      <line x1="54" y1="13" x2="54" y2="46" />
+      <line x1="8" y1="33" x2="72" y2="33" />
+      <line x1="8" y1="43" x2="72" y2="43" />
     </svg>
   ),
   item: (
@@ -600,25 +611,37 @@ const illustrations: Record<string, React.ReactElement> = {
   'chart-pie': (
     <svg {...s}>
       <circle cx="40" cy="24" r="18" />
+      {/* 3 unequal slices: 70° / 90° / 200° */}
       <line x1="40" y1="24" x2="40" y2="6" />
-      <line x1="40" y1="24" x2="55" y2="34" />
-      <line x1="40" y1="24" x2="22" y2="36" />
+      <line x1="40" y1="24" x2="57" y2="18" />
+      <line x1="40" y1="24" x2="46" y2="42" />
     </svg>
   ),
   'chart-radar': (
     <svg {...s}>
-      <polygon points="40,6 62,18 62,34 40,46 18,34 18,18" />
-      <polygon points="40,16 54,24 54,32 40,38 26,32 26,24" />
-      <line x1="40" y1="6" x2="40" y2="46" />
-      <line x1="18" y1="18" x2="62" y2="34" />
-      <line x1="62" y1="18" x2="18" y2="34" />
+      {/* Proper proportions: vertex-up hexagon, R=18 */}
+      <polygon points="40,6 56,15 56,33 40,42 24,33 24,15" />
+      <polygon points="40,13 50,18 50,30 40,35 30,30 30,18" />
+      {/* 3 axis lines */}
+      <line x1="40" y1="6" x2="40" y2="42" />
+      <line x1="24" y1="15" x2="56" y2="33" />
+      <line x1="56" y1="15" x2="24" y2="33" />
     </svg>
   ),
   'chart-radial': (
     <svg {...s}>
-      <circle cx="40" cy="24" r="18" strokeDasharray="4 4" />
-      <path d="M 40 6 A 18 18 0 1 1 23 34" strokeWidth="2.5" />
-      <circle cx="40" cy="24" r="8" />
+      {/* Radial bar chart: 3 concentric arcs of different lengths */}
+      {/* Tracks (faint full circles) */}
+      <circle cx="40" cy="24" r="17" strokeOpacity={0.2} />
+      <circle cx="40" cy="24" r="11" strokeOpacity={0.2} />
+      <circle cx="40" cy="24" r="5" strokeOpacity={0.2} />
+      {/* Progress arcs, starting from 12 o'clock (dashoffset = circ/4) */}
+      {/* r=17, circ≈107: 75% → 80, offset≈27 */}
+      <circle cx="40" cy="24" r="17" strokeDasharray="80 27" strokeDashoffset="27" strokeWidth={3} />
+      {/* r=11, circ≈69: 50% → 35, offset≈17 */}
+      <circle cx="40" cy="24" r="11" strokeDasharray="35 34" strokeDashoffset="17" strokeWidth={3} />
+      {/* r=5, circ≈31: 80% → 25, offset≈8 */}
+      <circle cx="40" cy="24" r="5" strokeDasharray="25 6" strokeDashoffset="8" strokeWidth={3} />
     </svg>
   ),
 }
