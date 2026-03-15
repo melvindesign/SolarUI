@@ -1,7 +1,7 @@
 @import "@radix-ui/colors/gray.css";
 @import "@radix-ui/colors/gray-dark.css";
-@import "@radix-ui/colors/blue.css";
-@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/orange.css";
+@import "@radix-ui/colors/orange-dark.css";
 @import "@radix-ui/colors/red.css";
 @import "@radix-ui/colors/red-dark.css";
 @import "@radix-ui/colors/green.css";
@@ -28,19 +28,19 @@
   --color-default-11: var(--gray-11);
   --color-default-12: var(--gray-12);
 
-  /* brand → blue */
-  --color-brand-1:    var(--blue-1);
-  --color-brand-2:    var(--blue-2);
-  --color-brand-3:    var(--blue-3);
-  --color-brand-4:    var(--blue-4);
-  --color-brand-5:    var(--blue-5);
-  --color-brand-6:    var(--blue-6);
-  --color-brand-7:    var(--blue-7);
-  --color-brand-8:    var(--blue-8);
-  --color-brand-9:    var(--blue-9);
-  --color-brand-10:   var(--blue-10);
-  --color-brand-11:   var(--blue-11);
-  --color-brand-12:   var(--blue-12);
+  /* brand → orange */
+  --color-brand-1:    var(--orange-1);
+  --color-brand-2:    var(--orange-2);
+  --color-brand-3:    var(--orange-3);
+  --color-brand-4:    var(--orange-4);
+  --color-brand-5:    var(--orange-5);
+  --color-brand-6:    var(--orange-6);
+  --color-brand-7:    var(--orange-7);
+  --color-brand-8:    var(--orange-8);
+  --color-brand-9:    var(--orange-9);
+  --color-brand-10:   var(--orange-10);
+  --color-brand-11:   var(--orange-11);
+  --color-brand-12:   var(--orange-12);
 
   /* error → red */
   --color-error-1:    var(--red-1);
@@ -103,14 +103,37 @@
 }
 
 :root {
+  /* ─── shadcn default variable overrides → Radix UI ─────────────────────── */
+  /* Radix dark CSS imports handle dark mode automatically via .dark scope    */
+  --background:            var(--gray-1);
+  --foreground:            var(--gray-12);
+  --card:                  var(--gray-2);
+  --card-foreground:       var(--gray-12);
+  --popover:               var(--gray-2);
+  --popover-foreground:    var(--gray-12);
+  --primary:               var(--orange-9);
+  --primary-foreground:    var(--orange-1);
+  --secondary:             var(--gray-3);
+  --secondary-foreground:  var(--gray-12);
+  --muted:                 var(--gray-3);
+  --muted-foreground:      var(--gray-11);
+  --accent:                var(--gray-3);
+  --accent-foreground:     var(--gray-12);
+  --destructive:           var(--red-9);
+  --destructive-foreground: var(--red-1);
+  --border:                var(--gray-6);
+  --input:                 var(--gray-7);
+  --ring:                  var(--orange-8);
+
+  /* ─── Sidebar ───────────────────────────────────────────────────────────── */
   --sidebar:                    var(--gray-2);
   --sidebar-foreground:         var(--gray-11);
-  --sidebar-primary:            var(--blue-9);
-  --sidebar-primary-foreground: var(--blue-1);
+  --sidebar-primary:            var(--orange-9);
+  --sidebar-primary-foreground: var(--orange-1);
   --sidebar-accent:             var(--gray-3);
   --sidebar-accent-foreground:  var(--gray-12);
   --sidebar-border:             var(--gray-6);
-  --sidebar-ring:               var(--blue-8);
+  --sidebar-ring:               var(--orange-8);
 }
 
 @theme inline {
