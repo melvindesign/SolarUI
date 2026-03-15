@@ -1,5 +1,10 @@
 # ☀️ Solar UI
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/melvindesign/SolarUI/releases)
+[![Built with Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![shadcn/ui compatible](https://img.shields.io/badge/shadcn%2Fui-compatible-000000?logo=shadcnui&logoColor=white)](https://ui.shadcn.com)
+
 **Solar UI** is an open-source React component library built on top of [shadcn/ui](https://ui.shadcn.com). It ships 68 components designed to look great together — coherent visual system, Radix UI color scale, zero lock-in.
 
 → **[Documentation](https://solar-ui.dev/docs)** · [GitHub](https://github.com/melvindesign/SolarUI)
