@@ -618,7 +618,7 @@ const illustrations: Record<string, React.ReactElement> = {
       {/* 3 unequal slices: 70° / 90° / 200° */}
       <line x1="40" y1="24" x2="40" y2="6" />
       <line x1="40" y1="24" x2="57" y2="18" />
-      <line x1="40" y1="24" x2="46" y2="42" />
+      <line x1="40" y1="24" x2="46" y2="41" />
     </svg>
   ),
   'chart-radar': (
