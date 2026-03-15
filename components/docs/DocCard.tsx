@@ -449,8 +449,8 @@ const illustrations: Record<string, React.ReactElement> = {
       <circle cx="40" cy="24" r="16" />
       {/* Head */}
       <circle cx="40" cy="19" r="5" />
-      {/* Shoulders — bezier arc at bottom of container */}
-      <path d="M 27 40 Q 40 30 53 40" />
+      {/* Shoulders — bezier arc, moved up from bottom edge */}
+      <path d="M 29 36 Q 40 28 51 36" />
     </svg>
   ),
   calendar: (
