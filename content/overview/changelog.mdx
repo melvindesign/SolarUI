@@ -10,15 +10,50 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.1.0] — 2026-03-11
+## [0.1.0] — 2026-03-15
 
-### Added
+Initial public release of Solar UI — 68 components built on shadcn/ui, Tailwind CSS v4, and Radix UI colors.
 
-- Initial release of SolarUI
-- `Button` component with variants: `default`, `destructive`, `outline`, `secondary`, `ghost`, `link`
-- `Button` size variants: `default`, `sm`, `lg`, `icon`
-- Tailwind CSS v4 integration
-- shadcn/ui integration
-- CSS variable-based theming with dark mode support
-- Documentation site powered by [Nextra](https://nextra.site/)
-- Foundation pages: Colors, Typography
+### Components
+
+**Action**
+`Button` · `Button Group` · `Toggle` · `Toggle Group`
+
+**Form**
+`Field` · `Input` · `Input Group` · `Input OTP` · `Textarea` · `Checkbox` · `Radio Group` · `Switch` · `Slider` · `Select` · `Combobox` · `Date Picker`
+
+**Feedback**
+`Tooltip` · `Hover Card` · `Popover` · `Alert` · `Alert Dialog` · `Badge` · `Kbd` · `Progress` · `Skeleton` · `Spinner` · `Sonner`
+
+**Layout**
+`Accordion` · `Card` · `Collapsible` · `Command` · `Dialog` · `Drawer` · `Empty` · `Separator` · `Sheet`
+
+**Text**
+`Label`
+
+**Content**
+`Avatar` · `Calendar` · `Carousel` · `Context Menu`
+
+**Navigation**
+`Breadcrumb` · `Dropdown Menu` · `Menubar` · `Navigation Menu` · `Pagination` · `Tabs`
+
+**Data**
+`Data Table` · `Item` · `Table`
+
+**Chart**
+`Area` · `Bar` · `Line` · `Pie` · `Radar` · `Radial`
+
+### Design system
+
+- **Radix UI color scale** — 6 color groups (`default`, `brand`, `error`, `success`, `warning`, `info`), 12 steps each, accessible contrast guaranteed
+- **Dark mode** — automatic via Radix color scoping, no `dark:` prefixes needed
+- **Tailwind CSS v4** — CSS-first configuration, no `tailwind.config.js` required
+- **Unified control height** — all interactive controls aligned to `2.25rem`
+- **CSS variable theming** — override any token to match your brand
+
+### Infrastructure
+
+- **shadcn-compatible registry** — install any component with `npx shadcn@latest add https://solar-ui.com/r/[component].json`
+- **MCP server** — Model Context Protocol endpoint for AI assistant integration at `https://solar-ui.com/api/mcp`
+- **Documentation site** — built with [Nextra](https://nextra.site/), full-text search via Pagefind
+- **Vercel Analytics & Speed Insights** — performance monitoring on the docs site
