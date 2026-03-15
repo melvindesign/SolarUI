@@ -31,7 +31,7 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <ChevronDownIcon className="text-default-11 size-4 self-center shrink-0 pointer-events-none" />
+      <ChevronDownIcon className="text-default-11 size-4 pointer-events-none" />
     </ComboboxPrimitive.Trigger>
   )
 }
@@ -73,7 +73,7 @@ function ComboboxInput({
               />
             }
           >
-            <ChevronDownIcon className="text-default-11 size-4 self-center shrink-0 pointer-events-none" />
+            <ChevronDownIcon className="text-default-11 size-4 pointer-events-none" />
           </ComboboxPrimitive.Trigger>
         )}
         {showClear && <ComboboxClear disabled={disabled} />}
