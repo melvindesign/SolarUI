@@ -18,7 +18,13 @@ export default async function DocsLayout({
 }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head />
+      <Head
+        color={{
+          hue: { light: 24, dark: 24 },
+          saturation: { light: 92, dark: 100 },
+          lightness: { light: 50, dark: 62 },
+        }}
+      />
       <body>
         <Layout
           navbar={navbar}
