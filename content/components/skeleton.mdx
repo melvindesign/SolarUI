@@ -66,18 +66,18 @@ npx shadcn@latest add https://solar-ui.com/r/skeleton.json
 No additional dependencies are required. Copy and paste the following code into your project:
 
 ```tsx filename="components/ui/skeleton.tsx" copy
-import * as React from "react"
 import { cn } from "@/lib/utils"
 
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="skeleton"
-      className={cn("bg-accent animate-pulse rounded-md", className)}
+      className={cn("bg-default-3 rounded-md animate-pulse", className)}
       {...props}
     />
   )
 }
+
 export { Skeleton }
 ```
 
