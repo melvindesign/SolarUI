@@ -80,8 +80,9 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
   colors: (
     <svg {...s}>
-      <circle cx="27" cy="28" r="11" />
-      <circle cx="53" cy="28" r="11" />
+      {/* Centers form equilateral triangle, d≈14 so circles properly overlap */}
+      <circle cx="33" cy="28" r="11" />
+      <circle cx="47" cy="28" r="11" />
       <circle cx="40" cy="16" r="11" />
     </svg>
   ),
@@ -194,10 +195,11 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
   'input-otp': (
     <svg {...s}>
-      <rect x="6" y="16" width="14" height="16" rx="3" />
-      <rect x="26" y="16" width="14" height="16" rx="3" />
-      <rect x="46" y="16" width="14" height="16" rx="3" />
-      <rect x="60" y="16" width="14" height="16" rx="3" />
+      {/* 4 equal boxes (w=12) with equal gaps (5px), margins 8px each side */}
+      <rect x="9" y="16" width="12" height="16" rx="3" />
+      <rect x="26" y="16" width="12" height="16" rx="3" />
+      <rect x="43" y="16" width="12" height="16" rx="3" />
+      <rect x="60" y="16" width="12" height="16" rx="3" />
     </svg>
   ),
   textarea: (
@@ -226,8 +228,8 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
   switch: (
     <svg {...s}>
-      <rect x="18" y="17" width="44" height="14" rx="7" />
-      <circle cx="51" cy="24" r="5" />
+      <rect x="24" y="17" width="32" height="14" rx="7" />
+      <circle cx="49" cy="24" r="5" />
     </svg>
   ),
   slider: (
@@ -381,12 +383,12 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
   command: (
     <svg {...s}>
-      <rect x="8" y="6" width="64" height="38" rx="6" />
-      <rect x="14" y="12" width="52" height="10" rx="3" />
-      <circle cx="20" cy="17" r="3" />
-      <line x1="14" y1="30" x2="66" y2="30" />
-      <line x1="14" y1="36" x2="52" y2="36" />
-      <line x1="14" y1="41" x2="44" y2="41" />
+      <rect x="8" y="5" width="64" height="40" rx="6" />
+      <rect x="14" y="11" width="52" height="10" rx="3" />
+      <circle cx="20" cy="16" r="3" />
+      <line x1="14" y1="28" x2="72" y2="28" />
+      <line x1="14" y1="34" x2="54" y2="34" />
+      <line x1="14" y1="40" x2="44" y2="40" />
     </svg>
   ),
   dialog: (
@@ -445,8 +447,10 @@ const illustrations: Record<string, React.ReactElement> = {
   avatar: (
     <svg {...s}>
       <circle cx="40" cy="24" r="16" />
-      <circle cx="40" cy="20" r="6" />
-      <path d="M 25 40 Q 40 31 55 40" />
+      {/* Head */}
+      <circle cx="40" cy="19" r="5" />
+      {/* Shoulders — bezier arc at bottom of container */}
+      <path d="M 27 40 Q 40 30 53 40" />
     </svg>
   ),
   calendar: (
