@@ -25,11 +25,11 @@ Built on top of [shadcn/ui](https://ui.shadcn.com/), [Tailwind CSS](https://tail
 
 ## Philosophy
 
-SolarUI est construit sur quelques principes intentionnels. Pas des conventions arbitraires — chacun répond à un vrai problème visuel ou d'interaction.
+SolarUI is built on a few intentional principles. Not arbitrary conventions — each one addresses a real visual or interaction problem.
 
 ### Open code, no lock-in
 
-SolarUI repose sur shadcn/ui, et ce choix est philosophique autant que technique. shadcn/ui n'est pas une librairie de composants au sens classique : tu reçois le code source directement dans ton projet. Tu le possèdes, tu peux le lire, le modifier, l'adapter — sans workarounds, sans wrapper, sans lock-in.
+SolarUI is built on shadcn/ui, and that choice is as philosophical as it is technical. shadcn/ui is not a component library in the traditional sense: you get the source code directly in your project. You own it, you can read it, modify it, adapt it — no workarounds, no wrappers, no lock-in.
 
 > "This is not a component library. It is how you build your component library."
 
@@ -59,8 +59,8 @@ Buttons and inputs must always have the same height. When a button sits next to 
 
 This is enforced at the token level via `h-control`, which maps to `--height-control`. Changing one automatically changes both.
 
-### Regrouper, catégoriser, ordonner
+### Group, categorize, order
 
-Chez Solar, on accorde une attention particulière à la façon dont les composants et les icônes sont triés et regroupés. Ce n'est pas une question d'esthétique — c'est une décision structurelle.
+At Solar, we pay careful attention to how components and icons are sorted and grouped. This is not an aesthetic concern — it is a structural decision.
 
-Les éléments proches sont perçus comme liés : regrouper des composants qui partagent un rôle crée une grammaire visuelle implicite. Une catégorie bien définie dit non seulement *ce qu'elle contient*, mais aussi *ce qu'elle n'accepte pas* — ce qui évite le glissement et rend le système gouvernable à mesure qu'il grandit. Enfin, quand les composants sont bien rangés, les trous se voient : une catégorie peu peuplée signale immédiatement ce qui manque.
+Elements that are close together are perceived as related: grouping components that share a role creates an implicit visual grammar. A well-defined category says not only *what it contains*, but also *what it does not accept* — which prevents drift and keeps the system manageable as it grows. And when components are well organized, gaps become visible: a sparsely populated category immediately signals what is missing.

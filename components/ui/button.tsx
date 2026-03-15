@@ -20,6 +20,7 @@ const buttonVariants = cva(
       size: {
         default: "gap-1.5 pt-1 pb-1 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
         compact: "gap-1 py-1 px-2 text-xs has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
+        icon: "size-9 [&_svg:not([class*='size-'])]:size-4",
       },
     },
     defaultVariants: {

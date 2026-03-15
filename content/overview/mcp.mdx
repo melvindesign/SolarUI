@@ -1,46 +1,46 @@
 ---
 title: MCP
-description: Guider les assistants IA avec le design system Solar UI via le Model Context Protocol.
+description: Guide AI assistants with the Solar UI design system via the Model Context Protocol.
 ---
 
 import { Callout, Steps, Tabs } from 'nextra/components'
 
 # MCP
 
-Solar UI embarque un serveur [Model Context Protocol](https://modelcontextprotocol.io) (MCP) directement dans l'application Next.js. Il expose les composants, les tokens de couleur et les règles du design system aux assistants IA — afin qu'ils génèrent du code correct dès le premier essai.
+Solar UI ships a [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server built directly into the Next.js application. It exposes components, color tokens, and design system rules to AI assistants — so they generate correct code on the first try.
 
 <Callout type="warning">
-  Le serveur MCP est servi par l'application Solar UI elle-même. Elle doit être **en cours d'exécution** pour que l'assistant IA puisse y accéder.
+  The MCP server is served by the Solar UI application itself. It must be **running** for the AI assistant to connect.
 </Callout>
 
-## Pourquoi c'est utile
+## Why it's useful
 
-Sans ce serveur, un agent IA qui génère du code avec Solar UI risque de :
+Without this server, an AI generating Solar UI code is likely to:
 
-- Utiliser des variantes inexistantes — `variant="danger"` au lieu de `"destructive"`
-- Utiliser les tokens shadcn par défaut — `text-muted-foreground`, `bg-background` — qui n'existent pas dans Solar UI
-- Ajouter des classes `dark:` alors que le dark mode est automatique
-- Choisir le mauvais composant pour un besoin donné
+- Use non-existent variants — `variant="danger"` instead of `"destructive"`
+- Use default shadcn tokens — `text-muted-foreground`, `bg-background` — which don't exist in Solar UI
+- Add `dark:` classes when dark mode is handled automatically
+- Pick the wrong component for a given use case
 
-Avec le MCP, l'IA interroge directement la documentation pour connaître les variantes exactes, les bons tokens et les règles à respecter.
+With the MCP, the AI queries the documentation directly for exact variants, correct tokens, and design rules.
 
-## Installation
+## Setup
 
 <Steps>
 
-### Démarrer Solar UI
+### Start Solar UI
 
-Le serveur MCP est disponible dès que l'application tourne.
+The MCP server is available as soon as the application is running.
 
 ```bash filename="terminal" copy
 npm run dev
 ```
 
-Le serveur MCP est accessible à `http://localhost:3000/api/mcp`.
+The MCP server is accessible at `http://localhost:3000/api/mcp`.
 
-### Configurer l'assistant IA
+### Configure your AI assistant
 
-Crée un fichier de configuration à la racine du **projet dans lequel tu travailles** (pas dans Solar UI) :
+Create a config file at the root of the **project you are working in** (not inside Solar UI):
 
 <Tabs items={['Claude Code', 'Cursor', 'VS Code']}>
 
@@ -91,95 +91,95 @@ Crée un fichier de configuration à la racine du **projet dans lequel tu travai
 
 </Tabs>
 
-### Vérifier la connexion
+### Verify the connection
 
-Ouvre une nouvelle session dans ton assistant IA et envoie ce message :
+Open a new session in your AI assistant and send:
 
 ```
-Liste les composants Solar UI disponibles
+List the available Solar UI components
 ```
 
-L'IA doit répondre avec la liste complète groupée par catégorie : Action, Form, Feedback, Layout, etc.
+The AI should respond with the full component list grouped by category: Action, Form, Feedback, Layout, etc.
 
-Si ce n'est pas le cas, vérifie que Solar UI tourne bien et que l'URL dans la config correspond au bon port.
+If it doesn't, check that Solar UI is running and that the URL in the config matches the correct port.
 
 </Steps>
 
-## En production
+## Production
 
-Déploie Solar UI sur ton hébergeur habituel (Vercel, etc.) et remplace l'URL dans ta configuration par le domaine de production :
+Deploy Solar UI to your hosting provider (Vercel, etc.) and replace the URL in your config with the production domain:
 
 ```json copy
 {
   "mcpServers": {
     "solar-ui": {
       "type": "http",
-      "url": "https://votre-domaine.com/api/mcp"
+      "url": "https://your-domain.com/api/mcp"
     }
   }
 }
 ```
 
-Plus besoin de lancer Solar UI en local — l'assistant IA interroge directement le serveur déployé.
+No need to run Solar UI locally — the AI assistant queries the deployed server directly.
 
-## Utilisation
+## Usage
 
-Une fois configuré, tu peux guider l'IA avec des instructions en langage naturel. Le serveur répond aux questions sur les composants, les couleurs et les règles du design system.
+Once configured, you can guide the AI with natural language instructions. The server answers questions about components, colors, and design system rules.
 
-### Exemples de prompts
+### Example prompts
 
-**Trouver le bon composant :**
+**Find the right component:**
 ```
-Quel composant Solar UI utiliser pour demander une confirmation avant de supprimer un élément ?
+Which Solar UI component should I use to confirm before deleting an item?
 ```
-→ L'IA interroge `find_component` et recommande `alert-dialog`.
+→ The AI queries `find_component` and recommends `alert-dialog`.
 
-**Connaître les variantes exactes :**
+**Get exact variants:**
 ```
-Quelles sont les variantes disponibles pour le composant Button ?
+What variants are available for the Button component?
 ```
-→ L'IA interroge `get_component` et liste : `default`, `primary`, `outline`, `secondary`, `ghost`, `destructive`, `link`.
+→ The AI queries `get_component` and lists: `default`, `primary`, `outline`, `secondary`, `ghost`, `destructive`, `link`.
 
-**Générer un composant correctement :**
+**Generate a component correctly:**
 ```
-Crée un formulaire de connexion avec Solar UI. Utilise les bons tokens de couleur et les bonnes variantes.
+Create a login form with Solar UI. Use the correct color tokens and variants.
 ```
-→ L'IA consulte `get_guidelines` et `get_component` pour générer du code conforme au design system.
+→ The AI consults `get_guidelines` and `get_component` to generate design-system-compliant code.
 
-**Comprendre le système de couleurs :**
+**Understand the color system:**
 ```
-Quel token utiliser pour le texte secondaire dans Solar UI ?
+Which token should I use for secondary text in Solar UI?
 ```
-→ L'IA interroge `get_color_token` et répond `text-default-11`.
+→ The AI queries `get_color_token` and responds `text-default-11`.
 
-### Recommandations
+### Recommendations
 
-Pour obtenir les meilleurs résultats, indique explicitement à l'IA qu'elle doit utiliser Solar UI :
+For best results, explicitly tell the AI to use Solar UI:
 
 ```
-Je travaille avec Solar UI. Consulte le MCP avant de générer du code pour t'assurer
-d'utiliser les bons composants et les bons tokens.
+I'm working with Solar UI. Check the MCP before generating code to make sure
+you're using the right components and tokens.
 ```
 
-## Référence
+## Reference
 
-### Outils
+### Tools
 
-| Outil | Paramètres | Description |
+| Tool | Parameters | Description |
 |---|---|---|
-| `list_components` | — | Liste tous les composants groupés par catégorie |
-| `get_component` | `name` | Documentation complète : variantes, props, exemples JSX, commande d'installation |
-| `find_component` | `query` | Trouve le bon composant à partir d'une description en langage naturel |
-| `get_color_token` | `group?`, `step?` | Sémantique des 72 tokens de couleur (6 groupes × 12 steps) |
-| `get_guidelines` | `topic?` | Règles de design, anti-patterns et bonnes pratiques |
+| `list_components` | — | All components grouped by category |
+| `get_component` | `name` | Full docs: variants, props, JSX examples, install command |
+| `find_component` | `query` | Find the right component from a natural language description |
+| `get_color_token` | `group?`, `step?` | Semantics of the 72 color tokens (6 groups × 12 steps) |
+| `get_guidelines` | `topic?` | Design rules, anti-patterns, and best practices |
 
-### Ressources
+### Resources
 
-Les ressources sont des données statiques que l'IA peut lire directement pour charger du contexte en début de session.
+Resources are static data that the AI can read directly to load context at the start of a session.
 
-| URI | Format | Contenu |
+| URI | Format | Content |
 |---|---|---|
-| `solar://components` | JSON | Registre complet de tous les composants |
-| `solar://colors` | JSON | Système de tokens de couleur complet |
-| `solar://guidelines` | Markdown | Règles de design et anti-patterns |
-| `solar://components/{name}` | Markdown | Documentation d'un composant spécifique |
+| `solar://components` | JSON | Full component registry |
+| `solar://colors` | JSON | Complete color token system |
+| `solar://guidelines` | Markdown | Design rules and anti-patterns |
+| `solar://components/{name}` | Markdown | Docs for a specific component |

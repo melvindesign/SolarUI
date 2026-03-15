@@ -13,7 +13,7 @@ A SolarUI palette is built from six roles:
 | Role | Token group | Default color |
 |------|------------|---------------|
 | Neutral surfaces, borders, text | `default` | gray |
-| Primary actions | `brand` | blue |
+| Primary actions | `brand` | orange |
 | Destructive / invalid | `error` | red |
 | Confirmation | `success` | green |
 | Warning | `warning` | amber |
@@ -37,7 +37,7 @@ specific brand colors:
 | **Slate** | Blue | Indigo, Blue, Sky, Cyan |
 | **Sage** | Green/teal | Mint, Teal |
 | **Olive** | Yellow/green | Grass, Green |
-| **Sand** | Yellow/warm | Yellow, Amber, Orange |
+| **Sand** | Yellow/warm | Yellow, Amber, **Orange** ← SolarUI default |
 
 <ColorScale name="gray" />
 <ColorScale name="mauve" />
@@ -69,7 +69,7 @@ Once you have chosen your gray and brand, apply the steps consistently:
 | 11 | Secondary / muted text |
 | 12 | Primary text, headings |
 
-### `brand` (blue) — accent role
+### `brand` (orange) — accent role
 
 | Steps | Purpose |
 |-------|---------|
@@ -97,7 +97,7 @@ Once you have chosen your gray and brand, apply the steps consistently:
 The palette shipped with SolarUI:
 
 <ColorScale name="gray" />
-<ColorScale name="blue" />
+<ColorScale name="orange" />
 <ColorScale name="red" />
 <ColorScale name="green" />
 <ColorScale name="amber" />
@@ -107,8 +107,8 @@ The palette shipped with SolarUI:
 /* globals.css */
 @import "@radix-ui/colors/gray.css";
 @import "@radix-ui/colors/gray-dark.css";
-@import "@radix-ui/colors/blue.css";
-@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/orange.css";
+@import "@radix-ui/colors/orange-dark.css";
 @import "@radix-ui/colors/red.css";
 @import "@radix-ui/colors/red-dark.css";
 @import "@radix-ui/colors/green.css";

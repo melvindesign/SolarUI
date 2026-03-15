@@ -141,7 +141,7 @@ export function RadixPalette({ dark = false }: { dark?: boolean }) {
 export function SolarTokens() {
   const tokens = [
     { name: "default", color: "gray", label: "Gray — Surfaces, borders, text" },
-    { name: "brand", color: "blue", label: "Blue — Primary actions" },
+    { name: "brand", color: "orange", label: "Orange — Primary actions" },
     { name: "error", color: "red", label: "Red — Destructive / invalid" },
     { name: "success", color: "green", label: "Green — Confirmation" },
     { name: "warning", color: "amber", label: "Amber — Warning" },
