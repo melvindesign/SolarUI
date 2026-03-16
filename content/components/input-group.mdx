@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/input-group'
 import { ComponentPreview } from '@/components/component-preview'
 import { Tabs } from 'nextra/components'
+import { InputGroupPasswordDemo, InputGroupPasswordButtonDemo } from '@/components/demos/input-group-password-demo'
 
 # Input Group
 
@@ -27,15 +28,7 @@ A composable component for combining inputs with icons, buttons, and text addons
       </InputGroupAddon>
       <InputGroupInput placeholder="Search..." />
     </InputGroup>
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <AtSignIcon />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="Username" />
-      <InputGroupAddon align="inline-end">
-        <InputGroupButton><EyeIcon /></InputGroupButton>
-      </InputGroupAddon>
-    </InputGroup>
+    <InputGroupPasswordDemo />
   </div>
 </ComponentPreview>
 
@@ -99,21 +92,30 @@ import {
 ### Button suffix
 
 <ComponentPreview>
-  <InputGroup className="max-w-sm">
-    <InputGroupInput placeholder="Enter email..." />
-    <InputGroupAddon align="inline-end">
-      <InputGroupButton><EyeIcon /></InputGroupButton>
-    </InputGroupAddon>
-  </InputGroup>
+  <div className="max-w-sm w-full"><InputGroupPasswordButtonDemo /></div>
 </ComponentPreview>
 
 ```tsx
-<InputGroup>
-  <InputGroupInput placeholder="Enter email..." />
-  <InputGroupAddon align="inline-end">
-    <InputGroupButton><EyeIcon /></InputGroupButton>
-  </InputGroupAddon>
-</InputGroup>
+import { useState } from "react"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
+
+function PasswordInput() {
+  const [showPassword, setShowPassword] = useState(false)
+
+  return (
+    <InputGroup>
+      <InputGroupInput
+        type={showPassword ? "text" : "password"}
+        placeholder="Password"
+      />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton onClick={() => setShowPassword((v) => !v)}>
+          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  )
+}
 ```
 
 ### Textarea with send button
