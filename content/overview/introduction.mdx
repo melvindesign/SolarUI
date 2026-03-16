@@ -6,6 +6,7 @@ description: A modern, accessible, and customizable UI component library.
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { DoAndDont, Do, Dont } from '@/components/do-and-dont'
+import { Mail } from 'lucide-react'
 
 # Introduction
 
@@ -41,7 +42,10 @@ Buttons and inputs must always have the same height. When a button sits next to 
   <Do label="Do — same height">
     <div className="flex w-full max-w-xs gap-2">
       <Input placeholder="Email address" />
-      <Button>Subscribe</Button>
+      <Button size="icon" className="sm:hidden shrink-0">
+        <Mail />
+      </Button>
+      <Button className="hidden sm:inline-flex shrink-0">Subscribe</Button>
     </div>
   </Do>
   <Dont label="Don't — mismatched heights">
@@ -50,7 +54,10 @@ Buttons and inputs must always have the same height. When a button sits next to 
         placeholder="Email address"
         className="flex h-10 w-full rounded-md border border-(--color-input) bg-(--color-background) px-3 text-sm"
       />
-      <button className="inline-flex h-6 shrink-0 items-center rounded-lg bg-default-12 px-2.5 text-xs font-medium text-brand-1">
+      <button className="inline-flex size-6 shrink-0 items-center justify-center rounded-lg bg-default-12 sm:hidden">
+        <Mail className="size-3 text-brand-1" />
+      </button>
+      <button className="hidden sm:inline-flex h-6 shrink-0 items-center rounded-lg bg-default-12 px-2.5 text-xs font-medium text-brand-1">
         Subscribe
       </button>
     </div>
@@ -58,6 +65,27 @@ Buttons and inputs must always have the same height. When a button sits next to 
 </DoAndDont>
 
 This is enforced at the token level via `h-control`, which maps to `--height-control`. Changing one automatically changes both.
+
+### Sizing system: default, compact, and responsive
+
+Every component in SolarUI is designed around two intentional size modes:
+
+**Default** is the baseline. It gives each component breathing room — comfortable padding, readable text, and touch targets large enough to be usable. This is what you get out of the box.
+
+**Compact** is a denser variant. Every component becomes narrower and tighter, without losing legibility or accessibility. It is designed for power-user interfaces, data-heavy dashboards, or any context where screen real estate matters more than comfort.
+
+These two modes are not just stylistic — they are structural. Switching from default to compact adjusts spacing, height, and typography tokens across all components at once. Nothing needs to be overridden individually.
+
+Beyond those two modes, the system is also **responsive by nature**. Components adapt their size depending on the screen they are rendered on. A button on mobile is larger — its hit area needs to be accessible to a finger. The same button on desktop is slightly smaller and more refined, because a cursor is precise and space is less constrained.
+
+This is not done through arbitrary breakpoint overrides. It is built into the token system: each size token resolves to a different value depending on the viewport, so all components scale together consistently.
+
+| Context | Philosophy |
+|---------|------------|
+| Mobile | Larger targets, more accessible to touch |
+| Desktop | Tighter and more refined, optimized for cursor precision |
+| Compact mode | Dense layout for data-heavy or expert interfaces |
+| Default mode | Comfortable baseline for general use |
 
 ### Group, categorize, order
 
