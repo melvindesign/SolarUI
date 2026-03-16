@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/input-group'
 import { ComponentPreview } from '@/components/component-preview'
 import { Tabs } from 'nextra/components'
-import { InputGroupPasswordDemo } from '@/components/demos/input-group-password-demo'
+import { InputGroupPasswordDemo, InputGroupPasswordButtonDemo } from '@/components/demos/input-group-password-demo'
 
 # Input Group
 
@@ -92,21 +92,30 @@ import {
 ### Button suffix
 
 <ComponentPreview>
-  <InputGroup className="max-w-sm">
-    <InputGroupInput placeholder="Enter email..." />
-    <InputGroupAddon align="inline-end">
-      <InputGroupButton><EyeIcon /></InputGroupButton>
-    </InputGroupAddon>
-  </InputGroup>
+  <div className="max-w-sm w-full"><InputGroupPasswordButtonDemo /></div>
 </ComponentPreview>
 
 ```tsx
-<InputGroup>
-  <InputGroupInput placeholder="Enter email..." />
-  <InputGroupAddon align="inline-end">
-    <InputGroupButton><EyeIcon /></InputGroupButton>
-  </InputGroupAddon>
-</InputGroup>
+import { useState } from "react"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
+
+function PasswordInput() {
+  const [showPassword, setShowPassword] = useState(false)
+
+  return (
+    <InputGroup>
+      <InputGroupInput
+        type={showPassword ? "text" : "password"}
+        placeholder="Password"
+      />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton onClick={() => setShowPassword((v) => !v)}>
+          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  )
+}
 ```
 
 ### Textarea with send button

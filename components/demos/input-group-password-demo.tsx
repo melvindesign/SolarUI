@@ -29,3 +29,21 @@ export function InputGroupPasswordDemo() {
     </InputGroup>
   )
 }
+
+export function InputGroupPasswordButtonDemo() {
+  const [showPassword, setShowPassword] = useState(false)
+
+  return (
+    <InputGroup>
+      <InputGroupInput
+        type={showPassword ? "text" : "password"}
+        placeholder="Password"
+      />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton onClick={() => setShowPassword((v) => !v)}>
+          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  )
+}
