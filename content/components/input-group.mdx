@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/input-group'
 import { ComponentPreview } from '@/components/component-preview'
 import { Tabs } from 'nextra/components'
+import { InputGroupPasswordDemo } from '@/components/demos/input-group-password-demo'
 
 # Input Group
 
@@ -27,15 +28,7 @@ A composable component for combining inputs with icons, buttons, and text addons
       </InputGroupAddon>
       <InputGroupInput placeholder="Search..." />
     </InputGroup>
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <AtSignIcon />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="Username" />
-      <InputGroupAddon align="inline-end">
-        <InputGroupButton><EyeIcon /></InputGroupButton>
-      </InputGroupAddon>
-    </InputGroup>
+    <InputGroupPasswordDemo />
   </div>
 </ComponentPreview>
 
