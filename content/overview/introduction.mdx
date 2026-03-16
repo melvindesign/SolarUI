@@ -6,6 +6,7 @@ description: A modern, accessible, and customizable UI component library.
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { DoAndDont, Do, Dont } from '@/components/do-and-dont'
+import { Mail } from 'lucide-react'
 
 # Introduction
 
@@ -41,7 +42,10 @@ Buttons and inputs must always have the same height. When a button sits next to 
   <Do label="Do — same height">
     <div className="flex w-full max-w-xs gap-2">
       <Input placeholder="Email address" />
-      <Button>Subscribe</Button>
+      <Button size="icon" className="sm:hidden shrink-0">
+        <Mail />
+      </Button>
+      <Button className="hidden sm:inline-flex shrink-0">Subscribe</Button>
     </div>
   </Do>
   <Dont label="Don't — mismatched heights">
@@ -50,7 +54,10 @@ Buttons and inputs must always have the same height. When a button sits next to 
         placeholder="Email address"
         className="flex h-10 w-full rounded-md border border-(--color-input) bg-(--color-background) px-3 text-sm"
       />
-      <button className="inline-flex h-6 shrink-0 items-center rounded-lg bg-default-12 px-2.5 text-xs font-medium text-brand-1">
+      <button className="inline-flex size-6 shrink-0 items-center justify-center rounded-lg bg-default-12 sm:hidden">
+        <Mail className="size-3 text-brand-1" />
+      </button>
+      <button className="hidden sm:inline-flex h-6 shrink-0 items-center rounded-lg bg-default-12 px-2.5 text-xs font-medium text-brand-1">
         Subscribe
       </button>
     </div>
