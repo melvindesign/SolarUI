@@ -1,6 +1,10 @@
 /* ─── Radix UI Colors — all scales ─────────────────────────────────────── */
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/white-alpha.css";
 @import "@radix-ui/colors/gray.css";
 @import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/gray-alpha.css";
+@import "@radix-ui/colors/gray-dark-alpha.css";
 @import "@radix-ui/colors/mauve.css";
 @import "@radix-ui/colors/mauve-dark.css";
 @import "@radix-ui/colors/slate.css";
@@ -78,9 +82,9 @@
   --color-default-6:  var(--gray-6);
   --color-default-7:  var(--gray-7);
   --color-default-8:  var(--gray-8);
-  --color-default-9:  var(--gray-9);
-  --color-default-10: var(--gray-10);
-  --color-default-11: var(--gray-11);
+  --color-default-9:  var(--gray-a12);
+  --color-default-10: var(--gray-a11);
+  --color-default-11: var(--gray-10);
   --color-default-12: var(--gray-12);
 
   /* brand → orange */
@@ -588,6 +592,36 @@
   --color-amber-10: var(--amber-10);
   --color-amber-11: var(--amber-11);
   --color-amber-12: var(--amber-12);
+
+  /* ─── Overlay alpha colors ─────────────────────────────────────────────── */
+
+  /* black alpha */
+  --color-black-a1:  var(--black-a1);
+  --color-black-a2:  var(--black-a2);
+  --color-black-a3:  var(--black-a3);
+  --color-black-a4:  var(--black-a4);
+  --color-black-a5:  var(--black-a5);
+  --color-black-a6:  var(--black-a6);
+  --color-black-a7:  var(--black-a7);
+  --color-black-a8:  var(--black-a8);
+  --color-black-a9:  var(--black-a9);
+  --color-black-a10: var(--black-a10);
+  --color-black-a11: var(--black-a11);
+  --color-black-a12: var(--black-a12);
+
+  /* white alpha */
+  --color-white-a1:  var(--white-a1);
+  --color-white-a2:  var(--white-a2);
+  --color-white-a3:  var(--white-a3);
+  --color-white-a4:  var(--white-a4);
+  --color-white-a5:  var(--white-a5);
+  --color-white-a6:  var(--white-a6);
+  --color-white-a7:  var(--white-a7);
+  --color-white-a8:  var(--white-a8);
+  --color-white-a9:  var(--white-a9);
+  --color-white-a10: var(--white-a10);
+  --color-white-a11: var(--white-a11);
+  --color-white-a12: var(--white-a12);
 
   /* ─── Tokens ────────────────────────────────────────────────────────────── */
   --radius: 0.5rem;

@@ -36,7 +36,6 @@ import { Button } from "@/components/ui/button"
 <ComponentPreviewRow>
   <Button>Default</Button>
   <Button variant="primary">Primary</Button>
-  <Button variant="outline">Outline</Button>
   <Button variant="secondary">Secondary</Button>
   <Button variant="ghost">Ghost</Button>
   <Button variant="destructive">Destructive</Button>
@@ -46,7 +45,6 @@ import { Button } from "@/components/ui/button"
 ```tsx
 <Button>Default</Button>
 <Button variant="primary">Primary</Button>
-<Button variant="outline">Outline</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="destructive">Destructive</Button>
@@ -129,16 +127,15 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "focus-visible:border-default-8 focus-visible:ring-default-7 aria-invalid:ring-error-7 aria-invalid:border-error-8 rounded-lg border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 active:translate-y-px [&_svg:not([class*='size-'])]:size-4 group/button inline-flex flex-row shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "focus-visible:border-default-8 focus-visible:ring-default-7 aria-invalid:ring-error-7 aria-invalid:border-error-8 rounded-lg border border-transparent bg-clip-padding text-sm font-medium focus-visible:ring-3 aria-invalid:ring-3 active:translate-y-px [&_svg:not([class*='size-'])]:size-4 group/button inline-flex flex-row shrink-0 items-center justify-center whitespace-nowrap transition-all outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 relative overflow-hidden after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none after:opacity-0 after:transition-opacity hover:after:opacity-100",
   {
     variants: {
       variant: {
-        default: "bg-default-12 text-default-1 hover:bg-default-11",
-        primary: "bg-brand-9 text-brand-1 hover:bg-brand-10",
-        outline: "border-default-6 bg-default-1 hover:bg-default-3 hover:text-default-12 aria-expanded:bg-default-3 aria-expanded:text-default-12",
-        secondary: "bg-default-3 text-default-12 hover:bg-default-4 aria-expanded:bg-default-3 aria-expanded:text-default-12",
-        ghost: "hover:bg-default-3 hover:text-default-12 aria-expanded:bg-default-3 aria-expanded:text-default-12",
-        destructive: "bg-error-3 hover:bg-error-4 focus-visible:ring-error-7 text-error-11 focus-visible:border-error-7",
+        default: "bg-default-9 border-black-a5 text-white-a12 shadow-[0px_3px_4px_-1px_var(--black-a2),inset_0px_2px_1px_0px_var(--white-a3)] after:bg-white-a2",
+        primary: "bg-gradient-to-t from-brand-10 to-brand-9 border-brand-8 text-white-a12 shadow-[0px_3px_4px_-1px_var(--black-a2),inset_0px_2px_1px_0px_var(--white-a3)] after:bg-white-a2",
+        secondary: "bg-gradient-to-t from-default-3 to-default-1 border-default-8 text-default-12 after:bg-black-a1",
+        ghost: "text-default-12 hover:bg-black-a1 aria-expanded:bg-black-a1",
+        destructive: "bg-error-3 text-error-11 after:bg-black-a1",
         link: "text-brand-11 underline-offset-4 hover:underline",
       },
       size: {
@@ -188,7 +185,7 @@ export { Button, buttonVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "primary" \| "outline" \| "secondary" \| "ghost" \| "destructive" \| "link"` | `"default"` | The visual style of the button. |
+| `variant` | `"default" \| "primary" \| "secondary" \| "ghost" \| "destructive" \| "link"` | `"default"` | The visual style of the button. |
 | `size` | `"default" \| "compact"` | `"default"` | The size of the button. |
 | `asChild` | `boolean` | `false` | When `true`, renders its child as the root element using Radix UI's `Slot`. |
 | `disabled` | `boolean` | `false` | Prevents interaction and applies reduced opacity. |
