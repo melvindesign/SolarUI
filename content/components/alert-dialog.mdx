@@ -25,7 +25,7 @@ A modal dialog that interrupts the user with important content and expects a res
 <ComponentPreview>
   <AlertDialog>
     <AlertDialogTrigger asChild>
-      <Button variant="outline">Open</Button>
+      <Button variant="secondary">Open</Button>
     </AlertDialogTrigger>
     <AlertDialogContent>
       <AlertDialogHeader>
@@ -64,7 +64,7 @@ import {
 ```tsx
 <AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="outline">Delete account</Button>
+    <Button variant="secondary">Delete account</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -258,7 +258,7 @@ function AlertDialogAction({
 
 function AlertDialogCancel({
   className,
-  variant = "outline",
+  variant = "secondary",
   size = "default",
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel> &
@@ -330,7 +330,7 @@ The confirm button. Styled using `buttonVariants()` by default.
 
 ### AlertDialogCancel
 
-The cancel button. Styled using `buttonVariants({ variant: "outline" })` by default.
+The cancel button. Styled using `buttonVariants({ variant: "secondary" })` by default.
 
 </Tabs.Tab>
 

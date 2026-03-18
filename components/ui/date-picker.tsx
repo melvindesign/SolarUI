@@ -17,7 +17,7 @@ export function DatePickerDemo() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="secondary"
           data-empty={!date}
           className="w-64 justify-start text-left font-normal data-[empty=true]:text-default-11"
         >
@@ -40,7 +40,7 @@ export function DateRangePickerDemo({ className }: { className?: string }) {
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
+            variant="secondary"
             data-empty={!range?.from}
             className="w-72 justify-start text-left font-normal data-[empty=true]:text-default-11"
           >
@@ -85,7 +85,7 @@ export function DatePickerWithPresets() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="secondary"
           data-empty={!date}
           className="w-64 justify-start text-left font-normal data-[empty=true]:text-default-11"
         >

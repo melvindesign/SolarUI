@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner"
 export function SonnerDemo() {
   return (
     <>
-      <Button variant="outline" onClick={() => toast("Event has been created.")}>Show Toast</Button>
+      <Button variant="secondary" onClick={() => toast("Event has been created.")}>Show Toast</Button>
       <Toaster />
     </>
   )

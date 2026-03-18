@@ -25,7 +25,7 @@ A window overlaid on either the primary window or another dialog window, renderi
 <ComponentPreview>
   <Dialog>
     <DialogTrigger asChild>
-      <Button variant="outline">Edit Profile</Button>
+      <Button variant="secondary">Edit Profile</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
       <DialogHeader>
@@ -70,7 +70,7 @@ import {
 ```tsx
 <Dialog>
   <DialogTrigger asChild>
-    <Button variant="outline">Open</Button>
+    <Button variant="secondary">Open</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -217,7 +217,7 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close asChild>
-          <Button variant="outline">Close</Button>
+          <Button variant="secondary">Close</Button>
         </DialogPrimitive.Close>
       )}
     </div>
