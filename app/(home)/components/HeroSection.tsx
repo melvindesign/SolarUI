@@ -58,7 +58,7 @@ export default function HeroSection() {
           >
             <Link href="/docs">Browse Components</Link>
           </Button>
-          <Button variant="outline" asChild>
+          <Button variant="secondary" asChild>
             <Link
               href="https://github.com/melvindesign/SolarUI"
               target="_blank"

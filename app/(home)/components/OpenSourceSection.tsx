@@ -49,7 +49,7 @@ export default function OpenSourceSection() {
           </div>
 
           {/* CTA */}
-          <Button variant="outline" asChild>
+          <Button variant="secondary" asChild>
             <Link
               href="https://github.com/melvindesign/SolarUI"
               target="_blank"

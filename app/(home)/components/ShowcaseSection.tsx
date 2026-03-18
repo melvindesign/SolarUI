@@ -143,7 +143,7 @@ export default function ShowcaseSection() {
 
       {/* Link to docs */}
       <div className="mt-10 text-center">
-        <Button variant="outline" asChild>
+        <Button variant="secondary" asChild>
           <Link href="/docs">
             Browse all 68 components →
           </Link>
