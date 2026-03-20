@@ -34,7 +34,10 @@ function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="input-otp-group"
-      className={cn("has-aria-invalid:ring-error-7 has-aria-invalid:border-error-8 rounded-lg has-aria-invalid:ring-3 flex items-center", className)}
+      className={cn(
+        "rounded-lg border border-transparent flex items-center [background:linear-gradient(to_top,var(--color-default-2),var(--color-default-1))_padding-box,linear-gradient(to_bottom,var(--color-default-8),var(--color-default-6))_border-box] has-aria-invalid:ring-3 has-aria-invalid:ring-error-7 has-aria-invalid:[background:linear-gradient(to_top,var(--color-default-2),var(--color-default-1))_padding-box,linear-gradient(to_bottom,var(--color-error-7),var(--color-error-7))_border-box]",
+        className
+      )}
       {...props}
     />
   )
@@ -55,7 +58,7 @@ function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        "bg-default-1 border-default-7 data-[active=true]:border-default-8 data-[active=true]:ring-default-7 data-[active=true]:aria-invalid:ring-error-7 aria-invalid:border-error-8 data-[active=true]:aria-invalid:border-error-8 size-8 border-y border-r text-sm transition-all outline-none first:rounded-l-lg first:border-l last:rounded-r-lg data-[active=true]:ring-3 relative flex items-center justify-center data-[active=true]:z-10",
+        "size-[39px] border-r border-default-7 last:border-r-0 text-sm font-light tracking-[0.4px] text-default-12 transition-all outline-none first:rounded-l-lg last:rounded-r-lg data-[active=true]:ring-3 data-[active=true]:ring-default-7 data-[active=true]:z-10 relative flex items-center justify-center data-[active=true]:aria-invalid:ring-error-7 aria-invalid:border-error-8 data-[active=true]:aria-invalid:border-error-8",
         className
       )}
       {...props}
