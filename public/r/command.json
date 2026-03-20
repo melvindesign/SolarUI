@@ -7,7 +7,7 @@
   ],
   "registryDependencies": [
     "utils",
-    "solar-theme",
+    "solar-ui",
     "dialog"
   ],
   "files": [

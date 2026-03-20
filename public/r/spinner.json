@@ -3,7 +3,7 @@
   "name": "spinner",
   "registryDependencies": [
     "utils",
-    "solar-theme"
+    "solar-ui"
   ],
   "files": [
     {

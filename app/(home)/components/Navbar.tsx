@@ -17,7 +17,7 @@ function ThemeToggle() {
     const next = !dark
     setDark(next)
     document.documentElement.classList.toggle('dark', next)
-    localStorage.setItem('solar-theme', next ? 'dark' : 'light')
+    localStorage.setItem('solar-ui', next ? 'dark' : 'light')
   }
 
   return (

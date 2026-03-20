@@ -3,7 +3,7 @@
   "name": "kbd",
   "registryDependencies": [
     "utils",
-    "solar-theme"
+    "solar-ui"
   ],
   "files": [
     {

@@ -3,7 +3,7 @@
   "name": "table",
   "registryDependencies": [
     "utils",
-    "solar-theme"
+    "solar-ui"
   ],
   "files": [
     {
