@@ -11,7 +11,7 @@ export const PATHS = {
   contentTheming: join(PROJECT_ROOT, 'content/theming'),
   componentsUi: join(PROJECT_ROOT, 'components/ui'),
   globalsCss: join(PROJECT_ROOT, 'app/globals.css'),
-  solarThemeCss: join(PROJECT_ROOT, 'registry/solar-theme.css'),
+  solarThemeCss: join(PROJECT_ROOT, 'registry/solar-ui.css'),
   registryJson: join(PROJECT_ROOT, 'registry.json'),
   componentsMeta: join(PROJECT_ROOT, 'content/components/_meta.js'),
   coreMeta: join(PROJECT_ROOT, 'content/core/_meta.js'),

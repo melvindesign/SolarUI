@@ -3,7 +3,7 @@
   "name": "combobox",
   "registryDependencies": [
     "utils",
-    "solar-theme",
+    "solar-ui",
     "button",
     "command",
     "popover"
