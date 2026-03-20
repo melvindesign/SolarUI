@@ -14,7 +14,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
         {/* Anti-FOUC: apply saved theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('solar-theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark');}())`,
+            __html: `(function(){var t=localStorage.getItem('solar-ui')||'dark';document.documentElement.classList.toggle('dark',t==='dark');}())`,
           }}
         />
       </head>

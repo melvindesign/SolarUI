@@ -66,8 +66,6 @@
 @import "@radix-ui/colors/amber.css";
 @import "@radix-ui/colors/amber-dark.css";
 
-@import "tailwindcss";
-
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -630,7 +628,6 @@
   /* ─── Animations ────────────────────────────────────────────────────────── */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-hero-fade-in: hero-fade-in 0.6s ease-out forwards;
 }
 
 @keyframes accordion-down {
@@ -643,17 +640,30 @@
   to   { height: 0; }
 }
 
-@keyframes hero-fade-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 :root {
-  --chart-1: oklch(0.734 0.12 244);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* ─── shadcn default variable overrides → Radix UI ─────────────────────── */
+  /* Radix dark CSS imports handle dark mode automatically via .dark scope    */
+  --background:            var(--gray-1);
+  --foreground:            var(--gray-12);
+  --card:                  var(--gray-2);
+  --card-foreground:       var(--gray-12);
+  --popover:               var(--gray-2);
+  --popover-foreground:    var(--gray-12);
+  --primary:               var(--orange-9);
+  --primary-foreground:    var(--orange-1);
+  --secondary:             var(--gray-3);
+  --secondary-foreground:  var(--gray-12);
+  --muted:                 var(--gray-3);
+  --muted-foreground:      var(--gray-11);
+  --accent:                var(--gray-3);
+  --accent-foreground:     var(--gray-12);
+  --destructive:           var(--red-9);
+  --destructive-foreground: var(--red-1);
+  --border:                var(--gray-6);
+  --input:                 var(--gray-7);
+  --ring:                  var(--orange-8);
+
+  /* ─── Sidebar ───────────────────────────────────────────────────────────── */
   --sidebar:                    var(--gray-2);
   --sidebar-foreground:         var(--gray-11);
   --sidebar-primary:            var(--orange-9);
@@ -684,9 +694,32 @@
     color: var(--color-default-12);
   }
 
-    button:not(:disabled),
+  button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
 
+  /* ─── Input gradient border ─────────────────────────────────────────────── */
+  [data-slot="input"] {
+    background:
+      linear-gradient(to top, var(--color-default-2), var(--color-default-1)) padding-box,
+      linear-gradient(to bottom, var(--color-default-8), var(--color-default-6)) border-box;
+    border-color: transparent;
+  }
+
+  [data-slot="input"]:disabled {
+    background: var(--color-default-3);
+  }
+
+  [data-slot="input"]:focus-visible {
+    background:
+      linear-gradient(to top, var(--color-default-2), var(--color-default-1)) padding-box,
+      linear-gradient(to bottom, var(--color-default-9), var(--color-default-8)) border-box;
+  }
+
+  [data-slot="input"][aria-invalid="true"] {
+    background:
+      linear-gradient(to top, var(--color-default-2), var(--color-default-1)) padding-box,
+      linear-gradient(to bottom, var(--color-error-7), var(--color-error-7)) border-box;
+  }
 }

@@ -36,7 +36,7 @@ export function DatePicker() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="secondary"
           data-empty={!date}
           className="w-64 justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
         >
@@ -67,7 +67,7 @@ const [range, setRange] = React.useState<DateRange | undefined>()
 
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline" ...>
+    <Button variant="secondary" ...>
       <CalendarIcon className="mr-2 size-4" />
       {range?.from ? (
         range.to

@@ -17,7 +17,7 @@ function ThemeToggle() {
     const next = !dark
     setDark(next)
     document.documentElement.classList.toggle('dark', next)
-    localStorage.setItem('solar-theme', next ? 'dark' : 'light')
+    localStorage.setItem('solar-ui', next ? 'dark' : 'light')
   }
 
   return (
@@ -64,7 +64,7 @@ export default function Navbar() {
             GitHub
           </Link>
           <ThemeToggle />
-          <Button variant="outline" size="compact" asChild>
+          <Button variant="secondary" size="compact" asChild>
             <Link href="/docs">Get Started</Link>
           </Button>
         </div>
@@ -106,7 +106,7 @@ export default function Navbar() {
             GitHub
           </Link>
           <div className="pt-1 pb-2">
-            <Button variant="outline" size="compact" asChild className="w-full">
+            <Button variant="secondary" size="compact" asChild className="w-full">
               <Link href="/docs" onClick={() => setOpen(false)}>
                 Get Started
               </Link>

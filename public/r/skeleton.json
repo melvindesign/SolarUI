@@ -3,7 +3,7 @@
   "name": "skeleton",
   "registryDependencies": [
     "utils",
-    "solar-theme"
+    "solar-ui"
   ],
   "files": [
     {

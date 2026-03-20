@@ -142,7 +142,7 @@ export function DataTableDemo() {
       </div>
       <div className="flex items-center justify-end gap-2 py-4">
         <Button
-          variant="outline"
+          variant="secondary"
           size="compact"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
@@ -150,7 +150,7 @@ export function DataTableDemo() {
           Previous
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           size="compact"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}

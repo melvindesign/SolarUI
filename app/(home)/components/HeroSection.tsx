@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Github } from 'lucide-react'
 import Link from 'next/link'
+import InstallCommand from './InstallCommand'
 
 const anim = (delay: number) => ({
   animation: `hero-fade-in 0.6s ease-out both`,
@@ -58,7 +59,7 @@ export default function HeroSection() {
           >
             <Link href="/docs">Browse Components</Link>
           </Button>
-          <Button variant="outline" asChild>
+          <Button variant="secondary" asChild>
             <Link
               href="https://github.com/melvindesign/SolarUI"
               target="_blank"
@@ -69,6 +70,11 @@ export default function HeroSection() {
             </Link>
           </Button>
         </div>
+      </div>
+
+      {/* Install command */}
+      <div style={anim(320)} className="mt-6 w-full max-w-lg">
+        <InstallCommand />
       </div>
 
     </section>

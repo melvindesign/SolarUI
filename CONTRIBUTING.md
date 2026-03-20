@@ -34,7 +34,7 @@ SolarUI/
 │   └── core/                  # Core utilities
 │
 ├── registry/
-│   └── solar-theme.css         # Distributed theme file (via shadcn registry)
+│   └── solar-ui.css         # Distributed theme file (via shadcn registry)
 │
 ├── lib/
 │   └── utils.ts                # cn() utility (clsx + tailwind-merge)

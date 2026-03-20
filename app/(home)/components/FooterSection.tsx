@@ -16,7 +16,7 @@ const links = [
     label: 'Resources',
     items: [
       { label: 'Installation', href: '/docs/overview/installation' },
-      { label: 'Theming', href: '/docs/theming/overview' },
+      { label: 'Theming', href: '/docs/theming/composing-palettes' },
       {
         label: 'GitHub',
         href: 'https://github.com/melvindesign/SolarUI',
