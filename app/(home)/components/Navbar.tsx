@@ -5,8 +5,7 @@ import { Figma, Github, Menu, Moon, Sun, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-// TODO: Replace with the real Figma Community file URL once available
-const FIGMA_URL = 'https://www.figma.com/community/file/FIGMA_FILE_ID'
+const FIGMA_URL = 'https://www.figma.com/community/file/1617663822970891226'
 
 function ThemeToggle() {
   const [dark, setDark] = useState(true)

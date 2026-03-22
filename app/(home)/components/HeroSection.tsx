@@ -3,8 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Figma, Github } from 'lucide-react'
 import Link from 'next/link'
 
-// TODO: Replace with the real Figma Community file URL once available
-const FIGMA_URL = 'https://www.figma.com/community/file/FIGMA_FILE_ID'
+const FIGMA_URL = 'https://www.figma.com/community/file/1617663822970891226'
 import InstallCommand from './InstallCommand'
 
 const anim = (delay: number) => ({
