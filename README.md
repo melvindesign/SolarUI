@@ -1,7 +1,7 @@
 # ☀️ Solar UI
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-v0.3.0-blue.svg)](https://github.com/melvindesign/SolarUI/releases)
+[![Version](https://img.shields.io/badge/version-v0.4.0-blue.svg)](https://github.com/melvindesign/SolarUI/releases)
 [![Built with Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![shadcn/ui compatible](https://img.shields.io/badge/shadcn%2Fui-compatible-000000?logo=shadcnui&logoColor=white)](https://ui.shadcn.com)
 
