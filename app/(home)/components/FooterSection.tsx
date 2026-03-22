@@ -2,6 +2,9 @@ import { Separator } from '@/components/ui/separator'
 import { Github } from 'lucide-react'
 import Link from 'next/link'
 
+// TODO: Replace with the real Figma Community file URL once available
+const FIGMA_URL = 'https://www.figma.com/community/file/FIGMA_FILE_ID'
+
 const links = [
   {
     label: 'Product',
@@ -17,6 +20,11 @@ const links = [
     items: [
       { label: 'Installation', href: '/docs/overview/installation' },
       { label: 'Theming', href: '/docs/theming/composing-palettes' },
+      {
+        label: 'Figma',
+        href: FIGMA_URL,
+        external: true,
+      },
       {
         label: 'GitHub',
         href: 'https://github.com/melvindesign/SolarUI',

@@ -1,9 +1,12 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Github, Menu, Moon, Sun, X } from 'lucide-react'
+import { Figma, Github, Menu, Moon, Sun, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+
+// TODO: Replace with the real Figma Community file URL once available
+const FIGMA_URL = 'https://www.figma.com/community/file/FIGMA_FILE_ID'
 
 function ThemeToggle() {
   const [dark, setDark] = useState(true)
@@ -55,6 +58,15 @@ export default function Navbar() {
             Documentation
           </Link>
           <Link
+            href={FIGMA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-2 py-1.5 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
+          >
+            <Figma size={15} />
+            Figma
+          </Link>
+          <Link
             href="https://github.com/melvindesign/SolarUI"
             target="_blank"
             rel="noopener noreferrer"
@@ -94,6 +106,16 @@ export default function Navbar() {
             className="py-2 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
           >
             Documentation
+          </Link>
+          <Link
+            href={FIGMA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-1.5 py-2 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
+          >
+            <Figma size={15} />
+            Figma
           </Link>
           <Link
             href="https://github.com/melvindesign/SolarUI"

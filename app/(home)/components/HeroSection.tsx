@@ -1,7 +1,10 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Github } from 'lucide-react'
+import { Figma, Github } from 'lucide-react'
 import Link from 'next/link'
+
+// TODO: Replace with the real Figma Community file URL once available
+const FIGMA_URL = 'https://www.figma.com/community/file/FIGMA_FILE_ID'
 import InstallCommand from './InstallCommand'
 
 const anim = (delay: number) => ({
@@ -67,6 +70,16 @@ export default function HeroSection() {
             >
               <Github size={16} />
               GitHub
+            </Link>
+          </Button>
+          <Button variant="secondary" asChild>
+            <Link
+              href={FIGMA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Figma size={16} />
+              Figma
             </Link>
           </Button>
         </div>

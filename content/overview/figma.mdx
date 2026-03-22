@@ -1,0 +1,41 @@
+---
+title: Figma
+description: Explore and use the SolarUI Figma Community file in your design workflow.
+---
+
+import { Button } from '@/components/ui/button'
+
+# Figma
+
+The SolarUI Figma file is publicly available on Figma Community. It includes every component, color token, and typography style from the library — ready to use directly in your design workflow.
+
+## What's included
+
+| Section | Contents |
+|---------|----------|
+| **Components** | All 68 components, organized by category |
+| **Foundation** | Color palettes, typography scale, spacing tokens |
+| **Theming** | Light and dark mode variants |
+
+## Get the file
+
+The file is free and available to anyone with a Figma account. Duplicate it to your drafts to start using it.
+
+<div className="mt-6">
+  <Button asChild>
+    {/* TODO: Replace FIGMA_FILE_ID with the real Figma Community file ID */}
+    <a
+      href="https://www.figma.com/community/file/FIGMA_FILE_ID"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Open in Figma Community
+    </a>
+  </Button>
+</div>
+
+## Using alongside the code
+
+The Figma file is designed to mirror the code components 1:1. Component names, variants, and property names match what you find in the codebase, making handoff straightforward.
+
+When a designer selects a component in Figma and a developer installs it via the [shadcn CLI](/docs/overview/installation), they are working from the same source of truth.
