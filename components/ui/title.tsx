@@ -8,7 +8,7 @@ const titleVariants = cva(
   "font-sans text-default-12",
   {
     variants: {
-      variant: {
+      size: {
         "1": "text-title-1 tracking-display-tight font-semibold",
         "2": "text-title-2 tracking-display-tight font-semibold",
         "3": "text-title-3 tracking-display-normal font-medium",
@@ -18,12 +18,12 @@ const titleVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "2",
+      size: "2",
     },
   }
 )
 
-const variantTagMap = {
+const sizeTagMap = {
   "1": "h1",
   "2": "h2",
   "3": "h3",
@@ -39,17 +39,17 @@ type TitleProps = React.HTMLAttributes<HTMLHeadingElement> &
 
 function Title({
   className,
-  variant = "2",
+  size = "2",
   asChild = false,
   ...props
 }: TitleProps) {
-  const Tag = (asChild ? Slot.Root : variantTagMap[variant ?? "2"]) as React.ElementType
+  const Tag = (asChild ? Slot.Root : sizeTagMap[size ?? "2"]) as React.ElementType
 
   return (
     <Tag
       data-slot="title"
-      data-variant={variant}
-      className={cn(titleVariants({ variant }), className)}
+      data-size={size}
+      className={cn(titleVariants({ size }), className)}
       {...props}
     />
   )

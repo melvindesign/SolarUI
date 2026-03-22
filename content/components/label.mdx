@@ -15,7 +15,7 @@ Renders an accessible label associated with a form control.
 <ComponentPreview>
   <div className="flex flex-col gap-4">
     <Label>Email address</Label>
-    <Label variant="compact">Compact label</Label>
+    <Label size="compact">Compact label</Label>
   </div>
 </ComponentPreview>
 
@@ -51,13 +51,13 @@ import { Label } from "@/components/ui/label"
 
 <ComponentPreview>
   <div className="flex flex-col gap-1.5">
-    <Label htmlFor="compact-email" variant="compact">Email address</Label>
+    <Label htmlFor="compact-email" size="compact">Email address</Label>
     <Input id="compact-email" type="email" placeholder="you@example.com" className="w-64" />
   </div>
 </ComponentPreview>
 
 ```tsx
-<Label htmlFor="email" variant="compact">Email address</Label>
+<Label htmlFor="email" size="compact">Email address</Label>
 <Input id="email" type="email" placeholder="you@example.com" />
 ```
 
@@ -108,7 +108,7 @@ function Label({ className, variant, ...props }: LabelProps) {
   return (
     <LabelPrimitive.Root
       data-slot="label"
-      className={cn(labelVariants({ variant }), className)}
+      className={cn(labelVariants({ size }), className)}
       {...props}
     />
   )
@@ -125,7 +125,7 @@ export { Label, labelVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "compact"` | `"default"` | `default` is 14.22px, `compact` is 12.44px. |
+| `size` | `"default" \| "compact"` | `"default"` | `default` is 14.22px, `compact` is 12.44px. |
 | `htmlFor` | `string` | — | Associates the label with a form control by its `id`. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 

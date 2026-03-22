@@ -8,13 +8,13 @@ const codeVariants = cva(
   "font-mono text-default-12",
   {
     variants: {
-      variant: {
+      size: {
         default: "text-code font-normal",
         compact: "text-code-compact font-normal",
       },
     },
     defaultVariants: {
-      variant: "default",
+      size: "default",
     },
   }
 )
@@ -26,7 +26,7 @@ type CodeProps = React.HTMLAttributes<HTMLElement> &
 
 function Code({
   className,
-  variant = "default",
+  size = "default",
   asChild = false,
   ...props
 }: CodeProps) {
@@ -35,8 +35,8 @@ function Code({
   return (
     <Comp
       data-slot="code"
-      data-variant={variant}
-      className={cn(codeVariants({ variant }), className)}
+      data-size={size}
+      className={cn(codeVariants({ size }), className)}
       {...props}
     />
   )

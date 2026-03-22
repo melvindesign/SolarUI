@@ -13,12 +13,12 @@ Semantic heading components for page and section structure. Renders as the match
 
 <ComponentPreview>
   <div className="flex flex-col gap-3">
-    <Title variant="1">Title 1</Title>
-    <Title variant="2">Title 2</Title>
-    <Title variant="3">Title 3</Title>
-    <Title variant="4">Title 4</Title>
-    <Title variant="5">Title 5</Title>
-    <Title variant="6">Title 6</Title>
+    <Title size="1">Title 1</Title>
+    <Title size="2">Title 2</Title>
+    <Title size="3">Title 3</Title>
+    <Title size="4">Title 4</Title>
+    <Title size="5">Title 5</Title>
+    <Title size="6">Title 6</Title>
   </div>
 </ComponentPreview>
 
@@ -31,7 +31,7 @@ import { Title } from "@/components/ui/title"
 ```
 
 ```tsx
-<Title variant="2">Section heading</Title>
+<Title size="2">Section heading</Title>
 ```
 
 ## Examples
@@ -40,34 +40,34 @@ import { Title } from "@/components/ui/title"
 
 <ComponentPreview>
   <div className="flex flex-col gap-3">
-    <Title variant="1">Title 1 — h1</Title>
-    <Title variant="2">Title 2 — h2</Title>
-    <Title variant="3">Title 3 — h3</Title>
-    <Title variant="4">Title 4 — h4</Title>
-    <Title variant="5">Title 5 — h5</Title>
-    <Title variant="6">Title 6 — h6</Title>
+    <Title size="1">Title 1 — h1</Title>
+    <Title size="2">Title 2 — h2</Title>
+    <Title size="3">Title 3 — h3</Title>
+    <Title size="4">Title 4 — h4</Title>
+    <Title size="5">Title 5 — h5</Title>
+    <Title size="6">Title 6 — h6</Title>
   </div>
 </ComponentPreview>
 
 ```tsx
-<Title variant="1">Title 1 — h1</Title>
-<Title variant="2">Title 2 — h2</Title>
-<Title variant="3">Title 3 — h3</Title>
-<Title variant="4">Title 4 — h4</Title>
-<Title variant="5">Title 5 — h5</Title>
-<Title variant="6">Title 6 — h6</Title>
+<Title size="1">Title 1 — h1</Title>
+<Title size="2">Title 2 — h2</Title>
+<Title size="3">Title 3 — h3</Title>
+<Title size="4">Title 4 — h4</Title>
+<Title size="5">Title 5 — h5</Title>
+<Title size="6">Title 6 — h6</Title>
 ```
 
 ### Custom tag with asChild
 
 <ComponentPreview>
-  <Title variant="3" asChild>
+  <Title size="3" asChild>
     <p>Title 3 rendered as a paragraph</p>
   </Title>
 </ComponentPreview>
 
 ```tsx
-<Title variant="3" asChild>
+<Title size="3" asChild>
   <p>Title 3 rendered as a paragraph</p>
 </Title>
 ```
@@ -126,8 +126,8 @@ function Title({ className, variant = "2", asChild = false, ...props }: TitlePro
   return (
     <Tag
       data-slot="title"
-      data-variant={variant}
-      className={cn(titleVariants({ variant }), className)}
+      data-size={variant}
+      className={cn(titleVariants({ size }), className)}
       {...props}
     />
   )
@@ -144,7 +144,7 @@ export { Title, titleVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"1" \| "2" \| "3" \| "4" \| "5" \| "6"` | `"2"` | Controls the size and renders as the matching heading tag (`h1`–`h6`). |
+| `size` | `"1" \| "2" \| "3" \| "4" \| "5" \| "6"` | `"2"` | Controls the size and renders as the matching heading tag (`h1`–`h6`). |
 | `asChild` | `boolean` | `false` | Merges props onto the child element instead of rendering a heading. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 

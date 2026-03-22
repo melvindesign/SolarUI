@@ -8,7 +8,7 @@ const displayVariants = cva(
   "font-sans text-default-12",
   {
     variants: {
-      variant: {
+      size: {
         "1": "text-display-1 tracking-display-tight font-semibold",
         "2": "text-display-2 tracking-display-tight font-semibold",
         "3": "text-display-3 tracking-display-normal font-medium",
@@ -18,12 +18,12 @@ const displayVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "1",
+      size: "1",
     },
   }
 )
 
-const variantTagMap = {
+const sizeTagMap = {
   "1": "h1",
   "2": "h2",
   "3": "h3",
@@ -39,17 +39,17 @@ type DisplayProps = React.HTMLAttributes<HTMLHeadingElement> &
 
 function Display({
   className,
-  variant = "1",
+  size = "1",
   asChild = false,
   ...props
 }: DisplayProps) {
-  const Tag = (asChild ? Slot.Root : variantTagMap[variant ?? "1"]) as React.ElementType
+  const Tag = (asChild ? Slot.Root : sizeTagMap[size ?? "1"]) as React.ElementType
 
   return (
     <Tag
       data-slot="display"
-      data-variant={variant}
-      className={cn(displayVariants({ variant }), className)}
+      data-size={size}
+      className={cn(displayVariants({ size }), className)}
       {...props}
     />
   )

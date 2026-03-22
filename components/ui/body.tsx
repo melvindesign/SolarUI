@@ -8,18 +8,18 @@ const bodyVariants = cva(
   "font-sans text-default-12",
   {
     variants: {
-      variant: {
+      size: {
         default: "text-body tracking-body font-normal",
         compact: "text-body-compact tracking-body font-normal",
       },
     },
     defaultVariants: {
-      variant: "default",
+      size: "default",
     },
   }
 )
 
-const variantTagMap = {
+const sizeTagMap = {
   default: "p",
   compact: "small",
 } as const
@@ -31,17 +31,17 @@ type BodyProps = React.HTMLAttributes<HTMLElement> &
 
 function Body({
   className,
-  variant = "default",
+  size = "default",
   asChild = false,
   ...props
 }: BodyProps) {
-  const Comp = (asChild ? Slot.Root : variantTagMap[variant ?? "default"]) as React.ElementType
+  const Comp = (asChild ? Slot.Root : sizeTagMap[size ?? "default"]) as React.ElementType
 
   return (
     <Comp
       data-slot="body"
-      data-variant={variant}
-      className={cn(bodyVariants({ variant }), className)}
+      data-size={size}
+      className={cn(bodyVariants({ size }), className)}
       {...props}
     />
   )

@@ -10,13 +10,13 @@ const labelVariants = cva(
   "font-sans font-medium text-default-12 tracking-label flex items-center gap-2 select-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
   {
     variants: {
-      variant: {
+      size: {
         default: "text-label",
         compact: "text-label-compact",
       },
     },
     defaultVariants: {
-      variant: "default",
+      size: "default",
     },
   }
 )
@@ -24,11 +24,11 @@ const labelVariants = cva(
 type LabelProps = React.ComponentProps<typeof LabelPrimitive.Root> &
   VariantProps<typeof labelVariants>
 
-function Label({ className, variant, ...props }: LabelProps) {
+function Label({ className, size, ...props }: LabelProps) {
   return (
     <LabelPrimitive.Root
       data-slot="label"
-      className={cn(labelVariants({ variant }), className)}
+      className={cn(labelVariants({ size }), className)}
       {...props}
     />
   )

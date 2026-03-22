@@ -14,7 +14,7 @@ Paragraph text component for readable body content. Renders as `<p>` by default,
 <ComponentPreview>
   <div className="flex flex-col gap-4">
     <Body>The quick brown fox jumps over the lazy dog.</Body>
-    <Body variant="compact">The quick brown fox jumps over the lazy dog.</Body>
+    <Body size="compact">The quick brown fox jumps over the lazy dog.</Body>
   </div>
 </ComponentPreview>
 
@@ -42,14 +42,14 @@ import { Body } from "@/components/ui/body"
     </div>
     <div>
       <p className="text-xs text-default-11 mb-1">Compact (14.22px) — renders as &lt;small&gt;</p>
-      <Body variant="compact">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</Body>
+      <Body size="compact">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</Body>
     </div>
   </div>
 </ComponentPreview>
 
 ```tsx
 <Body>Default body text</Body>
-<Body variant="compact">Compact body text</Body>
+<Body size="compact">Compact body text</Body>
 ```
 
 ### Custom element with asChild
@@ -117,8 +117,8 @@ function Body({ className, variant = "default", asChild = false, ...props }: Bod
   return (
     <Comp
       data-slot="body"
-      data-variant={variant}
-      className={cn(bodyVariants({ variant }), className)}
+      data-size={variant}
+      className={cn(bodyVariants({ size }), className)}
       {...props}
     />
   )
@@ -135,7 +135,7 @@ export { Body, bodyVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "compact"` | `"default"` | `default` renders as `<p>` (16px), `compact` renders as `<small>` (14.22px). |
+| `size` | `"default" \| "compact"` | `"default"` | `default` renders as `<p>` (16px), `compact` renders as `<small>` (14.22px). |
 | `asChild` | `boolean` | `false` | Merges props onto the child element instead of rendering the default tag. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 

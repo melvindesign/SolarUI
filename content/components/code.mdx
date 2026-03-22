@@ -14,7 +14,7 @@ Monospace text for inline code references. Renders as a `<code>` tag by default.
 <ComponentPreview>
   <div className="flex flex-col gap-3">
     <p className="text-sm text-default-12">Use <Code>npm install</Code> to install dependencies.</p>
-    <p className="text-sm text-default-12">Import with <Code variant="compact">import &#123; Code &#125; from "@/components/ui/code"</Code></p>
+    <p className="text-sm text-default-12">Import with <Code size="compact">import &#123; Code &#125; from "@/components/ui/code"</Code></p>
   </div>
 </ComponentPreview>
 
@@ -42,14 +42,14 @@ import { Code } from "@/components/ui/code"
     </div>
     <div>
       <p className="text-xs text-default-11 mb-1">Compact (12.44px)</p>
-      <p className="text-sm text-default-12">Pass <Code variant="compact">asChild</Code> to override the rendered tag.</p>
+      <p className="text-sm text-default-12">Pass <Code size="compact">asChild</Code> to override the rendered tag.</p>
     </div>
   </div>
 </ComponentPreview>
 
 ```tsx
 <Code>useState</Code>
-<Code variant="compact">asChild</Code>
+<Code size="compact">asChild</Code>
 ```
 
 ### Custom element with asChild
@@ -112,8 +112,8 @@ function Code({ className, variant = "default", asChild = false, ...props }: Cod
   return (
     <Comp
       data-slot="code"
-      data-variant={variant}
-      className={cn(codeVariants({ variant }), className)}
+      data-size={variant}
+      className={cn(codeVariants({ size }), className)}
       {...props}
     />
   )
@@ -130,7 +130,7 @@ export { Code, codeVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "compact"` | `"default"` | `default` is 16px, `compact` is 12.44px. Both use Geist Mono. |
+| `size` | `"default" \| "compact"` | `"default"` | `default` is 16px, `compact` is 12.44px. Both use Geist Mono. |
 | `asChild` | `boolean` | `false` | Merges props onto the child element instead of rendering a `<code>`. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 

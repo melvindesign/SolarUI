@@ -13,12 +13,12 @@ Large typographic headings for hero sections and marketing content. Renders as t
 
 <ComponentPreview>
   <div className="flex flex-col gap-3">
-    <Display variant="1">Display 1</Display>
-    <Display variant="2">Display 2</Display>
-    <Display variant="3">Display 3</Display>
-    <Display variant="4">Display 4</Display>
-    <Display variant="5">Display 5</Display>
-    <Display variant="6">Display 6</Display>
+    <Display size="1">Display 1</Display>
+    <Display size="2">Display 2</Display>
+    <Display size="3">Display 3</Display>
+    <Display size="4">Display 4</Display>
+    <Display size="5">Display 5</Display>
+    <Display size="6">Display 6</Display>
   </div>
 </ComponentPreview>
 
@@ -31,7 +31,7 @@ import { Display } from "@/components/ui/display"
 ```
 
 ```tsx
-<Display variant="1">Hello world</Display>
+<Display size="1">Hello world</Display>
 ```
 
 ## Examples
@@ -40,34 +40,34 @@ import { Display } from "@/components/ui/display"
 
 <ComponentPreview>
   <div className="flex flex-col gap-3">
-    <Display variant="1">Display 1 — h1</Display>
-    <Display variant="2">Display 2 — h2</Display>
-    <Display variant="3">Display 3 — h3</Display>
-    <Display variant="4">Display 4 — h4</Display>
-    <Display variant="5">Display 5 — h5</Display>
-    <Display variant="6">Display 6 — h6</Display>
+    <Display size="1">Display 1 — h1</Display>
+    <Display size="2">Display 2 — h2</Display>
+    <Display size="3">Display 3 — h3</Display>
+    <Display size="4">Display 4 — h4</Display>
+    <Display size="5">Display 5 — h5</Display>
+    <Display size="6">Display 6 — h6</Display>
   </div>
 </ComponentPreview>
 
 ```tsx
-<Display variant="1">Display 1 — h1</Display>
-<Display variant="2">Display 2 — h2</Display>
-<Display variant="3">Display 3 — h3</Display>
-<Display variant="4">Display 4 — h4</Display>
-<Display variant="5">Display 5 — h5</Display>
-<Display variant="6">Display 6 — h6</Display>
+<Display size="1">Display 1 — h1</Display>
+<Display size="2">Display 2 — h2</Display>
+<Display size="3">Display 3 — h3</Display>
+<Display size="4">Display 4 — h4</Display>
+<Display size="5">Display 5 — h5</Display>
+<Display size="6">Display 6 — h6</Display>
 ```
 
 ### Custom tag with asChild
 
 <ComponentPreview>
-  <Display variant="2" asChild>
+  <Display size="2" asChild>
     <p>Display 2 rendered as a paragraph</p>
   </Display>
 </ComponentPreview>
 
 ```tsx
-<Display variant="2" asChild>
+<Display size="2" asChild>
   <p>Display 2 rendered as a paragraph</p>
 </Display>
 ```
@@ -126,8 +126,8 @@ function Display({ className, variant = "1", asChild = false, ...props }: Displa
   return (
     <Tag
       data-slot="display"
-      data-variant={variant}
-      className={cn(displayVariants({ variant }), className)}
+      data-size={variant}
+      className={cn(displayVariants({ size }), className)}
       {...props}
     />
   )
@@ -144,7 +144,7 @@ export { Display, displayVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"1" \| "2" \| "3" \| "4" \| "5" \| "6"` | `"1"` | Controls the size and renders as the matching heading tag (`h1`–`h6`). |
+| `size` | `"1" \| "2" \| "3" \| "4" \| "5" \| "6"` | `"1"` | Controls the size and renders as the matching heading tag (`h1`–`h6`). |
 | `asChild` | `boolean` | `false` | Merges props onto the child element instead of rendering a heading. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 
