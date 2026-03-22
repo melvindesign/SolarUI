@@ -19,7 +19,7 @@ export default async function DocsLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <Head
         color={{
           hue: { light: 24, dark: 24 },
@@ -27,7 +27,7 @@ export default async function DocsLayout({
           lightness: { light: 50, dark: 62 },
         }}
       />
-      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body>
         <Layout
           navbar={navbar}
           pageMap={await getPageMap('/docs')}
