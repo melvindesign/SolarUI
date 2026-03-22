@@ -10,7 +10,7 @@ const bodyVariants = cva(
     variants: {
       variant: {
         default: "text-body tracking-body font-normal",
-        small: "text-body-compact tracking-body font-normal",
+        compact: "text-body-compact tracking-body font-normal",
       },
     },
     defaultVariants: {
@@ -19,7 +19,12 @@ const bodyVariants = cva(
   }
 )
 
-type BodyProps = React.HTMLAttributes<HTMLParagraphElement> &
+const variantTagMap = {
+  default: "p",
+  compact: "small",
+} as const
+
+type BodyProps = React.HTMLAttributes<HTMLElement> &
   VariantProps<typeof bodyVariants> & {
     asChild?: boolean
   }
@@ -30,7 +35,7 @@ function Body({
   asChild = false,
   ...props
 }: BodyProps) {
-  const Comp = asChild ? Slot.Root : "p"
+  const Comp = (asChild ? Slot.Root : variantTagMap[variant ?? "default"]) as React.ElementType
 
   return (
     <Comp

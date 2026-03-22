@@ -9,12 +9,12 @@ import { Tabs } from 'nextra/components'
 
 # Body
 
-Paragraph text component for readable body content. Renders as a `<p>` tag by default.
+Paragraph text component for readable body content. Renders as `<p>` by default, and as `<small>` for the `compact` variant.
 
 <ComponentPreview>
   <div className="flex flex-col gap-4">
     <Body>The quick brown fox jumps over the lazy dog.</Body>
-    <Body variant="small">The quick brown fox jumps over the lazy dog.</Body>
+    <Body variant="compact">The quick brown fox jumps over the lazy dog.</Body>
   </div>
 </ComponentPreview>
 
@@ -37,19 +37,19 @@ import { Body } from "@/components/ui/body"
 <ComponentPreview>
   <div className="flex flex-col gap-4 max-w-md">
     <div>
-      <p className="text-xs text-default-11 mb-1">Default (16px)</p>
+      <p className="text-xs text-default-11 mb-1">Default (16px) — renders as &lt;p&gt;</p>
       <Body>The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</Body>
     </div>
     <div>
-      <p className="text-xs text-default-11 mb-1">Small (14.22px)</p>
-      <Body variant="small">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</Body>
+      <p className="text-xs text-default-11 mb-1">Compact (14.22px) — renders as &lt;small&gt;</p>
+      <Body variant="compact">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</Body>
     </div>
   </div>
 </ComponentPreview>
 
 ```tsx
 <Body>Default body text</Body>
-<Body variant="small">Small body text</Body>
+<Body variant="compact">Compact body text</Body>
 ```
 
 ### Custom element with asChild
@@ -104,11 +104,16 @@ const bodyVariants = cva(
   }
 )
 
-type BodyProps = React.HTMLAttributes<HTMLParagraphElement> &
+const variantTagMap = {
+  default: "p",
+  compact: "small",
+} as const
+
+type BodyProps = React.HTMLAttributes<HTMLElement> &
   VariantProps<typeof bodyVariants> & { asChild?: boolean }
 
 function Body({ className, variant = "default", asChild = false, ...props }: BodyProps) {
-  const Comp = asChild ? Slot.Root : "p"
+  const Comp = (asChild ? Slot.Root : variantTagMap[variant ?? "default"]) as React.ElementType
   return (
     <Comp
       data-slot="body"
@@ -130,11 +135,11 @@ export { Body, bodyVariants }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `"default" \| "small"` | `"default"` | `default` is 16px, `small` is 14.22px. |
-| `asChild` | `boolean` | `false` | Merges props onto the child element instead of rendering a `<p>`. |
+| `variant` | `"default" \| "compact"` | `"default"` | `default` renders as `<p>` (16px), `compact` renders as `<small>` (14.22px). |
+| `asChild` | `boolean` | `false` | Merges props onto the child element instead of rendering the default tag. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 
-The `Body` component also accepts all standard HTML paragraph attributes.
+The `Body` component also accepts all standard HTML attributes.
 
 </Tabs.Tab>
 
