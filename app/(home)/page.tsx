@@ -1,3 +1,4 @@
+import FigmaSection from './components/FigmaSection'
 import FinalCtaSection from './components/FinalCtaSection'
 import FooterSection from './components/FooterSection'
 import HeroSection from './components/HeroSection'
@@ -15,6 +16,7 @@ export default function HomePage() {
         <WhySolarSection />
         <ShowcaseSection />
         <OpenSourceSection />
+        <FigmaSection />
         <FinalCtaSection />
       </main>
       <FooterSection />

@@ -5,7 +5,7 @@ description: Renders an accessible label associated with a form control.
 
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
-import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { ComponentPreview } from '@/components/component-preview'
 import { Tabs } from 'nextra/components'
 
 # Label
@@ -13,9 +13,9 @@ import { Tabs } from 'nextra/components'
 Renders an accessible label associated with a form control.
 
 <ComponentPreview>
-  <div className="flex flex-col gap-1.5">
-    <Label htmlFor="email">Email address</Label>
-    <Input id="email" type="email" placeholder="you@example.com" className="w-64" />
+  <div className="flex flex-col gap-4">
+    <Label>Email address</Label>
+    <Label size="compact">Compact label</Label>
   </div>
 </ComponentPreview>
 
@@ -33,47 +33,32 @@ import { Label } from "@/components/ui/label"
 
 ## Examples
 
-### With input
+### Default
 
 <ComponentPreview>
   <div className="flex flex-col gap-1.5">
-    <Label htmlFor="name">Full name</Label>
-    <Input id="name" placeholder="John Doe" className="w-64" />
+    <Label htmlFor="email">Email address</Label>
+    <Input id="email" type="email" placeholder="you@example.com" className="w-64" />
   </div>
 </ComponentPreview>
 
 ```tsx
-<div className="flex flex-col gap-1.5">
-  <Label htmlFor="name">Full name</Label>
-  <Input id="name" placeholder="John Doe" />
-</div>
+<Label htmlFor="email">Email address</Label>
+<Input id="email" type="email" placeholder="you@example.com" />
 ```
 
-### Required
+### Compact
 
 <ComponentPreview>
   <div className="flex flex-col gap-1.5">
-    <Label htmlFor="required-email" required>Email address</Label>
-    <Input id="required-email" type="email" placeholder="you@example.com" className="w-64" />
+    <Label htmlFor="compact-email" size="compact">Email address</Label>
+    <Input id="compact-email" type="email" placeholder="you@example.com" className="w-64" />
   </div>
 </ComponentPreview>
 
 ```tsx
-<Label htmlFor="email" required>Email address</Label>
-```
-
-### Disabled
-
-<ComponentPreview>
-  <div className="flex flex-col gap-1.5">
-    <Label htmlFor="disabled-input" className="opacity-50 cursor-not-allowed">Username</Label>
-    <Input id="disabled-input" disabled placeholder="john_doe" className="w-64" />
-  </div>
-</ComponentPreview>
-
-```tsx
-<Label htmlFor="input" className="opacity-50 cursor-not-allowed">Username</Label>
-<Input id="input" disabled />
+<Label htmlFor="email" size="compact">Email address</Label>
+<Input id="email" type="email" placeholder="you@example.com" />
 ```
 
 </Tabs.Tab>
@@ -97,26 +82,39 @@ Copy and paste the following code into your project:
 
 import { Label as LabelPrimitive } from "radix-ui"
 import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-function Label({
-  className,
-  ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+const labelVariants = cva(
+  "font-sans font-medium text-default-12 tracking-label flex items-center gap-2 select-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
+  {
+    variants: {
+      variant: {
+        default: "text-label",
+        compact: "text-label-compact",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+type LabelProps = React.ComponentProps<typeof LabelPrimitive.Root> &
+  VariantProps<typeof labelVariants>
+
+function Label({ className, variant, ...props }: LabelProps) {
   return (
     <LabelPrimitive.Root
       data-slot="label"
-      className={cn(
-        "gap-2 text-sm leading-none font-medium group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
-        className
-      )}
+      className={cn(labelVariants({ size }), className)}
       {...props}
     />
   )
 }
 
-export { Label }
+export { Label, labelVariants }
 ```
 
 </Tabs.Tab>
@@ -127,7 +125,7 @@ export { Label }
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `required` | `boolean` | `false` | When `true`, renders a red asterisk after the label text. |
+| `size` | `"default" \| "compact"` | `"default"` | `default` is 14.22px, `compact` is 12.44px. |
 | `htmlFor` | `string` | — | Associates the label with a form control by its `id`. |
 | `className` | `string` | — | Additional CSS classes to merge. |
 

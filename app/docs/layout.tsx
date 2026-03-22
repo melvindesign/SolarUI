@@ -2,6 +2,8 @@ import { Layout, Navbar } from 'nextra-theme-docs'
 import 'nextra-theme-docs/style.css'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import '../globals.css'
 import '../sidebar.css'
 
@@ -17,7 +19,7 @@ export default async function DocsLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <Head
         color={{
           hue: { light: 24, dark: 24 },
