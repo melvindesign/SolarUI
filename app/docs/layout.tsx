@@ -2,6 +2,8 @@ import { Layout, Navbar } from 'nextra-theme-docs'
 import 'nextra-theme-docs/style.css'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import '../globals.css'
 import '../sidebar.css'
 
@@ -25,7 +27,7 @@ export default async function DocsLayout({
           lightness: { light: 50, dark: 62 },
         }}
       />
-      <body>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <Layout
           navbar={navbar}
           pageMap={await getPageMap('/docs')}
