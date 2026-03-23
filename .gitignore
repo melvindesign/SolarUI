@@ -23,3 +23,5 @@ npm-debug.log*
 .claude/skills/design-workflow/references/knowledge-base/registries/*.json
 .claude/skills/design-workflow/references/knowledge-base/ui-references/screenshots/*.png
 .claude/skills/design-workflow/references/knowledge-base/ui-references/screenshots/*.jpg
+.vercel
+.env*.local

@@ -436,6 +436,38 @@ const illustrations: Record<string, React.ReactElement> = {
   ),
 
   // ── Text ─────────────────────────────────────────────────────
+  display: (
+    <svg {...s}>
+      <line x1="10" y1="14" x2="70" y2="14" strokeWidth={3} />
+      <line x1="10" y1="24" x2="60" y2="24" strokeWidth={2.5} />
+      <line x1="10" y1="33" x2="48" y2="33" strokeWidth={2} />
+    </svg>
+  ),
+  title: (
+    <svg {...s}>
+      <line x1="10" y1="10" x2="68" y2="10" strokeWidth={2.5} />
+      <line x1="10" y1="18" x2="58" y2="18" strokeWidth={2} />
+      <line x1="10" y1="25" x2="50" y2="25" />
+      <line x1="10" y1="32" x2="44" y2="32" />
+      <line x1="10" y1="39" x2="36" y2="39" />
+    </svg>
+  ),
+  body: (
+    <svg {...s}>
+      <line x1="10" y1="13" x2="70" y2="13" />
+      <line x1="10" y1="21" x2="70" y2="21" />
+      <line x1="10" y1="29" x2="70" y2="29" />
+      <line x1="10" y1="37" x2="50" y2="37" />
+    </svg>
+  ),
+  code: (
+    <svg {...s}>
+      <line x1="10" y1="18" x2="28" y2="18" />
+      <rect x="31" y="12" width="20" height="12" rx="3" />
+      <line x1="54" y1="18" x2="70" y2="18" />
+      <line x1="10" y1="31" x2="46" y2="31" />
+    </svg>
+  ),
   label: (
     <svg {...s}>
       <line x1="8" y1="18" x2="34" y2="18" />
