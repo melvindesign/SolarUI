@@ -1,8 +1,8 @@
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/icon"
 import { cn } from "@/lib/utils"
-import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -76,7 +76,7 @@ function PaginationPrevious({
       className={cn("pl-1.5!", className)}
       {...props}
     >
-      <ChevronLeftIcon data-icon="inline-start" className="cn-rtl-flip" />
+      <Icon name="caret-left" data-icon="inline-start" className="cn-rtl-flip" />
       <span className="hidden sm:block">
         {text}
       </span>
@@ -97,7 +97,7 @@ function PaginationNext({
       {...props}
     >
       <span className="hidden sm:block">{text}</span>
-      <ChevronRightIcon data-icon="inline-end" className="cn-rtl-flip" />
+      <Icon name="caret-right" data-icon="inline-end" className="cn-rtl-flip" />
     </PaginationLink>
   )
 }
@@ -116,8 +116,7 @@ function PaginationEllipsis({
       )}
       {...props}
     >
-      <MoreHorizontalIcon
-      />
+      <Icon name="dots-three" />
       <span className="sr-only">More pages</span>
     </span>
   )

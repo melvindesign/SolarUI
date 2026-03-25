@@ -44,7 +44,7 @@
       "name": "accordion",
       "type": "registry:ui",
       "dependencies": ["radix-ui", "class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui"],
+      "registryDependencies": ["utils", "solar-ui", "icon"],
       "files": [
         {
           "path": "components/ui/accordion.tsx",
@@ -199,7 +199,7 @@
       "name": "checkbox",
       "type": "registry:ui",
       "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
+      "registryDependencies": ["utils", "solar-ui", "icon"],
       "files": [
         {
           "path": "components/ui/checkbox.tsx",
@@ -234,7 +234,7 @@
     {
       "name": "combobox",
       "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui", "button", "command", "popover"],
+      "registryDependencies": ["utils", "solar-ui", "button", "command", "popover", "icon"],
       "files": [
         {
           "path": "components/ui/combobox.tsx",
@@ -294,7 +294,7 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
+      "registryDependencies": ["utils", "solar-ui", "icon"],
       "files": [
         {
           "path": "components/ui/dropdown-menu.tsx",
@@ -362,7 +362,7 @@
       "name": "input-otp",
       "type": "registry:ui",
       "dependencies": ["input-otp", "radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
+      "registryDependencies": ["utils", "solar-ui", "icon"],
       "files": [
         {
           "path": "components/ui/input-otp.tsx",
@@ -433,7 +433,7 @@
       "name": "pagination",
       "type": "registry:ui",
       "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui", "button"],
+      "registryDependencies": ["utils", "solar-ui", "button", "icon"],
       "files": [
         {
           "path": "components/ui/pagination.tsx",
@@ -541,7 +541,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "dependencies": ["radix-ui", "class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui", "use-mobile", "button", "input", "separator", "sheet", "skeleton", "tooltip"],
+      "registryDependencies": ["utils", "solar-ui", "use-mobile", "button", "input", "separator", "sheet", "skeleton", "tooltip", "icon"],
       "files": [
         {
           "path": "components/ui/sidebar.tsx",
@@ -674,6 +674,31 @@
         {
           "path": "components/ui/tooltip.tsx",
           "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "registry:ui",
+      "description": "Abstraction layer for icon libraries. Swap between Phosphor, Lucide, or any icon pack without changing component code.",
+      "dependencies": ["@phosphor-icons/react", "lucide-react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "components/ui/icon.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "lib/icons/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/icons/icon-map.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/icons/config.ts",
+          "type": "registry:lib"
         }
       ]
     }

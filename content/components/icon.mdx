@@ -1,0 +1,281 @@
+---
+title: Icon
+description: An abstraction layer for icon libraries. Swap between Phosphor, Lucide, or any registered pack without changing your component code.
+---
+
+import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
+import { Icon } from '@/components/ui/icon'
+import { Tabs } from 'nextra/components'
+
+# Icon
+
+An abstraction layer for icon libraries. Swap between Phosphor, Lucide, or any registered pack without changing your component code.
+
+<ComponentPreview>
+  <div className="flex items-center gap-4">
+    <Icon name="check" size={20} />
+    <Icon name="caret-down" size={20} />
+    <Icon name="x" size={20} />
+    <Icon name="arrow-left" size={20} />
+    <Icon name="moon" size={20} />
+  </div>
+</ComponentPreview>
+
+<Tabs items={['Usage', 'Installation', 'API']}>
+
+<Tabs.Tab>
+
+```tsx
+import { Icon } from "@/components/ui/icon"
+```
+
+```tsx
+<Icon name="check" />
+```
+
+## Examples
+
+### Size
+
+<ComponentPreviewRow>
+  <Icon name="check" size={12} />
+  <Icon name="check" size={16} />
+  <Icon name="check" size={20} />
+  <Icon name="check" size={24} />
+  <Icon name="check" size={32} />
+</ComponentPreviewRow>
+
+```tsx
+<Icon name="check" size={12} />
+<Icon name="check" size={16} />
+<Icon name="check" size={20} />
+<Icon name="check" size={24} />
+<Icon name="check" size={32} />
+```
+
+### Weight (Phosphor only)
+
+Phosphor icons support 6 visual weights. The `weight` prop is only applied when using the Phosphor library.
+
+<ComponentPreviewRow>
+  <Icon name="arrow-left" size={20} weight="thin" />
+  <Icon name="arrow-left" size={20} weight="light" />
+  <Icon name="arrow-left" size={20} weight="regular" />
+  <Icon name="arrow-left" size={20} weight="bold" />
+  <Icon name="arrow-left" size={20} weight="fill" />
+  <Icon name="arrow-left" size={20} weight="duotone" />
+</ComponentPreviewRow>
+
+```tsx
+<Icon name="arrow-left" weight="thin" />
+<Icon name="arrow-left" weight="light" />
+<Icon name="arrow-left" weight="regular" />
+<Icon name="arrow-left" weight="bold" />
+<Icon name="arrow-left" weight="fill" />
+<Icon name="arrow-left" weight="duotone" />
+```
+
+### Override library
+
+Use the `library` prop to use a specific icon pack for a single instance, regardless of the global default.
+
+<ComponentPreviewRow>
+  <Icon name="caret-down" library="phosphor" size={20} />
+  <Icon name="caret-down" library="lucide" size={20} />
+</ComponentPreviewRow>
+
+```tsx
+<Icon name="caret-down" library="phosphor" />
+<Icon name="caret-down" library="lucide" />
+```
+
+### Color
+
+<ComponentPreviewRow>
+  <Icon name="sun" size={20} color="var(--color-warning-9)" />
+  <Icon name="moon" size={20} color="var(--color-brand-9)" />
+  <Icon name="check" size={20} color="var(--color-success-9)" />
+</ComponentPreviewRow>
+
+```tsx
+<Icon name="sun" color="var(--color-warning-9)" />
+<Icon name="moon" color="var(--color-brand-9)" />
+<Icon name="check" color="var(--color-success-9)" />
+```
+
+### Change the default library
+
+To swap the icon library globally, edit `lib/icons/config.ts`:
+
+```ts filename="lib/icons/config.ts"
+export const defaultIconLibrary = "lucide" // was "phosphor"
+```
+
+### Add an icon to the registry
+
+Open `lib/icons/icon-map.ts` and add a new entry:
+
+```ts filename="lib/icons/icon-map.ts"
+import { Star } from "@phosphor-icons/react"
+import { StarIcon } from "lucide-react"
+
+export const iconMap = {
+  // ...existing entries
+  "star": { phosphor: Star, lucide: StarIcon },
+}
+```
+
+### Add a new library
+
+1. Install the library: `npm install my-icon-library`
+2. Import the icons you need in `lib/icons/icon-map.ts` and add them to each entry:
+
+```ts filename="lib/icons/icon-map.ts"
+import { MyCheck } from "my-icon-library"
+
+export const iconMap = {
+  "check": { phosphor: Check, lucide: CheckIcon, my: MyCheck },
+  // ...
+}
+```
+
+3. Use it via the `library` prop or set it as the default in `lib/icons/config.ts`.
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Via CLI
+
+```bash filename="terminal" copy
+npx shadcn@latest add https://solar-ui.com/r/icon.json
+```
+
+---
+
+### Manual
+
+**1. Install the following dependencies:**
+
+```bash filename="terminal" copy
+npm install @phosphor-icons/react lucide-react
+```
+
+**2. Create the icon infrastructure:**
+
+```ts filename="lib/icons/config.ts" copy
+export const defaultIconLibrary = "phosphor"
+```
+
+```ts filename="lib/icons/icon-map.ts" copy
+import {
+  ArrowLeft, ArrowRight, CaretDown, CaretLeft, CaretRight, CaretUp,
+  Check, DotsThree, List, Minus, Moon, SidebarSimple, Sun, X,
+} from "@phosphor-icons/react"
+import {
+  ArrowLeftIcon, ArrowRightIcon, CheckIcon, ChevronDownIcon,
+  ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, MenuIcon,
+  MinusIcon, MoreHorizontalIcon, MoonIcon, PanelLeftIcon, SunIcon, XIcon,
+} from "lucide-react"
+
+export const iconMap = {
+  "arrow-left": { phosphor: ArrowLeft, lucide: ArrowLeftIcon },
+  "arrow-right": { phosphor: ArrowRight, lucide: ArrowRightIcon },
+  "caret-down": { phosphor: CaretDown, lucide: ChevronDownIcon },
+  "caret-up": { phosphor: CaretUp, lucide: ChevronUpIcon },
+  "caret-left": { phosphor: CaretLeft, lucide: ChevronLeftIcon },
+  "caret-right": { phosphor: CaretRight, lucide: ChevronRightIcon },
+  "check": { phosphor: Check, lucide: CheckIcon },
+  "dots-three": { phosphor: DotsThree, lucide: MoreHorizontalIcon },
+  "list": { phosphor: List, lucide: MenuIcon },
+  "minus": { phosphor: Minus, lucide: MinusIcon },
+  "moon": { phosphor: Moon, lucide: MoonIcon },
+  "sidebar-simple": { phosphor: SidebarSimple, lucide: PanelLeftIcon },
+  "sun": { phosphor: Sun, lucide: SunIcon },
+  "x": { phosphor: X, lucide: XIcon },
+} as const
+```
+
+**3. Copy and paste the following code into your project:**
+
+```tsx filename="components/ui/icon.tsx" copy
+"use client"
+
+import * as React from "react"
+
+import { defaultIconLibrary } from "@/lib/icons/config"
+import { iconMap } from "@/lib/icons/icon-map"
+import type { IconProps, IconWeight } from "@/lib/icons/types"
+
+const PHOSPHOR_WEIGHTS: IconWeight[] = [
+  "thin", "light", "regular", "bold", "fill", "duotone",
+]
+
+function Icon({ name, library, size = 16, weight, color, className, ...rest }: IconProps) {
+  const resolvedLibrary = library ?? defaultIconLibrary
+  const entry = iconMap[name]
+
+  if (!entry) return null
+
+  const IconComponent =
+    (entry as Record<string, React.ElementType>)[resolvedLibrary] ??
+    entry.phosphor ??
+    entry.lucide
+
+  if (!IconComponent) return null
+
+  const isPhosphor = resolvedLibrary === "phosphor"
+
+  return (
+    <IconComponent
+      size={size}
+      color={color}
+      className={className}
+      {...(isPhosphor && weight && PHOSPHOR_WEIGHTS.includes(weight) ? { weight } : {})}
+      {...rest}
+    />
+  )
+}
+
+export { Icon }
+```
+
+</Tabs.Tab>
+
+<Tabs.Tab>
+
+### Icon
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `IconName` | — | Semantic icon name from the icon map. |
+| `library` | `string` | `"phosphor"` | Icon library to use. Overrides the global default for this instance. |
+| `size` | `number \| string` | `16` | Size in pixels. |
+| `weight` | `"thin" \| "light" \| "regular" \| "bold" \| "fill" \| "duotone"` | `"regular"` | Visual weight. Phosphor only — ignored for other libraries. |
+| `color` | `string` | — | Icon color. Accepts any CSS color value. |
+| `className` | `string` | — | Additional CSS classes. |
+
+All other props are forwarded to the underlying SVG element.
+
+### Available icon names
+
+| Name | Description |
+|------|-------------|
+| `arrow-left` | Arrow pointing left |
+| `arrow-right` | Arrow pointing right |
+| `caret-down` | Chevron / caret pointing down |
+| `caret-up` | Chevron / caret pointing up |
+| `caret-left` | Chevron / caret pointing left |
+| `caret-right` | Chevron / caret pointing right |
+| `check` | Checkmark |
+| `dots-three` | Horizontal ellipsis (three dots) |
+| `list` | Hamburger / list menu |
+| `minus` | Minus / dash |
+| `moon` | Moon (dark mode) |
+| `sidebar-simple` | Sidebar toggle |
+| `sun` | Sun (light mode) |
+| `x` | Close / cross |
+
+</Tabs.Tab>
+
+</Tabs>

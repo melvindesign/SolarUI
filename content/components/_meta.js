@@ -50,6 +50,7 @@ export default {
   calendar: 'Calendar',
   carousel: 'Carousel',
   'context-menu': 'Context Menu',
+  icon: 'Icon',
   '-- navigation': { type: 'separator', title: 'Navigation' },
   breadcrumb: 'Breadcrumb',
   'dropdown-menu': 'Dropdown Menu',
