@@ -123,16 +123,53 @@ import {
 } from "@phosphor-icons/react"
 import * as React from "react"
 import {
+  // Arrows — simple directional
   ArrowDownIcon,
   ArrowDownLeftIcon,
   ArrowDownRightIcon,
   ArrowLeftIcon,
-  ArrowLeftRightIcon,
   ArrowRightIcon,
-  ArrowUpDownIcon,
   ArrowUpIcon,
   ArrowUpLeftIcon,
   ArrowUpRightIcon,
+  // Arrows — circle
+  ArrowDownLeftFromCircleIcon,
+  ArrowDownRightFromCircleIcon,
+  ArrowUpLeftFromCircleIcon,
+  ArrowUpRightFromCircleIcon,
+  CircleArrowDownIcon,
+  CircleArrowLeftIcon,
+  CircleArrowRightIcon,
+  CircleArrowUpIcon,
+  // Arrows — fat
+  ArrowBigDownIcon,
+  ArrowBigDownDashIcon,
+  ArrowBigLeftIcon,
+  ArrowBigLeftDashIcon,
+  ArrowBigRightIcon,
+  ArrowBigRightDashIcon,
+  ArrowBigUpIcon,
+  ArrowBigUpDashIcon,
+  // Arrows — line
+  ArrowDownToLineIcon,
+  ArrowLeftToLineIcon,
+  ArrowRightToLineIcon,
+  ArrowUpToLineIcon,
+  // Arrows — square
+  SquareArrowDownIcon,
+  SquareArrowDownLeftIcon,
+  SquareArrowDownRightIcon,
+  SquareArrowLeftIcon,
+  SquareArrowOutUpRightIcon,
+  SquareArrowRightEnterIcon,
+  SquareArrowRightIcon,
+  SquareArrowUpIcon,
+  SquareArrowUpLeftIcon,
+  SquareArrowUpRightIcon,
+  // Arrows — combined
+  ArrowLeftRightIcon,
+  ArrowUpDownIcon,
+  // Other
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -197,14 +234,14 @@ export const iconMap = {
   "arrow-bend-up-right":        { phosphor: ph(PhArrowBendUpRight) },
 
   // ─── Arrows — circle ─────────────────────────────────────────────────────
-  "arrow-circle-down":       { phosphor: ph(PhArrowCircleDown) },
-  "arrow-circle-down-left":  { phosphor: ph(PhArrowCircleDownLeft) },
-  "arrow-circle-down-right": { phosphor: ph(PhArrowCircleDownRight) },
-  "arrow-circle-left":       { phosphor: ph(PhArrowCircleLeft) },
-  "arrow-circle-right":      { phosphor: ph(PhArrowCircleRight) },
-  "arrow-circle-up":         { phosphor: ph(PhArrowCircleUp) },
-  "arrow-circle-up-left":    { phosphor: ph(PhArrowCircleUpLeft) },
-  "arrow-circle-up-right":   { phosphor: ph(PhArrowCircleUpRight) },
+  "arrow-circle-down":       { phosphor: ph(PhArrowCircleDown),      lucide: CircleArrowDownIcon },
+  "arrow-circle-down-left":  { phosphor: ph(PhArrowCircleDownLeft),  lucide: ArrowDownLeftFromCircleIcon },
+  "arrow-circle-down-right": { phosphor: ph(PhArrowCircleDownRight), lucide: ArrowDownRightFromCircleIcon },
+  "arrow-circle-left":       { phosphor: ph(PhArrowCircleLeft),      lucide: CircleArrowLeftIcon },
+  "arrow-circle-right":      { phosphor: ph(PhArrowCircleRight),     lucide: CircleArrowRightIcon },
+  "arrow-circle-up":         { phosphor: ph(PhArrowCircleUp),        lucide: CircleArrowUpIcon },
+  "arrow-circle-up-left":    { phosphor: ph(PhArrowCircleUpLeft),    lucide: ArrowUpLeftFromCircleIcon },
+  "arrow-circle-up-right":   { phosphor: ph(PhArrowCircleUpRight),   lucide: ArrowUpRightFromCircleIcon },
 
   // ─── Arrows — clockwise ──────────────────────────────────────────────────
   "arrow-clockwise":         { phosphor: ph(PhArrowClockwise),        lucide: RotateCwIcon },
@@ -223,16 +260,16 @@ export const iconMap = {
   "arrow-elbow-up-right":   { phosphor: ph(PhArrowElbowUpRight) },
 
   // ─── Arrows — fat ────────────────────────────────────────────────────────
-  "arrow-fat-down":  { phosphor: ph(PhArrowFatDown) },
-  "arrow-fat-left":  { phosphor: ph(PhArrowFatLeft) },
-  "arrow-fat-right": { phosphor: ph(PhArrowFatRight) },
-  "arrow-fat-up":    { phosphor: ph(PhArrowFatUp) },
+  "arrow-fat-down":  { phosphor: ph(PhArrowFatDown),  lucide: ArrowBigDownIcon },
+  "arrow-fat-left":  { phosphor: ph(PhArrowFatLeft),  lucide: ArrowBigLeftIcon },
+  "arrow-fat-right": { phosphor: ph(PhArrowFatRight), lucide: ArrowBigRightIcon },
+  "arrow-fat-up":    { phosphor: ph(PhArrowFatUp),    lucide: ArrowBigUpIcon },
 
   // ─── Arrows — fat line ───────────────────────────────────────────────────
-  "arrow-fat-line-down":  { phosphor: ph(PhArrowFatLineDown) },
-  "arrow-fat-line-left":  { phosphor: ph(PhArrowFatLineLeft) },
-  "arrow-fat-line-right": { phosphor: ph(PhArrowFatLineRight) },
-  "arrow-fat-line-up":    { phosphor: ph(PhArrowFatLineUp) },
+  "arrow-fat-line-down":  { phosphor: ph(PhArrowFatLineDown),  lucide: ArrowBigDownDashIcon },
+  "arrow-fat-line-left":  { phosphor: ph(PhArrowFatLineLeft),  lucide: ArrowBigLeftDashIcon },
+  "arrow-fat-line-right": { phosphor: ph(PhArrowFatLineRight), lucide: ArrowBigRightDashIcon },
+  "arrow-fat-line-up":    { phosphor: ph(PhArrowFatLineUp),    lucide: ArrowBigUpDashIcon },
 
   // ─── Arrows — fat lines ──────────────────────────────────────────────────
   "arrow-fat-lines-down":  { phosphor: ph(PhArrowFatLinesDown) },
@@ -241,26 +278,26 @@ export const iconMap = {
   "arrow-fat-lines-up":    { phosphor: ph(PhArrowFatLinesUp) },
 
   // ─── Arrows — line ───────────────────────────────────────────────────────
-  "arrow-line-down":       { phosphor: ph(PhArrowLineDown) },
+  "arrow-line-down":       { phosphor: ph(PhArrowLineDown),      lucide: ArrowDownToLineIcon },
   "arrow-line-down-left":  { phosphor: ph(PhArrowLineDownLeft) },
   "arrow-line-down-right": { phosphor: ph(PhArrowLineDownRight) },
-  "arrow-line-left":       { phosphor: ph(PhArrowLineLeft) },
-  "arrow-line-right":      { phosphor: ph(PhArrowLineRight) },
-  "arrow-line-up":         { phosphor: ph(PhArrowLineUp) },
+  "arrow-line-left":       { phosphor: ph(PhArrowLineLeft),      lucide: ArrowLeftToLineIcon },
+  "arrow-line-right":      { phosphor: ph(PhArrowLineRight),     lucide: ArrowRightToLineIcon },
+  "arrow-line-up":         { phosphor: ph(PhArrowLineUp),        lucide: ArrowUpToLineIcon },
   "arrow-line-up-left":    { phosphor: ph(PhArrowLineUpLeft) },
   "arrow-line-up-right":   { phosphor: ph(PhArrowLineUpRight) },
 
   // ─── Arrows — square ─────────────────────────────────────────────────────
-  "arrow-square-down":       { phosphor: ph(PhArrowSquareDown) },
-  "arrow-square-down-left":  { phosphor: ph(PhArrowSquareDownLeft) },
-  "arrow-square-down-right": { phosphor: ph(PhArrowSquareDownRight) },
-  "arrow-square-in":         { phosphor: ph(PhArrowSquareIn) },
-  "arrow-square-left":       { phosphor: ph(PhArrowSquareLeft) },
-  "arrow-square-out":        { phosphor: ph(PhArrowSquareOut) },
-  "arrow-square-right":      { phosphor: ph(PhArrowSquareRight) },
-  "arrow-square-up":         { phosphor: ph(PhArrowSquareUp) },
-  "arrow-square-up-left":    { phosphor: ph(PhArrowSquareUpLeft) },
-  "arrow-square-up-right":   { phosphor: ph(PhArrowSquareUpRight) },
+  "arrow-square-down":       { phosphor: ph(PhArrowSquareDown),      lucide: SquareArrowDownIcon },
+  "arrow-square-down-left":  { phosphor: ph(PhArrowSquareDownLeft),  lucide: SquareArrowDownLeftIcon },
+  "arrow-square-down-right": { phosphor: ph(PhArrowSquareDownRight), lucide: SquareArrowDownRightIcon },
+  "arrow-square-in":         { phosphor: ph(PhArrowSquareIn),        lucide: SquareArrowRightEnterIcon },
+  "arrow-square-left":       { phosphor: ph(PhArrowSquareLeft),      lucide: SquareArrowLeftIcon },
+  "arrow-square-out":        { phosphor: ph(PhArrowSquareOut),       lucide: SquareArrowOutUpRightIcon },
+  "arrow-square-right":      { phosphor: ph(PhArrowSquareRight),     lucide: SquareArrowRightIcon },
+  "arrow-square-up":         { phosphor: ph(PhArrowSquareUp),        lucide: SquareArrowUpIcon },
+  "arrow-square-up-left":    { phosphor: ph(PhArrowSquareUpLeft),    lucide: SquareArrowUpLeftIcon },
+  "arrow-square-up-right":   { phosphor: ph(PhArrowSquareUpRight),   lucide: SquareArrowUpRightIcon },
 
   // ─── Arrows — U-turn ─────────────────────────────────────────────────────
   "arrow-u-down-left":  { phosphor: ph(PhArrowUDownLeft) },
