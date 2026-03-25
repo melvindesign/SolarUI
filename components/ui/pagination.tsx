@@ -1,7 +1,9 @@
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
-import { Icon } from "@/components/ui/icon"
+import { icons } from "@/components/ui/icons"
+
+const { IconCaretLeft, IconCaretRight, IconDotsThree } = icons
 import { cn } from "@/lib/utils"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
@@ -76,7 +78,7 @@ function PaginationPrevious({
       className={cn("pl-1.5!", className)}
       {...props}
     >
-      <Icon name="caret-left" data-icon="inline-start" className="cn-rtl-flip" />
+      <IconCaretLeft data-icon="inline-start" className="cn-rtl-flip" />
       <span className="hidden sm:block">
         {text}
       </span>
@@ -97,7 +99,7 @@ function PaginationNext({
       {...props}
     >
       <span className="hidden sm:block">{text}</span>
-      <Icon name="caret-right" data-icon="inline-end" className="cn-rtl-flip" />
+      <IconCaretRight data-icon="inline-end" className="cn-rtl-flip" />
     </PaginationLink>
   )
 }
@@ -116,7 +118,7 @@ function PaginationEllipsis({
       )}
       {...props}
     >
-      <Icon name="dots-three" />
+      <IconDotsThree />
       <span className="sr-only">More pages</span>
     </span>
   )

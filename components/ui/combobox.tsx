@@ -10,7 +10,9 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { Icon } from "@/components/ui/icon"
+import { icons } from "@/components/ui/icons"
+
+const { IconCaretDown, IconCheck, IconX } = icons
 import { cn } from "@/lib/utils"
 
 const Combobox = ComboboxPrimitive.Root
@@ -31,14 +33,14 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <Icon name="caret-down" className="text-default-11 size-4 pointer-events-none" />
+      <IconCaretDown className="text-default-11 size-4 pointer-events-none" />
     </ComboboxPrimitive.Trigger>
   )
 }
 
 function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
   return (
-    <ComboboxPrimitive.Clear data-slot="combobox-clear" className={cn(className)} {...props} render={<InputGroupButton variant="ghost" size="icon-xs"><Icon name="x" className="pointer-events-none" /></InputGroupButton>} />
+    <ComboboxPrimitive.Clear data-slot="combobox-clear" className={cn(className)} {...props} render={<InputGroupButton variant="ghost" size="icon-xs"><IconX className="pointer-events-none" /></InputGroupButton>} />
   )
 }
 
@@ -73,7 +75,7 @@ function ComboboxInput({
               />
             }
           >
-            <Icon name="caret-down" className="text-default-11 size-4 pointer-events-none" />
+            <IconCaretDown className="text-default-11 size-4 pointer-events-none" />
           </ComboboxPrimitive.Trigger>
         )}
         {showClear && <ComboboxClear disabled={disabled} />}
@@ -145,7 +147,7 @@ function ComboboxItem({
       {...props}
     >
       {children}
-      <ComboboxPrimitive.ItemIndicator render={<span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center"><Icon name="check" className="pointer-events-none" /></span>} />
+      <ComboboxPrimitive.ItemIndicator render={<span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center"><IconCheck className="pointer-events-none" /></span>} />
     </ComboboxPrimitive.Item>
   )
 }
@@ -235,7 +237,7 @@ function ComboboxChip({
     >
       {children}
       {showRemove && (
-        <ComboboxPrimitive.ChipRemove className="-ml-1 opacity-50 hover:opacity-100" data-slot="combobox-chip-remove" render={<Button variant="ghost" size="compact"><Icon name="x" className="pointer-events-none" /></Button>} />
+        <ComboboxPrimitive.ChipRemove className="-ml-1 opacity-50 hover:opacity-100" data-slot="combobox-chip-remove" render={<Button variant="ghost" size="compact"><IconX className="pointer-events-none" /></Button>} />
       )}
     </ComboboxPrimitive.Chip>
   )

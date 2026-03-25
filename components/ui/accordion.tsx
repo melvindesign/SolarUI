@@ -4,7 +4,9 @@ import { Accordion as AccordionPrimitive } from "radix-ui"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Icon } from "@/components/ui/icon"
+import { icons } from "@/components/ui/icons"
+
+const { IconCaretDown, IconCaretUp } = icons
 
 function Accordion({
   className,
@@ -48,8 +50,8 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <Icon name="caret-down" data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-        <Icon name="caret-up" data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+        <IconCaretDown data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
+        <IconCaretUp data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

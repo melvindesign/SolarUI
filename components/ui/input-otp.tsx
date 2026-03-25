@@ -3,7 +3,9 @@
 import { OTPInput, OTPInputContext } from "input-otp"
 import * as React from "react"
 
-import { Icon } from "@/components/ui/icon"
+import { icons } from "@/components/ui/icons"
+
+const { IconMinus } = icons
 import { cn } from "@/lib/utils"
 
 function InputOTP({
@@ -81,7 +83,7 @@ function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
       role="separator"
       {...props}
     >
-      <Icon name="minus" />
+      <IconMinus />
     </div>
   )
 }

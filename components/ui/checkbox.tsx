@@ -4,7 +4,9 @@ import { Checkbox as CheckboxPrimitive } from "radix-ui";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Icon } from "@/components/ui/icon";
+import { icons } from "@/components/ui/icons"
+
+const { IconCheck } = icons
 
 function Checkbox({
   className,
@@ -29,7 +31,7 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="[&>svg]:size-3.5 grid place-content-center text-current transition-none"
       >
-        <Icon name="check" />
+        <IconCheck />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

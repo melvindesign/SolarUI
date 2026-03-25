@@ -21,7 +21,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useIsMobile } from "@/hooks/use-mobile"
-import { Icon } from "@/components/ui/icon"
+import { icons } from "@/components/ui/icons"
+
+const { IconSidebarSimple } = icons
 import { cn } from "@/lib/utils"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
@@ -270,7 +272,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <Icon name="sidebar-simple" className="cn-rtl-flip" />
+      <IconSidebarSimple className="cn-rtl-flip" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
