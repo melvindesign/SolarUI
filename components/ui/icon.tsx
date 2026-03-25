@@ -24,10 +24,11 @@ function Icon({
     return null
   }
 
+  const anyEntry = entry as Record<string, React.ElementType | undefined>
   const IconComponent =
-    (entry as Record<string, React.ElementType>)[resolvedLibrary] ??
-    entry.phosphor ??
-    entry.lucide
+    anyEntry[resolvedLibrary] ??
+    anyEntry.phosphor ??
+    anyEntry.lucide
 
   if (!IconComponent) {
     if (process.env.NODE_ENV !== "production") {
