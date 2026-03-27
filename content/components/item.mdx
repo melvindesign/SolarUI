@@ -16,7 +16,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from '@/components/ui/item'
-import { BellIcon, FileIcon, HomeIcon, SettingsIcon, UserIcon } from 'lucide-react'
+import { Bell, File, House, Gear, User } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Item
@@ -26,14 +26,14 @@ A flexible composable component for displaying structured content such as list r
 <ComponentPreview>
   <ItemGroup className="w-full max-w-sm divide-y">
     <Item variant="outline">
-      <ItemMedia variant="icon"><HomeIcon /></ItemMedia>
+      <ItemMedia variant="icon"><House /></ItemMedia>
       <ItemContent>
         <ItemTitle>Dashboard</ItemTitle>
         <ItemDescription>Overview of your account and activity.</ItemDescription>
       </ItemContent>
     </Item>
     <Item>
-      <ItemMedia variant="icon"><BellIcon /></ItemMedia>
+      <ItemMedia variant="icon"><Bell /></ItemMedia>
       <ItemContent>
         <ItemTitle>Notifications</ItemTitle>
         <ItemDescription>Manage your notification preferences.</ItemDescription>
@@ -72,7 +72,7 @@ import {
 ```tsx
 <Item>
   <ItemMedia variant="icon">
-    <HomeIcon />
+    <House />
   </ItemMedia>
   <ItemContent>
     <ItemTitle>Dashboard</ItemTitle>
@@ -125,7 +125,7 @@ import {
 <Item asChild>
   <a href="/dashboard">
     <ItemMedia variant="icon">
-      <HomeIcon />
+      <House />
     </ItemMedia>
     <ItemContent>
       <ItemTitle>Dashboard</ItemTitle>

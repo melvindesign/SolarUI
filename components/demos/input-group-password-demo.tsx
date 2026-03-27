@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { EyeIcon, EyeOffIcon, KeyRoundIcon } from "lucide-react"
+import { Eye, EyeSlash, Key } from "@phosphor-icons/react/dist/ssr"
 import {
   InputGroup,
   InputGroupAddon,
@@ -15,7 +15,7 @@ export function InputGroupPasswordDemo() {
   return (
     <InputGroup>
       <InputGroupAddon align="inline-start">
-        <KeyRoundIcon />
+        <Key />
       </InputGroupAddon>
       <InputGroupInput
         type={showPassword ? "text" : "password"}
@@ -23,7 +23,7 @@ export function InputGroupPasswordDemo() {
       />
       <InputGroupAddon align="inline-end">
         <InputGroupButton onClick={() => setShowPassword((v) => !v)}>
-          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+          {showPassword ? <EyeSlash /> : <Eye />}
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>
@@ -41,7 +41,7 @@ export function InputGroupPasswordButtonDemo() {
       />
       <InputGroupAddon align="inline-end">
         <InputGroupButton onClick={() => setShowPassword((v) => !v)}>
-          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+          {showPassword ? <EyeSlash /> : <Eye />}
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>

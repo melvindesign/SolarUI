@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Figma, Github, Menu, Moon, Sun, X } from 'lucide-react'
+import { FigmaLogo, GithubLogo, List, Moon, Sun, X } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -62,7 +62,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-2 py-1.5 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
           >
-            <Figma size={15} />
+            <FigmaLogo size={15} />
             Figma
           </Link>
           <Link
@@ -71,7 +71,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-2 py-1.5 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
           >
-            <Github size={15} />
+            <GithubLogo size={15} />
             GitHub
           </Link>
           <ThemeToggle />
@@ -88,7 +88,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {open ? <X size={18} /> : <List size={18} />}
           </button>
         </div>
       </nav>
@@ -113,7 +113,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="flex items-center gap-1.5 py-2 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
           >
-            <Figma size={15} />
+            <FigmaLogo size={15} />
             Figma
           </Link>
           <Link
@@ -123,7 +123,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="flex items-center gap-1.5 py-2 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
           >
-            <Github size={15} />
+            <GithubLogo size={15} />
             GitHub
           </Link>
           <div className="pt-1 pb-2">

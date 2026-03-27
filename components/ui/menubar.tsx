@@ -4,7 +4,7 @@ import { Menubar as MenubarPrimitive } from "radix-ui"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { CheckIcon, ChevronRightIcon } from "lucide-react"
+import { Check, CaretRight } from "@phosphor-icons/react/dist/ssr"
 
 function Menubar({
   className,
@@ -127,7 +127,7 @@ function MenubarCheckboxItem({
     >
       <span className="left-1.5 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none absolute flex items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <CheckIcon
+          <Check
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -156,7 +156,7 @@ function MenubarRadioItem({
     >
       <span className="left-1.5 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none absolute flex items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <CheckIcon
+          <Check
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -233,7 +233,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="cn-rtl-flip ml-auto size-4" />
+      <CaretRight className="cn-rtl-flip ml-auto size-4" />
     </MenubarPrimitive.SubTrigger>
   )
 }

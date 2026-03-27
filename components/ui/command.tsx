@@ -15,7 +15,7 @@ import {
   InputGroupAddon,
 } from "@/components/ui/input-group"
 import { cn } from "@/lib/utils"
-import { CheckIcon, SearchIcon } from "lucide-react"
+import { Check, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr"
 
 function Command({
   className,
@@ -81,7 +81,7 @@ function CommandInput({
           {...props}
         />
         <InputGroupAddon>
-          <SearchIcon className="size-4 shrink-0 opacity-50" />
+          <MagnifyingGlass className="size-4 shrink-0 opacity-50" />
         </InputGroupAddon>
       </InputGroup>
     </div>
@@ -158,7 +158,7 @@ function CommandItem({
       {...props}
     >
       {children}
-      <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+      <Check className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
     </CommandPrimitive.Item>
   )
 }

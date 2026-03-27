@@ -5,7 +5,7 @@ description: Displays a badge or a component that looks like a badge.
 
 import { Badge } from '@/components/ui/badge'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
-import { Bell, Flame } from 'lucide-react'
+import { Bell, Fire } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Badge
@@ -53,16 +53,16 @@ import { Badge } from "@/components/ui/badge"
 ### With icon
 
 <ComponentPreviewRow>
-  <Badge><Flame data-icon="inline-start" /> Hot</Badge>
+  <Badge><Fire data-icon="inline-start" /> Hot</Badge>
   <Badge variant="secondary"><Bell data-icon="inline-start" /> 12 notifications</Badge>
-  <Badge variant="outline">New <Flame data-icon="inline-end" /></Badge>
+  <Badge variant="outline">New <Fire data-icon="inline-end" /></Badge>
 </ComponentPreviewRow>
 
 ```tsx
-import { Flame, Bell } from "lucide-react"
+import { Fire, Bell } from "lucide-react"
 
 <Badge>
-  <Flame data-icon="inline-start" />
+  <Fire data-icon="inline-start" />
   Hot
 </Badge>
 
