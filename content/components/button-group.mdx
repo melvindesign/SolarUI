@@ -6,7 +6,7 @@ description: A container that visually joins a set of buttons into a single cont
 import { Button } from '@/components/ui/button'
 import { ButtonGroup } from '@/components/ui/button-group'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
-import { AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline } from 'lucide-react'
+import { TextAlignLeft, TextAlignCenter, TextAlignRight, TextB, TextItalic, TextUnderline } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Button Group
@@ -45,22 +45,22 @@ import { ButtonGroup } from "@/components/ui/button-group"
 <ComponentPreview>
   <ButtonGroup>
     <Button variant="secondary" size="icon">
-      <Bold />
+      <TextB />
     </Button>
     <Button variant="secondary" size="icon">
-      <Italic />
+      <TextItalic />
     </Button>
     <Button variant="secondary" size="icon">
-      <Underline />
+      <TextUnderline />
     </Button>
   </ButtonGroup>
 </ComponentPreview>
 
 ```tsx
 <ButtonGroup>
-  <Button variant="secondary" size="icon"><Bold /></Button>
-  <Button variant="secondary" size="icon"><Italic /></Button>
-  <Button variant="secondary" size="icon"><Underline /></Button>
+  <Button variant="secondary" size="icon"><TextB /></Button>
+  <Button variant="secondary" size="icon"><TextItalic /></Button>
+  <Button variant="secondary" size="icon"><TextUnderline /></Button>
 </ButtonGroup>
 ```
 
@@ -69,22 +69,22 @@ import { ButtonGroup } from "@/components/ui/button-group"
 <ComponentPreview>
   <ButtonGroup>
     <Button variant="ghost">
-      <AlignLeft /> Left
+      <TextAlignLeft /> Left
     </Button>
     <Button variant="ghost">
-      <AlignCenter /> Center
+      <TextAlignCenter /> Center
     </Button>
     <Button variant="ghost">
-      <AlignRight /> Right
+      <TextAlignRight /> Right
     </Button>
   </ButtonGroup>
 </ComponentPreview>
 
 ```tsx
 <ButtonGroup>
-  <Button variant="ghost"><AlignLeft /> Left</Button>
-  <Button variant="ghost"><AlignCenter /> Center</Button>
-  <Button variant="ghost"><AlignRight /> Right</Button>
+  <Button variant="ghost"><TextAlignLeft /> Left</Button>
+  <Button variant="ghost"><TextAlignCenter /> Center</Button>
+  <Button variant="ghost"><TextAlignRight /> Right</Button>
 </ButtonGroup>
 ```
 

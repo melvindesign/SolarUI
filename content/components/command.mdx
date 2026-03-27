@@ -14,7 +14,7 @@ import {
   CommandShortcut,
 } from '@/components/ui/command'
 import { ComponentPreview } from '@/components/component-preview'
-import { Calendar, Settings, Smile, Calculator, User, CreditCard } from 'lucide-react'
+import { CalendarBlank, Gear, Smiley, Calculator, User, CreditCard } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Command
@@ -28,11 +28,11 @@ A fast, composable command palette for search, navigation and quick actions. Bui
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup heading="Suggestions">
         <CommandItem>
-          <Calendar className="mr-2 size-4" />
-          <span>Calendar</span>
+          <CalendarBlank className="mr-2 size-4" />
+          <span>CalendarBlank</span>
         </CommandItem>
         <CommandItem>
-          <Smile className="mr-2 size-4" />
+          <Smiley className="mr-2 size-4" />
           <span>Search Emoji</span>
         </CommandItem>
         <CommandItem>
@@ -41,7 +41,7 @@ A fast, composable command palette for search, navigation and quick actions. Bui
         </CommandItem>
       </CommandGroup>
       <CommandSeparator />
-      <CommandGroup heading="Settings">
+      <CommandGroup heading="Gear">
         <CommandItem>
           <User className="mr-2 size-4" />
           <span>Profile</span>
@@ -53,8 +53,8 @@ A fast, composable command palette for search, navigation and quick actions. Bui
           <CommandShortcut>⌘B</CommandShortcut>
         </CommandItem>
         <CommandItem>
-          <Settings className="mr-2 size-4" />
-          <span>Settings</span>
+          <Gear className="mr-2 size-4" />
+          <span>Gear</span>
           <CommandShortcut>⌘S</CommandShortcut>
         </CommandItem>
       </CommandGroup>
@@ -85,11 +85,11 @@ import {
   <CommandList>
     <CommandEmpty>No results found.</CommandEmpty>
     <CommandGroup heading="Suggestions">
-      <CommandItem>Calendar</CommandItem>
+      <CommandItem>CalendarBlank</CommandItem>
       <CommandItem>Search Emoji</CommandItem>
     </CommandGroup>
     <CommandSeparator />
-    <CommandGroup heading="Settings">
+    <CommandGroup heading="Gear">
       <CommandItem>
         Profile
         <CommandShortcut>⌘P</CommandShortcut>
@@ -114,8 +114,8 @@ import {
           <span>Profile</span>
         </CommandItem>
         <CommandItem>
-          <Settings className="mr-2 size-4" />
-          <span>Settings</span>
+          <Gear className="mr-2 size-4" />
+          <span>Gear</span>
         </CommandItem>
       </CommandGroup>
     </CommandList>
@@ -128,7 +128,7 @@ import {
   <CommandList>
     <CommandGroup heading="Recent">
       <CommandItem>Profile</CommandItem>
-      <CommandItem>Settings</CommandItem>
+      <CommandItem>Gear</CommandItem>
     </CommandGroup>
   </CommandList>
 </Command>

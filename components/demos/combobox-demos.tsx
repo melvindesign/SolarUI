@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { GlobeIcon, GitBranchIcon, ServerIcon, PackageIcon, FlameIcon, StarIcon, SearchIcon } from "lucide-react"
+import { Globe, GitBranch, HardDrives, Package, Fire, Star, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr"
 
 import {
   Combobox,
@@ -125,12 +125,12 @@ export function ComboboxGroupsDemo() {
 
 // (e) Custom items
 const technologies = [
-  { value: "next.js", label: "Next.js", icon: <GitBranchIcon />, description: "React framework" },
-  { value: "sveltekit", label: "SvelteKit", icon: <FlameIcon />, description: "Svelte framework" },
-  { value: "nuxt.js", label: "Nuxt.js", icon: <ServerIcon />, description: "Vue framework" },
-  { value: "remix", label: "Remix", icon: <PackageIcon />, description: "Fullstack framework" },
-  { value: "astro", label: "Astro", icon: <StarIcon />, description: "Static site generator" },
-  { value: "solid-start", label: "SolidStart", icon: <GlobeIcon />, description: "SolidJS framework" },
+  { value: "next.js", label: "Next.js", icon: <GitBranch />, description: "React framework" },
+  { value: "sveltekit", label: "SvelteKit", icon: <Fire />, description: "Svelte framework" },
+  { value: "nuxt.js", label: "Nuxt.js", icon: <HardDrives />, description: "Vue framework" },
+  { value: "remix", label: "Remix", icon: <Package />, description: "Fullstack framework" },
+  { value: "astro", label: "Astro", icon: <Star />, description: "Static site generator" },
+  { value: "solid-start", label: "SolidStart", icon: <Globe />, description: "SolidJS framework" },
 ]
 
 type Technology = (typeof technologies)[0]
@@ -237,7 +237,7 @@ export function ComboboxInputGroupDemo() {
     <Combobox items={frameworks}>
       <ComboboxInput placeholder="Search frameworks..." className="w-64">
         <InputGroupAddon align="inline-start">
-          <SearchIcon />
+          <MagnifyingGlass />
         </InputGroupAddon>
       </ComboboxInput>
       <ComboboxContent>

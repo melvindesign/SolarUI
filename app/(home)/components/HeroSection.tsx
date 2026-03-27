@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Figma, Github } from 'lucide-react'
+import { FigmaLogo, GithubLogo } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 
 const FIGMA_URL = 'https://www.figma.com/community/file/1617663822970891226'
@@ -67,7 +67,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github size={16} />
+              <GithubLogo size={16} />
               GitHub
             </Link>
           </Button>
@@ -77,7 +77,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Figma size={16} />
+              <FigmaLogo size={16} />
               Figma
             </Link>
           </Button>

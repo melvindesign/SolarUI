@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner",
+  "dependencies": [
+    "@phosphor-icons/react"
+  ],
   "registryDependencies": [
     "utils",
     "solar-ui"
@@ -8,7 +11,7 @@
   "files": [
     {
       "path": "components/ui/spinner.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\nimport { Loader2Icon } from \"lucide-react\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <Loader2Icon role=\"status\" aria-label=\"Loading\" className={cn(\"size-4 animate-spin\", className)} {...props} />\n  )\n}\n\nexport { Spinner }\n",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { CircleNotch } from \"@phosphor-icons/react/dist/ssr\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <CircleNotch role=\"status\" aria-label=\"Loading\" className={cn(\"size-4 animate-spin\", className)} {...props} />\n  )\n}\n\nexport { Spinner }\n",
       "type": "registry:component"
     }
   ],

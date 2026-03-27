@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
+import { CalendarBlank } from "@phosphor-icons/react/dist/ssr"
 import type { DateRange } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
@@ -21,7 +21,7 @@ export function DatePickerDemo() {
           data-empty={!date}
           className="w-64 justify-start text-left font-normal data-[empty=true]:text-default-11"
         >
-          <CalendarIcon className="mr-2 size-4" />
+          <CalendarBlank className="mr-2 size-4" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
@@ -44,7 +44,7 @@ export function DateRangePickerDemo({ className }: { className?: string }) {
             data-empty={!range?.from}
             className="w-72 justify-start text-left font-normal data-[empty=true]:text-default-11"
           >
-            <CalendarIcon className="mr-2 size-4" />
+            <CalendarBlank className="mr-2 size-4" />
             {range?.from ? (
               range.to ? (
                 <>
@@ -89,7 +89,7 @@ export function DatePickerWithPresets() {
           data-empty={!date}
           className="w-64 justify-start text-left font-normal data-[empty=true]:text-default-11"
         >
-          <CalendarIcon className="mr-2 size-4" />
+          <CalendarBlank className="mr-2 size-4" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>

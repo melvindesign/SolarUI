@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy } from '@phosphor-icons/react/dist/ssr'
 import { useState } from 'react'
 
 const COMMAND = 'npx shadcn@latest add https://solar-ui.com/r/solar-ui.json'

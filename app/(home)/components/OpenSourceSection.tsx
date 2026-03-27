@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { Github } from 'lucide-react'
+import { GithubLogo } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 
 const stats = [
@@ -17,7 +17,7 @@ export default function OpenSourceSection() {
         <CardContent className="flex flex-col items-center gap-6 py-12 text-center">
           {/* GitHub icon */}
           <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--orange-6)] bg-[var(--orange-3)]">
-            <Github size={22} className="text-[var(--orange-11)]" />
+            <GithubLogo size={22} className="text-[var(--orange-11)]" />
           </div>
 
           {/* Headline */}
@@ -55,7 +55,7 @@ export default function OpenSourceSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github size={16} />
+              <GithubLogo size={16} />
               Contribute on GitHub
             </Link>
           </Button>

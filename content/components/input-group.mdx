@@ -3,7 +3,7 @@ title: Input Group
 description: A composable component for combining inputs with icons, buttons, and text addons.
 ---
 
-import { SearchIcon, AtSignIcon, EyeIcon, SendIcon } from 'lucide-react'
+import { MagnifyingGlass, At, Eye, PaperPlaneTilt } from '@phosphor-icons/react/dist/ssr'
 import {
   InputGroup,
   InputGroupAddon,
@@ -24,7 +24,7 @@ A composable component for combining inputs with icons, buttons, and text addons
   <div className="flex flex-col gap-4 w-full max-w-sm">
     <InputGroup>
       <InputGroupAddon align="inline-start">
-        <SearchIcon />
+        <MagnifyingGlass />
       </InputGroupAddon>
       <InputGroupInput placeholder="Search..." />
     </InputGroup>
@@ -54,7 +54,7 @@ import {
 <ComponentPreview>
   <InputGroup className="max-w-sm">
     <InputGroupAddon align="inline-start">
-      <SearchIcon />
+      <MagnifyingGlass />
     </InputGroupAddon>
     <InputGroupInput placeholder="Search..." />
   </InputGroup>
@@ -63,7 +63,7 @@ import {
 ```tsx
 <InputGroup>
   <InputGroupAddon align="inline-start">
-    <SearchIcon />
+    <MagnifyingGlass />
   </InputGroupAddon>
   <InputGroupInput placeholder="Search..." />
 </InputGroup>
@@ -75,7 +75,7 @@ import {
   <InputGroup className="max-w-sm">
     <InputGroupInput placeholder="Enter email..." />
     <InputGroupAddon align="inline-end">
-      <AtSignIcon />
+      <At />
     </InputGroupAddon>
   </InputGroup>
 </ComponentPreview>
@@ -84,7 +84,7 @@ import {
 <InputGroup>
   <InputGroupInput placeholder="Enter email..." />
   <InputGroupAddon align="inline-end">
-    <AtSignIcon />
+    <At />
   </InputGroupAddon>
 </InputGroup>
 ```
@@ -97,7 +97,7 @@ import {
 
 ```tsx
 import { useState } from "react"
-import { EyeIcon, EyeOffIcon } from "lucide-react"
+import { Eye, EyeSlash } from "@phosphor-icons/react"
 
 function PasswordInput() {
   const [showPassword, setShowPassword] = useState(false)
@@ -110,7 +110,7 @@ function PasswordInput() {
       />
       <InputGroupAddon align="inline-end">
         <InputGroupButton onClick={() => setShowPassword((v) => !v)}>
-          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+          {showPassword ? <EyeSlash /> : <Eye />}
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>
@@ -124,7 +124,7 @@ function PasswordInput() {
   <InputGroup className="max-w-sm">
     <InputGroupTextarea placeholder="Write a message..." rows={3} />
     <InputGroupAddon align="block-end">
-      <InputGroupButton><SendIcon /></InputGroupButton>
+      <InputGroupButton><PaperPlaneTilt /></InputGroupButton>
     </InputGroupAddon>
   </InputGroup>
 </ComponentPreview>
@@ -133,7 +133,7 @@ function PasswordInput() {
 <InputGroup>
   <InputGroupTextarea placeholder="Write a message..." rows={3} />
   <InputGroupAddon align="block-end">
-    <InputGroupButton><SendIcon /></InputGroupButton>
+    <InputGroupButton><PaperPlaneTilt /></InputGroupButton>
   </InputGroupAddon>
 </InputGroup>
 ```

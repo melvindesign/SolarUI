@@ -5,7 +5,7 @@ description: A two-state button that can be either on or off.
 
 import { ComponentPreview } from '@/components/component-preview'
 import { Toggle } from '@/components/ui/toggle'
-import { Bold, Italic, Underline } from 'lucide-react'
+import { TextB, TextItalic, TextUnderline } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Toggle
@@ -14,7 +14,7 @@ A two-state button that can be either on or off.
 
 <ComponentPreview>
   <Toggle variant="outline" aria-label="Toggle bold">
-    <Bold className="size-4" />
+    <TextB className="size-4" />
   </Toggle>
 </ComponentPreview>
 
@@ -28,7 +28,7 @@ import { Toggle } from "@/components/ui/toggle"
 
 ```tsx
 <Toggle aria-label="Toggle bold">
-  <Bold className="size-4" />
+  <TextB className="size-4" />
 </Toggle>
 ```
 
@@ -37,13 +37,13 @@ import { Toggle } from "@/components/ui/toggle"
 ### With text
 
 <ComponentPreview>
-  <Toggle aria-label="Toggle bold"><Bold className="size-4" /> Bold</Toggle>
+  <Toggle aria-label="Toggle bold"><TextB className="size-4" /> TextB</Toggle>
 </ComponentPreview>
 
 ```tsx
 <Toggle aria-label="Toggle bold">
-  <Bold className="size-4" />
-  Bold
+  <TextB className="size-4" />
+  TextB
 </Toggle>
 ```
 
@@ -51,13 +51,13 @@ import { Toggle } from "@/components/ui/toggle"
 
 <ComponentPreview>
   <Toggle variant="outline" aria-label="Toggle italic">
-    <Italic className="size-4" />
+    <TextItalic className="size-4" />
   </Toggle>
 </ComponentPreview>
 
 ```tsx
 <Toggle variant="outline" aria-label="Toggle italic">
-  <Italic className="size-4" />
+  <TextItalic className="size-4" />
 </Toggle>
 ```
 
@@ -65,13 +65,13 @@ import { Toggle } from "@/components/ui/toggle"
 
 <ComponentPreview>
   <Toggle disabled aria-label="Toggle underline">
-    <Underline className="size-4" />
+    <TextUnderline className="size-4" />
   </Toggle>
 </ComponentPreview>
 
 ```tsx
 <Toggle disabled aria-label="Toggle underline">
-  <Underline className="size-4" />
+  <TextUnderline className="size-4" />
 </Toggle>
 ```
 
@@ -80,20 +80,20 @@ import { Toggle } from "@/components/ui/toggle"
 <ComponentPreview>
   <div className="flex items-center gap-2">
     <Toggle size="compact" variant="outline" aria-label="Toggle bold compact">
-      <Bold />
+      <TextB />
     </Toggle>
     <Toggle size="default" variant="outline" aria-label="Toggle bold default">
-      <Bold />
+      <TextB />
     </Toggle>
   </div>
 </ComponentPreview>
 
 ```tsx
 <Toggle size="compact" variant="outline" aria-label="Toggle bold">
-  <Bold />
+  <TextB />
 </Toggle>
 <Toggle size="default" variant="outline" aria-label="Toggle bold">
-  <Bold />
+  <TextB />
 </Toggle>
 ```
 
