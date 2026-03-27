@@ -12,7 +12,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown } from "lucide-react"
+import { ArrowsDownUp } from "@phosphor-icons/react/dist/ssr"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -60,7 +60,7 @@ const columns: ColumnDef<Payment>[] = [
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
         Email
-        <ArrowUpDown className="ml-2 size-4" />
+        <ArrowsDownUp className="ml-2 size-4" />
       </Button>
     ),
   },

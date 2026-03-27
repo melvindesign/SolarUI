@@ -3,7 +3,7 @@ title: Empty
 description: A composable empty state component for displaying placeholder content when there is no data to show.
 ---
 
-import { InboxIcon, FolderIcon, SearchIcon } from 'lucide-react'
+import { Tray, Folder, MagnifyingGlass } from '@phosphor-icons/react/dist/ssr'
 import { Button } from '@/components/ui/button'
 import {
   Empty,
@@ -24,7 +24,7 @@ A composable empty state component for displaying placeholder content when there
   <Empty>
     <EmptyHeader>
       <EmptyMedia variant="icon">
-        <InboxIcon />
+        <Tray />
       </EmptyMedia>
       <EmptyTitle>No messages</EmptyTitle>
       <EmptyDescription>You don't have any messages yet. Start a conversation to get going.</EmptyDescription>
@@ -54,7 +54,7 @@ import {
 <Empty>
   <EmptyHeader>
     <EmptyMedia variant="icon">
-      <InboxIcon />
+      <Tray />
     </EmptyMedia>
     <EmptyTitle>No messages</EmptyTitle>
     <EmptyDescription>You don't have any messages yet.</EmptyDescription>
@@ -73,7 +73,7 @@ import {
   <Empty>
     <EmptyHeader>
       <EmptyMedia variant="icon">
-        <SearchIcon />
+        <MagnifyingGlass />
       </EmptyMedia>
       <EmptyTitle>No results found</EmptyTitle>
       <EmptyDescription>Try adjusting your search or filters to find what you're looking for.</EmptyDescription>
@@ -87,7 +87,7 @@ import {
   <Empty>
     <EmptyHeader>
       <EmptyMedia variant="icon">
-        <FolderIcon />
+        <Folder />
       </EmptyMedia>
       <EmptyTitle>No projects yet</EmptyTitle>
       <EmptyDescription>Get started by creating your first project.</EmptyDescription>

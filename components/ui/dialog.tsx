@@ -5,7 +5,7 @@ import * as React from "react"
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { XIcon } from "lucide-react"
+import { X } from "@phosphor-icons/react/dist/ssr"
 
 function Dialog({
   ...props
@@ -67,7 +67,7 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" asChild>
             <Button variant="ghost" className="absolute top-2 right-2" size="compact">
-              <XIcon
+              <X
               />
               <span className="sr-only">Close</span>
             </Button>

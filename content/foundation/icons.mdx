@@ -1,0 +1,78 @@
+---
+title: Icons
+description: SolarUI uses Phosphor Icons — a flexible, consistent icon family with multiple weights.
+---
+
+import { House, Bell, MagnifyingGlass, Gear, User, ArrowRight, Heart, Star, Warning, CheckCircle } from '@phosphor-icons/react/dist/ssr'
+
+# Icons
+
+SolarUI uses **[Phosphor Icons](https://phosphoricons.com/)** as its icon library — a clean, consistent family of over 1 400 icons available in 6 weights.
+
+## Installation
+
+Phosphor Icons is already included as a dependency. To use it in your own components:
+
+```bash filename="terminal" copy
+npm install @phosphor-icons/react
+```
+
+## Usage
+
+Import icons directly from the SSR-compatible entrypoint:
+
+```tsx
+import { House, Bell, Gear } from '@phosphor-icons/react/dist/ssr'
+
+<House />
+<Bell />
+<Gear />
+```
+
+> Always import from `@phosphor-icons/react/dist/ssr` in Next.js App Router (Server Components). Use `@phosphor-icons/react` only inside Client Components (`'use client'`).
+
+## Weights
+
+Each icon comes in 6 weights. Pass the `weight` prop to switch between them:
+
+| Weight | Prop value |
+|--------|------------|
+| Regular | `"regular"` (default) |
+| Thin | `"thin"` |
+| Light | `"light"` |
+| Bold | `"bold"` |
+| Fill | `"fill"` |
+| Duotone | `"duotone"` |
+
+```tsx
+<House weight="thin" />
+<House weight="light" />
+<House weight="regular" />
+<House weight="bold" />
+<House weight="fill" />
+<House weight="duotone" />
+```
+
+## Sizing
+
+Icons inherit the current font size by default. Use Tailwind's `size-*` utilities to set an explicit size:
+
+```tsx
+<Bell className="size-4" />   {/* 16px */}
+<Bell className="size-5" />   {/* 20px */}
+<Bell className="size-6" />   {/* 24px */}
+```
+
+## Color
+
+Icons inherit `currentColor`, so they respond to Tailwind text color utilities:
+
+```tsx
+<CheckCircle className="text-success-9" />
+<Warning className="text-error-9" />
+<Star className="text-warning-9" />
+```
+
+## Browse icons
+
+The full icon catalog is available at [phosphoricons.com](https://phosphoricons.com/).

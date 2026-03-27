@@ -1,5 +1,5 @@
 import { Separator } from '@/components/ui/separator'
-import { Github } from 'lucide-react'
+import { GithubLogo } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 
 const FIGMA_URL = 'https://www.figma.com/community/file/1617663822970891226'
@@ -58,7 +58,7 @@ export default function FooterSection() {
               rel="noopener noreferrer"
               className="mt-3 inline-flex items-center gap-1.5 text-sm text-[var(--gray-11)] transition-colors hover:text-[var(--gray-12)]"
             >
-              <Github size={14} />
+              <GithubLogo size={14} />
               GitHub
             </Link>
           </div>

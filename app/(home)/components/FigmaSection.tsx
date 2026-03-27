@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Figma } from 'lucide-react'
+import { FigmaLogo } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 
 const FIGMA_URL = 'https://www.figma.com/community/file/1617663822970891226'
@@ -11,7 +11,7 @@ export default function FigmaSection() {
         {/* Text */}
         <div className="max-w-lg">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--orange-6)] bg-[var(--orange-3)] px-3 py-1 text-xs font-medium text-[var(--orange-11)]">
-            <Figma size={12} />
+            <FigmaLogo size={12} />
             Now available on Figma Community
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-[var(--gray-12)] sm:text-3xl">
@@ -30,7 +30,7 @@ export default function FigmaSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Figma size={16} />
+              <FigmaLogo size={16} />
               Open in Figma
             </Link>
           </Button>

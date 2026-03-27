@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Code2, Layers, Palette, Zap } from 'lucide-react'
+import { Code, Stack, Palette, Lightning } from '@phosphor-icons/react/dist/ssr'
 
 const features = [
   {
@@ -8,17 +8,17 @@ const features = [
     body: 'A 12-step color scale for every palette. Accessible contrast guaranteed, dark mode built in — without a single CSS override.',
   },
   {
-    icon: Code2,
+    icon: Code,
     title: 'Open Code',
     body: 'No black boxes. Copy the source, make it yours. Zero lock-in, zero runtime dependency — the code lives in your project.',
   },
   {
-    icon: Layers,
+    icon: Stack,
     title: 'Built with Radix UI',
     body: 'Accessible primitives at the base. Keyboard navigation and ARIA handling you never have to think about again.',
   },
   {
-    icon: Zap,
+    icon: Lightning,
     title: 'Tailwind v4',
     body: 'CSS-first utility classes with design tokens baked in. No config file, no plugin chain — just write and ship.',
   },

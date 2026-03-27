@@ -5,7 +5,7 @@ description: Displays a button or a component that looks like a button.
 
 import { Button } from '@/components/ui/button'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
-import { ChevronRight, Mail, Loader2 } from 'lucide-react'
+import { CaretRight, Envelope, CircleNotch } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Button
@@ -66,25 +66,25 @@ import { Button } from "@/components/ui/button"
 ### With icon
 
 <ComponentPreview>
-  <Button><Mail data-icon="inline-start" /> Login with Email</Button>
+  <Button><Envelope data-icon="inline-start" /> Login with Email</Button>
 </ComponentPreview>
 
 ```tsx
-import { Mail } from "lucide-react"
+import { Envelope } from "lucide-react"
 
-<Button><Mail data-icon="inline-start" /> Login with Email</Button>
+<Button><Envelope data-icon="inline-start" /> Login with Email</Button>
 ```
 
 ### Loading
 
 <ComponentPreview>
-  <Button disabled><Loader2 className="animate-spin" /> Please wait</Button>
+  <Button disabled><CircleNotch className="animate-spin" /> Please wait</Button>
 </ComponentPreview>
 
 ```tsx
-import { Loader2 } from "lucide-react"
+import { CircleNotch } from "lucide-react"
 
-<Button disabled><Loader2 className="animate-spin" /> Please wait</Button>
+<Button disabled><CircleNotch className="animate-spin" /> Please wait</Button>
 ```
 
 ### As link

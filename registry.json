@@ -43,7 +43,7 @@
     {
       "name": "accordion",
       "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
+      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -115,7 +115,7 @@
     {
       "name": "breadcrumb",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -151,7 +151,7 @@
     {
       "name": "calendar",
       "type": "registry:ui",
-      "dependencies": ["react-day-picker", "radix-ui"],
+      "dependencies": ["react-day-picker", "radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "button"],
       "files": [
         {
@@ -174,7 +174,7 @@
     {
       "name": "carousel",
       "type": "registry:ui",
-      "dependencies": ["embla-carousel-react", "radix-ui"],
+      "dependencies": ["embla-carousel-react", "radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "button"],
       "files": [
         {
@@ -198,7 +198,7 @@
     {
       "name": "checkbox",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -222,7 +222,7 @@
     {
       "name": "command",
       "type": "registry:ui",
-      "dependencies": ["cmdk", "radix-ui"],
+      "dependencies": ["cmdk", "radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "dialog"],
       "files": [
         {
@@ -234,6 +234,7 @@
     {
       "name": "combobox",
       "type": "registry:ui",
+      "dependencies": ["@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "button", "command", "popover"],
       "files": [
         {
@@ -245,7 +246,7 @@
     {
       "name": "context-menu",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -257,7 +258,7 @@
     {
       "name": "date-picker",
       "type": "registry:ui",
-      "dependencies": ["date-fns", "react-day-picker"],
+      "dependencies": ["date-fns", "react-day-picker", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "button", "calendar", "popover"],
       "files": [
         {
@@ -269,7 +270,7 @@
     {
       "name": "dialog",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -293,7 +294,7 @@
     {
       "name": "dropdown-menu",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -361,7 +362,7 @@
     {
       "name": "input-otp",
       "type": "registry:ui",
-      "dependencies": ["input-otp", "radix-ui"],
+      "dependencies": ["input-otp", "radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -408,7 +409,7 @@
     {
       "name": "menubar",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -420,7 +421,7 @@
     {
       "name": "navigation-menu",
       "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
+      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -432,7 +433,7 @@
     {
       "name": "pagination",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "button"],
       "files": [
         {
@@ -504,7 +505,7 @@
     {
       "name": "select",
       "type": "registry:ui",
-      "dependencies": ["radix-ui"],
+      "dependencies": ["radix-ui", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -528,7 +529,7 @@
     {
       "name": "sheet",
       "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
+      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -540,7 +541,7 @@
     {
       "name": "sidebar",
       "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
+      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui", "use-mobile", "button", "input", "separator", "sheet", "skeleton", "tooltip"],
       "files": [
         {
@@ -575,7 +576,7 @@
     {
       "name": "sonner",
       "type": "registry:ui",
-      "dependencies": ["sonner"],
+      "dependencies": ["sonner", "@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {
@@ -587,6 +588,7 @@
     {
       "name": "spinner",
       "type": "registry:ui",
+      "dependencies": ["@phosphor-icons/react"],
       "registryDependencies": ["utils", "solar-ui"],
       "files": [
         {

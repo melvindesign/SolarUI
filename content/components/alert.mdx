@@ -5,7 +5,7 @@ description: Displays a callout for user attention.
 
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
 import { ComponentPreview, ComponentPreviewRow } from '@/components/component-preview'
-import { Info, TriangleAlert } from 'lucide-react'
+import { Info, Warning } from '@phosphor-icons/react/dist/ssr'
 import { Tabs } from 'nextra/components'
 
 # Alert
@@ -52,7 +52,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 </ComponentPreview>
 
 ```tsx
-import { Info } from "lucide-react"
+import { Info } from "@phosphor-icons/react"
 
 <Alert>
   <Info className="h-4 w-4" />
@@ -65,7 +65,7 @@ import { Info } from "lucide-react"
 
 <ComponentPreview>
   <Alert variant="destructive" className="max-w-sm">
-    <TriangleAlert className="h-4 w-4" />
+    <Warning className="h-4 w-4" />
     <AlertTitle>Error</AlertTitle>
     <AlertDescription>
       Your session has expired. Please log in again.
@@ -74,10 +74,10 @@ import { Info } from "lucide-react"
 </ComponentPreview>
 
 ```tsx
-import { TriangleAlert } from "lucide-react"
+import { Warning } from "@phosphor-icons/react"
 
 <Alert variant="destructive">
-  <TriangleAlert className="h-4 w-4" />
+  <Warning className="h-4 w-4" />
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
 </Alert>
