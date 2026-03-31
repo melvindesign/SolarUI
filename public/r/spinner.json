@@ -5,14 +5,14 @@
     "@phosphor-icons/react"
   ],
   "registryDependencies": [
-    "utils",
-    "solar-ui"
+    "@solar-ui/utils",
+    "@solar-ui/solar-ui"
   ],
   "files": [
     {
-      "path": "components/ui/spinner.tsx",
+      "path": "registry/solar/ui/spinner.tsx",
       "content": "import { cn } from \"@/lib/utils\"\nimport { CircleNotch } from \"@phosphor-icons/react/dist/ssr\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <CircleNotch role=\"status\" aria-label=\"Loading\" className={cn(\"size-4 animate-spin\", className)} {...props} />\n  )\n}\n\nexport { Spinner }\n",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

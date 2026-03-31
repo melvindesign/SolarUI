@@ -13,9 +13,14 @@
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
-    "ui": "@/components/ui",
+    "ui": "@/registry/solar/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
+  },
+  "registries": {
+    "solar-ui": {
+      "url": "https://solar-ui.com/r"
+    }
   },
   "iconLibrary": "lucide"
 }
