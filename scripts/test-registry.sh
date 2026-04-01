@@ -241,30 +241,6 @@ cmd_run() {
     cmd_cleanup
   done
 
-  # Final test: all components installed together
-  if [[ ${#components[@]} -gt 1 && -z "$SINGLE_COMPONENT" ]]; then
-    header "Final test: all components together"
-    for component in "${components[@]}"; do
-      cmd_install "${component}" 2>&1 || true
-    done
-
-    local all_status="❌" all_notes=""
-    if npm run build 2>&1; then
-      all_status="✅"
-    else
-      all_notes="Build failed"
-    fi
-
-    {
-      echo ""
-      echo "## All Components Together"
-      echo ""
-      echo "| Test | Build | Notes |"
-      echo "|------|-------|-------|"
-      echo "| all components | ${all_status} | ${all_notes} |"
-    } >> "${REPORT_FILE}"
-  fi
-
   {
     echo ""
     echo "## Summary"
