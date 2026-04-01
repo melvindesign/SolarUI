@@ -3,7 +3,7 @@
 import { Dialog as SheetPrimitive } from "radix-ui"
 import * as React from "react"
 
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { X } from "@phosphor-icons/react/dist/ssr"
 
@@ -69,12 +69,12 @@ function SheetContent({
       >
         {children}
         {showCloseButton && (
-          <SheetPrimitive.Close data-slot="sheet-close" asChild>
-            <Button variant="ghost" className="absolute top-3 right-3" size="compact">
-              <X
-              />
-              <span className="sr-only">Close</span>
-            </Button>
+          <SheetPrimitive.Close
+            data-slot="sheet-close"
+            className={cn(buttonVariants({ variant: "ghost", size: "compact" }), "absolute top-3 right-3")}
+          >
+            <X />
+            <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         )}
       </SheetPrimitive.Content>
