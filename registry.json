@@ -406,7 +406,8 @@
       "name": "dialog",
       "registryDependencies": [
         "@solar-ui/utils",
-        "@solar-ui/solar-ui"
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
       ],
       "type": "registry:ui"
     },
@@ -783,7 +784,8 @@
       "name": "sheet",
       "registryDependencies": [
         "@solar-ui/utils",
-        "@solar-ui/solar-ui"
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
       ],
       "type": "registry:ui"
     },
@@ -847,6 +849,7 @@
     {
       "dependencies": [
         "sonner",
+        "next-themes",
         "@phosphor-icons/react"
       ],
       "files": [

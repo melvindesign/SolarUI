@@ -7,7 +7,8 @@
   ],
   "registryDependencies": [
     "@solar-ui/utils",
-    "@solar-ui/solar-ui"
+    "@solar-ui/solar-ui",
+    "@solar-ui/button"
   ],
   "files": [
     {

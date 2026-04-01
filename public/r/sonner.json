@@ -3,6 +3,7 @@
   "name": "sonner",
   "dependencies": [
     "sonner",
+    "next-themes",
     "@phosphor-icons/react"
   ],
   "registryDependencies": [
