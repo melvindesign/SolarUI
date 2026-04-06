@@ -1,6 +1,6 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+import type { Metadata } from 'next'
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -16,11 +16,11 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
         {/* Anti-FOUC: apply saved theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('solar-ui')||'dark';document.documentElement.classList.toggle('dark',t==='dark');}())`,
+            __html: `(function(){var t=localStorage.getItem('solar-ui')||'system';if(t==='dark'){document.documentElement.classList.add('dark')}else if(t==='light'){document.documentElement.classList.remove('dark')}else{if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}}())`,
           }}
         />
       </head>
-      <body className="bg-[var(--gray-1)] text-[var(--gray-12)] antialiased">
+      <body className="bg-default-1 text-default-12 antialiased">
         {children}
       </body>
     </html>

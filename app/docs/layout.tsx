@@ -1,15 +1,18 @@
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import { Layout, Navbar } from 'nextra-theme-docs'
 import 'nextra-theme-docs/style.css'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
+import SolarUILogo from '../(home)/components/SolarUILogo'
 import '../globals.css'
 import '../sidebar.css'
 
 const navbar = (
   <Navbar
-    logo={<span style={{ fontWeight: 700, fontSize: '1.1rem' }}>☀️ SolarUI</span>}
+    logo={
+      <SolarUILogo/>
+    }
   />
 )
 

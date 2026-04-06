@@ -1,26 +1,24 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
+  "aliases": {
+    "components": "@/components",
+    "hooks": "@/hooks",
+    "lib": "@/lib",
+    "ui": "@/registry/solar/ui",
+    "utils": "@/lib/utils"
+  },
+  "iconLibrary": "phosphor",
+  "registries": {
+    "@solar-ui": "https://solar-ui.com/r"
+  },
   "rsc": true,
-  "tsx": true,
+  "style": "default",
   "tailwind": {
+    "baseColor": "slate",
     "config": "",
     "css": "app/globals.css",
-    "baseColor": "slate",
     "cssVariables": true,
     "prefix": ""
   },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/registry/solar/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "registries": {
-    "solar-ui": {
-      "url": "https://solar-ui.com/r"
-    }
-  },
-  "iconLibrary": "lucide"
+  "tsx": true
 }

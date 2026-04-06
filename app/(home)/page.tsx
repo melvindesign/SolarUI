@@ -1,11 +1,8 @@
-import FigmaSection from './components/FigmaSection'
-import FinalCtaSection from './components/FinalCtaSection'
 import FooterSection from './components/FooterSection'
 import HeroSection from './components/HeroSection'
 import Navbar from './components/Navbar'
-import OpenSourceSection from './components/OpenSourceSection'
 import ShowcaseSection from './components/ShowcaseSection'
-import WhySolarSection from './components/WhySolarSection'
+import TechLogosSection from './components/TechLogosSection'
 
 export default function HomePage() {
   return (
@@ -13,11 +10,8 @@ export default function HomePage() {
       <Navbar />
       <main>
         <HeroSection />
-        <WhySolarSection />
         <ShowcaseSection />
-        <OpenSourceSection />
-        <FigmaSection />
-        <FinalCtaSection />
+        <TechLogosSection />
       </main>
       <FooterSection />
     </>
