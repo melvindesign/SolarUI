@@ -7,11 +7,13 @@ import { Callout, Steps } from 'nextra/components'
 
 # Installation
 
-Solar UI is built on **shadcn/ui**, **Tailwind CSS v4**, and **Next.js 14+**. Components are distributed via a locally hosted shadcn registry.
+Solar UI is built on top of **shadcn/ui** and **Tailwind CSS**. Components are distributed via the shadcn registry, which means you install only what you need — directly into your codebase.
 
 <Steps>
 
 ### Create a Next.js project
+
+If you don't have a project yet, scaffold one with:
 
 ```bash filename="terminal" copy
 npx create-next-app@latest my-project --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes
@@ -22,58 +24,68 @@ cd my-project
   npm does not allow uppercase letters in package names. Use lowercase (e.g. `my-project`, not `MyProject`).
 </Callout>
 
-### Initialize shadcn
+### Initialize shadcn/ui
+
+Solar UI requires shadcn/ui as a foundation. If your project doesn't have it yet, run:
 
 ```bash filename="terminal" copy
 npx shadcn@latest init --defaults
 ```
 
-This generates `components.json` and installs the base files (`button.tsx`, `utils.ts`, etc.).
+This generates `components.json` and sets up the base configuration for your project.
 
 ### Add the Solar UI theme
 
+Install the Solar UI theme, which applies the design tokens and visual style across your components:
+
 ```bash filename="terminal" copy
-npx shadcn@latest add @solar-ui/solar-ui
+npx shadcn@latest add https://www.solar-ui.com/r/solar-ui.json
 ```
 
-This creates `src/app/solar-theme.css` and sets the `base-nova` style in `components.json`.
+This creates `src/app/solar-theme.css` with all the Solar UI CSS variables.
 
 ### Import the theme in globals.css
 
-Open `src/app/globals.css` and add these two lines **at the very top**, before `@import "tailwindcss"`:
+Open `src/app/globals.css` and add the Solar UI theme import **at the very top**, before `@import "tailwindcss"`:
 
 ```css filename="src/app/globals.css" copy
 @import "./solar-theme.css";
 @import "tailwindcss";
 ```
 
+This ensures the Solar UI design tokens are loaded before Tailwind processes your styles.
+
 ### Configure the Solar UI registry
 
-So that shadcn knows where to resolve Solar UI components, add this entry to `components.json`:
+Tell shadcn where to resolve Solar UI components by adding a `registries` entry to your `components.json`:
 
 ```json filename="components.json" copy
 {
   "registries": {
-    "solar-ui": {
-      "url": "https://solar-ui.com/r"
+    "@solar-ui": {
+      "url": "https://solar-ui.com/r/{name}.json"
     }
   }
 }
 ```
 
 <Callout type="info">
-  Without this configuration, shadcn looks for Solar UI dependencies on the official registry and returns a `solar-ui.json was not found` error.
+  Without this configuration, shadcn won't know how to resolve `@solar-ui/*` component identifiers and will fail with a "not found" error.
 </Callout>
 
-### Add components
+### Add your first component
+
+You can now install any Solar UI component. Since shadcn/ui already generates a default `button.tsx`, use the `-f` flag to override it with the Solar UI version:
 
 ```bash filename="terminal" copy
-npx shadcn@latest add @solar-ui/button
+npx shadcn@latest add @solar-ui/button -y -o
 ```
 
-Replace `button` with the component of your choice. Components are installed in `src/components/ui/`.
+The `-y` flag skips the confirmation prompt and `-o` forces the override of the existing file. Repeat this pattern for any other component you want to add.
 
-### Use a component
+### Use the component
+
+Import and use the component like any other React component:
 
 ```tsx filename="src/app/page.tsx" copy
 import { Button } from '@/components/ui/button'
@@ -82,5 +94,7 @@ export default function Page() {
   return <Button>Click me</Button>
 }
 ```
+
+All Solar UI components live in `src/components/ui/` and are fully editable — they're part of your codebase, not a black-box dependency.
 
 </Steps>
