@@ -4,7 +4,7 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '
 import { Check, Copy } from '@phosphor-icons/react/dist/ssr'
 import { useState } from 'react'
 
-const COMMAND = 'npx shadcn@latest add @solar-ui'
+const COMMAND = 'npx shadcn@latest add https://www.solar-ui.com/r/solar-ui.json'
 
 export default function InstallCommand() {
   const [copied, setCopied] = useState(false)
