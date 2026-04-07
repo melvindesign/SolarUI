@@ -23,6 +23,9 @@
       }
     ],
     "paths": {
+      "@/components/ui/*": [
+        "./registry/solar/ui/*"
+      ],
       "@/*": [
         "./*"
       ]

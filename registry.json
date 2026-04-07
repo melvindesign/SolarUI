@@ -1,683 +1,1002 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "solar-ui",
-  "homepage": "https://solar-ui.vercel.app",
+  "homepage": "https://www.solar-ui.com",
   "items": [
     {
-      "name": "utils",
-      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "description": "Utility function for merging Tailwind classes.",
-      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "lib/utils.ts",
           "type": "registry:lib"
         }
-      ]
+      ],
+      "name": "utils",
+      "type": "registry:lib"
     },
     {
-      "name": "use-mobile",
-      "type": "registry:hook",
       "description": "Hook for detecting mobile viewport.",
       "files": [
         {
           "path": "hooks/use-mobile.tsx",
           "type": "registry:hook"
         }
-      ]
+      ],
+      "name": "use-mobile",
+      "type": "registry:hook"
     },
     {
-      "name": "solar-ui",
-      "type": "registry:theme",
-      "description": "SolarUI color tokens — Radix Colors mapped to semantic scales (default, brand, error, success, warning, info).",
-      "dependencies": ["@radix-ui/colors"],
+      "dependencies": [
+        "@radix-ui/colors"
+      ],
+      "description": "SolarUI color tokens \u2014 Radix Colors mapped to semantic scales (default, brand, error, success, warning, info).",
+      "docs": "Add `@import \"./solar-theme.css\";` at the very top of your globals.css (before `@import \"tailwindcss\"`).",
       "files": [
         {
-          "path": "registry/solar-ui.css",
-          "type": "registry:file",
-          "target": "app/solar-ui.css"
+          "path": "registry/solar/solar-theme.css",
+          "target": "app/solar-theme.css",
+          "type": "registry:file"
         }
       ],
-      "docs": "Add `@import \"./solar-ui.css\";` at the very top of your globals.css (before `@import \"tailwindcss\"`)."
+      "name": "solar-ui",
+      "type": "registry:theme"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "accordion",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/accordion.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "alert",
-      "type": "registry:ui",
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/alert.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "alert-dialog",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui", "button"],
-      "files": [
-        {
-          "path": "components/ui/alert-dialog.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "aspect-ratio",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/aspect-ratio.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "avatar",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/avatar.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "badge",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/badge.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "breadcrumb",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/breadcrumb.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "button",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/button.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "button-group",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/button-group.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/separator"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "react-day-picker",
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "calendar",
-      "type": "registry:ui",
-      "dependencies": ["react-day-picker", "radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "button"],
-      "files": [
-        {
-          "path": "components/ui/calendar.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "card",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/card.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "embla-carousel-react",
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "carousel",
-      "type": "registry:ui",
-      "dependencies": ["embla-carousel-react", "radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "button"],
-      "files": [
-        {
-          "path": "components/ui/carousel.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "recharts",
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "chart",
-      "type": "registry:ui",
-      "dependencies": ["recharts", "radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/chart.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "checkbox",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/checkbox.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "collapsible",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/collapsible.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "cmdk",
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "command",
-      "type": "registry:ui",
-      "dependencies": ["cmdk", "radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "dialog"],
-      "files": [
-        {
-          "path": "components/ui/command.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/dialog",
+        "@solar-ui/input-group"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "combobox",
-      "type": "registry:ui",
-      "dependencies": ["@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "button", "command", "popover"],
-      "files": [
-        {
-          "path": "components/ui/combobox.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button",
+        "@solar-ui/input-group"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "context-menu",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/context-menu.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "date-fns",
+        "react-day-picker",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "date-picker",
-      "type": "registry:ui",
-      "dependencies": ["date-fns", "react-day-picker", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "button", "calendar", "popover"],
-      "files": [
-        {
-          "path": "components/ui/date-picker.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button",
+        "@solar-ui/calendar",
+        "@solar-ui/popover"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "dialog",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/dialog.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "vaul"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "drawer",
-      "type": "registry:ui",
-      "dependencies": ["vaul"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/drawer.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "dropdown-menu",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/dropdown-menu.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "empty",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/empty.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "field",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/field.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/label",
+        "@solar-ui/separator"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "hover-card",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/hover-card.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "input",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/input.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "input-group",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/input-group.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button",
+        "@solar-ui/input",
+        "@solar-ui/textarea"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "input-otp",
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "input-otp",
-      "type": "registry:ui",
-      "dependencies": ["input-otp", "radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/input-otp.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "item",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/item.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/separator"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "kbd",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/kbd.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "label",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/label.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "menubar",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/menubar.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "navigation-menu",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/navigation-menu.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "pagination",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "button"],
-      "files": [
-        {
-          "path": "components/ui/pagination.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "popover",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/popover.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "progress",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/progress.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "radio-group",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/radio-group.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "react-resizable-panels",
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "resizable",
-      "type": "registry:ui",
-      "dependencies": ["react-resizable-panels", "radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/resizable.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "scroll-area",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/scroll-area.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "select",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/select.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "separator",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/separator.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "sheet",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/sheet.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/button"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "sidebar",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui", "use-mobile", "button", "input", "separator", "sheet", "skeleton", "tooltip"],
-      "files": [
-        {
-          "path": "components/ui/sidebar.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/use-mobile",
+        "@solar-ui/button",
+        "@solar-ui/input",
+        "@solar-ui/separator",
+        "@solar-ui/sheet",
+        "@solar-ui/skeleton",
+        "@solar-ui/tooltip"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "skeleton",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/skeleton.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "slider",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/slider.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "sonner",
+        "next-themes",
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "sonner",
-      "type": "registry:ui",
-      "dependencies": ["sonner", "@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/sonner.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "@phosphor-icons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "spinner",
-      "type": "registry:ui",
-      "dependencies": ["@phosphor-icons/react"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/spinner.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "switch",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/switch.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "table",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/table.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "tabs",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/tabs.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "files": [
+        {
+          "path": "registry/solar/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "textarea",
-      "type": "registry:ui",
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/textarea.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "toggle",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui"],
-      "files": [
-        {
-          "path": "components/ui/toggle.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     },
     {
+      "dependencies": [
+        "radix-ui",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/solar/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
       "name": "toggle-group",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui", "class-variance-authority"],
-      "registryDependencies": ["utils", "solar-ui", "toggle"],
-      "files": [
-        {
-          "path": "components/ui/toggle-group.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui",
+        "@solar-ui/toggle"
+      ],
+      "type": "registry:ui"
     },
     {
-      "name": "tooltip",
-      "type": "registry:ui",
-      "dependencies": ["radix-ui"],
-      "registryDependencies": ["utils", "solar-ui"],
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
-          "path": "components/ui/tooltip.tsx",
-          "type": "registry:component"
+          "path": "registry/solar/ui/tooltip.tsx",
+          "type": "registry:ui"
         }
-      ]
+      ],
+      "name": "tooltip",
+      "registryDependencies": [
+        "@solar-ui/utils",
+        "@solar-ui/solar-ui"
+      ],
+      "type": "registry:ui"
     }
   ]
 }

@@ -1,94 +1,56 @@
-import { Badge } from '@/components/ui/badge'
+'use client'
+
+import { bodyVariants } from '@/components/ui/body'
 import { Button } from '@/components/ui/button'
-import { FigmaLogo, GithubLogo } from '@phosphor-icons/react/dist/ssr'
+import { displayVariants } from '@/components/ui/display'
+import { cn } from '@/lib/utils'
+import { motion } from 'motion/react'
 import Link from 'next/link'
-
-const FIGMA_URL = 'https://www.figma.com/community/file/1617663822970891226'
+import { TextAnimate } from '../../../components/ui/text-animate'
 import InstallCommand from './InstallCommand'
-
-const anim = (delay: number) => ({
-  animation: `hero-fade-in 0.6s ease-out both`,
-  animationDelay: `${delay}ms`,
-})
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[80dvh] flex-col items-center justify-center overflow-hidden px-4 pt-24 pb-24 text-center">
-      {/* Warm radial glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-0 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full"
-        style={{
-          background:
-            'radial-gradient(ellipse 800px 400px at 50% 0%, var(--orange-6), transparent)',
-          opacity: 0.15,
-        }}
-      />
-
-      {/* Badge */}
-      <div style={anim(0)}>
-        <Badge
-          variant="outline"
-          className="mb-6 border-[var(--orange-6)] bg-[var(--orange-3)] text-[var(--orange-11)]"
-        >
-          <span className="mr-1">☀️</span>
-          Open Source · 68 Components
-        </Badge>
-      </div>
-
-      {/* Headline */}
-      <div style={anim(80)}>
-        <h1 className="mx-auto max-w-3xl text-balance text-5xl font-bold tracking-tight text-[var(--gray-12)] sm:text-6xl lg:text-7xl">
-          Components built to look great{' '}
-          <span className="text-[var(--orange-11)]">together.</span>
+    <section className="pt-32 pb-16">
+      <div className="mx-auto max-w-6xl px-4">
+        {/* Headline */}
+        <h1 className={cn(displayVariants({ size: '1' }), 'max-w-2xl flex flex-wrap')}>
+          <TextAnimate as="span" animation="blurInUp" by="word" className="w-full">
+            The Design System built
+          </TextAnimate>
+          <TextAnimate as="span" animation="blurInUp" by="word" delay={0.2}>
+            for your product interfaces
+          </TextAnimate>
+          <motion.span
+            className="text-brand-11 inline-block"
+            initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
+            whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7, duration: 0.4 }}
+          >.</motion.span>
         </h1>
-      </div>
 
-      {/* Sub-headline */}
-      <div style={anim(160)}>
-        <p className="mx-auto mt-6 max-w-xl text-balance text-lg text-[var(--gray-11)]">
-          A React component library powered by Radix Colors. Every component is
-          visually aligned, open code — copy it, adapt it, ship it. No lock-in.
-        </p>
-      </div>
+        {/* Sub-headline */}
+        <TextAnimate
+          as="p"
+          animation="blurInUp"
+          by="word"
+          delay={0.5}
+          className={cn(bodyVariants(), 'mt-3 text-default-11')}
+        >
+          Open code built on shadcn/ui. Copy it, own it, adopt it
+        </TextAnimate>
 
-      {/* CTAs */}
-      <div style={anim(240)}>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button
-            asChild
-            className="shadow-[0_0_24px_4px_var(--orange-9)] transition-shadow duration-300 hover:shadow-[0_0_36px_8px_var(--orange-9)]"
-          >
-            <Link href="/docs">Browse Components</Link>
+        {/* CTAs */}
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <Button variant="primary" asChild>
+            <Link href="/docs/components/button">Browse components</Link>
           </Button>
-          <Button variant="secondary" asChild>
-            <Link
-              href="https://github.com/melvindesign/SolarUI"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubLogo size={16} />
-              GitHub
-            </Link>
-          </Button>
-          <Button variant="secondary" asChild>
-            <Link
-              href={FIGMA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FigmaLogo size={16} />
-              Figma
-            </Link>
-          </Button>
+          <div className="w-full max-w-sm sm:w-auto">
+            <InstallCommand />
+          </div>
         </div>
       </div>
-
-      {/* Install command */}
-      <div style={anim(320)} className="mt-6 w-full max-w-lg">
-        <InstallCommand />
-      </div>
-
     </section>
   )
 }

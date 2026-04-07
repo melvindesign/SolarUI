@@ -3,7 +3,7 @@
 import { Dialog as DialogPrimitive } from "radix-ui"
 import * as React from "react"
 
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { X } from "@phosphor-icons/react/dist/ssr"
 
@@ -65,12 +65,12 @@ function DialogContent({
       >
         {children}
         {showCloseButton && (
-          <DialogPrimitive.Close data-slot="dialog-close" asChild>
-            <Button variant="ghost" className="absolute top-2 right-2" size="compact">
-              <X
-              />
-              <span className="sr-only">Close</span>
-            </Button>
+          <DialogPrimitive.Close
+            data-slot="dialog-close"
+            className={cn(buttonVariants({ variant: "ghost", size: "compact" }), "absolute top-2 right-2")}
+          >
+            <X />
+            <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>
@@ -107,8 +107,8 @@ function DialogFooter({
     >
       {children}
       {showCloseButton && (
-        <DialogPrimitive.Close asChild>
-          <Button variant="secondary">Close</Button>
+        <DialogPrimitive.Close className={cn(buttonVariants({ variant: "secondary" }))}>
+          Close
         </DialogPrimitive.Close>
       )}
     </div>

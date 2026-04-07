@@ -5,14 +5,14 @@
     "radix-ui"
   ],
   "registryDependencies": [
-    "utils",
-    "solar-ui"
+    "@solar-ui/utils",
+    "@solar-ui/solar-ui"
   ],
   "files": [
     {
-      "path": "components/ui/separator.tsx",
+      "path": "registry/solar/ui/separator.tsx",
       "content": "\"use client\"\n\nimport { Separator as SeparatorPrimitive } from \"radix-ui\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\n  return (\n    <SeparatorPrimitive.Root\n      data-slot=\"separator\"\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"shrink-0 bg-default-6 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px data-[orientation=vertical]:self-stretch\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Separator }\n",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

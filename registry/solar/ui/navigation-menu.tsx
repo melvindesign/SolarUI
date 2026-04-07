@@ -1,5 +1,5 @@
-import { cva } from "class-variance-authority"
 import { CaretDown } from "@phosphor-icons/react/dist/ssr"
+import { cva } from "class-variance-authority"
 import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"
 import * as React from "react"
 
@@ -129,7 +129,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none hover:bg-default-3 hover:text-default-12 focus:bg-default-3 focus:text-default-12 focus-visible:ring-[3px] focus-visible:ring-default-7 focus-visible:outline-1 data-[active=true]:bg-default-3 data-[active=true]:text-default-12 data-[active=true]:hover:bg-default-4 data-[active=true]:focus:bg-default-4 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-default-11",
+        "flex flex-row gap-1 rounded-sm p-2 text-sm transition-all outline-none hover:bg-default-3 hover:text-default-12 focus:bg-default-3 focus:text-default-12 focus-visible:ring-[3px] focus-visible:ring-default-7 focus-visible:outline-1 data-[active=true]:bg-default-3 data-[active=true]:text-default-12 data-[active=true]:hover:bg-default-4 data-[active=true]:focus:bg-default-4 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-default-11",
         className
       )}
       {...props}
