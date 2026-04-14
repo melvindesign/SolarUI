@@ -34,6 +34,24 @@ npx shadcn@latest init --defaults
 
 This generates `components.json` and sets up the base configuration for your project.
 
+### Configure the Solar UI registry
+
+Tell shadcn where to resolve Solar UI components by adding a `registries` entry to your `components.json`:
+
+```json filename="components.json" copy
+{
+  "registries": {
+    "@solar-ui": {
+      "url": "https://solar-ui.com/r/{name}.json"
+    }
+  }
+}
+```
+
+<Callout type="info">
+  Without this configuration, shadcn won't know how to resolve `@solar-ui/*` component identifiers and will fail with a "not found" error.
+</Callout>
+
 ### Add the Solar UI theme
 
 Install the Solar UI theme, which applies the design tokens and visual style across your components:
@@ -54,24 +72,6 @@ Open `src/app/globals.css` and add the Solar UI theme import **at the very top**
 ```
 
 This ensures the Solar UI design tokens are loaded before Tailwind processes your styles.
-
-### Configure the Solar UI registry
-
-Tell shadcn where to resolve Solar UI components by adding a `registries` entry to your `components.json`:
-
-```json filename="components.json" copy
-{
-  "registries": {
-    "@solar-ui": {
-      "url": "https://solar-ui.com/r/{name}.json"
-    }
-  }
-}
-```
-
-<Callout type="info">
-  Without this configuration, shadcn won't know how to resolve `@solar-ui/*` component identifiers and will fail with a "not found" error.
-</Callout>
 
 ### Add your first component
 
